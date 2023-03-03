@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		<main id="login">
+			<div class="SchoolSide">
+				<div>
+					<img th:src="@{#}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+			</div>
+			<div class="logoSide">
+				<img th:src="@{#}" alt="학교로고">
+			</div>
+			<div class="loginSide">
+				<div>
+					<form action="#">
+						<section>
+							<span>학번</span><br>
+							<input type="text" name="uid">
+						</section>
+						<section>
+							<span>비밀번호</span><br>
+							<input type="password" name="pass" placeholder="password">
+						</section>
+						<div>
+							<span>
+								<label>
+									<input type="checkbox" name="auto">자동로그인
+								</label>
+							</span>
+							<input type="submit" value="로그인">
+						</div>
+					</form>
+					<div>
+						<span>처음접속하시나요?</span><a th:href="@{#}">Sign up</a>
+						<a th:href="@{#}">비밀번호 찾기</a>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer></footer>
+</body>
+</html>
