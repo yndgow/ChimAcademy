@@ -99,3 +99,70 @@ table > tbody > tr td{
     padding: 30px 30px 0px 30px;
     background-color: #ffe8e8;
 }
+
+/* 버튼 */
+.btn_div{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+
+.btn_end{
+    display: flex;
+    margin-top: 10px;
+    justify-content:flex-end;
+
+}
+
+.btn{
+    width: 150px;
+    height: 50px;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.btn_small{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid rgb(255, 100, 100);
+    color: #666;
+}
+
+.btn_small:hover{
+    background-color:rgb(255, 100, 100);
+    color: #fff;
+}
+.nomal{
+    background-color: #818181;
+    color: #fff;
+}
+
+.nomal:hover{
+    background-color: #a7a7a7;
+}
+
+.blue{
+    background-color: #8fa7db;
+    color: #fff;
+}
+
+.blue:hover{
+    background-color: #717f9c;
+}
+
+.red{
+    margin-left: 10px;
+    background-color: #f15555;
+    color: #fff;
+}
+
+.red:hover{
+    background-color: #fa7272;
+}

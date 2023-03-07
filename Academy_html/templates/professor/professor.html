@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <link rel="stylesheet" href="/static/style/board/common_css.css">
+    <link rel="stylesheet" href="/static/style/board/aside.css">
+    <link rel="stylesheet" href="/static/style/board/unity.css">
+    <link rel="stylesheet" href="/static/style/board/professor.css">
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+ 
+        <main>
+
+            <aside>
+                <ul id="#">
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+
+                </ul>
+            </aside>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>내 정보</h3>
+                </nav>
+               <section>
+                <div>
+                    <tr><img src="../img/my/myinfo.png" alt="증명사진" class="idphoto"></tr>
+                </div>
+                    <table>
+                        <tr>
+                            <th>이름</th>
+                            <td>교수</td>
+                            <th>연구실</th>
+                            <td>침대관 놀이동</td>
+                            <th>이력</th>
+                            <td>
+                                <ul>
+                                    <li>서울대학교 고고학과 고대 석사</li>
+                                    <li>서울대학교 고고학과 고대 박사</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td>010-0000-0001</td>
+                            <th>담당학과</th>
+                            <td>고고학부</td>
+                            <th>상담 가능시간</th>
+                            <td>09:00~12:00</td>
+                        </tr>
+                   </table>
+                   </section>
+                   
+              <!-- 수강내역 -->
+              <nav class="distance">
+                <h3>수강내역</h3>
+                </nav>
+                <section class="tableWrapper">
+                        <table id="userListTable">
+                            <tr>
+                                <th>no</th>
+                                <th>학년</th>
+                                <th>교과목명</th>
+                                <th>이수구분</th>
+                                <th>학점</th>
+                                <th>강의시간</th>
+                                <th>강의평가</th>
+                            </tr>
+                            <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>브릿징 영어쓰기</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>A</td>
+                            </tr>
+                            <tr>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>국제법</td>
+                            <td>전선</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>B+</td>
+                            </tr>
+                            <tr>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>모바일프로그래밍</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>A</td>
+                            </tr>
+                            <tr>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>컴퓨터네트워크</td>
+                            <td>전선</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>B+</td>
+                            </tr>
+                            <tr>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>브릿징 영어쓰기</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>A</td>
+                            </tr>
+                            <tr>
+                            <td>6</td>
+                            <td>1</td>
+                            <td>국제법</td>
+                            <td>전선</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>B+</td>
+                            </tr>
+                            <tr>
+                            <td>7</td>
+                            <td>1</td>
+                            <td>모바일프로그래밍</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>A</td>
+                            </tr>
+                            <tr>
+                            <td>8</td>
+                            <td>1</td>
+                            <td>컴퓨터네트워크</td>
+                            <td>전선</td>
+                            <td>3</td>
+                            <td>화123(과학동203)</td>
+                            <td>B+</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>1</td>
+                                <td>컴퓨터네트워크</td>
+                                <td>전선</td>
+                                <td>3</td>
+                                <td>화123(과학동203)</td>
+                                <td>B+</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1</td>
+                                <td>브릿징 영어쓰기</td>
+                                <td>전필</td>
+                                <td>3</td>
+                                <td>화123(과학동203)</td>
+                                <td>A</td>
+                            </tr>
+                    </table>
+                </section>
+                <div class="page">
+                    <a href=""><</a>
+                    <a href="" class="on">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">></a>
+                </div>
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>
