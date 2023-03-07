@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<link rel="stylesheet" href="/static/style/board/common_css.css">
+<link rel="stylesheet" href="/static/style/board/aside.css">
+<link rel="stylesheet" href="/static/style/board/unity.css">
+<link rel="stylesheet" href="/static/style/board/professor.css">
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+ 
+        <main>
+
+            <aside>
+                <ul id="#">
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+
+                </ul>
+            </aside>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="distance">
+                    <h3>강의목록</h3>
+                </nav>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th>학년</th>
+                            <th>교과목명</th>
+                            <th>이수구분</th>
+                            <th>학점</th>
+                            <th>강의시간</th>
+                            <th>인원제한</th>
+                            <th>수강인원</th>
+                            <th>강의계획서</th>
+                        </tr>
+                        <tr>
+                           <td>1</td>
+                           <td>1</td>
+                           <td>고고학의 첫걸음</td>
+                           <td>전필</td>
+                           <td>3</td>
+                           <td>3시간</td>
+                           <td>45</td>
+                           <td>28</td>
+                           <td>
+                                <button class="btn_plan">작성</button>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">작성</button>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">작성</button>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">작성</button>
+                            </td>
+                         </tr>
+                   </table>
+                </section>
+                <div class="page">
+                    <a href=""><</a>
+                    <a href="" class="on">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">></a>
+                </div> 
+              <!-- 수강내역 -->
+              <nav class="distance">
+                <h3>강의계획서</h3>
+                </nav>
+                <section class="plan">
+                    <table id="userListTable">
+                        <tbody>
+                            <tr>
+                                <th>작성자</th>
+                                <td><span>홍길동</span></td>
+                            </tr>
+                            <tr>
+                                <th>제목</th>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>파일첨부</th>
+                                <td><span><input type="file"></span></td>
+                            </tr>
+                            <tr>
+                                <th>내용</th>
+                                <td>
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <div class="btn_end">
+                    <button class="btn blue">작성</button>
+                </div>
+                <!-- <section class="">
+                    <table id="userListTable">
+                     <tbody>
+                        <tr>
+                            <th>작성자</th>
+                            <td>홍길동</td>
+                        </tr>
+                        <tr>
+                            <th>교과목 명</th>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <th>강의개요 및 목표</th>
+                            <td>
+                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>강의 방법</th>
+                            <td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>강의</th>
+                                            <th>토론</th>
+                                            <th>세미나</th>
+                                            <th>실습</th>
+                                            <th>실습</th>
+                                            <th>시청각</th>
+                                            <th>시청각유인물</th>
+                                            <th>견학</th>
+                                            <th>기타</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>교재</th>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>평가 기준</th>
+                            <td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>출석</th>
+                                            <th>중간고사</th>
+                                            <th>기말고사</th>
+                                            <th>수시평가</th>
+                                            <th>과제물</th>
+                                            <th>발표</th>
+                                            <th>수업태도</th>
+                                            <th>기타</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                            
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>파일첨부</th>
+                            <td><input type="file"></td>
+                        </tr>
+                     </tbody>
+                        
+                    </table>
+                </section> -->
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>

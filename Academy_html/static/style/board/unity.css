@@ -1,0 +1,117 @@
+/* 버튼 */
+.btn_div{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+
+.btn_end{
+    display: flex;
+    margin-top: 10px;
+    justify-content:flex-end;
+
+}
+
+.btn{
+    width: 150px;
+    height: 50px;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.btn_small{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid rgb(255, 100, 100);
+    color: #666;
+}
+
+.btn_small:hover{
+    background-color:rgb(255, 100, 100);
+    color: #fff;
+}
+
+/* 강의계획서 btn */
+.btn_plan{
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    background-color: #fff;
+    background-color: #366adb;
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+}
+
+.btn_plan:hover{
+    background-color: #244a9c;
+}
+
+.nomal{
+    background-color: #818181;
+    color: #fff;
+}
+
+.nomal:hover{
+    background-color: #a7a7a7;
+}
+
+.blue{
+    background-color: #8fa7db;
+    color: #fff;
+}
+
+.blue:hover{
+    background-color: #717f9c;
+}
+
+.red{
+    margin-left: 10px;
+    background-color: #f15555;
+    color: #fff;
+}
+
+.red:hover{
+    background-color: #fa7272;
+}
+
+
+
+/* page */
+
+.page{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.page > a{
+    margin: 0 5px 0 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    color: #366adb;
+    border: 1px solid #999;
+}
+
+.page > a:hover{
+    border: 1px solid #366adb;
+    background-color: #366adb;
+    color: #fff;
+
+}
+
+.on{
+    border: 1px solid #366adb;
+    background-color: #366adb;
+    color: #fff !important;
+}
