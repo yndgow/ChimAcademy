@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<link rel="stylesheet" href="/static/style/board/common_css.css">
+<link rel="stylesheet" href="/static/style/board/aside.css">
+<link rel="stylesheet" href="/static/style/board/unity.css">
+<link rel="stylesheet" href="/static/style/board/professor.css">
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+ 
+        <main>
+
+            <aside>
+                <ul id="#">
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+
+                </ul>
+            </aside>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="distance">
+                    <h3>강의목록</h3>
+                </nav>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th>학년</th>
+                            <th>교과목명</th>
+                            <th>이수구분</th>
+                            <th>학점</th>
+                            <th>강의시간</th>
+                            <th>인원제한</th>
+                            <th>수강인원</th>
+                            <th>강의계획서</th>
+                        </tr>
+                        <tr>
+                           <td>1</td>
+                           <td>1</td>
+                           <td>고고학의 첫걸음</td>
+                           <td>전필</td>
+                           <td>3</td>
+                           <td>3시간</td>
+                           <td>45</td>
+                           <td>28</td>
+                           <td>
+                                <button class="btn_plan">입력</button>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">입력</button>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">입력</button>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>고고학의 첫걸음</td>
+                            <td>전필</td>
+                            <td>3</td>
+                            <td>3시간</td>
+                            <td>45</td>
+                            <td>28</td>
+                            <td>
+                                 <button class="btn_plan">입력</button>
+                            </td>
+                         </tr>
+                   </table>
+                </section>
+                <div class="page">
+                    <a href=""><</a>
+                    <a href="" class="on">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">></a>
+                </div>
+              <!-- 학생관리 -->
+              <nav class="distance">
+                <h3>학생 관리</h3>
+                </nav>
+                <section class="tableWrapper">
+                    <table id="userListTable">
+                        <tr>
+                            <th>no</th>
+                            <th>학년</th>
+                            <th>학과</th>
+                            <th>학번</th>
+                            <th>이름</th>
+                            <th>중간</th>
+                            <th>기말</th>
+                            <th>과제</th>
+                            <th>발표</th>
+                            <th>출석</th>
+                            <th>태도</th>
+                            <th>최종 합계</th>
+                        </tr>
+                        <tr>
+                           <td>1</td>
+                           <td>1</td>
+                           <td>국문학과</td>
+                           <td>20231425</td>
+                           <td>장보고</td>
+                           <td>25</td>
+                           <td>25</td>
+                           <td>20</td>
+                           <td>10</td>
+                           <td>10</td>
+                           <td>10</td>
+                           <td>100/100</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+
+
+                   </table>
+                </section>
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>
