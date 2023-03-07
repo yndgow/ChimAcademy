@@ -1,4 +1,7 @@
 /* 마이페이지 */
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
 main{
     display: flex;
@@ -72,6 +75,11 @@ main>section>article>table>tbody {
     width: 150px;
 }
 
+/* 마이페이지 수정 - 증명사진 */
+#mymodify img.idphoto{
+    width: 150px;
+}
+
 /* nav간격 */
 main>section>nav.distance {
     position: relative;
@@ -135,4 +143,10 @@ main>section>nav.distance {
 #userListTable th {
     position: sticky;
     top: 0px;
+}
+
+/* 마이페이지 - 개인정보 수정 */
+#myinfo>section>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
 }
