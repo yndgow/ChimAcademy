@@ -19,8 +19,8 @@ public class MainController {
 	
 	@GetMapping(value = {"/", "/index"})
 	public String index(Model model) {
-		List<TestVO> list= service.selectTest();
-		model.addAttribute("list", list);
-		return "index";
+//		List<TestVO> list= service.selectTest();
+//		model.addAttribute("list", list);
+		return "login";
 	}
 }
