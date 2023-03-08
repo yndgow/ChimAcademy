@@ -21,6 +21,6 @@ public class MainController {
 	public String index(Model model) {
 //		List<TestVO> list= service.selectTest();
 //		model.addAttribute("list", list);
-		return "login";
+		return "member/login";
 	}
 }
