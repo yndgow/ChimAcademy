@@ -1,0 +1,44 @@
+<aside>
+    <ul id="side">
+        <li>
+            <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+            <ol>
+                <li><a href="#">내 정보</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리(교수)</a>
+            <ol>
+                <li><a href="#">강의</a></li>
+                <li><a href="#">성적</a></li>
+                <li><a href="#">강의평가</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리(학생)</a>
+            <ol>
+                <li><a th:href="@{/student/class/signup}">수강신청</a></li>
+                <li><a th:href="@{/student/class/timeTable}">강의사간표</a></li>
+                <li><a th:href="@{/student/class/eval}">강의평가</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+            <ol>
+                <li><a href="#">국문학과</a></li>
+                <li><a href="#">영문학과</a></li>
+                <li><a href="#">컴퓨터공학과</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+            <ol>
+                <li><a href="#">도서</a></li>
+                <li><a href="#">내 서재</a></li>
+                <li><a href="#">온라인콘텐츠</a></li>
+                <li><a href="#">이용안내</a></li>
+            </ol>
+        </li>
+
+    </ul>
+</aside>

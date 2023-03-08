@@ -10,4 +10,14 @@ public class StudentController {
 	public String signUp() {
 		return "student/signUp";
 	}
+	
+	@GetMapping("student/class/timeTable")
+	public String timeTable() {
+		return "student/timeTable";
+	}
+	
+	@GetMapping("student/class/eval")
+	public String eval() {
+		return "student/eval";
+	}
 }

@@ -28,7 +28,9 @@ main h1{
 main table, main tr, main td, main th{
     border: 1px solid #c0c0c0;
 }
-
+main #resultLec > #resultTable{
+	border: none;
+}
 main#signUp > section > #stdInfo > table{
     width: 100%;
     height: 80px;
@@ -51,7 +53,7 @@ main#signUp > section > #searchCredit > #searchDiv{
     border: 1px solid #c0c0c0;
 }
 main#signUp > section > #searchCredit > #searchDiv > table{
-    width: 670px;
+    width: 750px;
     text-align: right;    
     
 }
@@ -91,9 +93,10 @@ main#signUp > section > #searchCredit > #creditDiv > table tr > td:nth-child(1){
 }
 main#signUp > section > #resultLec > table{
     display: block;
-    width: 890px;
-    height: 409px;
-    overflow: auto;
+    width: 970px;
+    min-height: 76px;
+    max-height: 409px;
+    overflow-y: scroll;
     text-align: center;
 }
 main#signUp > section > #resultLec > table th {
@@ -106,13 +109,13 @@ main#signUp > section > #resultLec > table th:nth-child(2) {width: 35px;}
 main#signUp > section > #resultLec > table th:nth-child(3) {width: 60px;}
 main#signUp > section > #resultLec > table th:nth-child(4) {width: 201px;}
 main#signUp > section > #resultLec > table th:nth-child(5) {width: 60px;}
-main#signUp > section > #resultLec > table th:nth-child(6) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(6) {width: 50px;}
 main#signUp > section > #resultLec > table th:nth-child(7) {width: 100px;}
-main#signUp > section > #resultLec > table th:nth-child(8) {width: 120px;}
-main#signUp > section > #resultLec > table th:nth-child(9) {width: 55px;}
-main#signUp > section > #resultLec > table th:nth-child(10) {width: 55px;}
+main#signUp > section > #resultLec > table th:nth-child(8) {width: 160px;}
+main#signUp > section > #resultLec > table th:nth-child(9) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(10) {width: 60px;}
 main#signUp > section > #resultLec > table th:nth-child(11) {width: 70px;}
-main#signUp > section > #resultLec > table th:nth-child(12) {width: 55px;}
+main#signUp > section > #resultLec > table th:nth-child(12) {width: 70px;}
 main#signUp > section > #resultLec > table th,
 main#signUp > section > #resultLec > table td{
     line-height: 35px;
