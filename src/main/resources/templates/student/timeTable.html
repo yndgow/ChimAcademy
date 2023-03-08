@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../css/student.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
+    <script>
+        $(function(){
+            $('#side > li > ol').hide();
+
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">LogOut</a>
+				</div>
+			</div>
+		</header>
+ 
+        <main id="timetable">
+            <aside>
+                <ul id="side">
+                    <li>
+                        <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+                        <ol>
+                            <li><a href="#">내 정보</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리</a>
+                        <ol>
+                            <li><a href="#">강의</a></li>
+                            <li><a href="#">성적</a></li>
+                            <li><a href="#">강의평가</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+                        <ol>
+                            <li><a href="#">국문학과</a></li>
+                            <li><a href="#">영문학과</a></li>
+                            <li><a href="#">컴퓨터공학과</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+                        <ol>
+                            <li><a href="#">도서</a></li>
+                            <li><a href="#">내 서재</a></li>
+                            <li><a href="#">온라인콘텐츠</a></li>
+                            <li><a href="#">이용안내</a></li>
+                        </ol>
+                    </li>
+
+                </ul>
+            </aside>
+            <section>
+                <h1>내 시간표</h1>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>월</td>
+                        <td>화</td>
+                        <td>수</td>
+                        <td>목</td>
+                        <td>금</td>
+                    </tr>
+                    <tr>
+                        <td>1<br>(09:00 ~ 09:50)</td>
+                        <td style="background-color: burlywood;">한글과 글쓰기<br>인문관 203호<br>강감찬</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2<br>(09:00 ~ 09:50)</td>
+                        <td style="background-color: burlywood;">한글과 글쓰기<br>인문관 203호<br>강감찬</td>
+                        <td rowspan="2" style="background-color: rgb(127, 92, 250);">작문<br>인문관 303호<br>이성계</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3<br>(10:00 ~ 10:50)</td>
+                        <td></td>
+                        <!-- <td></td> -->
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4<br>(11:00 ~ 11:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5<br>(12:00 ~ 12:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6<br>(13:00 ~ 13:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7<br>(14:00 ~ 14:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8<br>(15:00 ~ 15:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9<br>(16:00 ~ 16:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10<br>(17:00 ~ 17:50)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </section>
+            
+		</main>
+        
+		<footer></footer>
+</body>
+</html>
