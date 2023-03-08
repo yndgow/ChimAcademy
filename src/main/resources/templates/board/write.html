@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- 공통css -->
+<link rel="stylesheet" href="/static/style/board/common_css.css">
+<link rel="stylesheet" href="/static/style/board/aside.css">
+<link rel="stylesheet" href="/static/style/board/board.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>write</title>    
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		<main>
+			<aside>
+                <ul id="#">
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+
+                </ul>
+            </aside>
+			<div class="board">
+				<table>
+					<h1>글 작성하기</h1>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+							<td>20231010 홍길동</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td>안녕하세요</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td>반갑습니다</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn_div">
+					<button class="btn nomal" >목록</button>
+					<button class="btn blue">작성</button>
+				</div>
+			</div>
+		</main>
+		<footer>
+			푸터입니당
+		</footer>
+</body>
+</html>
