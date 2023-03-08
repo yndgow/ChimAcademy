@@ -29,14 +29,9 @@
     margin-right: 10px;
     margin-bottom: 10px;
     background-color: #fff;
-    border: 1px solid rgb(255, 100, 100);
-    color: #666;
+    border: 0;
 }
 
-.btn_small:hover{
-    background-color:rgb(255, 100, 100);
-    color: #fff;
-}
 
 /* 강의계획서 btn */
 .btn_plan{

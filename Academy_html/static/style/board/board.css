@@ -41,6 +41,15 @@ table > tbody > tr td{
     width: 80%;
 }
 
+.board input{
+    width: 100%;
+    height: 30px;
+}
+
+.board textarea{
+    width: 100%;
+    height: 500px;
+}
 /* 댓글 */
 .comment{
     width: 100%;
