@@ -1,14 +1,14 @@
 /* 마이페이지 */
 body {
-	font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-main{
+main {
     display: flex;
-    width: 1280px;
 }
+
 main>section {
-    width: 1130px;
+    width: 970px;
     min-height: 600px;
     padding: 20px;
     float: left;
@@ -76,8 +76,11 @@ main>section>article>table>tbody {
 }
 
 /* 마이페이지 수정 - 증명사진 */
-#mymodify img.idphoto{
-    width: 150px;
+#mymodify img.idphoto {
+    width: 130px;
+    margin: 25px;
+    margin-top: 5px;
+    margin-bottom: 7px;
 }
 
 /* nav간격 */
@@ -90,16 +93,13 @@ main>section>nav.distance {
 }
 
 /* 내 정보 */
-#myinfo{
-    width: 100%;
-}
-
 #myinfo>article {
     width: 100%;
     height: auto;
     overflow: hidden;
 }
-#myinfo>section{
+
+#myinfo>section {
     display: flex;
 }
 
@@ -146,7 +146,128 @@ main>section>nav.distance {
 }
 
 /* 마이페이지 - 개인정보 수정 */
-#myinfo>section>table tr>th {
-    padding: 10px 0;
-    background: #f6f6f6;
+#mymodify>section>h3 {
+    margin: 10px;
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }
+
+#mymodify>section:first-child>span {}
+
+/* 프로필 영역 */
+#mymodify>section:nth-of-type(1) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #f5f6f6;
+    border-bottom: none;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+#mymodify>section:nth-of-type(2) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid #ebecef;
+    background: #f5f6f7;
+    overflow: hidden;
+}
+
+#mymodify>section:nth-of-type(2)>div {
+    float: left;
+}
+
+/* 프로필사진 */
+#mymodify>section:nth-of-type(2) article {
+    display: inline-block;
+}
+
+#mymodify>section:nth-of-type(2) span {
+    width: 300px;
+}
+
+/* 프로필 사진 하단 글자 크기 */
+#mymodify>section>div>p {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#mymodify>section>div>span {
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+/* 표 하단 사이즈 */
+#mymodify>section:nth-of-type(2)>div:first-child {
+    height: 250px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 내부 글자 위치 */
+#mymodify>section:nth-of-type(2)>div:nth-of-type(2) {
+    width: 250px;
+    height: 200px;
+    margin-left: 50px;
+}
+
+#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table {
+    width: 250px;
+    height: 220px;
+    margin-top: 12px;
+}
+
+/* 프로필 폰트 크기 */
+#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
+    font-weight: bold;
+    font-size: 15px
+}
+
+#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
+    font-size: 15px
+}
+
+/* ============================== */
+
+/* 상세정보 영역 */
+#mymodify>section:nth-of-type(3) {
+    margin-top: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #f5f6f6;
+    border-bottom: none;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+#mymodify>section:nth-of-type(4) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid #ebecef;
+    background: #f5f6f7;
+    overflow: hidden;
+}
+
+/* 폰트 크기 */
+#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td:first-child {
+    font-weight: bold;
+    font-size: 15px
+}
+
+#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td:first-child {
+    font-weight: bold;
+    font-size: 15px
+}
+
+#mymodify>section:nth-of-type(4)>div {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 15px;
+}
+
+#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td:last-child {
+margin-left: 20px;
+}
+
+
+/* ============================== */
