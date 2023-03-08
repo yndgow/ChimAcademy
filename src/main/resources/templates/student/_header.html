@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>침대학교</title>    
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+	    <script src="https://kit.fontawesome.com/e8f010a863.js" crossorigin="anonymous"></script>
+	    <link th:href="@{/style/common.css}" rel="stylesheet" type="text/css" />
+	    <link th:href="@{/style/student/student.css}" rel="stylesheet" type="text/css" />
+	    <script th:src="@{/js/student/student.js}"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<div class="top">
+					<div>
+						<a th:href="@{#}">Home</a>
+						<a th:href="@{#}">Profile</a>
+						<a th:href="@{#}">Login/LogOut</a>
+					</div>
+				</div>
+			</header>
+
+</html>
