@@ -29,6 +29,12 @@ main>section>nav>h3 {
     font-weight: bold;
 }
 
+main>section>nav>h3>span{
+    bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 main>section>nav>p {
     position: absolute;
     right: 0;
@@ -67,18 +73,15 @@ main>section>article>table>tbody {
     border-color: inherit;
 }
 
-/* nav간격 */
-main>section>nav.distance {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin-top: 50px;
-    box-sizing: border-box;
-}
-
 /* 내 정보 */
 #myinfo{
     width: 100%;
+}
+
+#myinfo > h1{
+    bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #myinfo>article {
@@ -123,6 +126,8 @@ main>section>nav.distance {
     border-bottom: 2px solid #8798a3;
 }
 
+/* myAssistant  */
+
 #userListTable {
     width: 100%;
     position: sticky;
@@ -134,26 +139,96 @@ main>section>nav.distance {
     top: 0px;
 }
 
-/* 강의계획서 */
+#lceRegister::after {
+    content:""; display:block; clear:both;
+}
 
-.plan td{
-    text-align: left !important;
-    margin: 10px;
+#lceRegister > #lecDiv{
+    float: left;
+    width: auto;
+    margin-right: 10px;
+    padding-right: 10px;
+    border: 1px solid #c0c0c0;
+}
+#lceRegister > #lecDiv > table{
+    width: 670px;
+    text-align: right;    
+    
+}
+#lceRegister > #lecDiv > table td{
+    line-height: 35px;
+}
+#lceRegister > #lecDiv > table select{
+    width: 145px;
+}
+#lceRegister > #lecDiv > table td:nth-child(even){
+    text-align: center;
+}
+#lceRegister > #lecDiv > table #searchTd{
+    text-align: center;
+}
+#lceRegister > #lecDiv > table #searchTd > button {
+    width: 145px;
+}
+#lceRegister > #lecDiv > table, 
+#lceRegister > #lecDiv > table tr, 
+#lceRegister > #lecDiv > table td{
+    border: none;
 }
 
 
-.plan input[type=text]{
-    width: 100%;
+/* myAssistant  */
+
+/* 인사관리 */
+.search{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.search input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+}
+
+.search > select{
     height: 30px;
 }
 
-.plan textarea {
-    width: 100%;
-    height: 200px;
+.search > button{
+    height: 30px;
 }
 
-/* eval */
+/* 페이징 버튼 위치 */
 
-.eval table tr th:last-child{
-    width: 400px;
+.page_div{
+    position: relative;
+}
+
+.addPage > a{
+    text-decoration: underline;
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* insert */
+
+.addPage > button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* as_modify */
+
+.as_modify{
+}
+
+#myinfo .as_modify > table{
+    width: 100%;
+    height: 450px;
 }
