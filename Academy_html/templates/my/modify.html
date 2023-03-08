@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/aside.css" rel="stylesheet" type="text/css" />
+<link href="../css/my.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="top">
+                <div>
+                    <a th:href="@{#}">Home</a>
+                    <a th:href="@{#}">Profile</a>
+                    <a th:href="@{#}">Login/LogOut</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <aside>
+                <ul id="#">
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="#"></i></a>
+                    </li>
+
+                </ul>
+            </aside>
+
+            <section id="mymodify">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>마이페이지 > 개인정보 수정</h3>
+                </nav>
+                    <table border="1">
+                        <tr>
+                            <th>프로필</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                    <img src="../img/my/myinfo.png" alt="증명사진" class="idphoto">
+                                </td>
+                        </tr>
+                      
+                   </table>
+                   </section>
+
+        </main>
+        <footer></footer>
+</body>
+
+</html>

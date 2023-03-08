@@ -1,0 +1,7 @@
+/* depList */
+
+#depList > .banner > p > img {
+    width: 800px;
+    height: 200px;
+    padding: 20px 100px;
+}

@@ -1,0 +1,168 @@
+/* board */
+main{
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+}
+.board{
+    width: 100%;
+    padding: 30px;
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-top: 1px solid #333;
+}
+
+table > tbody > tr{
+    border-bottom: 1px solid #d8d8d8;
+    padding: 10px;
+}
+
+table > tbody > tr > th{
+    text-align: center;
+    padding: 20px;
+    width: 20%;
+}
+
+table > tbody > tr:nth-child(3){
+    padding: 10px;
+    width: 20%;
+    height: 400px;
+}
+table > tbody > tr td{
+    padding: 10px;
+    width: 80%;
+}
+
+/* 댓글 */
+.comment{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment > div{
+    padding: 5px;
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+}
+
+.comment .write{
+    display: block;
+    margin: 0 auto;
+
+}
+.comment .write h1{
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.comment .write h2{
+    margin-bottom: 5px;
+}
+.comment h2{
+    font-size: 15px;
+}
+
+.comment .write textarea{
+    width: 100%;
+}
+
+.comment .view{
+    border-bottom: 1px solid #999;
+}
+
+.comment .view h2{
+    margin-bottom: 5px;
+}
+
+.comment .view p{
+    margin-bottom: 5px;
+}
+
+.comment .view > div{
+    margin-bottom: 5px;
+
+}
+
+.comment ul li {
+    margin-bottom: 10px;
+}
+
+.recoment{
+    padding: 30px 30px 0px 30px;
+    background-color: #ffe8e8;
+}
+
+/* 버튼 */
+.btn_div{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+
+.btn_end{
+    display: flex;
+    margin-top: 10px;
+    justify-content:flex-end;
+
+}
+
+.btn{
+    width: 150px;
+    height: 50px;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.btn_small{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid rgb(255, 100, 100);
+    color: #666;
+}
+
+.btn_small:hover{
+    background-color:rgb(255, 100, 100);
+    color: #fff;
+}
+.nomal{
+    background-color: #818181;
+    color: #fff;
+}
+
+.nomal:hover{
+    background-color: #a7a7a7;
+}
+
+.blue{
+    background-color: #8fa7db;
+    color: #fff;
+}
+
+.blue:hover{
+    background-color: #717f9c;
+}
+
+.red{
+    margin-left: 10px;
+    background-color: #f15555;
+    color: #fff;
+}
+
+.red:hover{
+    background-color: #fa7272;
+}
