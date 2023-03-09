@@ -1,4 +1,4 @@
-package kr.co.GreenAcademy.vo;
+package kr.co.ChimAcademy.vo;
 
 import lombok.Data;
 

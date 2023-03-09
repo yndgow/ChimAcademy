@@ -1,13 +1,13 @@
-package kr.co.GreenAcademy;
+package kr.co.ChimAcademy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GreenAcademyApplication {
+public class ChimAcademyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GreenAcademyApplication.class, args);
+		SpringApplication.run(ChimAcademyApplication.class, args);
 	}
 
 }

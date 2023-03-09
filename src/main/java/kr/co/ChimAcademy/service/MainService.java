@@ -1,12 +1,12 @@
-package kr.co.GreenAcademy.service;
+package kr.co.ChimAcademy.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.GreenAcademy.dao.MainDAO;
-import kr.co.GreenAcademy.vo.TestVO;
+import kr.co.ChimAcademy.dao.MainDAO;
+import kr.co.ChimAcademy.vo.TestVO;
 
 @Service
 public class MainService{
