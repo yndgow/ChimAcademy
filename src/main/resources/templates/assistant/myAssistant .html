@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
+    <!-- 작업 css -->
+    <link rel="stylesheet" href="/static/style/board/common_css.css">
+    <link rel="stylesheet" href="/static/style/board/aside.css">
+    <link rel="stylesheet" href="/static/style/board/unity.css">
+    <link rel="stylesheet" href="/static/style/board/assistant .css">
+    <script>
+        $(function(){
+            $('#side > li > ol').hide();
+
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">LogOut</a>
+				</div>
+			</div>
+		</header>
+        <main>
+            <aside>
+                <ul id="side">
+                    <li>
+                        <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+                        <ol>
+                            <li><a href="#">내 정보</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리</a>
+                        <ol>
+                            <li><a href="#">강의</a></li>
+                            <li><a href="#">성적</a></li>
+                            <li><a href="#">강의평가</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+                        <ol>
+                            <li><a href="#">국문학과</a></li>
+                            <li><a href="#">영문학과</a></li>
+                            <li><a href="#">컴퓨터공학과</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+                        <ol>
+                            <li><a href="#">도서</a></li>
+                            <li><a href="#">내 서재</a></li>
+                            <li><a href="#">온라인콘텐츠</a></li>
+                            <li><a href="#">이용안내</a></li>
+                        </ol>
+                    </li>
+
+                </ul>
+            </aside>
+            <section id="myinfo" class="myAssistant">
+                <h1>강의 등록</h1>
+                <section id="lceRegister">
+                   <div id="lecDiv">
+                       <table>
+                           <tr>
+                               <td>구분</td>
+                               <td>
+                                   <select name="" id="">
+                                       <option value="" selected>전공필수</option>
+                                       <option value="">전공선택</option>
+                                       <option value="">교양</option>
+                                   </select>
+                               </td>
+                               <td>검색</td>
+                               <td>
+                                   <input type="text" name="" id="" placeholder="교과명 또는 코드 입력">
+                               </td>
+                               <td></td>
+                               <td id="searchTd">
+                                   <button>검색</button>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td>학부(과)</td>
+                               <td>
+                                   <select name="" id="">
+                                       <option value="" selected>국문학과</option>
+                                       <option value="">영문학과</option>
+                                       <option value="">컴퓨터공학과</option>
+                                   </select>
+                               </td>
+                               <td>전공</td>
+                               <td>
+                                   <select name="" id="">
+                                       <option value="">-</option>
+                                       <option value="">한글</option>
+                                       <option value="">표준어</option>
+                                   </select>
+                               </td>
+                               <td>구분</td>
+                               <td>
+                                   <select name="" id="">
+                                       <option value="">1학년</option>
+                                       <option value="">2학년</option>
+                                       <option value="">3학년</option>
+                                       <option value="">4학년</option>
+                                   </select>
+                               </td>
+                           </tr>
+                       </table>
+                   </div>
+               </section>
+               <!-- 검색 관리 -->
+                 <nav>
+                     <h3>검색 과목 총<span>10</span>건</h3>
+                 </nav>
+                 <section class="tableWrapper">
+                     <table id="userListTable">
+                         <tr>
+                             <th>no</th>
+                             <th>학년</th>
+                             <th>학과</th>
+                             <th>학번</th>
+                             <th>이름</th>
+                             <th>중간</th>
+                             <th>기말</th>
+                             <th>과제</th>
+                             <th>발표</th>
+                             <th>출석</th>
+                             <th>태도</th>
+                             <th>최종 합계</th>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>국문학과</td>
+                            <td>20231425</td>
+                            <td>장보고</td>
+                            <td>25</td>
+                            <td>25</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>10</td>
+                            <td>100/100</td>
+                         </tr>
+                         <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                         </tr>
+                         <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+                          <tr>
+                             <td>1</td>
+                             <td>1</td>
+                             <td>국문학과</td>
+                             <td>20231425</td>
+                             <td>장보고</td>
+                             <td>25</td>
+                             <td>25</td>
+                             <td>20</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>10</td>
+                             <td>100/100</td>
+                          </tr>
+ 
+ 
+                    </table>
+                 </section>
+                 <!-- 강의 등록 -->
+                 <nav>
+                     <h3>강의 등록</h3>
+                 </nav>
+                 <section class="lceRegister">
+                     <table>
+                         <tbody>
+                             <tr>
+                                 <th>강의코드</th>
+                                 <td>410000</td>
+                                 <th>학과명</th>
+                                 <td>국어국문학과</td>
+                                 <th>전공</th>
+                                 <td>국어학과</td>
+                                 <th>학과명</th>
+                                 <td>강의명</td>
+                             </tr>
+                             <tr>
+                                 <th>학년</th>
+                                 <td>
+                                     <select name="" id="">
+                                         <option value="" selected>1학년</option>
+                                         <option value="">2학년</option>
+                                         <option value="">3학년</option>
+                                         <option value="">4학년</option>
+                                     </select>
+                                 </td>
+                                 <th>이수구분</th>
+                                 <td> 
+                                     <select name="" id="">
+                                         <option value="" selected>전공필수</option>
+                                         <option value="">전공선택</option>
+                                         <option value="">교양</option>
+                                     </select>
+                                 </td>
+                                 <th>학점</th>
+                                 <td>3</td>
+                                 <th>교수명</th>
+                                 <td>
+                                     <select name="" id="">
+                                         <option value="" selected>장보고</option>
+                                         <option value="">강감찬</option>
+                                         <option value="">이순신</option>
+                                     </select>
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <th>장소</th>
+                                 <td>1층</td>
+                                 <th>시간</th>
+                                 <td>
+                                    <select  name="" id="">
+                                        <option value="" selected>월</option>
+                                        <option value="">화</option>
+                                        <option value="">수</option>
+                                        <option value="">목</option>
+                                        <option value="">금</option>
+                                    </select>
+                                    <select  name="" id="">
+                                        <option value="" selected>1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                        <option value="">6</option>
+                                        <option value="">7</option>
+                                        <option value="">8</option>
+                                        <option value="">9</option>
+                                    </select>
+                                    <select  name="" id="">
+                                        <option value="" selected>10</option>
+                                        <option value="">20</option>
+                                        <option value="">30</option>
+                                        <option value="">40</option>
+                                        <option value="">50</option>
+                                        <option value="">60</option>
+                                    </select>
+                                 </td>
+                                 <th>인원</th>
+                                 <td>20</td>
+                                 <th>수정</th>
+                                 <td>
+                                     <button class="btn blue">등록</button>
+                                 </td>
+                             </tr>
+                         </tbody>
+                     </table>
+                 </section>
+                 <!-- 강의 수정 -->
+                 <nav>
+                     <h3>강의 수정</h3>
+                 </nav>
+                 <section>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>강의코드</th>
+                                <td>410000</td>
+                                <th>학과명</th>
+                                <td>국어국문학과</td>
+                                <th>전공</th>
+                                <td>국어학과</td>
+                                <th>학과명</th>
+                                <td>강의명</td>
+                            </tr>
+                            <tr>
+                                <th>학년</th>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="" selected>1학년</option>
+                                        <option value="">2학년</option>
+                                        <option value="">3학년</option>
+                                        <option value="">4학년</option>
+                                    </select>
+                                </td>
+                                <th>이수구분</th>
+                                <td> 
+                                    <select name="" id="">
+                                        <option value="" selected>전공필수</option>
+                                        <option value="">전공선택</option>
+                                        <option value="">교양</option>
+                                    </select>
+                                </td>
+                                <th>학점</th>
+                                <td>3</td>
+                                <th>교수명</th>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="" selected>장보고</option>
+                                        <option value="">강감찬</option>
+                                        <option value="">이순신</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>장소</th>
+                                <td>1층</td>
+                                <th>시간</th>
+                                <td>
+                                   <select  name="" id="">
+                                       <option value="" selected>월</option>
+                                       <option value="">화</option>
+                                       <option value="">수</option>
+                                       <option value="">목</option>
+                                       <option value="">금</option>
+                                   </select>
+                                   <select  name="" id="">
+                                       <option value="" selected>1</option>
+                                       <option value="">2</option>
+                                       <option value="">3</option>
+                                       <option value="">4</option>
+                                       <option value="">5</option>
+                                       <option value="">6</option>
+                                       <option value="">7</option>
+                                       <option value="">8</option>
+                                       <option value="">9</option>
+                                   </select>
+                                   <select  name="" id="">
+                                       <option value="" selected>10</option>
+                                       <option value="">20</option>
+                                       <option value="">30</option>
+                                       <option value="">40</option>
+                                       <option value="">50</option>
+                                       <option value="">60</option>
+                                   </select>
+                                </td>
+                                <th>인원</th>
+                                <td>20</td>
+                                <th>수정</th>
+                                <td>
+                                    <button class="btn blue">등록</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </section>
+             </section>
+		</main>
+		<footer></footer>
+</body>
+</html>

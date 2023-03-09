@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
+    
+    <!-- 작업 css -->
+    <link rel="stylesheet" href="/static/style/board/common.css">
+    <link rel="stylesheet" href="/static/style/board/aside.css">
+    <link rel="stylesheet" href="/static/style/board/unity.css">
+    <link rel="stylesheet" href="/static/style/board/assistant .css">
+    <script>
+        $(function(){
+            $('#side > li > ol').hide();
+
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">LogOut</a>
+				</div>
+			</div>
+		</header>
+        <main>
+            <aside>
+                <ul id="side">
+                    <li>
+                        <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+                        <ol>
+                            <li><a href="#">내 정보</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리</a>
+                        <ol>
+                            <li><a href="#">강의</a></li>
+                            <li><a href="#">성적</a></li>
+                            <li><a href="#">강의평가</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+                        <ol>
+                            <li><a href="#">국문학과</a></li>
+                            <li><a href="#">영문학과</a></li>
+                            <li><a href="#">컴퓨터공학과</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+                        <ol>
+                            <li><a href="#">도서</a></li>
+                            <li><a href="#">내 서재</a></li>
+                            <li><a href="#">온라인콘텐츠</a></li>
+                            <li><a href="#">이용안내</a></li>
+                        </ol>
+                    </li>
+
+                </ul>
+            </aside>
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="nav_div">
+                    <h3>학과 인원 수정</h3>
+                </nav>
+               <section class="as_modify">
+                    <table>
+                        <tr>
+                            <th rowspan="2">프로필</th>
+                            <td rowspan="2">사진</td>
+                            <th>학번</th>
+                            <td>20220102</td>
+                        </tr>
+                        <tr>
+                            <th>제적구분</th>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">재학</option>
+                                    <option value="">휴학</option>
+                                    <option value="">졸업</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>이름</th>
+                            <td>홍길동</td>
+                            <th>등급</th>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">학생</option>
+                                    <option value="">조교</option>
+                                    <option value="">교수</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td>900102</td>
+                            <th>우편번호</th>
+                            <td>123456</td>
+                        </tr>
+                        <tr>
+                            <th>학과</th>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">재학</option>
+                                    <option value="">휴학</option>
+                                    <option value="">졸업</option>
+                                </select>
+                            </td>
+                            <th>주소</th>
+                            <td>부산진구 대연동</td>
+                        </tr>
+                        <tr>
+                            <th>학년</th>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">1학년</option>
+                                    <option value="">2학년</option>
+                                    <option value="">3학년</option>
+                                    <option value="">4학년</option>
+                                </select>
+                            </td>
+                            <th>가입일</th>
+                            <td>2023-03-08</td>
+                        </tr>
+                        <tr>
+                            <th>성별</th>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">남</option>
+                                    <option value="">여</option>
+                                </select>
+                            </td>
+                            <th>졸업일</th>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰</th>
+                            <td>010-1234-1234</td>
+                            <th rowspan="2">소개글</th>
+                            <td rowspan="2">-</td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td>hong@gmai.com</td>
+                        </tr>
+                   </table>
+                </section>
+                <div class="page_div">
+                    <div class="page">
+                        <a href=""><</a>
+                        <a href="" class="on">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">></a>
+                    </div>
+                    <div class="addPage">
+                        <button class="btn blue">추가</button>
+                    </div>
+                </div>
+
+            
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>
