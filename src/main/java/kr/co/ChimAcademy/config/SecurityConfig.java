@@ -1,4 +1,4 @@
-package kr.co.GreenAcademy.config;
+package kr.co.ChimAcademy.config;
 
 
 import javax.sql.DataSource;

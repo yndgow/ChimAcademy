@@ -1,4 +1,4 @@
-package kr.co.GreenAcademy.controller;
+package kr.co.ChimAcademy.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import kr.co.GreenAcademy.service.MainService;
-import kr.co.GreenAcademy.vo.TestVO;
+import kr.co.ChimAcademy.service.MainService;
+import kr.co.ChimAcademy.vo.TestVO;
 
 @Controller
 public class MainController {
