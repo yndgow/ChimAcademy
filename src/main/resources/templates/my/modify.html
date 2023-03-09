@@ -143,36 +143,37 @@
                 </section>
                 <section>
                     <div>
-                        <table>
+                        <table border="0" class="detail" >
                             <tr>
                                 <td>휴대전화번호</td>
-                                <td><input type="text" onKeyup="inputPhoneNumber(this);" maxlength="13" style="text-align:center;"  value="010-0000-0001"/></td>
+                                <td><input id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13" value="010-0000-0001"/></td>
                             </tr>
                             <tr>
                                 <td>이메일</td>
-                                <td><input type="text" style="text-align:center;"/></td>
-                            </tr>
-                            <div>
-                            <tr>
-                                <td>주소</td>
-                                <td><input type="text" placeholder="우편번호"></td>
-                                <td><button>검색</button></td>
-                            </tr>
-                            <tr>
-                                <td><!--none--></td>
-                                <td><input type="text" placeholder="주소"></td>
-                            </tr>
-                            <tr>
-                                <td><!--none--></td>
-                                <td><input type="text" placeholder="상세주소"></td>
-                            </tr>
-                        </div>
-                            <tr>
-                                <td>자기소개</td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" placeholder="0/500자"></td>
-                            </tr>
+                                <td><input id="box1" type="text"  value="dong@cu.ac.kr"/></td>
+                            </tr>                            
+                                <tr class="addr">
+                                    <td class="addrtitle">주소</td>
+                                    <td>
+                                        <input id="box2" type="text" placeholder="우편번호">
+                                        <button>검색</button>
+                                    </td>                                    
+                                </tr>
+                                <tr class="addr">
+                                    <td><!--none--></td>
+                                    <td><input id="box3" type="text" placeholder="주소"></td>
+                                </tr>
+                                <tr class="addr">
+                                    <td><!--none--></td>
+                                    <td><input id="box3" type="text" placeholder="상세주소"></td>
+                                </tr>
+                                <tr>
+                                    <td>자기소개</td>                                    
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><textarea name=""></textarea></td>
+                                </tr>
+                                
                         </table>
                     </div>
                 </section>
