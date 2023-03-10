@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <title>그린아카데미</title>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet" type="text/css" />
     <link href="../css/my.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
     <!-- aside 메뉴바 -->
     <script>
-        $(function(){
+        $(function () {
             $('#side > li > ol').hide();
 
-            $('#side > li > a').click(function(){
+            $('#side > li > a').click(function () {
                 $(this).siblings().slideToggle(300);
             });
         });
-    </script> 
+    </script>
     <!-- 휴대폰번호 -->
     <script>
-    function inputPhoneNumber(obj) {
-        var number = obj.value.replace(/[^0-9]/g, "");
-        var phone = "";
-    
-        if(number.length < 4) {
-            return number;
-        } else if(number.length < 7) {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3);
-        } else if(number.length < 11) {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3, 3);
-            phone += "-";
-            phone += number.substr(6);
-        } else {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3, 4);
-            phone += "-";
-            phone += number.substr(7);
+        function inputPhoneNumber(obj) {
+            var number = obj.value.replace(/[^0-9]/g, "");
+            var phone = "";
+
+            if (number.length < 4) {
+                return number;
+            } else if (number.length < 7) {
+                phone += number.substr(0, 3);
+                phone += "-";
+                phone += number.substr(3);
+            } else if (number.length < 11) {
+                phone += number.substr(0, 3);
+                phone += "-";
+                phone += number.substr(3, 3);
+                phone += "-";
+                phone += number.substr(6);
+            } else {
+                phone += number.substr(0, 3);
+                phone += "-";
+                phone += number.substr(3, 4);
+                phone += "-";
+                phone += number.substr(7);
+            }
+            obj.value = phone;
         }
-        obj.value = phone;
-    }
     </script>
 </head>
 
@@ -111,9 +112,10 @@
                 <section>
                     <div>
                         <article><img src="../img/my/myinfo.png" alt="증명사진" class="idphoto"></article>
-                        <br/>
+                        <br />
                         <p>홍길동</p>
                         <span>dong@cu.ac.kr</span>
+                        <button type="button" id="imgeditbtn"><img src="../img/my/edit.png" alt="프로필 변경 아이콘" class="imgeditbtnicon"></button>
                     </div>
                     <div>
                         <table>
@@ -141,43 +143,32 @@
                 <section>
                     <h3>상세정보</h3>
                 </section>
-                <section>
+                <div id="detail">
                     <div>
-                        <table border="0" class="detail" >
-                            <tr>
-                                <td>휴대전화번호</td>
-                                <td><input id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13" value="010-0000-0001"/></td>
-                            </tr>
-                            <tr>
-                                <td>이메일</td>
-                                <td><input id="box1" type="text"  value="dong@cu.ac.kr"/></td>
-                            </tr>                            
-                                <tr class="addr">
-                                    <td class="addrtitle">주소</td>
-                                    <td>
-                                        <input id="box2" type="text" placeholder="우편번호">
-                                        <button>검색</button>
-                                    </td>                                    
-                                </tr>
-                                <tr class="addr">
-                                    <td><!--none--></td>
-                                    <td><input id="box3" type="text" placeholder="주소"></td>
-                                </tr>
-                                <tr class="addr">
-                                    <td><!--none--></td>
-                                    <td><input id="box3" type="text" placeholder="상세주소"></td>
-                                </tr>
-                                <tr>
-                                    <td>자기소개</td>                                    
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><textarea name=""></textarea></td>
-                                </tr>
-                                
-                        </table>
+                        <section>
+                            <span>휴대전화번호</span>
+                            <input id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
+                                value="010-0000-0001" />
+                        </section>
+                        <section>
+                            <span>이메일</span>
+                            <input id="box2" type="text" value="dong@cu.ac.kr" />
+                        </section>
+                        <div>
+                            <span>주소</span>
+                            <input id="box3" type="text" placeholder="우편번호">
+                            <button>검색</button><br>
+                            <td><input id="box4" type="text" placeholder="주소"></td><br>
+                            <td><input id="box4" type="text" placeholder="상세주소"></td><br>
+                        </div>
+                        <section>
+                            <span>자기소개</span><br>
+                            <textarea name="자기소개" placeholder="내용을 입력해 주세요."></textarea>
+                        </section>
                     </div>
-                </section>
-
+                </div>
+                <button id="savebtn">저장</button>
+                <button id="cancelbtn">취소</button>
         </main>
         <footer></footer>
 </body>

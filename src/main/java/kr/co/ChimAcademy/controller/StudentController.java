@@ -20,4 +20,15 @@ public class StudentController {
 	public String eval() {
 		return "student/eval";
 	}
+	
+	@GetMapping("student/my")
+	public String mypage() {
+		return "mypage/student/my";
+	}
+	
+	@GetMapping("student/my/modify")
+	public String mypagemodify() {
+		return "mypage/student/modify";
+	}
+
 }

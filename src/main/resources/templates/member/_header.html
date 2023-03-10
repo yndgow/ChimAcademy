@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="/ChimAcademy/style/common.css" rel="stylesheet" type="text/css" />
+<link href="/ChimAcademy/style/member/member.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+	<script>
+		$(function(){
+	    	
+	        $('#side > li > ol').hide();
+	​
+	        $('#side > li > a').click(function(){
+	            $(this).siblings().slideToggle(300);
+	        });
+	    });
+		</script>
+		<script>
+	    $(document).ready(function(){
+	    $(".slider").bxSlider( {
+	    	speed: 500,        // 이동 속도를 설정
+	    	auto: true,        // 자동 실행 여부
+	        autoHover: true,   // 마우스 호버시 정지 여부
+	        controls: false    // 이전 다음 버튼 노출 여부
+	    });
+	  });
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+			<p id="login_headerLogo"><img th:src="@{/img/침대학교_헤더로고.png}" alt="헤더로고"></p>
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		

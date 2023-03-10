@@ -25,4 +25,10 @@ public class professorController {
 	public String my() {
 		return "professor/my";
 	}
+	
+	@GetMapping("professor/my/modify")
+	public String mypagemodify() {
+		return "mypage/professor/modify";
+	}
+	
 }

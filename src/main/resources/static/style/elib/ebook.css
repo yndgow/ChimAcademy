@@ -14,7 +14,7 @@
 
     img {max-width: 100%; max-height: 100%;}
 
-    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/static/img/elib/backgound_bg.gif') repeat center top;}
+    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/ChimAcademy/img/elib/backgound_bg.gif') repeat center top;}
 
     main {
         width: 1280px;
@@ -170,6 +170,7 @@
     .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li > a > img {
         vertical-align: middle;
     }
+    
 /* Ebook - List */
 .eb {
     background: none;
@@ -185,7 +186,7 @@
 #sub-container > .sub-visual {
     position: relative;
     height: 235px;
-    background: url('/static/img/elib/sub-visual.jpg') no-repeat center 0;
+    background: url('/ChimAcademy/img/elib/sub-visual.jpg') no-repeat center 0;
     text-align: center;
     color: #fff;
 }
@@ -254,7 +255,7 @@
 }
 #sub-container > .sub-visual  .search-box > .doc-info > section > ol > li {
     padding-left: 30px;
-    background: url('/static/img/elib/doc_arrow.png') no-repeat 7px center;
+    background: url('/ChimAcademy/img/elib/doc_arrow.png') no-repeat 7px center;
     margin-left: 0;
 }
 #sub-container > .sub-visual  .search-box > .doc-info > section > ol > li.first {
@@ -285,7 +286,7 @@
     padding-bottom: 60px;
 }
 #sub-container > section > .lnb > h2{
-    background: url('/static/img/elib/sub_lng_bg.png') no-repeat 0 0;
+    background: url('/ChimAcademy/img/elib/sub_lng_bg.png') no-repeat 0 0;
     background-size: cover;
     color: #fff;
     font-size: 18px;
@@ -307,7 +308,7 @@
 }
 #sub-container > section > .lnb > ul > li {}
 #sub-container > section > .lnb > ul > li > a:hover {
-    background: #1d1a3b url('/static/img/elib/arrow-on.png') no-repeat 95% center;
+    background: #1d1a3b url('/ChimAcademy/img/elib/arrow-on.png') no-repeat 95% center;
     color: #fff;
 }
 #sub-container > section > .lnb > ul > li > a {
@@ -316,10 +317,10 @@
     text-align: left;
     color: #444444;
     border-top: 1px solid #1c2f78;
-    background: url('/static/img/elib/arrow-off.png') no-repeat 95% center;
+    background: url('/ChimAcademy/img/elib/arrow-off.png') no-repeat 95% center;
 }
 #sub-container > section > .lnb > ul > li.active > a {
-    background: #1d1a3b url('/static/img/elib/arrow-on.png') no-repeat 95% center;
+    background: #1d1a3b url('/ChimAcademy/img/elib/arrow-on.png') no-repeat 95% center;
     color: #fff;
     position: relative;
     font-weight: bold;
@@ -345,7 +346,7 @@
 }
 #sub-container > section > .lnb > ul > li > ul > li > a {
     position: relative;
-    background: url('/static/img/elib/left_arr_dot.gif') no-repeat 10px center;
+    background: url('/ChimAcademy/img/elib/left_arr_dot.gif') no-repeat 10px center;
     padding: 12px 20px;
     border-bottom: 1px solid #d9d9d9;
     
@@ -421,6 +422,7 @@
     margin-top: 25px;
 }
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib {
+    position: relative;
     clear: both;
     overflow: hidden;
     border-bottom: 1px solid #dedede;
@@ -428,7 +430,7 @@
 }
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .thumb {width: 120px; float: left;}
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .thumb > a {
-    background: url('/static/img/elib/lock-bg.gif') no-repeat center center;
+    background: url('/ChimAcademy/img/elib/lock-bg.gif') no-repeat center center;
 }
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont {
     margin-right: -120px;
@@ -525,6 +527,134 @@
     margin-right: 15px;
     font-style: normal;
 }
+/*view*/
+.serial-wrap {
+    font-size: 110%;
+}
+.sview {
+    border-top: 2px solid #5e6062;
+}
+.sview > .sinfo {
+    margin: 15px 0;
+    background: #f6f6f6;
+    overflow: hidden;
+    padding: 20px 10%;
+}
+.sview > .sinfo > .thumb {
+    float: left;
+    width: 20%;
+    font-size: 0;
+    line-height: 0;
+}
+.sview > .sinfo > .info {
+    float: left;
+    width: 100%;
+    margin-right: -20%;
+    padding-bottom: 10px;
+}
+.sview > .sinfo > .info > ul {
+    margin: 1% 20% 1% 5%;
+}
+.sview > .sinfo > .info > ul > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 3%;
+    line-height: 110%;
+}
+.sview > .sinfo > .info > ul > li > b {
+    font-size: 130%;
+    font-weight: 800;
+}
+.sview > .sinfo > .info > ul > li > a {
+    color: #fe6d02;
+}
+
+.sbtn {
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px 0 20px;
+}
+.elib .btns {
+    position: absolute;; bottom: 20px; right: 20px; width: 237px;
+}
+.btn {
+    padding: 7px 2%;
+    margin-left: 9px;
+    line-height: 18px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn span{
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    padding-bottom: 1px;
+}
+.btn1 {
+    background-color: #266ac4;
+    border-color: #1557af;
+    color: #fff;
+} 
+.btn2 {
+    background: #666;
+    border-color: #666;
+    color: #fff;
+} 
+.btn3 {
+    background-color: #7bd1da;
+    border-color: #7bd1da;
+    color: #fff;
+} 
+.btn4 {
+    background-color: #f1b55c;
+    border-color: #f1b55c;
+    color: #fff;
+} 
+.btn5 {
+    background-color: #e74e40;
+    border-color: #e74e40;
+    color: #fff;
+} 
+.sview > .sinfo > .sbtn > a{}
+.sview > .sinfo > .sbtn > a > span {}
+
+.sview > .bookTab {
+    padding-bottom: 20px;
+}
+.sview > .bookTab > ul{
+    font-size: 0;
+    border-bottom: 1px solid #1a518b;
+    padding-left: 1px;
+}
+.sview > .bookTab > ul > li{
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: bottom;
+}
+.sview > .bookTab > ul > li > a{
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: #fafafa;
+    border: 1px solid #d2d2d2;
+    border-bottom-width: 0;
+    padding: 8px 20px 9px;
+    font-weight: bold;
+    color: #2f3743;
+    margin: 0 0 0 -1px;
+}
+.sview > .bookTab > ul > li.active > a {
+    color: #fff;
+    z-index: 2;
+    background: #1f5d97;
+    border-color: #1a518b;
+}
+.sview > .bInfo {}
+
+
     /*footer*/
     footer {
         position: relative;
@@ -570,7 +700,7 @@
         padding: 0 0 0 20px;
         border: 0;
         border-left: 1px solid #727272;
-        background: #202020 url('/static/img/elib/arrow.png') no-repeat 95% 50%;
+        background: #202020 url('/ChimAcademy/img/elib/arrow.png') no-repeat 95% 50%;
         color: #fff;
         appearance: none;
     }

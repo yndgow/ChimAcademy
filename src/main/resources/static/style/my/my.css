@@ -153,7 +153,6 @@ main>section>nav.distance {
     font-weight: bold;
 }
 
-#mymodify>section:first-child>span {}
 
 /* 프로필 영역 */
 #mymodify>section:nth-of-type(1) {
@@ -163,6 +162,16 @@ main>section>nav.distance {
     border-bottom: none;
     background: #ffffff;
     overflow: hidden;
+}
+
+#mymodify>section:nth-of-type(3) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #f5f6f6;
+    border-bottom: none;
+    background: #ffffff;
+    overflow: hidden;
+    margin-top: 35px;
 }
 
 #mymodify>section:nth-of-type(2) {
@@ -230,94 +239,154 @@ main>section>nav.distance {
 /* ============================== */
 
 /* 상세정보 영역 */
-#mymodify>section:nth-of-type(3) {
-    margin-top: 50px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 2px solid #f5f6f6;
-    border-bottom: none;
-    background: #ffffff;
-    overflow: hidden;
-}
-
-#mymodify>section:nth-of-type(4) {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 2px solid #ebecef;
-    background: #f5f6f7;
-    overflow: hidden;
-}
 
 /* 폰트 크기 */
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td:first-child {
+#detail>div>section>span {
     font-weight: bold;
     font-size: 15px;
     height: 50px;
 }
 
-#mymodify>section:nth-of-type(4)>div {
+#detail>div>div>span {
     font-weight: bold;
     font-size: 15px;
-    margin: 15px;
-    margin-top: 5px;
-}
-
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td:last-child {
-margin-left: 20px;
+    height: 50px;
 }
 
 /* 텍스트박스 크기 - 공통 */
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table tr>td>input {
+#detail>div>section>input {
     height: 30px;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
-    margin-left: 38px;
     padding-left: 7px;
 }
 
 /* 텍스트박스 크기 - 휴대전화번호, 이메일 */
 #box1{
-    width: 180px;
+    width: 170px;
+    margin-left: 35px;
+}
+
+#box2{
+    width: 170px;
+    margin-left: 80px;
 }
 
 /* 텍스트박스 크기 - 우편번호 */
-#box2{
-    width: 80px;
-}
-
-/* 텍스트박스 크기 - 주소 */
 #box3{
-    width: 180px;
+    width: 70px;
+    margin-left: 95px;
+    margin-bottom: 5px;
 }
 
+#box4{
+    width: 720px;
+    margin-left: 129px;
+    margin-bottom: 5px;
+}
 
 /* 주소 box 영역 */
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table.detail {
-    width: 101%;
-    border-radius: 5px;
-    margin-left: -7px;
-    padding-left: 7px;
-    border-collapse: collapse;
+#detail>div {
+    width: 930px;
+    height: 600px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: none;
+    padding-left: 17px;
+    padding-top: 20px;
+    border: 2px solid #ebecef;
+    background: #f5f6f7;
+    overflow: hidden;
 }
 
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table.detail  td:first-child{
-
-    width: 120px;
+#detail > div >section {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
 }
 
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table.detail  tr {
-    margin-right: 15px;
+#detail > div >div {
+    width: 100%;
+    height: 130px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #ffff;
+    padding: 10px;
+    margin-left: -10px;
 }
 
-
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table.detail  .addr {
+/* 텍스트박스 옵션 - 주소영역 */
+#detail>div>div>input {
+    height: 30px;
+    border: 1px solid #e5e7ea;
     border-radius: 3px;
-    background: #ffffff;
+    padding-left: 7px;
 }
 
-#mymodify>section:nth-of-type(4)>div:nth-of-type(1)>table.detail td {
+#detail>div>div>button {
+    height: 30px;
+    width: 45px;
+    background-color: #1464f6;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+}
+/* ============================== */
 
+/* 자기소개 영역 */
+#detail div section:last-child {
+    padding-top: 25px;
 }
 
+#detail > div >section>textarea {
+    margin-top: 10px;
+    padding: 5px;
+    height: 30px;
+    border: 1px solid #e5e7ea;
+    border-radius: 3px;
+    width: 880px;
+    height: 260px;
+    resize: none;
+}
+/* ============================== */
+/* 버튼 */
+#cancelbtn{
+    height: 30px;
+    width: 45px;
+    background-color: #e93578;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    margin-top: 10px;
+    float: right;
+}
+
+#savebtn{
+    height: 30px;
+    width: 45px;
+    background-color: #1464f6;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: right;
+}
+
+#imgeditbtn{
+    position: absolute;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    transform: translate(5px, -55px);
+}
+
+.imgeditbtnicon{
+    width: 30px;
+}
 
 /* ============================== */
