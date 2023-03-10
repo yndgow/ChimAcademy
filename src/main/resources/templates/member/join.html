@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<link href="../css/common.css" rel="stylesheet" type="text/css" />
-<link href="../css/member.css" rel="stylesheet" type="text/css" />
-<head>
-    <meta charset="UTF-8">
-    <title>그린아카데미</title>    
-	
-</head>
-<body>
-	<div id="wrapper">
-		<header>
-			<div class="top">
-				<div>
-					<a th:href="@{#}">Home</a>
-					<a th:href="@{#}">Profile</a>
-					<a th:href="@{#}">Login/LogOut</a>
-				</div>
-			</div>
-		</header>
+<th:block th:include="@{member/_header.html}"/>
 		<main id="join">
             <nav>
 				<h1>가입하기</h1>
@@ -141,8 +121,5 @@
 					<input type="submit" class="join" value="가입하기">
 				</div>
 			</form>
-		</div>
 		</main>
-		<footer></footer>
-</body>
-</html>
+<th:block th:include="@{member/_footer.html}"/>
