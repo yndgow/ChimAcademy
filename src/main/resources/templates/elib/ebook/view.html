@@ -1,332 +1,273 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>침대학교 전자도서관</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style/elib/ebook.css">
-    <script>
-        $(document).ready(function(){
-          $('.slider').bxSlider();
-        });
-    </script>
-</head>
-<body>
-    <div class="wrapper eb">
-        <header>
-            <div class="tnb">
-                <section>
-                    <div class="left-util">
-                        <ul>
-                            <li><a href="#" class="link1">학사관리시스템</a></li>
-                            <li><a href="#" class="link2">학과게시판</a></li>
-                        </ul>
-                    </div>
-                    <div class="right-util">
-                        <ul>
-                            <li><a href="#">로그인</a></li>
-                            <li><a href="#">학번찾기</a></li>
-                            <li><a href="#" class="link3">내서재</a></li>
-                            <li><a href="#">뷰어 설치 안내</a></li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-            <div class="Gnb">
-                <section>
-                    <h1>
-                        <a href="#">
-                            <img src="#" alt="침대학교 로고">
-                        </a>
-                    </h1>
-                    <div class="g-menu">
-                        <ul class="gnb-menu">
+<th:block th:include="@{elib/_header.html}"/>
+<main id="sub-container">
+    <div class="sub-visual">
+        <div class="bg">
+            <div class="search-box">
+                <form action="#">
+                    <section class="search">
+                        <div class="box1">
+                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+                        </div>
+                        <div class="box2">
+                            <button><span class="material-icons">search</span></button>
+                        </div>
+                    </section>
+                </form>
+                <div class="doc-info">
+                    <section>
+                        <ol>
+                            <li class="first">
+                                <a href="#">
+                                    <img src="/ChimAcademy/img/elib/home.png" alt="index">
+                                </a>
+                            </li>
                             <li>
                                 <a href="#">전자책</a>
-                                <ul class="subMenu">
-                                    <li><a href="#">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
-                                </ul>
                             </li>
                             <li>
-                                <a href="#">구독형전자책</a>
-                                <ul class="subMenu">
-                                    <li><a href="#">구독형전자책</a></li>
-                                </ul>
+                                <a href="#">주제별</a>
                             </li>
-                            <li>
-                                <a href="#">오디오북</a>
-                                <ul class="subMenu">
-                                    <li><a href="#">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">온라인컨텐츠</a>
-                                <ul class="subMenu">
-                                    <li><a href="#">전체보기</a></li>
-                                    <li><a href="#">독서</a></li>
-                                    <li><a href="#">인문·예술</a></li>
-                                    <li><a href="#">학술DB</a></li>
-                                    <li><a href="#">이러닝</a></li>
-                                    <li><a href="#">전자잡지·신문</a></li>
-                                    <li><a href="#">무료DB</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">이용안내</a>
-                                <ul class="subMenu">
-                                    <li><a href="#">도서관소식</a></li>
-                                    <li><a href="#">자주하는질문</a></li>
-                                    <li><a href="#">희망자료 설문조사</a></li>
-                                    <li><a href="#">키보드보안설치안내</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-        </header>
-        <main id="sub-container">
-            <div class="sub-visual">
-                <div class="bg">
-                    <div class="search-box">
-                        <form action="#">
-                            <section class="search">
-                                <div class="box1">
-                                    <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
-                                </div>
-                                <div class="box2">
-                                    <button><span class="material-icons">search</span></button>
-                                </div>
-                            </section>
-                        </form>
-                        <div class="doc-info">
-                            <section>
-                                <ol>
-                                    <li class="first">
-                                        <a href="#">
-                                            <img src="/static/img/elib/home.png" alt="index">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">전자책</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">주제별</a>
-                                    </li>
-                                </ol>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <section>
-                <div class="lnb">
-                    <h2>
-                        <b>전자책</b>
-                    </h2>
-                    <ul>
-                        <li class="active">
-                            <a href="#">
-                                <span>새로 들어온 책</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>대출이 많은 책</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>주제별</span>
-                            </a>
-                            <ul class="subMenu">
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>유아/어린이</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>컴퓨터/IT</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>기타</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>인문/교양</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>철학/종교</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>사회</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>유통사별</span>
-                            </a>
-                            <ul class="subMenu">
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>예스24</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>북큐브</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>교보문고</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>알라딘</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>이퓨처</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>아이아프리카</span>
-                                        <span class="count">(2,731)</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>추천하는책</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="content">
-                    <div class="doc">
-                        <div class="doc-head">
-                            <div class="doc-title">
-                                <h3>새로 들어온 책</h3>
-                            </div>
-                        </div>
-                        <div class="doc-body">
-                            <div class="body">
-                                <div class="serial-wrap">
-                                    <div class="sview">
-                                        <div class="sinfo"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <div class="footer-top">
-                <div class="info">
-                    <section>
-                        <div class="left">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <b>개인정보처리방침</b>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        저작권보호정책
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        키보드보안설치안내
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <select name="recommendSite1" class="recommendSite1" title="타대학도서관">
-                                <option value="#">타대학도서관</option>
-                            </select>
-                            <select name="recommendSite2" class="recommendSite2" title="타지역도서관">
-                                <option value="#">타지역도서관</option>
-                            </select>
-                        </div>
+                        </ol>
                     </section>
                 </div>
             </div>
-            <section class="address">
-                <div class="logo">
-                    <img src="#" alt="침대학교 전자도서관">
-                </div>
-                <div class="location">
-                    <address>
-                        <p>
-                            <em>(46949) 부산광역시 부산진구 부산로310번길 33 (부산동)</em>
-                            <br>
-                            <em>
-                                <b>☎</b>
-                                전자책, 오디오북, 회원문의 051-333-3333 / 구독형 전자책, 온라인 콘텐츠 문의 051-333-3333
-                            </em>
-                        </p>
-                        <span>
-                            Copyright © 2023 Chim University Library. All rights reserved.
-                        </span>
-                    </address>
-                </div>
-            </section>
-            <div class="home-up">
-                <img src="/static/img/elib/m-top-btn.png" alt="위로" id="home-up">
-            </div>
-        </footer>
+        </div>
     </div>
-</body>
-</html>
+    <section>
+        <div class="lnb">
+            <h2>
+                <b>전자책</b>
+            </h2>
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <span>새로 들어온 책</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>대출이 많은 책</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>주제별</span>
+                    </a>
+                    <ul class="subMenu">
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>유아/어린이</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>컴퓨터/IT</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>기타</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>인문/교양</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>철학/종교</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>사회</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>유통사별</span>
+                    </a>
+                    <ul class="subMenu">
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>예스24</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>북큐브</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>교보문고</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>알라딘</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>이퓨처</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <a href="#">
+                                <span>아이아프리카</span>
+                                <span class="count">(2,731)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>추천하는책</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="doc">
+                <div class="doc-head">
+                    <div class="doc-title">
+                        <h3>새로 들어온 책</h3>
+                    </div>
+                </div>
+                <div class="doc-body">
+                    <div class="body">
+						<div class="serial-wrap">
+						    <div class="sview">
+						        <div class="sinfo">
+						            <div class="thumb">
+						                <img src="https://via.placeholder.com/158x232" alt="썸네일">
+						            </div>
+						            <div class="info">
+						                <ul>
+						                    <li>
+						                        <b>읽었다는 착각</b>
+						                    </li>
+						                    <li>
+						                        카테고리 : 인문/교양 &#62; 인문학
+						                    </li>
+						                    <li>
+						                        저자 : 조병영,이형래,조재윤,유상희,이세형,나태영,이채윤 저
+						                        <span> ㅣ </span>
+						                        출판사 : EBS BOOKS
+						                        <span> ㅣ </span>
+						                        출판년도 : 2023-01-03
+						                    </li>
+						                    <li>
+						                        공급사 : YES24
+						                        <span> ㅣ </span>
+						                        <a href="#">뷰어 설치 안내</a>
+						                    </li>
+						                    <li>
+						                        소속도서관: 부산광역시 전자도서관
+						                    </li>
+						                    <li>
+						                        대출 가능 여부: 예약 가능
+						                        <span> ㅣ </span>
+						                        대출 : 5/5
+						                        <span> ㅣ </span>
+						                        대출 : 5/5
+						                    </li>
+						                    <li>
+						                        지원기기 : PC, 태블릿, 스마트폰
+						                        <span> ㅣ </span>
+						                        서비스 형태: EPUB
+						                    </li>
+						                    <li>
+						                        좋아요 : 3
+						                    </li>
+						                </ul>
+						            </div>
+						            <div class="sbtn">
+						                <a href="#" class="btn btn2" id="book-reserve">
+						                    <span>예약하기</span>
+						                </a>
+						                <a href="#" class="btn btn3" id="book-recommend">
+						                    <span>좋아요</span>
+						                </a>
+						                <a href="#" class="btn btn4" id="book-addfavorite">
+						                    <span>나의 관심도서</span>
+						                </a>
+						            </div>
+						        </div>
+						        <div class="bookTab">
+						            <ul>
+						                <li class="active">
+						                    <a href="#">도서 소개</a>
+						                </li>
+						                <li>
+						                    <a href="#">저자 소개</a>
+						                </li>
+						                <li>
+						                    <a href="#">목차</a>
+						                </li>
+						            </ul>
+						        </div>
+						        <div class="bInfo">
+						            ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번쯤 경험하게 되는 오독의 실제적 예시를 흥미로운 퀴즈와 함께 살핀다. 그리고 그 안에 내포된 의미와 구조를 파악하고 우리가 ‘잘못 읽게’ 되는 오류에 어떻게 빠지는지 함께 찾아본다. 대한민국 최고의 리터러시 전문가들이 제대로 읽고 싶은 모든 이에게 드리는 일종의 워크북이다. ""
+						        </div>
+						        <div class="sbtn">
+						            <a href="#" id="goto-list" class="btn">
+						                <span>목록으로</span>
+						            </a>
+						        </div>
+						    </div>
+						</div>
+                    </div>
+                </div>
+                <div class="doc-admin">
+                    <div class="manager-box">
+                        <span>
+                            <label>담당부서</label>
+                            <em> : 정보서비스팀</em>
+                        </span>
+                        <span>
+                            <label>담당자</label>
+                            <em> : 구홍모</em>
+                        </span>
+                        <span>
+                            <label>전화번호</label>
+                            <em> : 051-333-3333</em>
+                        </span>
+                        <span>
+                            <label>최종수정일</label>
+                            <em> : 2023.03.09</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<th:block th:include="@{elib/_footer.html}"/>
