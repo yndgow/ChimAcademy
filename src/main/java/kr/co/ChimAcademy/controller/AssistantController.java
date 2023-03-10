@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class assistantController {
+public class AssistantController {
 
 	@GetMapping("assistant/insert")
 	public String insert() {

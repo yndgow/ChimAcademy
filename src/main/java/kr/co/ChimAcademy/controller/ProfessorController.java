@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class professorController {
+public class ProfessorController {
 
 	@GetMapping("professor/credit")
 	public String credit() {

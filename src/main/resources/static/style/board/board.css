@@ -113,14 +113,16 @@ h1{
 
 
 /* List */
-
+#wrapper{
+	padding-bottom: 0px;
+}
 main{
     display: flex;
     width: 1280px;
 }
 main>section {
     width: 1130px;
-    min-height: 600px;
+    min-height: 800px;
     padding: 20px;
     float: left;
     box-sizing: border-box;
@@ -142,7 +144,7 @@ main>section {
 
 #depList>section>table tr{
     text-align: center;
-    height: 50px;
+    height: 40px;
 }
 
 #depList>section>table tr>th {
