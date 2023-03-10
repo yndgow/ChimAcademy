@@ -61,6 +61,23 @@ header > .top > div > a {
     display: inline-block;
 }
 
+/* 헤더로고 css 추가 - 진윤희 20230308 */
+header > .top > img {
+    width: 130px;
+    margin-left: 530px;
+}
+
+header > .top > #login_headerLogo {
+    display: inline-block;
+}
+
+header > .top > #login_headerLogo > img{
+    width: 130px;
+    margin-left: 330px;
+}
+/* 헤더로고 끝 *
+
+
 /* aside */
 main>aside {
     float: left;
@@ -116,16 +133,75 @@ main>aside>ul>li>ol>li>a {
 
 /* Footer */
 footer {
-    /* display: block; */
-    width: 100%;
-    height: auto;
+    display: block;
     background-color: #1A4E8B;
-    height: 49px;
+    width: 100%;
+    height: 160px;
     box-sizing: border-box;
-    
-    /* 푸터 하단고정 */
+}
+
+footer > div {
+    width: 1065px;
+    text-align: center;
+}
+
+footer .footerLogo > img {
+    width: 80px;
+    height: 80px;
+    padding: 30px 30px 30px 0px;
+    margin-left: 330px;
     position: absolute;
-    bottom: 0;
+
+}
+
+footer > .footerCate {
+    width: 1065px;
+    height: 50px;
+    margin: 0 auto;
+    
+}
+
+footer > .footerData {
+    display: flex;
+    position: relative;
+    top: -24px;
+}
+
+footer > .footerData > .footerSpans {
+    margin-left: 422px;
+    margin-top: 55px;
+    text-align: left;
+}
+
+footer > .footerData > .footerSpans > span {
+    color: #fff;
+}
+
+footer > .footerData > .footerSpans > .copyright {
+
+}
+
+footer > .footerData > .libBtn {
+    position: absolute;
+    top: 63px;
+    right: -350px;
+    border: 1px solid #fff;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+
+footer > div > ul {
+}
+
+footer > div > ul > li {
+    display: inline-block;
+    padding: 11px;
+}
+
+footer > div > ul > li > a {
+    font-size: 14px;
+    color: #fff;
 }
 
 /* 푸터 하단고정 */
