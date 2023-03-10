@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:include="@{board/_header.html}"/>
 
-<!-- 공통css -->
-<link rel="stylesheet" href="/static/style/board/common_css.css">
-<link rel="stylesheet" href="/static/style/board/aside.css">
-<link rel="stylesheet" href="/static/style/board/board.css">
-
-<head>
-    <meta charset="UTF-8">
-    <title>write</title>    
-	
-</head>
 <body>
 	<div id="wrapper">
 		<header>
@@ -19,24 +7,43 @@
 				<div>
 					<a th:href="@{#}">Home</a>
 					<a th:href="@{#}">Profile</a>
-					<a th:href="@{#}">Login/LogOut</a>
+					<a th:href="@{#}">LogOut</a>
 				</div>
 			</div>
 		</header>
-		<main>
-			<aside>
-                <ul id="#">
+        <main>
+            <aside>
+                <ul id="side">
                     <li>
-                        <a href="#"><i class="#"></i></a>
+                        <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+                        <ol>
+                            <li><a href="#">내 정보</a></li>
+                        </ol>
                     </li>
                     <li>
-                        <a href="#"><i class="#"></i></a>
+                        <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리</a>
+                        <ol>
+                            <li><a href="#">강의</a></li>
+                            <li><a href="#">성적</a></li>
+                            <li><a href="#">강의평가</a></li>
+                        </ol>
                     </li>
                     <li>
-                        <a href="#"><i class="#"></i></a>
+                        <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+                        <ol>
+                            <li><a href="#">국문학과</a></li>
+                            <li><a href="#">영문학과</a></li>
+                            <li><a href="#">컴퓨터공학과</a></li>
+                        </ol>
                     </li>
                     <li>
-                        <a href="#"><i class="#"></i></a>
+                        <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+                        <ol>
+                            <li><a href="#">도서</a></li>
+                            <li><a href="#">내 서재</a></li>
+                            <li><a href="#">온라인콘텐츠</a></li>
+                            <li><a href="#">이용안내</a></li>
+                        </ol>
                     </li>
 
                 </ul>
@@ -51,11 +58,11 @@
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td>안녕하세요</td>
+							<td><input type="text"></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td>반갑습니다</td>
+							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
@@ -65,8 +72,6 @@
 				</div>
 			</div>
 		</main>
-		<footer>
-			푸터입니당
-		</footer>
+		<footer></footer>
 </body>
 </html>

@@ -30,4 +30,5 @@ public class StudentController {
 	public String mypagemodify() {
 		return "mypage/student/modify";
 	}
+
 }

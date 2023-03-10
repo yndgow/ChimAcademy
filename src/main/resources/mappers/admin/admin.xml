@@ -7,9 +7,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.GreenAcademy.dao.MainDAO">
+<mapper namespace="kr.co.ChimAcademy.dao.MainDAO">
 
-	<select id="selectTest" resultType="kr.co.GreenAcademy.vo.TestVO">
+	<select id="selectTest" resultType="kr.co.ChimAcademy.vo.TestVO">
  		select * from test
 	</select>
 	
