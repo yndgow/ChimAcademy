@@ -14,7 +14,7 @@
 
     img {max-width: 100%; max-height: 100%;}
 
-    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/static/img/elib/backgound_bg.gif') repeat center top;}
+    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/ChimAcademy/img/elib/backgound_bg.gif') repeat center top;}
 
     main {
         width: 1280px;
@@ -256,18 +256,18 @@
     #container  > section > .left > .quick > .ico > li:nth-child(4) > a {background: #1168ab;}
     #container  > section > .left > .quick > .ico > li:nth-child(5) > a {background: #603978;}
     #container  > section > .left > .quick > .ico > li:nth-child(6) > a {background: #1193ab;}
-    #container  > section > .left > .quick > .ico > li:nth-child(7) > a {background: url('/static/img/elib/bg7.png')no-repeat;}
+    #container  > section > .left > .quick > .ico > li:nth-child(7) > a {background: url('/ChimAcademy/img/elib/bg7.png')no-repeat;}
     #container  > section > .left > .quick > .ico > li:nth-child(8) > a {background: #c07572;}
     #container  > section > .left > .quick > .ico > li:nth-child(9) > a {background: #afbf54;}
-    #container  > section > .left > .quick > .ico > li:nth-child(1) > a > div {background: url('/static/img/elib/ico1.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(2) > a > div {background: url('/static/img/elib/ico2.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(3) > a > div {background: url('/static/img/elib/ico3.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(4) > a > div {background: url('/static/img/elib/ico4.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(5) > a > div {background: url('/static/img/elib/ico5.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(6) > a > div {background: url('/static/img/elib/ico6.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(1) > a > div {background: url('/ChimAcademy/img/elib/ico1.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(2) > a > div {background: url('/ChimAcademy/img/elib/ico2.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(3) > a > div {background: url('/ChimAcademy/img/elib/ico3.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(4) > a > div {background: url('/ChimAcademy/img/elib/ico4.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(5) > a > div {background: url('/ChimAcademy/img/elib/ico5.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(6) > a > div {background: url('/ChimAcademy/img/elib/ico6.png')no-repeat center 20px;}
     #container  > section > .left > .quick > .ico > li:nth-child(7) > a > div {}
-    #container  > section > .left > .quick > .ico > li:nth-child(8) > a > div {background: url('/static/img/elib/ico8.png')no-repeat center 20px;}
-    #container  > section > .left > .quick > .ico > li:nth-child(9) > a > div {background: url('/static/img/elib/ico9.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(8) > a > div {background: url('/ChimAcademy/img/elib/ico8.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(9) > a > div {background: url('/ChimAcademy/img/elib/ico9.png')no-repeat center 20px;}
     #container  > section > .left > .quick > .ico > li > a > div{
         width: 79%;
         margin: 0 auto;
@@ -468,10 +468,10 @@
         box-sizing: border-box;
     }
     #container .book-box > div > .contents > div > ul > li > .tit > h3.book {
-        background: url('/static/img/elib/normal-ribon.png') no-repeat left center;
+        background: url('/ChimAcademy/img/elib/normal-ribon.png') no-repeat left center;
     }
     #container .book-box > div > .contents > div > ul > li > .tit > h3.audio {
-        background: url('/static/img/elib/normalaudio-ribon.png') no-repeat left center;
+        background: url('/ChimAcademy/img/elib/normalaudio-ribon.png') no-repeat left center;
     }
     #container .book-box > div > .contents > div > ul > li > .tit > a{
         position: absolute;
@@ -541,7 +541,7 @@
         padding: 0 0 0 20px;
         border: 0;
         border-left: 1px solid #727272;
-        background: #202020 url('/static/img/elib/arrow.png') no-repeat 95% 50%;
+        background: #202020 url('/ChimAcademy/img/elib/arrow.png') no-repeat 95% 50%;
         color: #fff;
         appearance: none;
     }
