@@ -1,0 +1,84 @@
+<th:block th:include="@{mypage/_header.html}"/>
+<main>
+<th:block th:include="@{_aside.html}"/>
+
+            <section id="mymodify">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>마이페이지 > 개인정보 수정</h3>
+                </nav>
+                <section>
+                    <h3>프로필</h3>
+                </section>
+                <section>
+                    <div>
+                        <article><img src="../img/my/myinfo.png" alt="증명사진" class="idphoto"></article>
+                        <br />
+                        <p>홍길동</p>
+                        <span>dong@cu.ac.kr</span>
+                        <button type="button" id="imgeditbtn"><img src="../img/my/edit.png" alt="프로필 변경 아이콘" class="imgeditbtnicon"></button>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>학번</td>
+                                <td>20231112</td>
+                            </tr>
+                            <tr>
+                                <td>학과</td>
+                                <td>국문학과</td>
+                            </tr>
+                            <tr>
+                                <td>연구실</td>
+                                <td>XX동 105호</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>이력</td>
+                                <td>AA대학교 AA학과 학사<br>
+                                AA대학교 AA학과 석사<br>
+                                AA대학교 AA학과 박사<br>
+                                XX협회 협회장<br>
+                                XX학회 부회장<br>
+                                XX학과 학과장</td>
+                            </tr>
+                        </table>
+                        <button id="modifybtn">수정하기</button>
+                    </div>
+                </section>
+
+                <!-- 상세정보 -->
+                <section>
+                    <h3>상세정보</h3>
+                </section>
+                <div id="detail">
+                    <div>
+                        <section>
+                            <span>휴대전화번호</span>
+                            <input id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
+                                value="010-0000-0001" />
+                        </section>
+                        <section>
+                            <span>이메일</span>
+                            <input id="box2" type="text" value="dong@cu.ac.kr" />
+                        </section>
+                        <div>
+                            <span>주소</span>
+                            <input id="box3" type="text" placeholder="우편번호">
+                            <button>검색</button><br>
+                            <td><input id="box4" type="text" placeholder="주소"></td><br>
+                            <td><input id="box4" type="text" placeholder="상세주소"></td><br>
+                        </div>
+                        <section>
+                            <span>자기소개</span><br>
+                            <textarea name="자기소개" placeholder="내용을 입력해 주세요."></textarea>
+                        </section>
+                    </div>
+                </div>
+                <button id="savebtn">저장</button>
+                <button id="cancelbtn">취소</button>
+        </main>
+<th:block th:include="@{mypage/_footer.html}"/>

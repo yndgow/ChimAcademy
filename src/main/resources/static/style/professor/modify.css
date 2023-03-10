@@ -126,6 +126,7 @@ main>section>nav.distance {
     box-sizing: border-box;
 }
 
+
 /* 수강내역 스크롤 */
 .tableWrapper {
     height: 300px;
@@ -226,14 +227,34 @@ main>section>nav.distance {
     margin-top: 12px;
 }
 
+#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table {
+    width: 440px;
+    height: 220px;
+    margin-top: 12px;
+}
+
 /* 프로필 폰트 크기 */
 #mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px
 }
 
+#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:first-child {
+    font-weight: bold;
+    font-size: 15px;
+    padding-left: 10px;
+    vertical-align: top;
+    padding-top: 25px;
+}
+
 #mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
     font-size: 15px
+}
+
+#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:last-child {
+    font-size: 15px;
+    vertical-align: top;
+    padding-top: 25px;
 }
 
 /* ============================== */
@@ -375,6 +396,18 @@ main>section>nav.distance {
     margin-top: 10px;
     margin-left: 20px;
     float: right;
+}
+
+#modifybtn{
+    height: 30px;
+    width: 60px;
+    background-color: #1464f6;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    float: right;
+    margin-bottom: 5px;
 }
 
 #imgeditbtn{
