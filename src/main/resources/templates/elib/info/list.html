@@ -18,7 +18,7 @@
                                 <ol>
                                     <li class="first">
                                         <a href="#">
-                                            <img src="/static/img/elib/home.png" alt="index">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
                                         </a>
                                     </li>
                                     <li>
@@ -34,54 +34,7 @@
                 </div>
             </div>
             <section>
-                <div class="lnb">
-                    <h2>
-                        <b>이용안내</b>
-                    </h2>
-                    <ul>
-                        <li class="active">
-                            <a href="#">
-                                <span>이용안내</span>
-                            </a>
-                            <ul class="subMenu">
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>회원가입</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>전자책/오디오북 이용안내</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>온라인컨텐츠 이용안내</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <br>
-                                    <a href="#">
-                                        <span>뷰어 설치 안내</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>도서관소식</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>희망자료 설문조사</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
                 <div class="content">
                     <div class="doc">
                         <div class="doc-head">
@@ -100,25 +53,80 @@
                                             <th>작성일</th>
                                             <th>조회수</th>
                                             <th>파일</th>
+                                            <th>관리</th>
                                         </tr>
-                                        <tr>
+                                        <tr class="notice">
                                             <td>
                                                 <span>공지</span>
                                             </td>
-                                            <td>
-                                                <a href="#">
+                                            <td class="left">
+                                                <a th:href="@{/elib/info/view}">
                                                     <span>모바일앱(비패스)을 통한 비대면 회원증 발급 방법 안내</span>
                                                 </a>
                                             </td>
                                             <td>관리자</td>
                                             <td>2022.03.24</td>
-                                            <td>조회수</td>
+                                            <td>410</td>
                                             <td>
                                                 <span class="material-icons">save</span>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{/elib/info/modify}">
+                                                	[수정]
+                                                </a>
+                                                <a href="#">
+                                                	[삭제]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>15</span>
+                                            </td>
+                                            <td class="left">
+                                                <a th:href="@{/elib/info/view}">
+                                                    <span>신착도서(시민 희망 전자책 3차, 15종) 안내</span>
+                                                </a>
+                                            </td>
+                                            <td>도서관협력팀</td>
+                                            <td>2023.03.03</td>
+                                            <td>243</td>
+                                            <td>
+                                                <span class="material-icons">save</span>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{/elib/info/modify}">
+                                                	[수정]
+                                                </a>
+                                                <a href="#">
+                                                	[삭제]
+                                                </a>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
+                                <div class="btns">
+									<a class="btn btn2" href="#">
+									<span class="material-icons">edit</span>
+									작성하기
+									</a>
+								</div>
+                                <div class="paging">
+								    <span>
+								        <a class="pBtn previous" href="#">이전</a>
+								        <a class="pBtn current" href="#">1</a>
+								        <a class="pBtn" href="#">2</a>
+								        <a class="pBtn" href="#">3</a>
+								        <a class="pBtn" href="#">4</a>
+								        <a class="pBtn" href="#">5</a>
+								        <a class="pBtn" href="#">6</a>
+								        <a class="pBtn" href="#">7</a>
+								        <a class="pBtn" href="#">8</a>
+								        <a class="pBtn" href="#">9</a>
+								        <a class="pBtn" href="#">10</a>
+								        <a class="pBtn next" href="#">다음</a>
+								    </span>
+								</div>
                             </div>
                         </div>
                         <div class="doc-admin">
@@ -140,9 +148,27 @@
                                     <em> : 2023.03.09</em>
                                 </span>
                             </div>
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 도서관협력팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 김지홍</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-<th:block th:include="@{elib/_header.html}"/>
+<th:block th:include="@{elib/_footer.html}"/>

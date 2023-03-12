@@ -1,0 +1,152 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+                        <form action="#">
+                            <section class="search">
+                                <div class="box1">
+                                    <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+                                </div>
+                                <div class="box2">
+                                    <button><span class="material-icons">search</span></button>
+                                </div>
+                            </section>
+                        </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">도서관소식</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>도서관소식</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="view-wrap">
+                                	<div class="nview">
+                                		<div class="nview-header">
+                                			<dl>
+                                				<dt> 22년도 구독형 전자도서 서비스 실시 </dt>
+                                				<dd class="info">
+                                					<div class="left">
+                                						<i>작성자</i>
+                                						<span>관리자</span>
+                                						<i>작성일</i>
+                                						<span>2022.03.24 13:27</span>
+                                					</div>
+                                					<div class="right">
+                                						<i>조회수</i>
+                                						<span>1,096</span>
+                                					</div>
+                                				</dd>
+                                				<dd class="file" style="background: #f7f7f7;">
+                                					<ul>
+                                						<li>
+                                							<a href="#"><span class="material-icons" style="vertical-align: middle;">download</span>23년 학생 희망 전자책 3차.xlsx</a>
+                                						</li>
+                                					</ul>
+                                				</dd>
+                                			</dl>
+                                		</div>
+                                		<div class="nview-body">
+                                			<p>
+                                				`22년 서비스명 : 북큐브 구독형 전자도서 서비스 (48,000여종)
+
+												- 2022. 4. 1. ~ 서비스 시작
+												
+												- 48,000여종 이상 인문학, 문학, 경제경영, 여행, 취미 등 전자책 및 오디오북 제공
+												
+												- 신간 전자도서 수시 업데이트
+												
+												
+												
+												`21년 교보 구독형 전자도서 서비스 서비스 종료 안내 
+												
+												종 료 일  : 2022. 3. 31
+												
+												종료사유 : 신규 사업자 선정
+                                			</p>
+                                		</div>
+                                	</div>
+                                	<div class="btns">
+                                		<a class="btn print" href="#">
+                                			<span class="material-icons">print</span>
+                                			<span>인쇄</span>
+                                		</a>
+                                		<a class="btn print" href="#">
+                                			<span class="material-icons">edit</span>
+                                			<span>수정</span>
+                                		</a>
+                                		<a class="btn btn1" th:href="@{/elib/info/list}">
+                                			<span class="material-icons">list</span>
+                                			<span>목록으로</span>
+                                		</a>
+                                	</div>
+								</div>
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 도서관협력팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 김지홍</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

@@ -10,7 +10,7 @@ public class MajorVO {
 	private String brith;
 	private String depCode;
 	private String majorCode;
-	private int class;
+	//private int class; -에러 때문에 주석처리 구홍모
 	private int gender;
 	private int totalCredit;
 	private int averageCredit;
