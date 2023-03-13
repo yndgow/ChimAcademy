@@ -46,31 +46,25 @@
                             <div class="body">
                                 <div class="write-wrap">
                                 	<div class="write">
-                             		    <form action="#" method="post" enctype="multipart/form-data">
-							            <input type="hidden" name="uid" value="uid">
+                             		    <form th:action="@{/elib/info/modify}" method="post" enctype="multipart/form-data">
+							            <input type="hidden" name="uid" value="ebook">
+							            <input type="hidden" name="no" th:value="${article.no}">
 							                <table border="0">
 							                    <caption>도서관소식 > 수정하기</caption>
 							                    <tr>
 							                        <th>제목</th>
-							                        <td><input type="text" name="title" value="22년도 구독형 전자도서 서비스 실시"/></td>
+							                        <td><input type="text" name="title" th:value="${article.title}"/></td>
 							                    </tr>
 							                    <tr>
 							                        <th>내용</th>
 							                        <td>
-							                        	<textarea name="content">
-`22년 서비스명 : 북큐브 구독형 전자도서 서비스 (48,000여종)
-- 2022. 4. 1. ~ 서비스 시작
-- 48,000여종 이상 인문학, 문학, 경제경영, 여행, 취미 등 전자책 및 오디오북 제공
-- 신간 전자도서 수시 업데이트
-`21년 교보 구독형 전자도서 서비스 서비스 종료 안내 
-종 료 일  : 2022. 3. 31
-종료사유 : 신규 사업자 선정
+							                        	<textarea name="content">[[${article.content}]]
 							                        	</textarea>
 							                        </td>
 							                    </tr>
 							                </table>
 							                <div>
-							                    <a th:href="@{/elib/info/view}" class="btn btnCancel">취소</a>
+							                    <a th:href="@{/elib/info/view(no=${article.no})}" class="btn btnCancel">취소</a>
 							                    <input type="submit" value="수정완료" class="btn btnComplete"/>
 							                </div>
 							            </form>
