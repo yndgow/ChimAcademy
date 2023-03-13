@@ -17,4 +17,7 @@ public class EbookVO {
 	private int like;
 	private String support;
 	private String pubDate;
+	private String bintro;
+	private String aintro;
+	private String index;
 }

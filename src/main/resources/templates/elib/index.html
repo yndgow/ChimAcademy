@@ -28,7 +28,7 @@
                     </div>
                     <div class="right-util">
                         <ul>
-                            <li><a href="#">로그인</a></li>
+                            <li><a th:href="@{/}">로그인</a></li>
                             <li><a href="#">학번찾기</a></li>
                             <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
                             <li><a href="#">뷰어 설치 안내</a></li>
@@ -234,10 +234,10 @@
                                             </h4>
                                             <p>전자도서관 이렇게 이용하세요</p>
                                             <p>
-                                                <img src="/static/img/elib/btn-01.png" alt="바로가기">
+                                                <img th:src="@{/img/elib/btn-01.png}" alt="바로가기">
                                             </p>
                                             <span>
-                                                <img src="/static/img/elib/more-btn02.png" alt="+">
+                                                <img th:src="@{/img/elib/more-btn02.png}" alt="+">
                                             </span>
                                         </div>
                                     </a>
