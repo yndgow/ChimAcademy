@@ -3,7 +3,7 @@ package kr.co.ChimAcademy.vo;
 import lombok.Data;
 
 @Data
-public class boardVO {
+public class BoardVO {
 	private int no;
 	private String depCode;
 	private String lecName;
