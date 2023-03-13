@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class MajorVO {
+<<<<<<< HEAD
 	private String uid;
 	private String pass;
 	private String name;
@@ -28,4 +29,9 @@ public class MajorVO {
 	private String profile;
 	private String member2;
 	private String member3;
+=======
+	private String majorCode;
+	private String majorName;
+	private String depCode;
+>>>>>>> ce4ade9d96e1f52f448f4b4f79891aa4c9a29541
 }

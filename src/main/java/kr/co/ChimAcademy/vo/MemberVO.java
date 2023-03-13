@@ -12,8 +12,8 @@ public class MemberVO {
 	private String majorCode;
 	private int grade;
 	private int gender;
-	private int totalCredit;
-	private int averageCredit;
+	private int totCredit;
+	private int avgCredit;
 	private String hp;
 	private String email;
 	private String status;
