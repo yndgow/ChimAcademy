@@ -1,12 +1,12 @@
 
-<th:block th:include="@{board/D107/_header.html}"/>
+<th:block th:include="@{board/_header.html}"/>
 
 	<main>
    	<th:block th:include="@{_aside.html}"/>
             <section id="depList">
                 <!-- 내 정보 -->
                 <div class="banner">
-                	<img th:src="@{/img/board/D107/D107_banner.png}" alt="중어중문학과_배너">
+
                 </div>
                <section>
                     <table>
@@ -17,14 +17,13 @@
                             <th>조회수</th>
                             <th>작성일</th>
                         </tr>
-                        <tr th:each="board : ${boards}">
-                        	<td>[[${board.no}]]</td>
-                           <td><a th:href="@{/board/view}">[[${board.title}]</a></td>
-                           <td>[[${board.no}]</td>
-                           <td>[[${board.rdate}]</td>
-                           <td>[[${board.hit}]</td>
-                        </tr>
-                        
+                        <tr th:each="japanese : ${vo}">
+	                        <td>[[${japanese.no}]]</td>
+	                       	<td><a th:href="@{/board/view}">[[${japanese.title}]]</a></td>
+		                    <td>[[${japanese.uid}]]</td>
+	                        <td>[[${japanese.hit}]]</td>
+	                        <td>[[${japanese.rdate}]]</td>
+               			</tr>
                    </table>
                 </section>
                 <div class="page_div">
@@ -36,7 +35,7 @@
                         <a href="">></a>
                     </div>
                     <div class="addPage">
-                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/write} + '\''">새글 작성</button>
+                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/P701/write} + '\''">새글 작성</button>
                     </div>
                 </div>
 

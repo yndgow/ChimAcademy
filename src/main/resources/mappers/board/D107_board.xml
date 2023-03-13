@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.ChineseBoardDAO">
+	
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="no">
+		insert into `board` set
+			`depCode`='D107',
+			`title`=#{title},
+			`content`=#{content},
+			`uid`=#{uid},
+			`regip`=#{regip},
+			`rdate`= NOW();	
+	</insert>
+	
+	<select id="selectBoards" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		select * FROM board WHERE depCode ='D107';
+	</select>
+	
+	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		select * from `board` where `no`=#{no};
+	</select>
+	
+	<select id="selectCountTotal" resultType="int">
+		select count(`no`) from `board` where `parent`=0;
+	</select>
+	
+	<update id="updateBoard" useGeneratedKeys="true" keyProperty="no">
+		update `board` set
+			`depCode`='D107',
+			`title`=#{title},
+			`content`=#{content},
+			`uid`=#{uid},
+			`regip`=#{regip},
+			`rdate`= NOW()
+			where `no`=#{no};
+			;	
+	</update>
+	
+	<delete id="deleteBoard">
+		delete `board` where `no`=#{no};
+	</delete>
+	
+	
+</mapper>
