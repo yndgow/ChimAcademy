@@ -1,0 +1,83 @@
+<th:block th:include="@{board/_header.html}"/>
+
+
+        <main>
+            <th:block th:include="@{_aside.html}"/>
+			<div class="board">
+				<table>
+					<h1>글 보기</h1>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+							<td>20231010 홍길동</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td>안녕하세요</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td>반갑습니다</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn_div">
+					<button class="btn nomal" >목록</button>
+					<div>
+						<button class="btn blue">수정</button>
+						<button class="btn red">삭제</button>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="write">
+						<h1>댓글 수 <span>####</span></h1>
+						<h2>홍길동</h2>
+						<textarea name="" id="" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
+						<div class="btn_end">
+							<button class="btn blue">등록</button>
+						</div>
+					</div>
+					<div class="view write">
+						<h2>홍길동</h2>
+						<p>댓글 내용입니다</p>
+						<div class="btn_div">
+							<span>2023-01-17</span>
+							<div>
+								<button class="btn_small btn_comment">답글보기</button>
+								<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
+								<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+							</div>
+						</div>
+						<ul>
+							<li>
+								<div class="view recoment">
+									<h2>홍길동</h2>
+									<p>댓글 내용입니다</p>
+									<div class="btn_div">
+										<span>2023-01-17</span>
+										<div>
+											<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
+											<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="view recoment write">
+									<h2>홍길동</h2>
+									<textarea name="" id="" cols="30" rows="10">대댓글 쓴 내용 입니다</textarea>
+									<div class="btn_end">
+										<button class="btn blue">등록</button>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			
+		</footer>
+</body>
+</html>

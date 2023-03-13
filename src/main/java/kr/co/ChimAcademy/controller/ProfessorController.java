@@ -22,7 +22,7 @@ public class ProfessorController {
 	}
 	
 	@GetMapping("professor/my")
-	public String my() {
+	public String mypage() {
 		return "professor/my";
 	}
 	
