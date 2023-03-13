@@ -231,13 +231,14 @@
 }
 #sub-container > .sub-visual  .search-box > form > .search > div.box2 >button {
     position: absolute;
-    top: -6px;
+    top: -4px;
     right: 0;
     width: 10%;
     height: 100%;
     border: 0;
+    background: #fff;
 }
-#sub-container > .sub-visual  .search-box > form > .search > div.box2 >button > span{font-size: 45px;}
+#sub-container > .sub-visual  .search-box > form > .search > div.box2 >button > span{font-size: 40px;}
 #sub-container > .sub-visual  .search-box > .doc-info {
     width: 100%;
     position: absolute;
@@ -620,21 +621,21 @@
 .sview > .sinfo > .sbtn > a{}
 .sview > .sinfo > .sbtn > a > span {}
 
-.sview > .bookTab {
+.bookTab {
     padding-bottom: 20px;
 }
-.sview > .bookTab > ul{
+.bookTab > ul{
     font-size: 0;
     border-bottom: 1px solid #1a518b;
     padding-left: 1px;
 }
-.sview > .bookTab > ul > li{
+.bookTab > ul > li{
     display: inline-block;
     zoom: 1;
     *display: inline;
     vertical-align: bottom;
 }
-.sview > .bookTab > ul > li > a{
+.bookTab > ul > li > a{
     position: relative;
     z-index: 1;
     display: block;
@@ -646,7 +647,7 @@
     color: #2f3743;
     margin: 0 0 0 -1px;
 }
-.sview > .bookTab > ul > li.active > a {
+.bookTab > ul > li.active > a {
     color: #fff;
     z-index: 2;
     background: #1f5d97;
@@ -654,7 +655,206 @@
 }
 .sview > .bInfo {}
 
+/*notice - list*/
+table {
+    width: 100%;
+    border-top: 1px solid #dee1e7;
+    border-bottom: 2px solid #ccc;
+}
+table, th, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    word-break: break-all;   
+}
+table th, table td {
+	padding: 7px 10px;
+    border: 1px solid #e5e8eb;
+    vertical-align: middle;
+    border-left: 0;
+    border-right: 0;
+}
+.table-wrap {}
+.table-wrap > .center {text-align: center;}
+.table-wrap > .center tr{
+	
+}
+.table-wrap > .center tr.notice {background: #f5f6f7;}
+.table-wrap > .center tr.notice td:first-child {
+	color: #e86666;
+	padding-left: 5px;
+    padding-right: 5px;
+    color: #e86666;
+}
+.table-wrap > .center tr > th {
+    background: #f5f5f5;
+    border-color: #d1d1d1;
+    border-bottom-color: #d1d1d1;
+    border-top-color: #5e6062;
+    border-top-width: 2px;
+    color: #333;
+    padding: 7px 10px;
+    border-left: 0;
+    border-right: 0;
+    font-weight: bold;
+}
+.table-wrap > .center tr > td {}
+.table-wrap > .center tr > td.left {text-align: left;}
+.table-wrap > .center tr > td > span  {}
+.table-wrap > .center tr > td > a  {}
+/*notice - view */
+.view-wrap{
+	padding: 10px 0 20px;
+    font-size: 13px;
+}
+.view-wrap > .nview {
+	border-top: 2px solid #5e6062;
+}
+.view-wrap > .nview > .nview-header {}
+.view-wrap > .nview > .nview-header > dl {}
+.view-wrap > .nview > .nview-header > dl > dt{
+	font-size: 140%;
+    font-weight: 800;
+    padding: 10px 15px;
+}
+.view-wrap > .nview > .nview-header > dl > dd{
+	padding: 8px 15px;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.view-wrap > .nview > .nview-header > dl > dd > div{padding: 2px 0;}
+.view-wrap > .nview > .nview-header > dl > dd > div > i{
+	vertical-align: middle;
+	margin-right: 5px;
+    font-style: normal;
+    color: #999;
+	}
+.view-wrap > .nview > .nview-header > dl > dd > div > span{vertical-align: middle;margin-right: 10px;}
+.view-wrap > .nview > .nview-header > dl > dd > div.left{float: left;}
+.view-wrap > .nview > .nview-header > dl > dd > div.right{
+	float: right;
+	text-align: right;
+    width: 200px;
+	}
+.view-wrap > .nview > .nview-body {
+	position: relative;
+    padding: 40px 15px 15px;
+    min-height: 50px;
+    border-bottom: 1px solid #ccc;
+    word-break: break-all;
+}
+.view-wrap > .nview > .nview-body > p{
+	font-family: "맑은 고딕", "Malgun Gothic", "Nanum Gothic", Helvetica, Arial, Verdana, Geneva, sans-serif;
+    line-height: 22.5px;
+    word-break: keep-all;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    background-color: rgb(255, 255, 255);
+}
+.view-wrap .btns {
+	margin-top: 30px;
+	text-align: right;
+}
+.body .btns {
+	text-align: right;
+	margin-top: 20px;
+}
+/*notice - write*/
+ .write table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 2px solid #111;
+}
+ .write table caption {
+    text-align: left;
+    margin-bottom: 6px;
+}
+ .write table tr {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e9e9e9;
+}
+ .write table th {
+    width: 112px;
+    height: 100%;
+    background: #f5f8f9;
+    color: #111;
+    font-weight: bold;
+}
+ .write table td {
+    padding: 10px;
+    box-sizing: border-box;
+}
+ .write table input {
+    width: 100%;
+    height: 26px;
+    border: none;
+}
+ .write table textarea {
+    width: 100%;
+    height: 280px;
+    resize: none;
+    border: none;
+}
 
+ .write > form > div {
+    float: right;
+    margin-top: 10px;
+}
+ .write > form .btn  {
+    padding: 8px;
+    border: 1px solid #bebebe;
+}
+ .write > form .btnCancel {}
+ .write > form .btnComplete {
+    padding: 7px;
+    border: 1px solid #3b3c3f;
+    background: #4b545e;
+    color: white;
+}
+/* doc-body */
+.body h3 {
+    background: url('/ChimAcademy/img/elib/elib_h3.gif') no-repeat 0 10px;
+    color: #1e1e1e;
+    padding: 5px 0;
+    padding-left: 22px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-size: 140%;
+    line-height: 130%;
+    margin-bottom: 8px;
+}
+.body div > table {}
+.body .type01 th {
+    text-align: center;
+    border-top-width: 2px;
+    border-color: #c9d5e1;
+    border-top-color: #014199;
+    background-color: #f5f7fa;
+    color: #111;
+    padding: 8px 8px 9px 8px;
+    font-weight: bold;
+}
+.body .type01 td {
+    text-align: center;
+    padding: 8px 8px 9px 8px;
+    border-left: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    font-weight: normal;
+    width: 50%;
+}
+.body .con {
+    padding-bottom: 10px;
+    padding-left: 2%;
+}
+.body .con li {
+	background: url('/ChimAcademy/img/elib/doc-arr2.gif') no-repeat 0 10px;
+    padding: 3px 0 4px;
+    padding-left: 13px;
+}
     /*footer*/
     footer {
         position: relative;

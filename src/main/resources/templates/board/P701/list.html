@@ -1,0 +1,47 @@
+
+<th:block th:include="@{board/_header.html}"/>
+
+	<main>
+   	<th:block th:include="@{_aside.html}"/>
+            <section id="depList">
+                <!-- 내 정보 -->
+                <div class="banner">
+
+                </div>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>조회수</th>
+                            <th>작성일</th>
+                        </tr>
+                        <tr th:each="japanese : ${vo}">
+	                        <td>[[${japanese.no}]]</td>
+	                       	<td><a th:href="@{/board/view}">[[${japanese.title}]]</a></td>
+		                    <td>[[${japanese.uid}]]</td>
+	                        <td>[[${japanese.hit}]]</td>
+	                        <td>[[${japanese.rdate}]]</td>
+               			</tr>
+                   </table>
+                </section>
+                <div class="page_div">
+                    <div class="page">
+                        <a href=""><</a>
+                        <a href="" class="on">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">></a>
+                    </div>
+                    <div class="addPage">
+                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/P701/write} + '\''">새글 작성</button>
+                    </div>
+                </div>
+
+            
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>
