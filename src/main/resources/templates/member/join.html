@@ -1,9 +1,14 @@
 <th:block th:include="@{member/_header.html}"/>
+<script>
+	$(()=>{
+		nameCheck();
+	});
+</script>
 		<main id="join">
             <nav>
 				<h1>가입하기</h1>
 			</nav>
-			<form action="#" method="POST">
+			<form th:action="@{/member/join}" method="POST">
 				<section>
 					<table>
 						<tr>

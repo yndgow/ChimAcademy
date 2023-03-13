@@ -26,8 +26,8 @@ public class SecurityConfig {
 	@Autowired
 	private DataSource dataSource;
 	
-//	@Autowired
-//	private SecurityUserService securityUserService;
+	@Autowired
+	private SecurityUserService securityUserService;
 	
 	
     @Bean
@@ -60,11 +60,11 @@ public class SecurityConfig {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/index?success=200");
 //        
-//        // 자동 로그인
-//        http.rememberMe()
-//        				.userDetailsService(securityUserService)
-//        				.tokenRepository(tokenRepository())
-//        				.tokenValiditySeconds(600);
+        // 자동 로그인
+        http.rememberMe()
+        				.userDetailsService(securityUserService)
+        				.tokenRepository(tokenRepository())
+        				.tokenValiditySeconds(600);
         
 //        http.exceptionHandling().accessDeniedPage("/accessDenied");
 //        	.accessDeniedPage("/accessDenied");
