@@ -164,7 +164,7 @@ footer > .footerCate {
 footer > .footerData {
     display: flex;
     position: relative;
-    top: -24px;
+    top: -30px;
 }
 
 footer > .footerData > .footerSpans {
@@ -183,11 +183,12 @@ footer > .footerData > .footerSpans > .copyright {
 
 footer > .footerData > .libBtn {
     position: absolute;
-    top: 63px;
-    right: -350px;
-    border: 1px solid #fff;
-    padding: 8px;
+    top: 55px;
+    right: -309px;
+    border: 1px solid #dfe3ee;
+    padding: 12px;
     border-radius: 10px;
+    background-color: #f7f7f7;
 }
 
 
