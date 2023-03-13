@@ -44,21 +44,21 @@ public class SecurityConfig {
 //        	.antMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
 //        	.antMatchers("/member/**").hasAnyRole("ADMIN", "MANAGER", "MEMBER");
         	
-//		http.formLogin()
-//			.loginPage("/member/login")
-//			.defaultSuccessUrl("/")
-//			.failureUrl("/member/login?success=100")
-//			.usernameParameter("uid")
-//			.passwordParameter("pass");
+		http.formLogin()
+			.loginPage("/member/login")
+			.defaultSuccessUrl("/notice")
+			.failureUrl("/index?success=100")
+			.usernameParameter("uid")
+			.passwordParameter("pass");
 //        
-//        // 사이트 위조 방지 설정
-//        http.csrf().disable();
+        // 사이트 위조 방지 설정
+        http.csrf().disable();
 //        
 //        // 로그아웃
-//        http.logout()
-//			.invalidateHttpSession(true)
-//			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//			.logoutSuccessUrl("/member/login?success=200");
+        http.logout()
+			.invalidateHttpSession(true)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/index?success=200");
 //        
 //        // 자동 로그인
 //        http.rememberMe()
@@ -80,18 +80,18 @@ public class SecurityConfig {
 //		return new SecurityUserService();
 //	}
 	
-    // 비밀번호 암호화
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//    	//return new BCryptPasswordEncoder();
-//    }
+//     비밀번호 암호화
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    	//return new BCryptPasswordEncoder();
+    }
 //    
-//    // JDBC 기반의 tokenRepository 구현체
-//    @Bean
-//    public PersistentTokenRepository tokenRepository() {
-//        JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
-//        jdbcTokenRepository.setDataSource(dataSource); // dataSource 주입
-//        return jdbcTokenRepository;
-//    }
+    // JDBC 기반의 tokenRepository 구현체
+    @Bean
+    public PersistentTokenRepository tokenRepository() {
+        JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepository.setDataSource(dataSource); // dataSource 주입
+        return jdbcTokenRepository;
+    }
 }
