@@ -1,9 +1,16 @@
-package kr.co.ChimAcademy.vo;
+package kr.co.ChimAcademy.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
-public class MemberVO {
+@Entity
+@Table(name = "member")
+public class MemberEntity {
+	@Id
 	private String uid;
 	private String pass;
 	private String name;
