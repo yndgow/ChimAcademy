@@ -6,7 +6,7 @@ import lombok.Data;
 public class BoardVO {
 	private int no;
 	private String depCode;
-	private String lecName;
+	private String lecCode;
 	private String title;
 	private String content;
 	private String uid;

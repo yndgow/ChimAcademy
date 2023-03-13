@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>침대학교 전자도서관</title>
@@ -7,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style/elib/index.css">
+    <link rel="stylesheet" href="/ChimAcademy/style/elib/index.css">
     <script>
         $(document).ready(function(){
           $('.slider').bxSlider();
@@ -27,9 +28,9 @@
                     </div>
                     <div class="right-util">
                         <ul>
-                            <li><a href="#">로그인</a></li>
+                            <li><a th:href="@{/}">로그인</a></li>
                             <li><a href="#">학번찾기</a></li>
-                            <li><a href="#" class="link3">내서재</a></li>
+                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
                             <li><a href="#">뷰어 설치 안내</a></li>
                         </ul>
                     </div>
@@ -47,10 +48,10 @@
                             <li>
                                 <a href="#">전자책</a>
                                 <ul class="subMenu">
-                                    <li><a href="#">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list}">새로 들어온 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list}">유통사별</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -115,7 +116,7 @@
                         <div class="quick">
                             <ul class="ico">
                                 <li>
-                                    <a href="#" class="quick1">
+                                    <a th:href="@{/elib/ebook/list}" class="quick1">
                                         <div class="b1">
                                             <h4>전자책</h4>
                                         </div>
@@ -233,10 +234,10 @@
                                             </h4>
                                             <p>전자도서관 이렇게 이용하세요</p>
                                             <p>
-                                                <img src="/static/img/elib/btn-01.png" alt="바로가기">
+                                                <img th:src="@{/img/elib/btn-01.png}" alt="바로가기">
                                             </p>
                                             <span>
-                                                <img src="/static/img/elib/more-btn02.png" alt="+">
+                                                <img th:src="@{/img/elib/more-btn02.png}" alt="+">
                                             </span>
                                         </div>
                                     </a>

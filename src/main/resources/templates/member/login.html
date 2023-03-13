@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<link href="../css/common.css" rel="stylesheet" type="text/css" />
-<link href="../css/member.css" rel="stylesheet" type="text/css" />
-<head>
-    <meta charset="UTF-8">
-    <title>그린아카데미</title>    
-	
-</head>
-<body>
-	<div id="wrapper">
-		<header>
-			<div class="top">
-				<div>
-					<a th:href="@{#}">Home</a>
-					<a th:href="@{#}">Profile</a>
-					<a th:href="@{#}">Login/LogOut</a>
-				</div>
-			</div>
-		</header>
+<th:block th:include="@{member/_header.html}"/>
 		<main id="login">
-			<div class="SchoolSide">
+			<div class="slider SchoolSide">
 				<div>
-					<img th:src="@{#}" alt="학교 이미지(빌딩느낌의)">
+					<img th:src="@{/img/member/slide1.jpg}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+				<div>
+					<img th:src="@{/img/member/slide2.jpg}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+				<div>
+					<img th:src="@{/img/member/slide3.jpg}" alt="학교 이미지(빌딩느낌의)">
 				</div>
 			</div>
 			<div class="logoSide">
-				<img src="../img/logo.png" alt="학교로고">
+				<img th:src="@{/img/member/침대학교_로고2.png}" alt="학교로고">
 			</div>
 			<div class="loginSide">
 				<div>
-					<form action="#">
+					<form th:action="@{member/login}" method="post">
 						<section>
 							<span>학번</span><br>
 							<input type="text" name="uid">
@@ -57,6 +43,4 @@
 				</div>
 			</div>
 		</main>
-		<footer></footer>
-</body>
-</html>
+<th:block th:include="@{_footer.html}"/>

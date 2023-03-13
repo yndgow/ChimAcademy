@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script  src="https://code.jquery.com/jquery-latest.min.js"></script>  
+    <script src="https://kit.fontawesome.com/e8f010a863.js" crossorigin="anonymous"></script>
+    <!-- 공통 css -->
+    <link rel="stylesheet" th:href="@{/style/common.css}"/>
+    
+    <!-- 작업 css -->
+    <link rel="stylesheet" th:href="@{/style/board/notice.css}"/>
+    <link rel="stylesheet" th:href="@{/style/unity.css}"/>
+
+
+    <script>
+        $(function(){
+            $('#side > li > ol').hide();
+
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+
+</head>
+<th:block th:include="@{_body.html}"/>

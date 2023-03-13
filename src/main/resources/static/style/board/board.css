@@ -113,24 +113,16 @@ h1{
 
 
 /* List */
-<<<<<<< Updated upstream
-
-=======
 #wrapper{
 	padding-bottom: 0px;
 }
->>>>>>> Stashed changes
 main{
     display: flex;
     width: 1280px;
 }
 main>section {
     width: 1130px;
-<<<<<<< Updated upstream
-    min-height: 600px;
-=======
     min-height: 800px;
->>>>>>> Stashed changes
     padding: 20px;
     float: left;
     box-sizing: border-box;
@@ -152,11 +144,8 @@ main>section {
 
 #depList>section>table tr{
     text-align: center;
-<<<<<<< Updated upstream
-    height: 50px;
-=======
+
     height: 40px;
->>>>>>> Stashed changes
 }
 
 #depList>section>table tr>th {
