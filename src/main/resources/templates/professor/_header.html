@@ -24,13 +24,4 @@
 
 </head>
 <body>
-	<div id="wrapper">
-		<header>
-			<div class="top">
-				<div>
-					<a th:href="@{#}">Home</a>
-					<a th:href="@{#}">Profile</a>
-					<a th:href="@{#}">LogOut</a>
-				</div>
-			</div>
-		</header>
+<th:block th:include="@{_body.html}"/>

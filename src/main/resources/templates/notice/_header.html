@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>침대학교</title>    
-    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
+    <script  src="https://code.jquery.com/jquery-latest.min.js"></script>  
+    <script src="https://kit.fontawesome.com/e8f010a863.js" crossorigin="anonymous"></script>
+    <!-- 공통 css -->
     <link rel="stylesheet" th:href="@{/style/common.css}"/>
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
     
     <!-- 작업 css -->
-    <link rel="stylesheet" th:href="@{/style/board/board.css}"/>
-    <link rel="stylesheet" th:href="@{/unity.css}"/>
+    <link rel="stylesheet" th:href="@{/style/board/notice.css}"/>
+    <link rel="stylesheet" th:href="@{/style/unity.css}"/>
 
 
     <script>
@@ -25,17 +24,4 @@
     </script> 
 
 </head>
-
-<body>
-	<div id="wrapper">
-		<header>
-			<div class="top">
-				<div>
-					<a th:href="@{/noitce}">Home</a>
-					
-					<a th:href="@{my}">Profile</a>
-					
-					<a th:href="@{/logout}">LogOut</a>
-				</div>
-			</div>
-		</header>
+<th:block th:include="@{_body.html}"/>

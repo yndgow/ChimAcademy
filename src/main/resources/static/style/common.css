@@ -30,11 +30,11 @@ main {
 
 /* Header */
 header {
-    display: block;
+    /* display: block; *//* 불필요? */
     width: 100%;
     height: auto;
     padding: 0px;
-    margin-bottom: -3px;
+    /* margin-bottom: -3px; *//* 헤더 asdie 겹침 수정 */
 }
 
 header > .top {
