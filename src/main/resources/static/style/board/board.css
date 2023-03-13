@@ -1,0 +1,173 @@
+/* board */
+main{
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+}
+.board{
+    width: 100%;
+    padding: 30px;
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.board table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-top: 1px solid #333;
+}
+
+.board table > tbody > tr{
+    border-bottom: 1px solid #d8d8d8;
+    padding: 10px;
+}
+
+.board table > tbody > tr > th{
+    text-align: center;
+    padding: 20px;
+    width: 20%;
+}
+
+.board table > tbody > tr:nth-child(3){
+    padding: 10px;
+    width: 20%;
+    height: 400px;
+}
+.board table > tbody > tr td{
+    padding: 10px;
+    width: 80%;
+}
+
+.board input{
+    width: 100%;
+    height: 30px;
+}
+
+.board textarea{
+    width: 100%;
+    height: 500px;
+}
+
+/* 댓글 */
+.comment{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment > div{
+    padding: 5px;
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+}
+
+.comment .write{
+    display: block;
+    margin: 0 auto;
+
+}
+.comment .write h1{
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.comment .write h2{
+    margin-bottom: 5px;
+}
+.comment h2{
+    font-size: 15px;
+}
+
+.comment .write textarea{
+    width: 100%;
+}
+
+.comment .view{
+    border-bottom: 1px solid #999;
+}
+
+.comment .view h2{
+    margin-bottom: 5px;
+}
+
+.comment .view p{
+    margin-bottom: 5px;
+}
+
+.comment .view > div{
+    margin-bottom: 5px;
+
+}
+
+.comment ul li {
+    margin-bottom: 10px;
+}
+
+.recoment{
+    padding: 30px 30px 0px 30px;
+    background-color: #ffe8e8;
+}
+
+
+
+/* List */
+#wrapper{
+	padding-bottom: 0px;
+}
+main{
+    display: flex;
+    width: 1280px;
+}
+main>section {
+    width: 1130px;
+    min-height: 800px;
+    padding: 20px;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* banner */
+.banner{
+    border: 1px solid #666;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 30px;
+}
+#depList>section{
+}
+
+#depList>section>table{
+    width: 100%;
+}
+
+#depList>section>table tr{
+    text-align: center;
+    height: 40px;
+}
+
+#depList>section>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+
+#depList>section>table tr> th:nth-child(1){
+    width: 10%;
+}
+
+
+
+/* 페이징 버튼 위치 */
+
+.page_div{
+    position: relative;
+}
+
+.addPage > button{
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
