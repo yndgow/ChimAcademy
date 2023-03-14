@@ -15,7 +15,11 @@
 	</insert>
 	
 	<select id="selectBoards" resultType="kr.co.ChimAcademy.vo.BoardVO">
-		select * FROM board WHERE depCode ='D107';
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b USING(uid)
+		WHERE a.`depCode`='D107'
+		ORDER BY `no` DESC
+		limit 10;
 	</select>
 	
 	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
@@ -31,11 +35,7 @@
 			`depCode`='D107',
 			`title`=#{title},
 			`content`=#{content},
-			`uid`=#{uid},
-			`regip`=#{regip},
-			`rdate`= NOW()
-			where `no`=#{no};
-			;	
+			`rdate`= NOW();	
 	</update>
 	
 	<delete id="deleteBoard">

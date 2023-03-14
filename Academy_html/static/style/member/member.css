@@ -1,4 +1,8 @@
 /* Login*/
+
+	/* 슬라이더부분 */
+		#login > .bx-wrapper {}
+
 		#login{
 			height: auto;
 		}
@@ -42,7 +46,7 @@
 		#login > .loginSide {
 			margin: 0;
 			width: 730px;
-			height: 444px;
+			height: 470px;
 			box-sizing: border-box;
 			float: right;
 			text-align: center;
