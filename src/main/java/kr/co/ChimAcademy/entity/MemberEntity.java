@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +14,7 @@ import lombok.Data;
 public class MemberEntity {
 	@Id
 	private String uid;
+	@JsonIgnore
 	private String pass;
 	private String name;
 	private String birth;

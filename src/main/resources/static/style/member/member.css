@@ -287,3 +287,23 @@ display: none;
 	border-radius: 4px;
 	cursor: pointer;
 }
+
+
+/* 학번, 아이디찾기 추가 */
+#btnSearchUid{
+	width: 178px;
+	height: 44px;
+	background: #0057e7;
+	color: #fff;
+	font-size: 18px;
+	margin-top: 20px;
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#btnSearchDiv{
+	text-align: center;
+}
+.errMsg{
+	color: #3b5998;
+}
