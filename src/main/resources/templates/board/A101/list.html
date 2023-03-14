@@ -19,10 +19,16 @@
                         <tr th:each="Korean : ${Korean}">
                         	 
                            <td>[[${Korean.no}]]</td>
+
                            <td><a th:href="@{/board/A101/view}">[[${Korean.title}]]</a></td>
+
+                           <td>[[${Korean.uid}]]</td>
+
+                           <td><a th:href="@{/board/A101/view(no=${Korean.no})}">[[${Korean.title}]]</a></td>
                            <td>[[${Korean.name}]]</td>
+
                            <td>[[${Korean.hit}]]</td>
-                           <td>[[${Korean.rdate}]]</td>                     
+                           <td th:text="${#strings.substring(Korean.rdate, 2, 10)}" />                     
                    </table>
                 </section>
                 <div class="page_div">

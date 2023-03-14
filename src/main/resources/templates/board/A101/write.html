@@ -3,24 +3,26 @@
         <main>
             <th:block th:include="@{_aside.html}"/>
 			<div class="board">
-			<form th:action="@{/board/A101/write}" method="post" enctype="multipart/form-data">
+			<form method="post" enctype="multipart/form-data">
 				<table>
 					<h1>글 작성하기</h1>
 					<tbody>
 						<tr>
 							<th>작성자</th>
-							<td>20231010 홍길동</td>
+							<td>[[${member.uid}]] [[${member.name}]]</td>
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td><input type="text"></td>
+							<td><input type="text" name="title"></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+							<td><textarea name="content" id="" cols="30" rows="10"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
+				<input type="hidden" name="uid" th:value="${member.uid}">
+				<input type="hidden" name="name" th:value="${member.name}">
 				<div class="btn_div">
 					<button class="btn nomal" >목록</button>
 					<button type="submit" class="btn blue">작성</button>
