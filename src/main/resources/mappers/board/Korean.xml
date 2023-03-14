@@ -7,32 +7,30 @@
 	<!-- 국문학과 게시판 목록 출력(List) -->
 	<select id="selectBoards"
 		resultType="kr.co.ChimAcademy.vo.BoardVO">
-<<<<<<< Updated upstream
-		SELECT * FROM `board` WHERE `depCode` = 'A101';
-=======
+
 		SELECT a.*, b.name
 		FROM `board` AS a
 		JOIN `member` AS b
 		ON a.uid = b.uid
 		WHERE a.depCode = 'A101'
 		ORDER BY `rdate` desc
->>>>>>> Stashed changes
-	</select>
-	
 
-<<<<<<< Updated upstream
-=======
+	</select>
+
+
 	<!-- 국문학과 게시판 작성(Write) -->
-	<insert id="insertBoard" useGeneratedKeys="true"
-		keyProperty="no">
+	<insert id="insertBoards">
 		insert into `board` set
 		`depCode`='A101',
+		`lecCode`=#{lecCode},
+
 		`title`=#{title},
 		`content`=#{content},
 		`uid`=#{uid},
 		`regip`=#{regip},
 		`rdate`=NOW();
 	</insert>
+
 	
 	<!-- 국문학과 게시판 보기(View) -->
 	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
@@ -41,5 +39,5 @@
 		JOIN `member` AS b
 		ON a.uid = b.uid where `no`=#{no};
 	</select>
->>>>>>> Stashed changes
+
 </mapper>

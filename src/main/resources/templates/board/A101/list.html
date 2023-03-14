@@ -1,4 +1,4 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/A101/_header.html}"/>
 
 	<main>
    	<th:block th:include="@{_aside.html}"/>
@@ -19,13 +19,14 @@
                         <tr th:each="Korean : ${Korean}">
                         	 
                            <td>[[${Korean.no}]]</td>
-<<<<<<< Updated upstream
+
                            <td><a th:href="@{/board/A101/view}">[[${Korean.title}]]</a></td>
+
                            <td>[[${Korean.uid}]]</td>
-=======
+
                            <td><a th:href="@{/board/A101/view(no=${Korean.no})}">[[${Korean.title}]]</a></td>
                            <td>[[${Korean.name}]]</td>
->>>>>>> Stashed changes
+
                            <td>[[${Korean.hit}]]</td>
                            <td th:text="${#strings.substring(Korean.rdate, 2, 10)}" />                     
                    </table>
@@ -39,13 +40,11 @@
                         <a href="">></a>
                     </div>
                     <div class="addPage">
-                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/write} + '\''">새글 작성</button>
+                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/A101/write} + '\''">새글 작성</button>
                     </div>
                 </div>
 
             
             </section>
 		</main>
-		<footer></footer>
-</body>
-</html>
+<th:block th:include="@{_footer.html}"/>

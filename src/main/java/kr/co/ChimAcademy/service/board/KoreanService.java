@@ -22,12 +22,10 @@ public class KoreanService {
 	
 	// 국문학과 게시판 작성 출력(Write)
 	public int insertBoard(BoardVO vo) {
-<<<<<<< Updated upstream
-		int result = 0;
-		
-=======
+	
+
 		int result = dao.insertBoard(vo);
->>>>>>> Stashed changes
+
 		return result;
 	}
 	

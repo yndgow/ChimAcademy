@@ -5,14 +5,16 @@
 			<a th:href="@{/notice}" id="login_headerLogo"><img th:src="@{/img/침대학교_헤더로고.png}" alt="헤더로고"></a>
 				<div>
 					<a th:href="@{/notice}">Home</a>
-					<th:block th:if="${member.level == 1 or member.level == 2}">
-						<a th:href="@{student/my}">[[${member.uid}]]</a>
-					</th:block>
-					<th:block th:if="${member.level == 3}">
-						<a th:href="@{professor/my}">[[${member.uid}]]</a>
-					</th:block>
-					<th:block th:if="${member.level == 4}">
-						<a th:text="${member.uid}"></a>
+					<th:block th:if="${member ne null}">
+						<th:block th:if="${member.level == 1 or member.level == 2}">
+							<a th:href="@{student/my}">[[${member.uid}]]</a>
+						</th:block>
+						<th:block th:if="${member.level == 3}">
+							<a th:href="@{professor/my}">[[${member.uid}]]</a>
+						</th:block>
+						<th:block th:if="${member.level == 4}">
+							<a th:text="${member.uid}"></a>
+						</th:block>
 					</th:block>
 					<a th:href="@{/logout}">LogOut</a>
 				</div>

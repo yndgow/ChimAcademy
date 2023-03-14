@@ -155,7 +155,7 @@ main#timetable > section {
 
 /* 강의평가 */
 main#eval > section{
-    height: 847px;
+    height: auto;
 }
 main#eval > section > table{
     width: 100%;
@@ -207,4 +207,8 @@ main#eval > section > .btn_div > button{
     width: 150px;
     height: 50px;
     font-size: 14px;
+}
+/* 이미지 조절 */
+footer > .footerData > .footerLogo > img{
+	box-sizing: initial;	
 }

@@ -1,4 +1,14 @@
 <th:block th:include="@{member/_header.html}"/>
+	<script>
+	    $(document).ready(function(){
+	    	// 이미지 슬라이드
+	    	loginSlide();  
+	    	// 메시지 호출
+	    	urlSearch = new URLSearchParams(location.search);
+            msg = urlSearch.get('success')
+	    	alertMsg(msg);
+		});
+	</script>
 		<main id="login">
 			<div class="slider SchoolSide">
 				<div>
@@ -28,7 +38,7 @@
 						<div>
 							<span>
 								<label>
-									<input type="checkbox" name="auto">자동로그인
+									<input type="checkbox" name="remember-me">자동로그인
 								</label>
 							</span>
 							<br><br>
@@ -36,7 +46,7 @@
 						</div>
 					</form>
 					<div>
-						<span>처음접속하시나요?</span><a th:href="@{#}">&nbsp;가입하기</a>
+						<span>처음접속하시나요?</span><a th:href="@{/member/join}">&nbsp;가입하기</a>
 						<br><br>
 						<a th:href="@{#}">비밀번호 찾기</a>
 					</div>
