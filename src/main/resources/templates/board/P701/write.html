@@ -21,9 +21,11 @@
 								</tr>
 							</tbody>
 						</table>
+						<input type="hidden" name="uid" th:value="${member.uid}">
+						<input type="hidden" name="name" th:value="${member.name}">
 						<div class="btn_div">
 							<button class="btn nomal" >목록</button>
-							<button class="btn blue">작성</button>
+							<button type="submit" class="btn blue">작성</button>
 						</div>
 					</form>
 				</div>

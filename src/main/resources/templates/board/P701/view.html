@@ -1,4 +1,4 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/P701/_header.html}"/>
 
 
         <main>
@@ -9,23 +9,23 @@
 					<tbody>
 						<tr>
 							<th>작성자</th>
-							<td>20231010 홍길동</td>
+							<td>[[${member.uid}]] [[${member.name}]]</td>
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td>안녕하세요</td>
+							<td>[[${vo.title}]]</td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td>반갑습니다</td>
+							<td>[[${vo.content}]]</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="btn_div">
-					<button class="btn nomal" >목록</button>
+					<a class="btn nomal" th:href="@{/board/P701/list(pg=${pg})}">목록</a>
 					<div>
-						<button class="btn blue">수정</button>
-						<button class="btn red">삭제</button>
+						<a class="btn blue"  th:href="@{/board/P701/modify(no=${no},pg=${pg})}">수정<a>
+						<a class="btn red" th:href="@{/board/P701/delete(no=${no})}">삭제</a>
 					</div>
 				</div>
 				<div class="comment">
