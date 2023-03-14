@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.ChimAcademy.dao.Ebook_ArticleDao">	
+<mapper namespace="kr.co.ChimAcademy.dao.Ebook_ArticleDAO">	
 	<insert id="insertArticle" useGeneratedKeys="true" keyProperty="no">
 		insert into `ebook_article` set
 			`title`=#{title},
@@ -14,6 +14,7 @@
 				`file`=1,
 			</if>
 			`uid`=#{uid},
+			`cate`=#{cate},
 			`regip`=#{regip},
 			`rdate`= NOW();	
 	</insert>
@@ -75,6 +76,9 @@
 	<select id="selectFile" resultType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
 		select * from `ebook_article_file` where `fno`=#{fno};
 	</select>
+	<select id="selectFileByParent" resultType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
+		select * from `ebook_article_file` where `parent`=#{no};
+	</select>
 	<update id="updateArticle">
 		update `ebook_article` set `title`=#{title},`content`=#{content},`rdate`=now() where `no`=#{no};
 	</update>
@@ -86,5 +90,8 @@
 	</update>
 	<delete id="deleteArticle">
 		delete from `ebook_article` where `no`=#{no} or `parent`=#{no};
+	</delete>
+	<delete id="deleteFile">
+		delete from `ebook_article_file` where `parent`=#{no};
 	</delete>
 </mapper>

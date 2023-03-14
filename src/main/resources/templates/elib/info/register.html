@@ -1,0 +1,186 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+                        <form action="#">
+                            <section class="search">
+                                <div class="box1">
+                                    <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+                                </div>
+                                <div class="box2">
+                                    <button><span class="material-icons">search</span></button>
+                                </div>
+                            </section>
+                        </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">전자도서/오디오북 추가하기</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>전자도서/오디오북 추가하기</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <h3>전자도서/오디오북 추가하기</h3>
+                                <ul class="con">
+                                	<li>
+                                		전자도서/오디오북 추가할 떄 카테고리를 설정 시 도서번호는 자동으로 설정됩니다.
+                                	</li>
+                                </ul>
+                                <div>
+                                	<form th:action="@{/elib/info/register}" method="post" enctype="multipart/form-data">
+                                	<table class="type01 reg">
+                                		<tr>
+                                			<th>도서번호</th>
+                                			<td>
+                                				<input type="text" name="bookId" placeholder="카테고리를 설정 시 도서번호는 자동으로 설정됩니다.">
+                                			</td>
+                                		</tr>
+                    	                <tr>
+                                			<th>그룹</th>
+                                			<td>
+                                				<select name="GROUP">
+                                					<option value="ebook">전자도서</option>
+                                					<option value="audio">오디오북</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>상위 카테고리</th>
+                                			<td>
+                                				<select name="cate1">
+                                					<option value="#">상위</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>하위 카테고리</th>
+                                			<td>
+                                				<select name="cate2">
+                                					<option value="#">하위</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>책제목</th>
+                                			<td>
+                                				<input type="text" name="title" placeholder="책 제목">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>저자</th>
+                                			<td>
+                                				<input type="text" name="author" placeholder="저자">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>출판사</th>
+                                			<td>
+                                				<input type="text" name="publisher" placeholder="출판사">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>소속도서관</th>
+                                			<td>
+                                				<input type="text" name="belong" placeholder="소속도서관">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>공급사</th>
+                                			<td>
+                                				<input type="text" name="applier" placeholder="공급사">
+                                			</td>
+                                		</tr>
+										<tr>
+                                			<th>출판일</th>
+                                			<td>
+                                				<input type="date" name="pubDate">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>책설명</th>
+                                			<td>
+                                				<textarea name="bintro" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>저자설명</th>
+                                			<td>
+                                				<textarea name="aintro" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>목차</th>
+                                			<td>
+                                				<textarea name="index" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>썸네일</th>
+                                			<td>
+                                				<input type="file" name="tname" accept="image/jpeg,image/png,image/gif">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>도서파일</th>
+                                			<td>
+                                				<input type="file" name="fname" accept=".epub">
+                                			</td>
+                                		</tr>
+                                	</table>
+                                	<div class="btns">
+                                		<a class="btn" href="#">
+                                			<span class="material-icons">edit</span>
+                                			<span>등록하기</span>
+                                		</a>
+                                	</div>
+                                	</form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>
