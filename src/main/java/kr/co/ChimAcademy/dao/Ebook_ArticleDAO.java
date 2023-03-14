@@ -10,7 +10,7 @@ import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
 
 @Mapper
 @Repository
-public interface Ebook_ArticleDao {
+public interface Ebook_ArticleDAO {
 	public int insertArticle(Ebook_ArticleVO vo); // int는 실행 결과의 raw 갯수 
 	public int insertFile(Ebook_Article_fileVO vo);
 	public Ebook_ArticleVO selectArticle(int no);
@@ -22,4 +22,6 @@ public interface Ebook_ArticleDao {
 	public void updateArticleHit(int no);
 	public void deleteArticle(int no);
 	public int selectCountTotal();
+	public Ebook_Article_fileVO selectFileByParent(int no);
+	public int deleteFile(int no);
 }

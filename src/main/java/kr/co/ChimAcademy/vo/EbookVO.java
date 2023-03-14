@@ -1,5 +1,7 @@
 package kr.co.ChimAcademy.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -20,4 +22,10 @@ public class EbookVO {
 	private String bintro;
 	private String aintro;
 	private String index;
+	private String rdate;
+	private String applier;
+	private String thumb;
+	
+	private MultipartFile tname;
+	private MultipartFile fname;
 }

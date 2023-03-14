@@ -18,9 +18,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.ChimAcademy.dao.Ebook_ArticleDao;
+import kr.co.ChimAcademy.dao.Ebook_ArticleDAO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Ebook_ArticleService {
 
 	@Autowired
-	private Ebook_ArticleDao dao;
+	private Ebook_ArticleDAO dao;
 	
 	public int insertArticle(Ebook_ArticleVO vo) {
 		
@@ -120,6 +121,23 @@ public class Ebook_ArticleService {
 				}
 				
 				return fvo;
+	}
+	// 파일삭제  ////////////////////////////////////////////////////////////
+	@Transactional
+	public Ebook_Article_fileVO deleteFile(int no) {
+		Ebook_Article_fileVO vo = dao.selectFileByParent(no);
+		dao.deleteFile(no);
+		return vo;
+	};
+	public void deleteRealFile(Ebook_Article_fileVO vo) {
+		if(vo.getNewName() != null) {
+			// 실제 파일 삭제
+			String path = new File("articleFile/").getAbsolutePath();
+			File file = new File(path,vo.getNewName());
+			if(file.exists()) {
+				file.delete();
+			}
+		}
 	}
 	// 페이징 처리 시작 ///////////////////////////////////////////////////////
 	// 현재 페이지 번호

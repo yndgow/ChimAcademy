@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.EbookDAO">	
+	<insert id="insertEbook">
+		insert into `ebook` set
+							`bookId`=#{bookId}, 
+							`GROUP`=#{GROUP}, 
+							`cate1`=#{cate1}, 
+							`cate2`=#{cate2}, 
+							`title`=#{title}, 
+							`author`=#{author}, 
+							`publisher`=#{publisher}, 
+							`belong`=#{belong}, 
+							`applier`=#{applier}, 
+							`pubDate`=#{pubDate}, 
+							`bintro`=#{bintro}, 
+							`aintro`=#{aintro}, 
+							`index`=#{index}, 
+							`thumb`=#{thumb},
+							`rdate`=now();
+	</insert>
+</mapper>

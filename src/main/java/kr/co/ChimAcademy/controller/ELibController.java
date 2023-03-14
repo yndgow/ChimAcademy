@@ -1,5 +1,6 @@
 package kr.co.ChimAcademy.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -110,6 +111,22 @@ public class ELibController {
 	@GetMapping("elib/info/install")
 	public String install() {
 		return "elib/info/install";
+	}
+	@GetMapping("elib/info/register")
+	public String register() {
+		return "elib/info/register";
+	}
+	@GetMapping("elib/info/delete")
+	public String delete(int no) {
+		// 게시물 삭제
+		aService.deleteArticle(no);
+		// 게시물 파일 DB 삭제
+		Ebook_Article_fileVO vo = aService.deleteFile(no);
+		if(vo != null) {
+		// 게시물 실제 파일 삭제
+		aService.deleteRealFile(vo);
+		}
+		return "redirect:/elib/info/list";
 	}
 	
 	/*내서재*/////////////////////////
