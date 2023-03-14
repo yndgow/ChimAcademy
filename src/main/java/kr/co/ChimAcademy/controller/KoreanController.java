@@ -40,9 +40,6 @@ public class KoreanController {
 
 
 	/* 국문학과 게시판 보기(view) */
-
-	
-
 	@GetMapping("board/A101/view")
 	public String A101_view(Model model, int no) {
 		BoardVO vo = service.selectBoard(no);
@@ -67,13 +64,6 @@ public class KoreanController {
 		req.getRemoteAddr();
 		int result = service.insertBoard(vo);
 		return "redirect:/board/A101/list";
-	}
-
-	
-	@PostMapping("board/A101/write")
-	public String A101_write(BoardVO vo, HttpServletRequest request) {
-		int result = service.insertBoard(vo);
-		return "redirect:board/A101/list";
 	}
 
 }
