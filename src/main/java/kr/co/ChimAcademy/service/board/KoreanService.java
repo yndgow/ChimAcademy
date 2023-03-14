@@ -15,15 +15,25 @@ public class KoreanService {
 	@Autowired
 	private KoreanDAO dao;
 	
-	// 게시물 리스트 출력
+	// 국문학과 게시판 목록 출력(List)
 	public List<BoardVO> selectBoards() {
 		return dao.selectBoards();
 	}
 	
-	// 게시글 작성
+	// 국문학과 게시판 작성 출력(Write)
 	public int insertBoard(BoardVO vo) {
+<<<<<<< Updated upstream
 		int result = 0;
 		
+=======
+		int result = dao.insertBoard(vo);
+>>>>>>> Stashed changes
 		return result;
 	}
+	
+	// 국문학과 게시판 보기(view)
+	public BoardVO selectBoard(int no) {
+		return dao.selectBoard(no);
+	}
+	
 }
