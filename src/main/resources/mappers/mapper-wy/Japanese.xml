@@ -4,13 +4,22 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.ChimAcademy.dao.JapaneseDAO">
 	
-	<select id="selectJapanese" resultType="kr.co.ChimAcademy.vo.BoardVO">
-		SELECT * FROM `board` WHERE `depCode`= 'P701';
+	<select id="selectJapaneses" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.* FROM `board` AS a
+		JOIN `member` as b
+		ON a.uid = b.uid
+		WHERE a.depCode = 'P701' 
+		order by a.rdate desc limit #{start}, 10;
 	</select>
+	
+	<select id="selectJapanese" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT * from `board` where `no` = #{no};
+	</select>
+	
 	
 	<insert id="insertJapanese">
 		insert into `board` set
-			`depCode`='A101',
+			`depCode`='P701',
             `lecCode`=#{lecCode},
             `title`=#{title},
             `content`=#{content},
@@ -18,5 +27,27 @@
             `regip`=#{regip},
             `rdate`=NOW();
 	</insert>
+	
+	<update id="updateJapanese">
+	  UPDATE `board` set
+		`depCode`='P701',
+	    `lecCode`=#{lecCode},
+	    `title`=#{title},
+	    `content`=#{content},
+	    `uid`=#{uid},
+	    `regip`=#{regip},
+	    `rdate`=NOW()
+	  	WHERE `no` = #{no}
+	</update>
+	
+	<delete id="deleteJapanese">
+		DELETE from `board` WHERE `no` = #{no};
+	</delete>
+	
+	<!-- 게시판 페이징-->
+	<select id="selectCountTotal" resultType="int">
+		select count(`no`) from `board` WHERE `depCode` = 'P701'; 
+	</select>
+
 
 </mapper>
