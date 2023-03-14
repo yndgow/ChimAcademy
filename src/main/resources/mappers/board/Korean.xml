@@ -4,21 +4,40 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace = mapper파일의 아이디 값 -->
 <mapper namespace="kr.co.ChimAcademy.dao.KoreanDAO">
-	<!-- 국문학과 게시판 목록 출력 -->
+	<!-- 국문학과 게시판 목록 출력(List) -->
 	<select id="selectBoards"
 		resultType="kr.co.ChimAcademy.vo.BoardVO">
-		SELECT a.*, b.name FROM board AS a JOIN member AS b ON a.uid = b.uid WHERE a.depCode = 'A101'
+
+		SELECT a.*, b.name
+		FROM `board` AS a
+		JOIN `member` AS b
+		ON a.uid = b.uid
+		WHERE a.depCode = 'A101'
+		ORDER BY `rdate` desc
+
 	</select>
 
-	<!-- 국문학과 게시판 작성 -->
+
+	<!-- 국문학과 게시판 작성(Write) -->
 	<insert id="insertBoards">
 		insert into `board` set
 		`depCode`='A101',
 		`lecCode`=#{lecCode},
+
 		`title`=#{title},
 		`content`=#{content},
 		`uid`=#{uid},
 		`regip`=#{regip},
 		`rdate`=NOW();
 	</insert>
+
+	
+	<!-- 국문학과 게시판 보기(View) -->
+	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name
+		FROM `board` AS a
+		JOIN `member` AS b
+		ON a.uid = b.uid where `no`=#{no};
+	</select>
+
 </mapper>

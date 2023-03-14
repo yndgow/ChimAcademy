@@ -1,5 +1,10 @@
 
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/P701/_header.html}"/>
+
+<script>
+
+
+</script>
 
 	<main>
    	<th:block th:include="@{_aside.html}"/>
@@ -19,24 +24,33 @@
                         </tr>
                         <tr th:each="japanese : ${vo}">
 	                        <td>[[${japanese.no}]]</td>
-	                       	<td><a th:href="@{/board/view}">[[${japanese.title}]]</a></td>
-		                    <td>[[${japanese.uid}]]</td>
+	                       	<td><a th:href="@{/board/P701/view(no=${japanese.no},pg=${currentPage})}">[[${japanese.title}]]</a></td>
+		                    <td>[[${japanese.name}]]</td>
 	                        <td>[[${japanese.hit}]]</td>
-	                        <td>[[${japanese.rdate}]]</td>
+	                        <td>[[${japanese.rdate.substring(0,10)}]]</td>
                			</tr>
                    </table>
                 </section>
                 <div class="page_div">
-                    <div class="page">
-                        <a href=""><</a>
-                        <a href="" class="on">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a href="">></a>
-                    </div>
-                    <div class="addPage">
-                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/P701/write} + '\''">새글 작성</button>
-                    </div>
+	               <div class="page">
+		                <th:block th:if="${groups[0]>1}">
+		                	<a th:href="@{/board/P701/list(pg=${groups[0]-1})}" class="prev">&lt;</a>
+		                </th:block>
+		                
+		                <th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
+		                
+		                	<a th:href="@{/board/P701/list(pg=${num})}" 
+		                	   th:class="${num==currentPage?'num on':'num'}">[[${num}]]</a>
+		                	          
+		                </th:block>
+		                
+		                <th:block th:if="${groups[1]<lastPageNum}">
+		                	<a th:href="@{/board/P701/list(pg=${groups[1]+1})}" class="next">&gt;</a>
+		                </th:block>
+		           </div>
+                   <div class="addPage">
+                       <button class="btn blue" th:onclick="'location.href=\'' + @{/board/P701/write} + '\''">새글 작성</button>
+                   </div>   
                 </div>
 
             
