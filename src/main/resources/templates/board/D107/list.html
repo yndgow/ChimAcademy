@@ -1,4 +1,3 @@
-
 <th:block th:include="@{board/D107/_header.html}"/>
 
 	<main>
@@ -18,11 +17,11 @@
                             <th>작성일</th>
                         </tr>
                         <tr th:each="board : ${boards}">
-                        	<td>[[${board.no}]]</td>
-                           <td><a th:href="@{/board/view}">[[${board.title}]</a></td>
-                           <td>[[${board.no}]</td>
-                           <td>[[${board.rdate}]</td>
-                           <td>[[${board.hit}]</td>
+                           <td>[[${board.no}]]</td>
+                           <td><a th:href="@{/board/D107/view(no=${board.no})}">[[${board.title}]]</a></td>
+                           <td>[[${board.name}]]</td>
+                           <td>[[${board.hit}]]</td>
+                           <td>[[${board.rdate.substring(2,10)}]]</td>
                         </tr>
                         
                    </table>
@@ -36,7 +35,7 @@
                         <a href="">></a>
                     </div>
                     <div class="addPage">
-                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/write} + '\''">새글 작성</button>
+                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/D107/write} + '\''">새글 작성</button>
                     </div>
                 </div>
 

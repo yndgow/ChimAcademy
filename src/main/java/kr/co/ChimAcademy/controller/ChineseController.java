@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.service.ChineseBoardService;
 import kr.co.ChimAcademy.vo.BoardVO;
@@ -24,16 +25,35 @@ public class ChineseController {
 		return "board/D107/list";
 	}
 	@GetMapping("board/D107/modify")
-	public String D107_modify() {
+	public String D107_modify_get(Model model, int no) {
+		BoardVO board = service.selectBoard(no);
+		model.addAttribute("board", board);
 		return "board/D107/modify";
 	}
+	@PostMapping("board/D107/modify")
+	public String D107_modify_post(BoardVO vo) {
+		service.updateBoard(vo);
+		return "redirect:board/D107/view";
+	}
+	@GetMapping("board/D107/delete")
+	public String D107_delete() {
+		return "redirect:board/D107/list";
+	}
 	@GetMapping("board/D107/view")
-	public String D107_view() {
+	public String D107_view(Model model, int no) {
+//		BoardVO rdfgh5rys= service.selectBoard(no);
+		model.addAttribute("board", service.selectBoard(no));
 		return "board/D107/view";
 	}
 	@GetMapping("board/D107/write")
-	public String D107_write() {
+	public String D107_write_get(BoardVO vo) {
 		return "board/D107/write";
+	}
+	
+	@PostMapping("board/D107/write")
+	public String D107_write_post(BoardVO vo) {
+		service.insertBoard(vo);
+		return "redirect:/board/D107/list";
 	}
 	
 	
