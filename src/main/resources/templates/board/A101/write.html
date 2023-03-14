@@ -1,4 +1,4 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/A101/_header.html}"/>
 
         <main>
             <th:block th:include="@{_aside.html}"/>
@@ -23,11 +23,9 @@
 				</table>
 				<div class="btn_div">
 					<button class="btn nomal" >목록</button>
-					<button class="btn blue">작성</button>
+					<button type="submit" class="btn blue">작성</button>
 				</div>
 				</form>
 			</div>
 		</main>
-		<footer></footer>
-</body>
-</html>
+<th:block th:include="@{_footer.html}"/>

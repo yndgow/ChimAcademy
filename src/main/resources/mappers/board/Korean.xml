@@ -7,8 +7,18 @@
 	<!-- 국문학과 게시판 목록 출력 -->
 	<select id="selectBoards"
 		resultType="kr.co.ChimAcademy.vo.BoardVO">
-		SELECT * FROM `board` WHERE `depCode` = 'A101';
+		SELECT a.*, b.name FROM board AS a JOIN member AS b ON a.uid = b.uid WHERE a.depCode = 'A101'
 	</select>
-	
 
+	<!-- 국문학과 게시판 작성 -->
+	<insert id="insertBoards">
+		insert into `board` set
+		`depCode`='A101',
+		`lecCode`=#{lecCode},
+		`title`=#{title},
+		`content`=#{content},
+		`uid`=#{uid},
+		`regip`=#{regip},
+		`rdate`=NOW();
+	</insert>
 </mapper>

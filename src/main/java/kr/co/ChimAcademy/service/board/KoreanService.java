@@ -23,7 +23,6 @@ public class KoreanService {
 	// 게시글 작성
 	public int insertBoard(BoardVO vo) {
 		int result = 0;
-		
 		return result;
 	}
 }
