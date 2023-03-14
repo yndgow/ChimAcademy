@@ -25,9 +25,7 @@ function alertMsg(msg){
 	}
 }
 
-let nameVal = false;
-let birthVal = false;
-let hpVal = false;
+
 
 /* 정규식 */
 // 이름 : 2자리 이상 15자리 이하 한글, 영문
@@ -36,10 +34,24 @@ const regexName = /^[가-힣|a-z|A-Z|]{2,15}$/;
 const regexBirth = /([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))/;
 // 휴대폰 번호 12, 13자리
 const regexHp =/^(01[016789]{1})-[0-9]{3,4}-[0-9]{4}$/;
+// 비밀번호 8자이상 숫자, 소문자, 대문자, 특수문자 하나씩 포함
+const regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+/* 아이디찾기 */
+let nameVal = false;
+let birthVal = false;
+let hpVal = false;
+
+/* 가입하기 */
+let pwVal = false;
+let emailVal = false;
+let pwEqual = false;
+let addr1Val = false;
 
 // 이름 유효성 검사
 function nameCheck(){
-	$('input[name=name]').keyup(function(e){
+	$('input[name=name]').keyup(function(){
 		let name = $(this).val();
 		
 		nameVal = regexName.test(name);
@@ -55,7 +67,7 @@ function nameCheck(){
 
 // 생년월일 유효성 검사
 function birthCheck(){
-	$('input[name=birth]').keyup(function(e){
+	$('input[name=birth]').keyup(function(){
 		let birth = $(this).val();
 		
 		birthVal = regexBirth.test(birth);
@@ -71,7 +83,7 @@ function birthCheck(){
 
 // 휴대폰 유효성 검사
 function hpCheck(){
-	$('input[name=hp]').keyup(function(e){
+	$('input[name=hp]').keyup(function(){
 		let hp = $(this).val();
 		
 		hpVal = regexHp.test(hp);
@@ -85,6 +97,7 @@ function hpCheck(){
 	});
 }
 
+// 학번(아이디) 찾기 
 function searchUid(){
 	$('#btnSearchUid').click(function(){
 		if(nameVal && birthVal && hpVal){
@@ -100,14 +113,15 @@ function searchUid(){
 				data: jsonData,
 				dataType: "json",
 				success: function (data) {
-					alert('학번(아이디)는 '+ data.uid + '입니다.');
-				},
-				error : function(request, status, error ) {   // 오류가 발생했을 때 호출된다. 
-					if(request.status == 400){
+					if(!data){
 						alert('존재하지 않는 사용자입니다.');
-					}
-				
-				
+						return false;
+					} 
+					alert('학번(아이디)는 '+ data.uid + '입니다.');
+					
+					sessionStorage.setItem('data', JSON.stringify(data));
+					window.location.href = '/ChimAcademy/member/join';
+					
 				}
 			});
 		}else{
@@ -119,7 +133,148 @@ function searchUid(){
 	})
 }
 
+// 세션스토리지를 활용하여 데이터 넘기기
+function memSessStorage(){
+	if(sessionStorage.length > 0){
+		const dataStr = sessionStorage.getItem('data');
+		const data = JSON.parse(dataStr);
+		
+		$('input[name=name]').val(data.name);
+		$('input[name=uid]').val(data.uid);
+		$('input[name=hp]').val(data.hp);
+		$('input[name=birth]').val(data.birth);
+		sessionStorage.clear();
+		
+	}else{
+		location.href = '/ChimAcademy/member/confirm';
+	}
+}
 
+// 비밀번호 유효성 검사
+function pwCheck(){
+	$('input[name=pass]').keyup(function(){
+		let pw = $(this).val();
+		
+		pwVal = regexPw.test(pw);
+		
+		if(pwVal == false){
+			$('#msgPw1').show();
+			$(this).css('background', '#ffffff');
+		}else if(pwVal == true){
+			$('#msgPw1').hide();
+			$(this).css('background', '#dfe3ee');
+		}
+
+	});
+}
+
+// 비밀번호 일치 검사
+function pwEqualCheck(){
+	$('input[name=pass2]').keyup(function(){
+		let pw = $('input[name=pass]').val();
+		let pw2 = $(this).val();
+		
+		pw === pw2 ? pwEqual = true : pwEqual = false; 	
+		
+		if(pwEqual == false){
+			$('#msgPw2').show();
+			$(this).css('background', '#ffffff');
+		}else if(pwEqual == true && pw2 != ""){
+			$('#msgPw2').hide();
+			$(this).css('background', '#dfe3ee');
+		}
+	});
+}
+
+// 이메일 유효성 검사
+function emailCheck(){
+	$('input[name=email]').keyup(function(){
+		let email = $(this).val();
+		
+		emailVal = regexEmail.test(email);
+		if(emailVal == false){
+			$('#msgEmail').show();
+			$(this).css('background', '#ffffff');
+		}else if(emailVal == true){
+			$('#msgEmail').hide();
+			$(this).css('background', '#dfe3ee');
+		}
+	});
+}
+
+// 다음 주소 api
+function execDaumPostcode() {
+	$('#btnZip').click(function(){
+		new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var addr = ''; // 주소 변수
+	            var extraAddr = ''; // 참고항목 변수
+	
+	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                addr = data.roadAddress;
+	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                addr = data.jibunAddress;
+	            }
+	
+	            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	            if(data.userSelectedType === 'R'){
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                if(extraAddr !== ''){
+	                    extraAddr = '(' + extraAddr + ')';
+	                }
+	                // 조합된 참고항목을 해당 필드에 넣는다.
+	                document.getElementById("addr2").value = extraAddr;
+	            
+	            } else {
+	                document.getElementById("addr2").value = '';
+	            }
+	
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            document.getElementById('zip').value = data.zonecode;
+	            document.getElementById("addr1").value = addr;
+	            // 커서를 상세주소 필드로 이동한다.
+	            document.getElementById("addr2").focus();
+	            $('input[name=zip]').css('background', '#dfe3ee');
+	            $('input[name=addr1]').css('background', '#dfe3ee');
+	            addr1Val = true;
+	        }
+	    }).open();
+	})
+}
+
+// 가입하기
+function memberJoin(){
+	$('#memberJoinBtn').click(function(){
+		let addr2Val = $('input[name=addr2]').val();
+		
+		
+		if(pwVal && emailVal && pwEqual && addr1Val && addr2Val){
+			$('#memberJoinForm').submit();
+		}else{
+			if(!pwVal) $('input[name=pass]').css('background', 'rgb(255 219 234)');
+			if(!emailVal) $('input[name=email]').css('background', 'rgb(255 219 234)');
+			if(!pwEqual) $('input[name=pass2]').css('background', 'rgb(255 219 234)');
+			if(!addr1Val) $('input[name=addr1]').css('background', 'rgb(255 219 234)');
+			if(!addr1Val) $('input[name=zip]').css('background', 'rgb(255 219 234)');
+			if(!addr2Val) $('input[name=addr2]').css('background', 'rgb(255 219 234)');
+			alert('입력하신 가입 정보를 확인해주세요');
+		}
+	});
+}
 
 
 

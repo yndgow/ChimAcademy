@@ -1,47 +1,54 @@
 <th:block th:include="@{member/_header.html}"/>
 <script>
 	$(()=>{
-		nameCheck();
+		memSessStorage();
+		pwCheck();
+		emailCheck();
+		pwEqualCheck();
+		execDaumPostcode();
+		memberJoin();
 	});
 </script>
 		<main id="join">
             <nav>
 				<h1>가입하기</h1>
 			</nav>
-			<form th:action="@{/member/join}" method="POST">
+			<form th:action="@{/member/join}" method="POST" id="memberJoinForm">
+				<!-- 검색 정보 호출 영역 -->
 				<section>
 					<table>
 						<tr>
 							<th>
 								<span class="essential">*</span>이름
 							</th>
-							<td >
-								<input type="text" name="name" required>
-								<span id="msgName">Error message</span>
-							</td>
-							<td class="birthId">
+							<td><input type="text" name="name" value="" class="joinInfo"></td>
+							<th>
 								<span class="essential">*</span>생년월일
-								<input type="text" name="birth" required>
-								<span id="msgBirth">Error message</span>
-							</td>
+							</th>
+							<td><input type="text" name="birth" value="" class="joinInfo"></td>
 						</tr>
 						<tr>
 							<th>
 								<span class="essential">*</span>학번
 							</th>
-							<td>
-								<input type="text" name="studentId" required>
-								<button type="button" id="btnId">학번찾기</button>
-							</td>
-							<td></td>
+							<td><input type="text" name="uid" value="" class="joinInfo"></td>
+							<th>
+								<span class="essential">*</span>휴대폰번호
+							</th>
+							<td><input type="text" name="hp" value="" class="joinInfo"></td>
 						</tr>
+					</table>
+				</section>
+				<!-- 입력 정보영 역 -->		
+				<section>
+					<table>
 						<tr>
 							<th>
 								<span class="essential">*</span>성별
 							</th>
 							<td>
 								<label>
-									<input type="radio" name="gender" value="1" checked>
+									<input type="radio" name="gender" value="1">
 									남
 								</label>
 								<label>
@@ -55,52 +62,39 @@
 							<th>
 								<span class="essential">*</span>비밀번호
 							</th>
-							<td>
+							<td colspan="2">
 								<input type="password" name="pass" required>
-								<span id="msgPw">Error message</span>
+								<span id="msgPw1" class="errMsg">영문자, 숫자, 특수문자 포함 8자 이상 20자 이하로 입력해주세요.</span>
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<th>
 								<span class="essential">*</span>비밀번호확인
 							</th>
-							<td>
-								<input type="password" name="_pass" placeholder="비밀번호를 확인" required>
-								<span id="msgPass">비밀번호 재입력</span>
+							<td colspan="2">
+								<input type="password" name="pass2" placeholder="비밀번호를 확인" required>
+								<span id="msgPw2" class="errMsg">비밀번호가 서로 일치하지 않습니다.</span>
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<th>
 								<span class="essential">*</span>이메일 주소
 							</th>
-							<td>
+							<td colspan="2">
 								<input type="email" name="email" required>
-								<span id="msgEmail">Error message</span>
+								<span id="msgEmail" class="errMsg">이메일 주소 형식에 맞게 입력해주세요.</span>
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<th>
-								<span class="essential">*</span>휴대폰
+								<span class="essential">*</span>이메일 주소
 							</th>
-							<td>
-								<input type="text" name="hp" maxlength="13" required>
-								<span id="msgHp">- 포함 13자리를 입력하세요.</span>
+							<td colspan="2">
+								<input type="email" name="email" required>
+								<span id="msgEmail" class="errMsg">이메일 주소 형식에 맞게 입력해주세요.</span>
 							</td>
-							<td></td>
 						</tr>
-						<tr>
-							<th>
-								<span class="essential">*</span>학번
-							</th>
-							<td>
-								<input type="text" name="studentId" required>
-								<span class="msgId">Error message</span>
-							</td>
-							<td></td>
-						</tr>
+						
 						<tr class="addr">
 							
 							<th>
@@ -109,22 +103,20 @@
 							<td>
 								<div>
 									<input type="text" name="zip" id="zip" placeholder="우편번호 입력 클릭" readonly>
-									<button type="button" id="btnZip" onclick="postcode()">우편번호 찾기</button>
+									<button type="button" id="btnZip">우편번호 찾기</button>
 								</div>
 								<div>
 									<input type="text" name="addr1" id="addr1" size="50" placeholder="주소를 검색하세요." readonly>
 								</div>
 								<div>
-									<input type="text" name="addr2" id="addr2" size="50" placeholder="상세주소를 입력하세요.">
+									<input type="text" name="addr2" id="addr2" size="50" placeholder="상세주소를 입력하세요." required="required">
 								</div>
 							</td>
 							<td></td>
 						</tr>
 					</table>
 				</section>
-				<div>
-					<input type="submit" class="join" value="가입하기">
-				</div>
 			</form>
+			<button id="memberJoinBtn">가입하기</button>
 		</main>
 <th:block th:include="@{_footer.html}"/>

@@ -3,6 +3,11 @@
 #login{
 	height: auto;
 }
+#wrapper{
+	padding-bottom:0px;
+}
+
+
 
 #login .bx-wrapper {
     margin: 4px 0px 0px 0px;
@@ -150,7 +155,9 @@ display: none;
 /* Join*/ 
 
 #join {
-	height: 849px;
+	/* height: 849px; */
+	/* 가입하기 수정  */
+	height: fit-content;
 	width: 900px;
 	border: none;
 }
@@ -306,4 +313,19 @@ display: none;
 }
 .errMsg{
 	color: #3b5998;
+}
+main#join > form > section > table .joinInfo{
+	border: none;
+}
+main#join > button#memberJoinBtn {
+	display: block;
+	width: 180px;
+    height: 45px;
+    background: #0057e7;
+    color: #fff;
+    font-size: 18px;
+    border : none;
+    margin: 40px auto;
+    border-radius: 4px;
+    cursor: pointer;
 }
