@@ -7,23 +7,26 @@
 	<!-- 국문학과 게시판 목록 출력(List) -->
 	<select id="selectBoards"
 		resultType="kr.co.ChimAcademy.vo.BoardVO">
-
 		SELECT a.*, b.name
 		FROM `board` AS a
 		JOIN `member` AS b
 		ON a.uid = b.uid
 		WHERE a.depCode = 'A101'
-		ORDER BY `rdate` desc
-
+		ORDER BY `rdate` desc limit #{start}, 10;
 	</select>
 
+	<!-- 국문학과 게시판 보기(View) -->
+	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name
+		FROM `board` AS a
+		JOIN `member` AS b
+		ON a.uid = b.uid where `no`=#{no};
+	</select>
 
 	<!-- 국문학과 게시판 작성(Write) -->
-	<insert id="insertBoards">
-		insert into `board` set
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO `board` SET
 		`depCode`='A101',
-		`lecCode`=#{lecCode},
-
 		`title`=#{title},
 		`content`=#{content},
 		`uid`=#{uid},
@@ -31,13 +34,14 @@
 		`rdate`=NOW();
 	</insert>
 
+	<!-- 국문학과 게시판 글 삭제(delete) -->
+	<delete id="deleteBoard">
+		DELETE from `board` WHERE `no` = #{no};
+	</delete>
 	
-	<!-- 국문학과 게시판 보기(View) -->
-	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
-		SELECT a.*, b.name
-		FROM `board` AS a
-		JOIN `member` AS b
-		ON a.uid = b.uid where `no`=#{no};
+	<!-- 페이징(Paging) -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(`no`) FROM `board` WHERE `depCode` = 'A101';
 	</select>
 
 </mapper>

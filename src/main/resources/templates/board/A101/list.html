@@ -1,50 +1,46 @@
-<th:block th:include="@{board/A101/_header.html}"/>
+<th:block th:include="@{board/A101/_header.html}" />
 
-	<main>
-   	<th:block th:include="@{_aside.html}"/>
-            <section id="depList">
-                <!-- 내 정보 -->
-                <div class="banner">
-					<img th:src="@{/img/board/A101/A101_banner.png}" alt="헤더로고">
-                </div>
-               <section>
-                    <table>
-                        <tr>
-                            <th>no</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>조회수</th>
-                            <th>작성일</th>
-                        </tr>
-                        <tr th:each="Korean : ${Korean}">
-                        	 
-                           <td>[[${Korean.no}]]</td>
-
-                           <td><a th:href="@{/board/A101/view}">[[${Korean.title}]]</a></td>
-
-                           <td>[[${Korean.uid}]]</td>
-
-                           <td><a th:href="@{/board/A101/view(no=${Korean.no})}">[[${Korean.title}]]</a></td>
-                           <td>[[${Korean.name}]]</td>
-
-                           <td>[[${Korean.hit}]]</td>
-                           <td th:text="${#strings.substring(Korean.rdate, 2, 10)}" />                     
-                   </table>
-                </section>
-                <div class="page_div">
-                    <div class="page">
-                        <a href=""><</a>
-                        <a href="" class="on">1</a>
-                        <a href="">2</a>
-                        <a href="">3</a>
-                        <a href="">></a>
-                    </div>
-                    <div class="addPage">
-                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/A101/write} + '\''">새글 작성</button>
-                    </div>
-                </div>
-
-            
-            </section>
-		</main>
-<th:block th:include="@{_footer.html}"/>
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<section id="depList">
+		<!-- 내 정보 -->
+		<div class="banner">
+			<img th:src="@{/img/board/A101/A101_banner.png}" alt="헤더로고">
+		</div>
+		<section>
+			<table>
+				<tr>
+					<th>no</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성일</th>
+				</tr>
+				<tr th:each="korean : ${korean}">
+					<td>[[${korean.no}]]</td>
+					<td><a th:href="@{/board/A101/view(no=${korean.no}, pg=${pg})}">[[${korean.title}]]</a></td>
+					<td>[[${korean.name}]]</td>
+					<td>[[${korean.hit}]]</td>
+					<td th:text="${#strings.substring(korean.rdate, 2, 10)}" />
+			</table>
+		</section>
+		<div class="page_div">
+			<div class="page">
+				<th:block th:if="${groups[0]>1}">
+					<a th:href="@{/board/A101/list(pg=${groups[0]-1})}" class="prev">&lt;</a>
+					</th:block>
+					<th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
+						<a th:href="@{/board/A101/list(pg=${num})}"
+							th:class="${num==currentPage?'num on':'num'}">[[${num}]]</a>
+					</th:block>
+					<th:block th:if="${groups[1]<lastPageNum}">
+					<a th:href="@{/board/A101/list(pg=${groups[1]+1})}" class="next">&gt;</a>
+					</th:block>
+			</div>
+			<div class="addPage">
+				<button class="btn blue" th:onclick="'location.href=\'' + @{/board/A101/write} + '\''">새글 작성</button>
+			</div>
+		</div>
+	</section>
+</main>
+<th:block th:include="@{_footer.html}" />

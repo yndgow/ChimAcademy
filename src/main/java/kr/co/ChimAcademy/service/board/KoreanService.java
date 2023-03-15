@@ -16,22 +16,73 @@ public class KoreanService {
 	private KoreanDAO dao;
 	
 	// 국문학과 게시판 목록 출력(List)
-	public List<BoardVO> selectBoards() {
-		return dao.selectBoards();
+	public List<BoardVO> selectBoards(int start) {
+		return dao.selectBoards(start);
 	}
 	
-	// 국문학과 게시판 작성 출력(Write)
-	public int insertBoard(BoardVO vo) {
-	
-
-		int result = dao.insertBoard(vo);
-
-		return result;
-	}
-	
-	// 국문학과 게시판 보기(view)
+	// 국문학과 게시판 보기(View)
 	public BoardVO selectBoard(int no) {
 		return dao.selectBoard(no);
 	}
 	
+	// 국문학과 게시판 작성(Write)
+	public int insertBoard(BoardVO vo) {
+		int result = dao.insertBoard(vo);
+		return result;
+	}
+	
+	// 국문학과 게시판글 삭제(Delete)
+	public int deleteBoard(int no) {
+		return dao.deleteBoard(no);
+	}
+	
+	/* 국문학과 게시판 페이징 */
+	// 페이징
+	public int selectCount() {
+		return dao.selectCount();
+	}
+	
+	// 현재 페이지 번호
+	public int getCurrnetPage(String pg) {
+		int currentPage = 1;
+		
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		return currentPage;
+	}
+	
+	// 페이시 시작
+	public int getLimitStrat(int currentPage) {
+		return (currentPage - 1) * 10;
+	}
+	
+	// Last Page Number
+	public int getLastPageNum(int total) {
+		int lastPageNum = 0;
+		if(total % 10 == 0) {
+			lastPageNum = total / 10;
+		}else {
+			lastPageNum = total / 10+1;
+		}
+		return lastPageNum;
+	}
+	
+	// 페이지 시작 번호
+	public int getPageStartNum(int total, int start) {
+		return total - start;
+	}
+	
+	// 페이지 그룹
+	public int[] getPageGroup(int currentPage, int lastPageNum) {
+		int groupCurrent = (int) Math.ceil(currentPage / 10.0);
+		int groupStart = (groupCurrent - 1) * 10+1;
+		int groupEnd = groupCurrent * 10;
+		
+		if(groupEnd > lastPageNum) {
+			groupEnd = lastPageNum;
+		}
+		int[] groups = {groupStart, groupEnd};
+		return groups;
+	}
 }
