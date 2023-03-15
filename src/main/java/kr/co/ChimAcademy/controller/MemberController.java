@@ -62,10 +62,27 @@ public class MemberController {
 	
 	@ResponseBody
 	@GetMapping("member/email")
-	public String emailAuth(String addr) {
+	public String countEmail(String email) {
+		int result = memberService.countEmail(email);
+		ObjectMapper om = new ObjectMapper();
+		String json = null;
+		try {
+			json = om.writeValueAsString(result);
+		} catch (JsonProcessingException e) {
+			log.error(e.getMessage());
+		}
+		
+		log.info("result : " + result);
+		return json;
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("member/emailCode")
+	public String emailAuth(String email) {
 		int code = 0;
 		try {
-			code = memberService.sendEmail(addr);
+			code = memberService.sendEmail(email);
 		} catch (MessagingException e) {
 			log.error(e.getMessage());
 		}

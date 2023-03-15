@@ -37,6 +37,11 @@ public class MemberService {
 		return memberRepo.findByNameAndBirthAndHp(name, birth, hp);
 	}
 	
+	// 이메일 중복여부 체크
+	public int countEmail(String email) {
+		return memberRepo.countByEmail(email);
+	}
+	
 	
 	// 가입하기
 	@Transactional

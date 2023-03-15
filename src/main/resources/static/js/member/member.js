@@ -48,10 +48,11 @@ let pwVal = false;
 let emailVal = false;
 let pwEqual = false;
 let addr1Val = false;
+let emailCodeVal = false;
 
 // 이름 유효성 검사
 function nameCheck(){
-	$('input[name=name]').keyup(function(){
+	$('input[name=name]').on('keyup focusout',function(){
 		let name = $(this).val();
 		
 		nameVal = regexName.test(name);
@@ -67,7 +68,7 @@ function nameCheck(){
 
 // 생년월일 유효성 검사
 function birthCheck(){
-	$('input[name=birth]').keyup(function(){
+	$('input[name=birth]').on('keyup focusout',function(){
 		let birth = $(this).val();
 		
 		birthVal = regexBirth.test(birth);
@@ -83,7 +84,7 @@ function birthCheck(){
 
 // 휴대폰 유효성 검사
 function hpCheck(){
-	$('input[name=hp]').keyup(function(){
+	$('input[name=hp]').on('keyup focusout',function(){
 		let hp = $(this).val();
 		
 		hpVal = regexHp.test(hp);
@@ -135,24 +136,26 @@ function searchUid(){
 
 // 세션스토리지를 활용하여 데이터 넘기기
 function memSessStorage(){
-	if(sessionStorage.length > 0){
-		const dataStr = sessionStorage.getItem('data');
-		const data = JSON.parse(dataStr);
+
+	
+	
+	const dataStr = sessionStorage.getItem('data');
+	const data = JSON.parse(dataStr);
+			
+	if(data.name) $('input[name=name]').val(data.name);
+	if(data.uid) $('input[name=uid]').val(data.uid);
+	if(data.hp) $('input[name=hp]').val(data.hp);
+	if(data.birth) $('input[name=birth]').val(data.birth);
 		
-		$('input[name=name]').val(data.name);
-		$('input[name=uid]').val(data.uid);
-		$('input[name=hp]').val(data.hp);
-		$('input[name=birth]').val(data.birth);
-		sessionStorage.clear();
+	sessionStorage.clear();
 		
-	}else{
-		location.href = '/ChimAcademy/member/confirm';
-	}
 }
+
+
 
 // 비밀번호 유효성 검사
 function pwCheck(){
-	$('input[name=pass]').keyup(function(){
+	$('input[name=pass]').on('keyup focusout', function(){
 		let pw = $(this).val();
 		
 		pwVal = regexPw.test(pw);
@@ -170,7 +173,7 @@ function pwCheck(){
 
 // 비밀번호 일치 검사
 function pwEqualCheck(){
-	$('input[name=pass2]').keyup(function(){
+	$('input[name=pass2]').on('keyup focusout',function(){
 		let pw = $('input[name=pass]').val();
 		let pw2 = $(this).val();
 		
@@ -188,7 +191,7 @@ function pwEqualCheck(){
 
 // 이메일 유효성 검사
 function emailCheck(){
-	$('input[name=email]').keyup(function(){
+	$('input[name=email]').on('keyup focusout',function(){
 		let email = $(this).val();
 		
 		emailVal = regexEmail.test(email);
@@ -201,6 +204,80 @@ function emailCheck(){
 		}
 	});
 }
+
+let emailCode;
+
+// 인증 이메일 발송
+function emailAuth(){
+	$('#btnEmailAuth').click(function(){
+		
+		let jsonData = {email : $('input[name=email]').val()};
+		
+		$.ajax({
+			type: "GET",
+			url: "/ChimAcademy/member/email",
+			data: jsonData,
+			dataType: "json",
+			async: false,
+			success: function (data) {
+				if(data > 0){
+					alert('이미 존재하는 이메일입니다.');
+					emailVal = false;
+					$('input[name=email]').css('background', '#ffffff');
+					return false;		
+				}
+			}
+		});
+		
+		if(emailVal){
+			emailCodeVal = false;
+			$('#trEmailAuth').show();
+			alert('인증번호가 발송되었습니다. 이메일의 인증번호를 확인해주세요.');
+			$(this).attr("disabled", true);
+			$(this).css('background', '#8b9dc3');	
+			$('footer').css('position', 'static');
+			setTimeout(function() {
+				$('#btnEmailAuth').attr("disabled", false);
+				$('#btnEmailAuth').css('background', '#3b5998');
+			},5000);
+			
+			let jsonData = {email :$('input[name=email]').val()};
+			
+			$.ajax({
+				type: "GET",
+				url: "/ChimAcademy/member/emailCode",
+				data: jsonData,
+				dataType: "json",
+				success: function (data) {
+					emailCode = data;
+				}
+			});
+			
+			
+		}else{
+			alert('입력하신 이메일을 확인해주세요.');
+		}
+		
+	});	
+}
+
+// 인증 이메일 코드 확인
+function emailCodeConfirm(){
+	$('#btnCodeConfirm').click(function(){
+		let inputCode = $('input[name=emailCode]').val();
+		if(inputCode == emailCode){
+			alert('인증번호가 확인되었습니다.');
+			$('footer').css('position', 'absolute');
+			$('#trEmailAuth').hide();
+			$('input[name=email]').attr('readonly', true);
+			emailCodeVal = true;	
+		}else{
+			alert('인증번호가 일치하지 않습니다.');
+		}
+		
+	});
+}
+
 
 // 다음 주소 api
 function execDaumPostcode() {
@@ -250,6 +327,7 @@ function execDaumPostcode() {
 	            document.getElementById("addr2").focus();
 	            $('input[name=zip]').css('background', '#dfe3ee');
 	            $('input[name=addr1]').css('background', '#dfe3ee');
+	            $('input[name=addr2]').css('background', '#dfe3ee');
 	            addr1Val = true;
 	        }
 	    }).open();
@@ -262,8 +340,13 @@ function memberJoin(){
 		let addr2Val = $('input[name=addr2]').val();
 		
 		
+		//if(pwVal && emailVal && pwEqual && addr1Val && addr2Val && emailCodeVal){
 		if(pwVal && emailVal && pwEqual && addr1Val && addr2Val){
 			$('#memberJoinForm').submit();
+			alert('성공적으로 가입되었습니다. 로그인해주세요.')
+			let data = {uid : $('input[name=uid]').val()};
+			
+			sessionStorage.setItem('data', JSON.stringify(data));
 		}else{
 			if(!pwVal) $('input[name=pass]').css('background', 'rgb(255 219 234)');
 			if(!emailVal) $('input[name=email]').css('background', 'rgb(255 219 234)');

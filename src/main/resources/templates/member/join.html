@@ -1,12 +1,19 @@
 <th:block th:include="@{member/_header.html}"/>
 <script>
 	$(()=>{
+		if(sessionStorage.length == 0){
+			location.href = '/ChimAcademy/member/confirm';
+		}
 		memSessStorage();
 		pwCheck();
 		emailCheck();
+		emailAuth();
+		emailCodeConfirm();
 		pwEqualCheck();
 		execDaumPostcode();
 		memberJoin();
+
+		
 	});
 </script>
 		<main id="join">
@@ -21,21 +28,21 @@
 							<th>
 								<span class="essential">*</span>이름
 							</th>
-							<td><input type="text" name="name" value="" class="joinInfo"></td>
+							<td><input type="text" name="name" value="" class="joinInfo" readonly="readonly"></td>
 							<th>
 								<span class="essential">*</span>생년월일
 							</th>
-							<td><input type="text" name="birth" value="" class="joinInfo"></td>
+							<td><input type="text" name="birth" value="" class="joinInfo" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<th>
 								<span class="essential">*</span>학번
 							</th>
-							<td><input type="text" name="uid" value="" class="joinInfo"></td>
+							<td><input type="text" name="uid" value="" class="joinInfo" readonly="readonly"></td>
 							<th>
 								<span class="essential">*</span>휴대폰번호
 							</th>
-							<td><input type="text" name="hp" value="" class="joinInfo"></td>
+							<td><input type="text" name="hp" value="" class="joinInfo" readonly="readonly"></td>
 						</tr>
 					</table>
 				</section>
@@ -82,16 +89,17 @@
 							</th>
 							<td colspan="2">
 								<input type="email" name="email" required>
+								<button type="button" id="btnEmailAuth" class="btnEmail">인증번호 발송</button>
 								<span id="msgEmail" class="errMsg">이메일 주소 형식에 맞게 입력해주세요.</span>
 							</td>
 						</tr>
-						<tr>
+						<tr style="display: none;" id="trEmailAuth">
 							<th>
-								<span class="essential">*</span>이메일 주소
+								<span class="essential">*</span>인증번호 입력
 							</th>
 							<td colspan="2">
-								<input type="email" name="email" required>
-								<span id="msgEmail" class="errMsg">이메일 주소 형식에 맞게 입력해주세요.</span>
+								<input type="text" name="emailCode" required>
+								<button type="button" id="btnCodeConfirm" class="btnEmail">인증번호 확인</button>
 							</td>
 						</tr>
 						
