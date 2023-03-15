@@ -21,4 +21,17 @@
 							`thumb`=#{thumb},
 							`rdate`=now();
 	</insert>
+	<insert id="insertEbookFlie">
+		insert into `ebook_file` set 
+		`parent`=#{parent}, 
+		`newName`=#{newName}, 
+		`oriName`=#{oriName}, 
+		`rdate`=now();
+	</insert>
+	<select id="selectCate1s" resultType="kr.co.ChimAcademy.vo.EbookCate1VO">
+		select * from `ebook_cate1`;
+	</select>
+	<select id="selectCate2s" resultType="kr.co.ChimAcademy.vo.EbookCate2VO">
+		select * from `ebook_cate2` where `c1`=#{c1};
+	</select>
 </mapper>

@@ -88,7 +88,7 @@ public class Ebook_ArticleService {
 	}
 	// 파일 업로드 ///////////////////////////////////////////////////////
 	
-	private String uploadPath = "articleFile/"; // 프로젝트 내 가상 경로
+	private String uploadPath = "elibFile/articleFile/"; // 프로젝트 내 가상 경로
 	
 	public Ebook_Article_fileVO fileUpload(Ebook_ArticleVO vo) {
 		// 첨부 파일
@@ -132,7 +132,7 @@ public class Ebook_ArticleService {
 	public void deleteRealFile(Ebook_Article_fileVO vo) {
 		if(vo.getNewName() != null) {
 			// 실제 파일 삭제
-			String path = new File("articleFile/").getAbsolutePath();
+			String path = new File("elibFile/articleFile/").getAbsolutePath();
 			File file = new File(path,vo.getNewName());
 			if(file.exists()) {
 				file.delete();
