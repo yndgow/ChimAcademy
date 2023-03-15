@@ -879,7 +879,7 @@ table th, table td {
     font-weight: bold;
 }
 .reg select {
-	width: 100px;
+	width: 120px;
 }
 .reg input[type=text] {
 	width: 50%;

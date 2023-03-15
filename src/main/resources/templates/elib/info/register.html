@@ -1,4 +1,36 @@
 <th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript">
+	$(function(){
+		$('.cate1').change(function(){
+			let c1 = $(this).val();
+			let jsonData = {"c1":c1};
+			$('.opt').remove(); // cate1 다시 선택 시 이전 cate2를 지우기 위해
+			$.ajax({
+				url:"/ChimAcademy/elib/info/cate2s",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					console.log(data.cate2s[0].c1)
+					if(data.cate2s[0].c1 > 0){
+						for(let vo of data.cate2s){
+	                        let tag = "<option class='opt' value="+vo.c2+">"+vo.c2Name+"</option>";
+	                        $('.cate2').append(tag); // select에 option을 뒤에 붙임
+	                    }
+					}
+				}
+			})
+		});
+		$('.cate2').change(function(){
+			let c1 = $('.cate1').val();
+			let c2 = $(this).val();
+			$('input[name=bookId]').val("ISBN-978-"+c1+"-"+c2);
+		});
+		$('.submit').click(function(){
+			$('.form').submit();
+		});
+	});
+</script>
         <main id="sub-container">
             <div class="sub-visual">
                 <div class="bg">
@@ -48,12 +80,12 @@
                                 	</li>
                                 </ul>
                                 <div>
-                                	<form th:action="@{/elib/info/register}" method="post" enctype="multipart/form-data">
+                                	<form class="form" th:action="@{/elib/info/register}" method="post" enctype="multipart/form-data">
                                 	<table class="type01 reg">
                                 		<tr>
                                 			<th>도서번호</th>
                                 			<td>
-                                				<input type="text" name="bookId" placeholder="카테고리를 설정 시 도서번호는 자동으로 설정됩니다.">
+                                				<input type="text" name="bookId" placeholder="카테고리를 설정 시 도서번호는 자동으로 설정됩니다."><span>  식별번호는 DB 입력할 때 자동입력</span>
                                 			</td>
                                 		</tr>
                     	                <tr>
@@ -68,16 +100,17 @@
                                 		<tr>
                                 			<th>상위 카테고리</th>
                                 			<td>
-                                				<select name="cate1">
+                                				<select name="cate1" class="cate1">
                                 					<option value="#">상위</option>
+                                					<option th:each="cate1 : ${cate1s}" th:value="${cate1.c1}">[[${cate1.c1Name}]]</option>
                                 				</select>
                                 			</td>
                                 		</tr>
                                 		<tr>
                                 			<th>하위 카테고리</th>
                                 			<td>
-                                				<select name="cate2">
-                                					<option value="#">하위</option>
+                                				<select name="cate2" class="cate2">
+                                					<option class="opt" value="#">하위</option>
                                 				</select>
                                 			</td>
                                 		</tr>
@@ -149,7 +182,7 @@
                                 		</tr>
                                 	</table>
                                 	<div class="btns">
-                                		<a class="btn" href="#">
+                                		<a class="btn submit" href="#">
                                 			<span class="material-icons">edit</span>
                                 			<span>등록하기</span>
                                 		</a>

@@ -2,7 +2,9 @@ package kr.co.ChimAcademy.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,14 +15,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.ChimAcademy.service.EbookService;
 import kr.co.ChimAcademy.service.Ebook_ArticleService;
+import kr.co.ChimAcademy.vo.EbookCate1VO;
+import kr.co.ChimAcademy.vo.EbookCate2VO;
+import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
 
 @Controller
 public class ELibController {
 
+	@Autowired
+	private EbookService eService;
+	
 	@Autowired
 	private Ebook_ArticleService aService;
 	
@@ -113,8 +125,23 @@ public class ELibController {
 		return "elib/info/install";
 	}
 	@GetMapping("elib/info/register")
-	public String register() {
+	public String register(Model model) {
+		List<EbookCate1VO> cate1s = eService.selectCate1s();
+		model.addAttribute("cate1s",cate1s);
 		return "elib/info/register";
+	}
+	@PostMapping("elib/info/register")
+	public String register(EbookVO vo) {
+		eService.insertEbook(vo);
+		return "redirect:/elib/ebook/list";
+	}
+	@ResponseBody
+	@RequestMapping(value="elib/info/cate2s", method = {RequestMethod.POST})
+	public Map<String, List<EbookCate2VO>> cate2s(int c1) {
+		List<EbookCate2VO> cate2s = eService.selectCate2s(c1);
+		Map<String, List<EbookCate2VO>> map = new HashMap<>();
+		map.put("cate2s", cate2s);
+		return map;
 	}
 	@GetMapping("elib/info/delete")
 	public String delete(int no) {
