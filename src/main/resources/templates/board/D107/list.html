@@ -11,10 +11,10 @@
                     <table>
                         <tr>
                             <th>no</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>조회수</th>
-                            <th>작성일</th>
+                            <th style="width: 50%">제목</th>
+                            <th style="width: 18%">작성자</th>
+                            <th style="width: 7%">조회수</th>
+                            <th style="width: 15%">작성일</th>
                         </tr>
                         <tr th:each="board : ${boards}">
                            <td>[[${board.no}]]</td>
