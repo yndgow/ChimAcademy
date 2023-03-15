@@ -1,8 +1,9 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/D107/_header.html}"/>
 
         <main>
    			<th:block th:include="@{_aside.html}"/>
 			<div class="board">
+			<form th:action="@{/board/D107/modify}" method="post">
 				<table>
 					<h1>글 수정하기</h1>
 					<tbody>
@@ -20,10 +21,12 @@
 						</tr>
 					</tbody>
 				</table>
-				<section class="btn_div">
+				<section class="btn_div" style="margin-bottom: 200px;">
 					<button class="btn nomal" >목록</button>
-					<button class="btn blue">수정완료</button>
+					<button class="btn blue" type="submit">수정완료</button>
                 </section>
+                <input type="hidden" name="no" th:value="${board.no}">
+                </form>
 			</div>
 		</main>
 <th:block th:include="@{_footer.html}"/>

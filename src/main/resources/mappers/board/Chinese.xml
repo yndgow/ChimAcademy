@@ -23,7 +23,9 @@
 	</select>
 	
 	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
-		select * from `board` where `no`=#{no};
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b USING(uid)
+		WHERE `no`=#{no};
 	</select>
 	
 	<select id="selectCountTotal" resultType="int">
@@ -35,11 +37,12 @@
 			`depCode`='D107',
 			`title`=#{title},
 			`content`=#{content},
-			`rdate`= NOW();	
+			`rdate`= NOW()
+			where `no`=#{no};	
 	</update>
 	
 	<delete id="deleteBoard">
-		delete `board` where `no`=#{no};
+		delete from `board` where `no`=#{no};
 	</delete>
 	
 	
