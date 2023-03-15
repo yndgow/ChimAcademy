@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ChimAcademy.dao.AssistantDAO">
+
+	<select id="selectDep" resultType="kr.co.ChimAcademy.vo.DepartmentVO">
+		SELECT a.*
+		FROM department AS a 
+		JOIN member AS b 
+		USING(depCode) 
+		WHERE uid = #{uid};
+	</select>
+	
+	<insert id="insertMems">
+		INSERT INTO member SET 
+			uid = #{uid}, 
+			name = #{name}, 
+			birth = #{birth}, 
+			hp = #{hp}, 
+			depCode = #{depCode};
+	</insert>
+
+
+
+</mapper>

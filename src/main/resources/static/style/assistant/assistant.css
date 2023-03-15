@@ -1,11 +1,11 @@
 /* 마이페이지 */
 
 main{
-    display: flex;
+    /* display: flex; */
     width: 1280px;
 }
 main>section {
-    width: 1130px;
+    width: 1010px;
     min-height: 600px;
     padding: 20px;
     float: left;
@@ -75,7 +75,7 @@ main>section>article>table>tbody {
 
 /* 내 정보 */
 #myinfo{
-    width: 100%;
+    /* width: 100%; */
 }
 
 #myinfo > h1{
@@ -99,7 +99,7 @@ main>section>article>table>tbody {
 }
 
 #myinfo>section>table {
-    height: 200px;
+    height: auto;
     border-top: 2px solid #8798a3;
     border-bottom: 2px solid #8798a3;
     width: 100%;
@@ -231,4 +231,30 @@ main>section>article>table>tbody {
 #myinfo .as_modify > table{
     width: 100%;
     height: 450px;
+}
+
+/* insert영역 수정 */
+#divAsInsert{
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+#divAsInsert > button{
+	width: 100px;
+	height: 30px; 
+	background: #3B5998;
+	color: #ffffff;
+	border: none;
+	border-radius : 4px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#insertMemTable > tbody input{
+	border:none;
+}
+#insertMemTable tr > td{
+	border : 1px solid #F7F7F7;
 }

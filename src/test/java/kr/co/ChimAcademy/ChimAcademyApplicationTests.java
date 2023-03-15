@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.service.MemberService;
 
 @SpringBootTest
@@ -18,15 +19,16 @@ class ChimAcademyApplicationTests {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MemberRepo memberRepo;
 	
 	@Test
-	public void sendEmail() throws MessagingException {
-		String to = "tagetwin@naver.com";
-		String subject = "test메일입니다.";
-		String text = "test";
-		memberService.sendEmail(to);
-		
+	public void test() {
+		int result = memberRepo.countByEmail("test2@gmail.com");
+		System.out.println(result);
 	}
+	
+	
 	
 	
 	

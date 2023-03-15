@@ -17,7 +17,8 @@ a {text-decoration: none;color: black;}
 	/* 푸터 하단고정 */
  	min-height: 100%;
     position: relative;
-    padding-bottom: 160px;		
+    /* 패딩바텀 없어도 되는지 테스트 */
+    padding-bottom: 160px;
 }
 
 main {

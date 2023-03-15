@@ -31,7 +31,7 @@
             </ol>
         </li>
         <!-- </th:block> -->
-		<!-- <th:block sec:authorize="hasAnyRole('ROLE_2', 'ROLE_4')"> -->         
+		<th:block sec:authorize="hasAnyRole('ROLE_2', 'ROLE_4')">         
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>조교</a>
             <ol>
@@ -41,7 +41,7 @@
            	   <li><a th:href="@{/assistant/modify}">인원수정</a></li>
             </ol>
         </li>
-        <!-- </th:block> -->        
+        </th:block>        
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-comments"></i>학과게시판</a>
             <ol>

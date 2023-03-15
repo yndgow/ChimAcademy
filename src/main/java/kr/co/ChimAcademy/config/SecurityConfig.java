@@ -64,7 +64,7 @@ public class SecurityConfig {
         http.rememberMe()
         				.userDetailsService(securityUserService)
         				.tokenRepository(tokenRepository())
-        				.tokenValiditySeconds(600);
+        				.tokenValiditySeconds(604800); // 토큰유지시간(초단위) - 일주일
         
 //        http.exceptionHandling().accessDeniedPage("/accessDenied");
 //        	.accessDeniedPage("/accessDenied");

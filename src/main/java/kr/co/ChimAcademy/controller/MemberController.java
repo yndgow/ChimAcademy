@@ -26,6 +26,7 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 
+	// 아이디 찾기
 	@ResponseBody
 	@GetMapping("member/search")
 	public String searchUid(String name, String birth, String hp) {
@@ -60,6 +61,7 @@ public class MemberController {
 		return "member/confirm";
 	}
 	
+	// 이메일 중복 확인
 	@ResponseBody
 	@GetMapping("member/email")
 	public String countEmail(String email) {
@@ -76,7 +78,7 @@ public class MemberController {
 		return json;
 	}
 	
-	
+	// 이메일 전송
 	@ResponseBody
 	@GetMapping("member/emailCode")
 	public String emailAuth(String email) {
@@ -94,8 +96,12 @@ public class MemberController {
 		} catch (JsonProcessingException e) {
 			log.error(e.getMessage());
 		}
-		
-		
 		return json;
+	}
+	
+	// 비밀번호 찾기 페이지 이동
+	@GetMapping("member/findPw")
+	public String findPw() {
+		return "member/findPw";
 	}
 }

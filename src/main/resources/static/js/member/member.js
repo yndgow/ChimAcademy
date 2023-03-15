@@ -136,9 +136,6 @@ function searchUid(){
 
 // 세션스토리지를 활용하여 데이터 넘기기
 function memSessStorage(){
-
-	
-	
 	const dataStr = sessionStorage.getItem('data');
 	const data = JSON.parse(dataStr);
 			
@@ -150,8 +147,6 @@ function memSessStorage(){
 	sessionStorage.clear();
 		
 }
-
-
 
 // 비밀번호 유효성 검사
 function pwCheck(){
@@ -252,8 +247,6 @@ function emailAuth(){
 					emailCode = data;
 				}
 			});
-			
-			
 		}else{
 			alert('입력하신 이메일을 확인해주세요.');
 		}
@@ -277,7 +270,6 @@ function emailCodeConfirm(){
 		
 	});
 }
-
 
 // 다음 주소 api
 function execDaumPostcode() {
@@ -339,9 +331,7 @@ function memberJoin(){
 	$('#memberJoinBtn').click(function(){
 		let addr2Val = $('input[name=addr2]').val();
 		
-		
-		//if(pwVal && emailVal && pwEqual && addr1Val && addr2Val && emailCodeVal){
-		if(pwVal && emailVal && pwEqual && addr1Val && addr2Val){
+		if(pwVal && emailVal && pwEqual && addr1Val && addr2Val && emailCodeVal){
 			$('#memberJoinForm').submit();
 			alert('성공적으로 가입되었습니다. 로그인해주세요.')
 			let data = {uid : $('input[name=uid]').val()};
@@ -358,6 +348,3 @@ function memberJoin(){
 		}
 	});
 }
-
-
-

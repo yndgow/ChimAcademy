@@ -2,13 +2,13 @@ package kr.co.ChimAcademy.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,6 +22,7 @@ import lombok.Data;
 @Table(name = "member")
 public class MemberEntity {
 	@Id
+	@Column(name = "uid")
 	private String uid;
 	@JsonIgnore
 	private String pass;
@@ -35,7 +36,7 @@ public class MemberEntity {
 	private int avgCredit;
 	private String hp;
 	private String email;
-	private String status;
+	private int status;
 	private int level;
 	private String zip;
 	private String addr1;

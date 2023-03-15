@@ -12,16 +12,8 @@
     
     <!-- 작업 css -->
   	<link rel="stylesheet" th:href="@{/style/assistant/assistant.css}"/>
-  
-    <script>
-        $(function(){
-            $('#side > li > ol').hide();
-
-            $('#side > li > a').click(function(){
-                $(this).siblings().slideToggle(300);
-            });
-        });
-    </script> 
+  	<!-- 작업 js -->
+  	<script th:src="@{/js/assistant/assistant.js}"></script>
 
 </head>
 <th:block th:include="@{_body.html}"/>
