@@ -16,9 +16,15 @@ public interface JapaneseDAO {
 	
 	public int insertJapanese(BoardVO vo);
 	public int updateJapanese(BoardVO vo);
-
+	public int hitJapanese(BoardVO vo);
+	
 	public int deleteJapanese(int no);
 	
+	//댓글작성
+	public int insertComment(BoardVO vo);
+
+	//댓글보기
+	public List<BoardVO> selectComment(int parent);
 	
 	//페이징 작업
 	public int selectCountTotal();
