@@ -18,8 +18,7 @@
 		SELECT a.*, b.name FROM `board` AS a
 		LEFT JOIN `member` AS b USING(uid)
 		WHERE a.`depCode`='D107'
-		ORDER BY `no` DESC
-		limit 10;
+		ORDER BY `rdate` desc limit #{start}, 10;
 	</select>
 	
 	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
@@ -29,7 +28,7 @@
 	</select>
 	
 	<select id="selectCountTotal" resultType="int">
-		select count(`no`) from `board` where `parent`=0;
+		select count(`no`) from `board` where `parent`=0 AND `depCode`='D107';
 	</select>
 	
 	<update id="updateBoard" useGeneratedKeys="true" keyProperty="no">
