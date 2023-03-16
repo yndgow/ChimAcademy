@@ -15,6 +15,8 @@ public class BoardVO {
 	private int parent;
 	private int regip;
 	private String file;
+	private int good;
+	private int bad;
 	
 	/* 추가필드 */
 	private String name;

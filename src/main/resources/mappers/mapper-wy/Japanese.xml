@@ -8,7 +8,7 @@
 		SELECT a.*, b.* FROM `board` AS a
 		JOIN `member` as b
 		ON a.uid = b.uid
-		WHERE a.depCode = 'P701' 
+		WHERE a.depCode = 'P701' and a.parent = 0 
 		order by a.rdate desc limit #{start}, 10;
 	</select>
 	
@@ -16,7 +16,7 @@
 		SELECT * from `board` where `no` = #{no};
 	</select>
 	
-	
+	<!-- 게시판 등록-->
 	<insert id="insertJapanese">
 		insert into `board` set
 			`depCode`='P701',
@@ -28,16 +28,40 @@
             `rdate`=NOW();
 	</insert>
 	
+	<!-- 댓글-->
+	<insert id="insertComment">
+		insert into `board` set
+			`depCode`='P701',
+            `content`=#{content},
+            `uid`=#{uid},
+            `regip`=#{regip},
+            `rdate`=NOW(),
+            `parent` = #{parent};
+            
+	</insert>
+	
+	<!-- 댓글보기-->
+	<select id="selectComment" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT * from `board` where `parent` = #{no}  AND `depCode`= 'P701' ORDER BY `no` desc;
+	</select>
+	
+	<!-- 게시판 수정-->
 	<update id="updateJapanese">
 	  UPDATE `board` set
 		`depCode`='P701',
 	    `lecCode`=#{lecCode},
-	    `title`=#{title},
 	    `content`=#{content},
 	    `uid`=#{uid},
 	    `regip`=#{regip},
 	    `rdate`=NOW()
 	  	WHERE `no` = #{no}
+	</update>
+	
+	<!-- 조회수 증가-->
+	<update id="hitJapanese">
+	   UPDATE `board` set
+		`hit` = `hit`+ 1
+	  	WHERE `no` = #{no};
 	</update>
 	
 	<delete id="deleteJapanese">

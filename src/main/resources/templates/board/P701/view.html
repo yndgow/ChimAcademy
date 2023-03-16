@@ -1,5 +1,58 @@
 <th:block th:include="@{board/P701/_header.html}"/>
+	<script>
+	$(function(){
+		
+		$('#btnCommentInsert').click(function(){
+		
+			let jsonData ={
+				content : $('#content').val(),
+				uid : $('input[name=uid]').val(),
+				parent:$('input[name=no]').val()
+			};
+			
+			 $.ajax({
+			        type: 'POST',
+			        url: '/ChimAcademy/board/P701/comment',
+			        data: jsonData,
+			        dataType:'json',
+			        success: function(data) {
+			          // 댓글 목록을 다시 불러오는 등의 작업
+			          alert('성공');
+			          console.log(data.result);
+			        }
+			      });
+			
+			 
+			//댓글 불러오기
+			let CommentData ={
+						content : $('#content').val(),
+						uid : $('input[name=uid]').val(),
+						parent:$('input[name=no]').val()
+					};
+			 
+			 //댓글 불러오기
+			 $.ajax({
+				  type: 'GET',
+				  url: '/ChimAcademy/board/P701/comment',
+				  data: CommentData,
+				  dataType: 'json',
+				  success: function(data) {
+				    console.log(data);
+				    // 성공적으로 데이터를 받아온 경우 처리할 내용
+				    // 받아온 데이터를 이용하여 댓글 목록을 표시하는 등의 작업을 수행할 수 있습니다.
+				  },
+				  error: function(xhr, status, error) {
+				    console.error(error);
+				    // 에러 발생시 처리할 내용
+				  }
+				});
+			
+		})
 
+	})
+	
+	
+	</script>
 
         <main>
             <th:block th:include="@{_aside.html}"/>
@@ -32,29 +85,33 @@
 					<div class="write">
 						<h1>댓글 수 <span>####</span></h1>
 						<h2>홍길동</h2>
-						<textarea name="" id="" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
+						<textarea name="content" id="content" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
 						<div class="btn_end">
-							<button class="btn blue">등록</button>
+							<button id="btnCommentInsert" class="btn blue" type="button">등록</button>
+						</div>
+						<input type="hidden" name="no" th:value="${no}">
+						<input type="hidden" name="uid" th:value="${member.uid}">
+					</div>
+					<div th:each="comment : ${comment}">
+							<div class="view write">
+							<h2>[[${comment.uid}]]</h2>
+							<p>[[${comment.content}]]</p>
+							<div class="btn_div">
+								<span>[[${comment.rdate}]]</span>
+								<div>
+									<button class="btn_small btn_comment">답글보기</button>
+									<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
+									<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+								</div>
 						</div>
 					</div>
-					<div class="view write">
-						<h2>홍길동</h2>
-						<p>댓글 내용입니다</p>
-						<div class="btn_div">
-							<span>2023-01-17</span>
-							<div>
-								<button class="btn_small btn_comment">답글보기</button>
-								<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
-								<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
-							</div>
-						</div>
-						<ul>
-							<li>
+						<!-- <ul>
+							<li th:each="comment : ${comment}">
 								<div class="view recoment">
-									<h2>홍길동</h2>
-									<p>댓글 내용입니다</p>
+									<h2>[[comment.uid]]</h2>
+									<p>[[comment.comment]]</p>
 									<div class="btn_div">
-										<span>2023-01-17</span>
+										<span>comment.rdate</span>
 										<div>
 											<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
 											<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
@@ -72,12 +129,9 @@
 								</div>
 							</li>
 						</ul>
+						 -->
 					</div>
 				</div>
 			</div>
 		</main>
-		<footer>
-			
-		</footer>
-</body>
-</html>
+<th:block th:include="@{_footer.html}"/>

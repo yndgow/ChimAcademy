@@ -1,9 +1,10 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{board/P701/_header.html}"/>
+
 
         <main>
             <th:block th:include="@{_aside.html}"/>
 				<div class="board">
-					 <form method="post" enctype="multipart/form-data">
+					 <form id="commentForm" method="post" enctype="multipart/form-data">
 						<table>
 							<h1>글 작성하기</h1>
 							<tbody>
@@ -30,6 +31,4 @@
 					</form>
 				</div>
 		</main>
-		<footer></footer>
-</body>
-</html>
+<th:block th:include="@{_footer.html}"/>

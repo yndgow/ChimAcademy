@@ -1,7 +1,9 @@
 package kr.co.ChimAcademy.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -70,11 +73,34 @@ public class JapaneseController {
 	public String view(Model model, int no, int pg,@AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();
 		BoardVO vo = service.selectJapanese(no);
+		List<BoardVO> comment = service.selectComment(no);
+		service.hitJapanese(vo);		
+		model.addAttribute("comment", comment);
 		model.addAttribute("member", mem);
 		model.addAttribute("no", no);
 		model.addAttribute("pg", pg);
 		model.addAttribute("vo", vo);
 		return "board/P701/view";
+	}
+	
+	@GetMapping()
+	public String comment(int no) {
+		
+		List<BoardVO> vo =service.selectComment(no);
+		
+		return "board/P701/view";
+	}
+	
+	@ResponseBody
+	@PostMapping("board/P701/comment")
+	public Map<String, Integer> comment(BoardVO vo) {
+		
+		int result = service.insertComment(vo);
+		
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		
+		return map;
 	}
 	
 	

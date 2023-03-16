@@ -34,6 +34,21 @@ public class JapaneseService {
 	public int deleteJapanese(int no) {
 		return dao.deleteJapanese(no);
 	};
+	
+	//조회수 증가
+	public int hitJapanese(BoardVO vo) {
+		return dao.hitJapanese(vo);
+	};
+	
+	//댓글쓰기
+	public int insertComment(BoardVO vo) {
+		return dao.insertComment(vo);
+	}
+	
+	//댓글보기
+	public List<BoardVO> selectComment(int parent){
+		return dao.selectComment(parent);
+	}
 
 	//페이징 작업
 	public int selectCountTotal() {
