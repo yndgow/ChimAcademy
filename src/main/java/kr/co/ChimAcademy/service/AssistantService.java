@@ -62,4 +62,5 @@ public class AssistantService {
 		log.info("lecutres : " + dao.selectLectures(vo));
 		return dao.selectLectures(vo);
 	}
+	
 }

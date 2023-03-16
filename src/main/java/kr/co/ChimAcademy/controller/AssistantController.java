@@ -1,7 +1,9 @@
 package kr.co.ChimAcademy.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -68,11 +70,7 @@ public class AssistantController {
 	@GetMapping("assistant/lecuture")
 	public String lecuture(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
 		DepartmentVO vo = assistantService.selectDep(userDetails.getUser().getUid());
-		
 		List<MajorEntity> list = assistantService.selectMajors(vo.getDepCode());
-		
-		
-		
 		model.addAttribute("department", vo);
 		model.addAttribute("majors", list);
 		return "assistant/lecuture";
@@ -81,8 +79,10 @@ public class AssistantController {
 	@ResponseBody
 	@GetMapping("assistant/lecture/search")
 	public List<LectureVO> selectLectures(LectureVO vo){
-		log.info("vo : " + vo);
-		return assistantService.selectLectures(vo);
+		
+		List<LectureVO> lectures = assistantService.selectLectures(vo);
+		
+		return lectures;
 	}
 	
 }

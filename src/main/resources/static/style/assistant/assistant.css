@@ -276,3 +276,8 @@ main > section.myAssistant button{
     width: 145px;
     height: 22px;
 }
+main #userListTable .btnResultTable{
+    width: 50px;
+    height: 25px;
+	
+}

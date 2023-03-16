@@ -16,8 +16,9 @@ public class LectureVO {
 	private String lecLoc;
 	private int lecLimit;
 	private int lecRequest;
-	private String lecGubun;
+	private int lecGubun;
 	
 	// 추가필드 김지홍
 	private String searchData;
+	private String name;
 }

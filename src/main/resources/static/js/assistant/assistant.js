@@ -111,7 +111,27 @@ function searchBtn(){
 			data: jsonData,
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
+				$('#searchResult').text(data.length);
+				$('#userListTable tbody').empty();
+				let tag = '';
+				data.forEach(function(e, i){
+                    tag += `<tr>
+                        <td>${i+1}</td>
+                        <td>${e.lecClass}</td>
+                        <td>${e.lecCode}</td>
+                        <td>${e.lecName}</td>
+                        <td>${e.lecGubun}</td>
+                        <td>${e.credit}</td>
+                        <td>${e.name}</td>
+                        <td>화123(과학동203)</td>
+                        <td>40</td>
+                        <td>
+                            <button class="btnResultTable">수정</button>
+                            <button class="btnResultTable">삭제</button>
+                        </td>
+                    </tr>`
+				})
+				$('#userListTable tbody').append(tag);
 			}
 		});
 		
