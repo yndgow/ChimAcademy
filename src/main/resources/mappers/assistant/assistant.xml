@@ -13,14 +13,33 @@
 		WHERE uid = #{uid};
 	</select>
 	
-	<insert id="insertMems">
-		INSERT INTO member SET 
-			uid = #{uid}, 
-			name = #{name}, 
-			birth = #{birth}, 
-			hp = #{hp}, 
-			depCode = #{depCode};
-	</insert>
+	<select id="selectLectures" resultType="kr.co.ChimAcademy.vo.LectureVO">
+		SELECT * 
+		FROM lecture 	
+		<where>
+			<if test="depCode != null">
+				depCode= #{depCode}
+			</if>
+			<if test="searchData != null">
+				And (lecName LIKE CONCAT('%', #{searchData}, '%') OR lecCode = #{searchData})
+			</if>
+			<if test="lecClass != null">
+				AND lecClass= #{lecClass}
+			</if>
+			<if test="majorCode != null">
+				And majorCode = #{majorCode}
+			</if>
+			<if test="lecGubun != null">
+				And lecGubun = #{lecGubun} ;
+			</if>
+		</where> 
+			 
+			 
+			 
+			 
+			
+	</select>
+
 
 
 

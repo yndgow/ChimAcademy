@@ -84,3 +84,36 @@ function insertMembers(){
 		})
 	});
 }
+
+function searchBtn(){
+	$('#btnSearchLec').click(function(){
+		let lecGubun = $('select[name=lecGubun]').val();
+		let searchData = $('input[name=searchData]').val();
+		let depCode = $('select[name=depCode]').val();
+		let majorCode = $('select[name=majorCode]').val();
+		let lecClass = $('select[name=lecClass]').val();
+		
+		/*if(!lecGubun) lecGubun = null;
+		if(!majorCode) majorCode = null;
+		if(!lecClass) lecClass = null;*/
+		
+		
+		let jsonData = {};
+		if(lecGubun) jsonData.lecGubun = lecGubun;
+		if(majorCode) jsonData.majorCode = majorCode;
+		if(lecClass) jsonData.lecClass = lecClass;
+		if(searchData) jsonData.searchData = searchData;
+		if(depCode) jsonData.depCode = depCode;
+		
+		$.ajax({
+			type: "GET",
+			url: "/ChimAcademy/assistant/lecture/search",
+			data: jsonData,
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+			}
+		});
+		
+	});
+}
