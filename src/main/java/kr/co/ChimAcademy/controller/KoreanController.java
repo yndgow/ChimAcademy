@@ -29,7 +29,6 @@ public class KoreanController {
 	/* 국문학과 게시판 목록 출력(List) + 페이징 */
 	@GetMapping("board/A101/list")
 	public String list(Model model, @RequestParam(defaultValue = "1") String pg) {
-		pg = "1";
 		int currentPage = service.getCurrnetPage(pg);
 		int start = service.getLimitStrat(currentPage);
 		int total = service.selectCount();
@@ -48,12 +47,6 @@ public class KoreanController {
 		return "board/A101/list";
 	}
 
-	@GetMapping("board/A101/modify")
-	public String A101_modify() {
-		return "board/A101/modify";
-	}
-
-
 	/* 국문학과 게시판 보기(view) */
 	@GetMapping("board/A101/view")
 	public String A101_view(Model model, int no, int pg, @AuthenticationPrincipal MyUserDetails member) {
@@ -65,7 +58,6 @@ public class KoreanController {
 		model.addAttribute("korean", vo);
 		return "board/A101/view";
 	}
-
 
 	/* 국문학과 게시판 작성(Write) */
 	// 글 작성
@@ -93,10 +85,18 @@ public class KoreanController {
 		return map;
 	}
 	
-	/*
-	 * @GetMapping("board/A101/delete") public String delete(int no) { int result =
-	 * service.deleteBoard(no); //Map<String, Integer> map = new HashMap<>();
-	 * //map.put("result", result); return "board/A101/list"; }
-	 */
+	/* 국문학과 게시판글 수정(Update) */
+	@GetMapping("board/A101/modify")
+	public String A101_modify_get(Model model, int no, int pg) {
+		BoardVO board = service.selectBoard(no);
+		model.addAttribute("korean", board);
+		model.addAttribute("pg", pg);
+		return "board/A101/modify";
+	}
 	
+	@PostMapping("board/A101/modify")
+	public String A101_modify_post(BoardVO vo, int pg) {
+		service.updateBoard(vo);
+		return "redirect:/board/A101/view?no=" + vo.getNo() + "&pg=" + pg;
+	}
 }

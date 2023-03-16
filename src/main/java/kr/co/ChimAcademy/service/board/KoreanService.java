@@ -36,6 +36,11 @@ public class KoreanService {
 		return dao.deleteBoard(no);
 	}
 	
+	// 국문학과 게시판글 수정(Update)
+	public void updateBoard(BoardVO vo) {
+		dao.updateBoard(vo);
+	}
+	
 	/* 국문학과 게시판 페이징 */
 	// 페이징
 	public int selectCount() {

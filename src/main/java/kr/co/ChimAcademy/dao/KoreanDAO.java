@@ -22,6 +22,9 @@ public interface KoreanDAO {
 	// 국문학과 게시판글 삭제(Delete)
 	public int deleteBoard(int no);
 	
+	// 국문학과 게시판글 수정(Update)
+	public int updateBoard(BoardVO vo);
+	
 	// 국문학과 게시판 페이징
 	public int selectCount();
 }
