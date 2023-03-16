@@ -1,4 +1,36 @@
 <th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript" th:inline="javascript">
+	$(function(){
+		$('#book-borrow').click(function(e){
+			e.preventDefault();
+			let uid = $('.uid').val();
+			let bookId = $('.bookId').val();
+			let jsonData = {
+					"uid":uid,
+					"bookId":bookId,
+					"state":"1"
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/register/",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('대출이 완료되었습니다.')
+				        if (!confirm("내서재로 가시겠습니까?")) {
+				            
+				        } else {
+				            location.href = "/ChimAcademy/elib/mylibrary/mylib?bookId="+bookId;
+				        }
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		});
+	});
+</script>
 <main id="sub-container">
     <div class="sub-visual">
         <div class="bg">
@@ -166,51 +198,56 @@
 						<div class="serial-wrap">
 						    <div class="sview">
 						        <div class="sinfo">
+						        <input type="hidden" class="uid" th:value="${member.uid}">
+						        <input type="hidden" class="bookId" th:value="${bookId}">
 						            <div class="thumb">
-						                <img src="https://via.placeholder.com/158x232" alt="썸네일">
+						                <img th:src="@{${ebook.thumb}}" alt="썸네일">
 						            </div>
 						            <div class="info">
 						                <ul>
 						                    <li>
-						                        <b>읽었다는 착각</b>
+						                        <b>[[${ebook.title}]]</b>
 						                    </li>
 						                    <li>
-						                        카테고리 : 인문/교양 &#62; 인문학
+						                        카테고리 : [[${ebook.c1Name}]] &#62; [[${ebook.c2Name}]]
 						                    </li>
 						                    <li>
-						                        저자 : 조병영,이형래,조재윤,유상희,이세형,나태영,이채윤 저
+						                        저자 : [[${ebook.author}]]
 						                        <span> ㅣ </span>
-						                        출판사 : EBS BOOKS
+						                        출판사 : [[${ebook.publisher}]]
 						                        <span> ㅣ </span>
-						                        출판년도 : 2023-01-03
+						                        출판년도 : [[${ebook.pubDate.substring(2,10)}]]
 						                    </li>
 						                    <li>
-						                        공급사 : YES24
+						                        공급사 : [[${ebook.applier}]]
 						                        <span> ㅣ </span>
-						                        <a href="#">뷰어 설치 안내</a>
+						                        <a th:href="@{/elib/info/install}">뷰어 설치 안내</a>
 						                    </li>
 						                    <li>
-						                        소속도서관: 부산광역시 전자도서관
+						                        소속도서관: [[${ebook.belong}]]
 						                    </li>
 						                    <li>
-						                        대출 가능 여부: 예약 가능
+						                        대출 가능 여부: <span th:text="${ebook.loan} < 5 ? '대출가능':'불가능'"></span>
 						                        <span> ㅣ </span>
-						                        대출 : 5/5
+						                        대출 : [[${ebook.loan}]]/5
 						                        <span> ㅣ </span>
-						                        대출 : 5/5
+						                        예약 : [[${ebook.reserv}]]/5
 						                    </li>
 						                    <li>
-						                        지원기기 : PC, 태블릿, 스마트폰
+						                        지원기기 : [[${ebook.support}]]
 						                        <span> ㅣ </span>
 						                        서비스 형태: EPUB
 						                    </li>
 						                    <li>
-						                        좋아요 : 3
+						                        좋아요 : [[${ebook.like}]]
 						                    </li>
 						                </ul>
 						            </div>
 						            <div class="sbtn">
-						                <a href="#" class="btn btn2" id="book-reserve">
+						                <a href="#" class="btn btn1" id="book-borrow" th:if="${ebook.loan < 5}">
+						                    <span>대출하기</span>
+						                </a>
+						                <a href="#" class="btn btn2" id="book-reserve" th:if="${ebook.loan == 5}">
 						                    <span>예약하기</span>
 						                </a>
 						                <a href="#" class="btn btn3" id="book-recommend">
@@ -235,10 +272,10 @@
 						            </ul>
 						        </div>
 						        <div class="bInfo">
-						            ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번쯤 경험하게 되는 오독의 실제적 예시를 흥미로운 퀴즈와 함께 살핀다. 그리고 그 안에 내포된 의미와 구조를 파악하고 우리가 ‘잘못 읽게’ 되는 오류에 어떻게 빠지는지 함께 찾아본다. 대한민국 최고의 리터러시 전문가들이 제대로 읽고 싶은 모든 이에게 드리는 일종의 워크북이다. ""
+						            [[${ebook.bintro}]]
 						        </div>
 						        <div class="sbtn">
-						            <a href="#" id="goto-list" class="btn">
+						            <a th:href="@{/elib/ebook/list}" id="goto-list" class="btn">
 						                <span>목록으로</span>
 						            </a>
 						        </div>

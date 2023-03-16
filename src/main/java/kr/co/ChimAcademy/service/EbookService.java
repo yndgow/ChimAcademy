@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.dao.EbookDAO;
@@ -17,6 +18,7 @@ import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
+import kr.co.ChimAcademy.vo.MylibVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -33,7 +35,12 @@ public class EbookService {
 		return dao.selectCate2s(c1);
 	};
 	
+	@Transactional
 	public int insertEbook(EbookVO vo) {
+		// 도서번호 등록
+		String count = dao.selectCountEbook(vo) + "";
+		String bookId = vo.getBookId()+count;
+		vo.setBookId(bookId);
 		// 책파일 업로드
 		List<EbookFileVO> fvos = fileUpload(vo);
 		// 책등록
@@ -44,11 +51,23 @@ public class EbookService {
 		// 책파일 등록
 		EbookFileVO epub = fvos.get(0);
 		if(epub != null) {
-			dao.insertEbookFlie(epub);
+			dao.insertEbookFile(epub);
 		}
 		return result;
 	};
-	
+	public List<EbookVO> selectEbooks(){
+		return dao.selectEbooks();
+	};
+	public EbookVO selectEbook(String bookId) {
+		return dao.selectEbook(bookId);
+	};
+	// 내서재 //////////////////////////////////////////
+	public int insertMylib(MylibVO vo) {
+		return dao.insertMylib(vo);
+	};
+	public List<MylibVO> selectMylibs(String uid){
+		return dao.selectMylibs(uid);
+	};
 	// 책파일 업로드 /////////////////////////////////////////
 
 	private String EbookUploadPath = "elibFile/ebookFile/"; // 프로젝트 내 가상 경로

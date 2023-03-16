@@ -177,412 +177,43 @@
 						    </div>
 						</div>
 						<ul class="list">
-						    <li class="elib">
+						    <li class="elib" th:each="ebook : ${ebooks}">
 						        <div class="thumb">
-						            <a th:href="@{/elib/ebook/view}">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
+						            <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId})}">
+						                <img th:src="@{${ebook.thumb}}" alt="thumb">
 						            </a>
 						        </div>
 						        <div class="cont">
 						            <div class="flexbox">
-						                <a th:href="@{/elib/ebook/view}" class="book_link">
-						                    <b>읽었다는 착각</b>
+						                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId})}" class="book_link">
+						                    <b>[[${ebook.title}]]</b>
 						                </a>
 						                <div class="info">
-						                    <span>조병영,이형래 저</span>
+						                    <span>[[${ebook.author}]]</span>
 						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
+						                    <span>[[${ebook.publisher}]]</span>
 						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
+						                    <span>[[${ebook.pubDate.substring(0,10)}]]</span>
 						                </div>
 						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
+						                    [[${ebook.bintro}]]
 						                </span>
 						            </div>
 						            <div class="meta">
 						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
+						                <span>[[${ebook.belong}]]</span>
 						                <span> ㅣ </span>
 						                <label>공급사</label>
-						                <span>교보문고</span>
+						                <span>[[${ebook.applier}]]</span>
 						                <span> ㅣ </span>
 						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
+						                <span th:text="${ebook.loan} < 5 ? '대출가능':'대출불가능'"></span>
 						                <span> ㅣ </span>
 						                <label>대출 : </label>
-						                <span>5/5</span>
+						                <span>[[${ebook.loan}]]/5</span>
 						                <span> ㅣ </span>
 						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a th:href="@{/elib/ebook/view}">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a th:href="@{/elib/ebook/view}" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a th:href="@{/elib/ebook/view}">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a th:href="@{/elib/ebook/view}" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a th:href="@{/elib/ebook/view}">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a th:href="@{/elib/ebook/view}" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
-						                <span> ㅣ </span>
-						            </div>
-						        </div>
-						    </li>
-						    <li class="elib">
-						        <div class="thumb">
-						            <a href="#">
-						                <img src="https://via.placeholder.com/118x174" alt="thumb">
-						            </a>
-						        </div>
-						        <div class="cont">
-						            <div class="flexbox">
-						                <a href="#" class="book_link">
-						                    <b>읽었다는 착각</b>
-						                </a>
-						                <div class="info">
-						                    <span>조병영,이형래 저</span>
-						                    <span> ㅣ </span>
-						                    <span>EBS BOOKS</span>
-						                    <span> ㅣ </span>
-						                    <span>2023-01-03</span>
-						                </div>
-						                <span class="snipet">
-						                    원문보다 요약본을 찾고 글보다 영상이 더 쉬운, 게으른 세상에 던져진 위험한 어른들을 위한  대한민국 최고 리터러시 전문가들의 문해력 처방전   ‘제대로 읽고 싶어 하는 사람들’을 위한 책이다. 특히, 어른들의 문해력(literacy)에 주목하면서 생활의 읽기, 일의 읽기, 소통의 읽기를 다룬다. 우리나라 성인들의 문해력의 실상을 보고하고, 일상에서 한번...
-						                </span>
-						            </div>
-						            <div class="meta">
-						                <label>소속도서관</label>
-						                <span>침대학교 전자도서관</span>
-						                <span> ㅣ </span>
-						                <label>공급사</label>
-						                <span>교보문고</span>
-						                <span> ㅣ </span>
-						                <label>대출가능 여부: </label>
-						                <span>예약가능</span>
-						                <span> ㅣ </span>
-						                <label>대출 : </label>
-						                <span>5/5</span>
-						                <span> ㅣ </span>
-						                <label>예약 : </label>
-						                <span>4/5</span>
+						                <span>[[${ebook.reserv}]]/5</span>
 						                <span> ㅣ </span>
 						            </div>
 						        </div>
