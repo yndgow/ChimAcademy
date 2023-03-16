@@ -1,6 +1,5 @@
 package kr.co.ChimAcademy.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.EbookService;
 import kr.co.ChimAcademy.service.Ebook_ArticleService;
 import kr.co.ChimAcademy.vo.EbookCate1VO;
@@ -26,6 +27,7 @@ import kr.co.ChimAcademy.vo.EbookCate2VO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
+import kr.co.ChimAcademy.vo.MylibVO;
 
 @Controller
 public class ELibController {
@@ -42,11 +44,17 @@ public class ELibController {
 	}
 	
 	@GetMapping("elib/ebook/list")
-	public String list() {
+	public String list(Model model) {
+		List<EbookVO> ebooks =eService.selectEbooks();
+		model.addAttribute("ebooks",ebooks);
 		return "elib/ebook/list";
 	}
 	@GetMapping("elib/ebook/view")
-	public String view() {
+	public String view(@AuthenticationPrincipal MyUserDetails member,Model model, String bookId) {
+		model.addAttribute("member", member.getUser());
+		EbookVO ebook = eService.selectEbook(bookId);
+		model.addAttribute("ebook",ebook);
+		model.addAttribute("bookId",bookId);
 		return "elib/ebook/view";
 	}
 	/*전자도서 공지사항 게시판*////////////////////
@@ -158,7 +166,18 @@ public class ELibController {
 	
 	/*내서재*/////////////////////////
 	@GetMapping("elib/mylibrary/mylib")
-	public String mylib() {
+	public String mylib(@AuthenticationPrincipal MyUserDetails member, Model model) {
+		String uid = member.getUser().getUid();
+		List<MylibVO> mylibs = eService.selectMylibs(uid);
+		model.addAttribute("mylibs",mylibs);
 		return "elib/mylibrary/mylib";
+	}
+	@ResponseBody
+	@PostMapping("elib/mylibrary/register/")
+	public Map<String, Integer> registerMylib(MylibVO vo) {
+		int result = eService.insertMylib(vo);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		return map;
 	}
 }

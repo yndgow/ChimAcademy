@@ -8,8 +8,8 @@ import lombok.Data;
 public class EbookVO {
 	private String bookId;
 	private String GROUP;
-	private String cate1;
-	private String cate2;
+	private int cate1;
+	private int cate2;
 	private String title;
 	private String author;
 	private String publisher;
@@ -28,4 +28,6 @@ public class EbookVO {
 	
 	private MultipartFile tname;
 	private MultipartFile fname;
+	private String c1Name;
+	private String c2Name;
 }

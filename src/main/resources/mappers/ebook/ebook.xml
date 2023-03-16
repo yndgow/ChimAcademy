@@ -21,13 +21,60 @@
 							`thumb`=#{thumb},
 							`rdate`=now();
 	</insert>
-	<insert id="insertEbookFlie">
+	<insert id="insertEbookFile">
 		insert into `ebook_file` set 
-		`parent`=#{parent}, 
-		`newName`=#{newName}, 
-		`oriName`=#{oriName}, 
-		`rdate`=now();
+								`parent`=#{parent}, 
+								`newName`=#{newName}, 
+								`oriName`=#{oriName}, 
+								`rdate`=now();
 	</insert>
+	<insert id="insertMylib">
+		insert into `mylib` set 
+							`uid`=#{uid}, 
+							`bookId`=#{bookId}, 
+							`state`=#{state}, 
+							`loanDate`=now(),
+							`returnDate`= date_add(now(), interval 14 day);
+	</insert>
+	<select id="selectEbook" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select a.*,b.c1Name,c.c2Name from `ebook` as a
+								JOIN `ebook_cate1` AS b 
+								ON a.`cate1`=b.`c1`
+								JOIN `ebook_cate2` AS c
+								ON a.`cate1`=c.`c1` AND  a.`cate2`=c.`c2`
+								where `bookId`=#{bookId};
+	</select>
+	<select id="selectEbooks" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select * from `ebook` order by `rdate` DESC LIMIT 10;
+	</select>
+<!-- 	<resultMap id="selectMylibsResultMap" type="kr.co.ChimAcademy.vo.Ebook_ArticleVO">
+		<id column="no" property="no"/>
+		<result column="parent" property="parent"/>
+		<result column="comment" property="comment"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="file" property="file"/>
+		
+			<result column="hit" property="hit"/> 
+			<result column="cate" property="cate"/>
+		
+		<result column="uid" property="uid"/>
+		<result column="regip" property="regip"/>
+		<result column="rdate" property="rdate"/>
+		<association property="fileVO" javaType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
+			<id column="fno" property="fno"/>
+			<result column="parent" property="parent"/>
+			<result column="newName" property="newName"/>
+			<result column="oriName" property="oriName"/>
+			<result column="download" property="download"/>
+		</association>
+	</resultMap>
+	<select id="selectMylibs" resultMap="selectMylibsResultMap">
+		select * from `mylib` where `state`=1 and `uid`=#{uid} order BY `no` limit 10;
+	</select> -->
+	<select id="selectCountEbook" resultType="int">
+		select count(*) from `ebook` where `cate1`=#{cate1} and `cate2`=#{cate2}; 
+	</select>
 	<select id="selectCate1s" resultType="kr.co.ChimAcademy.vo.EbookCate1VO">
 		select * from `ebook_cate1`;
 	</select>

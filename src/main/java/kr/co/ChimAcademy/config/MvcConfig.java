@@ -11,5 +11,7 @@ public class MvcConfig implements WebMvcConfigurer{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/images/**")
 		.addResourceLocations("file:file/");
+		registry.addResourceHandler("/elibFile/**") // 전자도서관 파일 경로 추가 - 구홍모 03/16
+		.addResourceLocations("file:elibFile/");
 	}
 }

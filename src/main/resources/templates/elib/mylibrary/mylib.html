@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <ul class="list">
-                                    <li class="elib">
+                                    <li class="elib" th:each="mylib : ${mylibs}">
                                         <div class="thumb">
                                             <a href="#">
                                                 <img src="https://via.placeholder.com/118x174" alt="thumb">
@@ -118,24 +118,21 @@
                                                 </div>
                                             </div>
                                             <div class="meta">
-                                                <label>소속도서관</label>
+                                                <label>소속도서관 : </label>
                                                 <span>침대학교 전자도서관</span>
                                                 <span> ㅣ </span>
-                                                <label>공급사</label>
+                                                <label>공급사 : </label>
                                                 <span>교보문고</span>
                                                 <span> ㅣ </span>
-                                                <label>대출가능 여부: </label>
-                                                <span>예약가능</span>
+                                                <label>대출일 :</label>
+                                                <span>2023-03-16</span>
                                                 <span> ㅣ </span>
-                                                <label>대출 : </label>
-                                                <span>5/5</span>
-                                                <span> ㅣ </span>
-                                                <label>예약 : </label>
-                                                <span>4/5</span>
+                                                <label>반납예정일 : </label>
+                                                <span>2023-03-30</span>
                                                 <span> ㅣ </span>
                                             </div>
                                         </div>
-                                        <div style="position: absolute;; bottom: 20px; right: 20px; width: 237px;">
+                                        <div style="position: absolute;; bottom: 20px; right: 20px; width: 238px;">
                                             <a href="#" class="btn btn1 book-view">
                                                 <span>책읽기</span>
                                             </a>
