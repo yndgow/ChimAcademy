@@ -33,11 +33,21 @@
 		`regip`=#{regip},
 		`rdate`=NOW();
 	</insert>
-
-	<!-- 국문학과 게시판 글 삭제(delete) -->
+	
+	<!-- 국문학과 게시판 삭제(Delete) -->
 	<delete id="deleteBoard">
-		DELETE from `board` WHERE `no` = #{no};
+		delete from `board` where `no`=#{no};
 	</delete>
+
+	<!-- 국문학과 게시판 글 수정(Update) -->
+	<update id="updateBoard" useGeneratedKeys="true" keyProperty="no">
+		update `board` set
+			`depCode`='A101',
+			`title`=#{title},
+			`content`=#{content},
+			`rdate`= NOW()
+			where `no`=#{no};	
+	</update>
 	
 	<!-- 페이징(Paging) -->
 	<select id="selectCount" resultType="int">

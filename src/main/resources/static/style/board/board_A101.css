@@ -50,6 +50,7 @@ h1{
 .board table > tbody > tr td > textarea{
     border: 1px solid #e5e7ea;
     border-radius: 3px;
+    resize: none;
 }
 /*=====================================*/
 .board input{
@@ -95,6 +96,7 @@ h1{
     width: 100%;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
+    resize: none;
 }
 
 .comment .view{

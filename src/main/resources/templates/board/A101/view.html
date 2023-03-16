@@ -24,9 +24,9 @@
 			<a class="btn nomal" th:href="@{/board/A101/list(pg=${pg})}">목록</a>
 			<div>
 				<input type="hidden" name="no" th:value="${no}" />
-				<button class="btn blue" id="regbtn"
-					th:href="@{/board/A101/modify(no=${no}, pg=${pg})}">수정</button>
 				<button class="btn red" id="delbtn" th:data-no="${no}">삭제</button>
+				<button class="btn blue" id="regbtn">수정</button>
+				<input type="hidden" name="pg" th:value="${pg}"/>
 			</div>
 		</div>
 		<div class="comment">
