@@ -1,7 +1,9 @@
 package kr.co.ChimAcademy.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.entity.MajorEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
-import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.service.AssistantService;
 import kr.co.ChimAcademy.service.MemberService;
 import kr.co.ChimAcademy.vo.DepartmentVO;
-import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.LectureVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class AssistantController {
 
@@ -62,11 +66,23 @@ public class AssistantController {
 		return "assistant/modify";
 	}
 	
-	@GetMapping("assistant/myAssistant")
-	public String myAssistant() {
-		return "assistant/myAssistant";
+	// 강의 관리 
+	@GetMapping("assistant/lecuture")
+	public String lecuture(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+		DepartmentVO vo = assistantService.selectDep(userDetails.getUser().getUid());
+		List<MajorEntity> list = assistantService.selectMajors(vo.getDepCode());
+		model.addAttribute("department", vo);
+		model.addAttribute("majors", list);
+		return "assistant/lecuture";
 	}
-	
 
+	@ResponseBody
+	@GetMapping("assistant/lecture/search")
+	public List<LectureVO> selectLectures(LectureVO vo){
+		
+		List<LectureVO> lectures = assistantService.selectLectures(vo);
+		
+		return lectures;
+	}
 	
 }

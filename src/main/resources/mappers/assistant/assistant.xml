@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
+
 <mapper namespace="kr.co.ChimAcademy.dao.AssistantDAO">
+	
 
 	<select id="selectDep" resultType="kr.co.ChimAcademy.vo.DepartmentVO">
 		SELECT a.*
@@ -13,15 +16,30 @@
 		WHERE uid = #{uid};
 	</select>
 	
-	<insert id="insertMems">
-		INSERT INTO member SET 
-			uid = #{uid}, 
-			name = #{name}, 
-			birth = #{birth}, 
-			hp = #{hp}, 
-			depCode = #{depCode};
-	</insert>
-
-
+	<select id="selectLectures" resultType="kr.co.ChimAcademy.vo.LectureVO">
+		SELECT a.*, c.name 
+			FROM lecture AS a 
+			JOIN lec_list AS b 
+			ON a.lecCode = b.lecCode
+			JOIN member as c
+			ON b.uid = c.uid
+		<where>
+			<if test="depCode != null">
+				a.depCode= #{depCode}
+			</if>
+			<if test="searchData != null">
+				And (a.lecName LIKE CONCAT('%', #{searchData}, '%') OR a.lecCode = #{searchData})
+			</if>
+			<if test="lecClass != 0">
+				And a.lecClass = #{lecClass}
+			</if>
+			<if test="majorCode != null">
+				And a.majorCode = #{majorCode}
+			</if>
+			<if test="lecGubun != 0">
+				And a.lecGubun = #{lecGubun} ;
+			</if>
+		</where> 
+	</select>
 
 </mapper>

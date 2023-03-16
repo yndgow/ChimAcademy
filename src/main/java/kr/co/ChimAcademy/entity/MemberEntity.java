@@ -1,11 +1,11 @@
 package kr.co.ChimAcademy.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,7 +20,12 @@ import lombok.Data;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "member")
-public class MemberEntity {
+public class MemberEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@Column(name = "uid")
 	private String uid;
