@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.ChineseBoardService;
@@ -21,9 +22,26 @@ public class ChineseController {
 	private ChineseBoardService service;
 	
 	@GetMapping("board/D107/list")
-	public String D107_list(Model model) {
-		List<BoardVO> boards = service.selectBoards();
-		model.addAttribute("boards", boards);
+	public String D107_list(Model model, @RequestParam(defaultValue = "1") String pg) {
+		
+		/* 페이징 */
+		int currentPage = service.getCurrentPage(pg);
+		int start = service.getLimitStart(currentPage);
+		int total = service.selectCountTotal();
+		int lastPageNum = service.getLastPageNum(total);
+		int pageStartNum = service.getPageStartNum(total, start);
+		int groups[] = service.getPageGroup(currentPage, lastPageNum);
+		
+		List<BoardVO> vo = service.selectBoards(start);
+		
+		model.addAttribute("boards", vo);
+		model.addAttribute("pg", pg);
+		model.addAttribute("start", start);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("groups", groups);
+		
 		return "board/D107/list";
 	}
 	@GetMapping("board/D107/modify")
@@ -59,6 +77,9 @@ public class ChineseController {
 		service.insertBoard(vo);
 		return "redirect:/board/D107/list";
 	}
+	
+	
+	
 	
 	
 }
