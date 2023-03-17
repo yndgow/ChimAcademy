@@ -45,7 +45,19 @@
 		SELECT * from `board` where `parent` = #{no}  AND `depCode`= 'P701' ORDER BY `no` desc;
 	</select>
 	
-	<!-- 게시판 수정-->
+	<!-- 댓글수정-->
+	<update id="updateComment">
+	  UPDATE `board` set
+		`depCode`='P701',
+	    `lecCode`=#{lecCode},
+	    `content`=#{content},
+	    `uid`=#{uid},
+	    `regip`=#{regip},
+	    `rdate`=NOW()
+	  	WHERE `no` = #{no}
+	</update>
+	
+	<!-- 댓글수정-->
 	<update id="updateJapanese">
 	  UPDATE `board` set
 		`depCode`='P701',
@@ -55,6 +67,19 @@
 	    `regip`=#{regip},
 	    `rdate`=NOW()
 	  	WHERE `no` = #{no}
+	</update>
+		
+	<!-- 좋아요, 싫어요 수정-->
+	<update id="goodComment">
+	  UPDATE `board` set
+		`good` = `good`+ 1
+	  	WHERE `no` = #{no};
+	</update>
+	
+	<update id="badComment">
+	  UPDATE `board` set
+		`bad` = `bad`+ 1
+	  	WHERE `no` = #{no};
 	</update>
 	
 	<!-- 조회수 증가-->
