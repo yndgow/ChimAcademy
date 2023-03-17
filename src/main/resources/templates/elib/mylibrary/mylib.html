@@ -84,7 +84,7 @@
                     <div class="doc">
                         <div class="doc-head">
                             <div class="doc-title">
-                                <h3>새로 들어온 책</h3>
+                                <h3>대출중 도서</h3>
                             </div>
                         </div>
                         <div class="doc-body">
@@ -100,89 +100,40 @@
                                 <ul class="list">
                                     <li class="elib" th:each="mylib : ${mylibs}">
                                         <div class="thumb">
-                                            <a href="#">
-                                                <img src="https://via.placeholder.com/118x174" alt="thumb">
+                                            <a th:href="@{/elib/ebook/view(bookId=${mylib.bookId})}">
+                                                <img th:src="@{${mylib.EbookVO.thumb}}" alt="thumb">
                                             </a>
                                         </div>
                                         <div class="cont">
                                             <div class="flexbox">
-                                                <a href="#" class="book_link">
-                                                    <b>읽었다는 착각</b>
+                                                <a th:href="@{/elib/ebook/view(bookId=${mylib.bookId})}" class="book_link">
+                                                    <b>[[${mylib.EbookVO.title}]]</b>
                                                 </a>
                                                 <div class="info">
-                                                    <span>조병영,이형래 저</span>
+                                                    <span>[[${mylib.EbookVO.author}]]</span>
                                                     <span> ㅣ </span>
-                                                    <span>EBS BOOKS</span>
+                                                    <span>[[${mylib.EbookVO.publisher}]]</span>
                                                     <span> ㅣ </span>
-                                                    <span>2023-01-03</span>
+                                                    <span>[[${mylib.EbookVO.pubDate.substring(0,10)}]]</span>
                                                 </div>
                                             </div>
                                             <div class="meta">
                                                 <label>소속도서관 : </label>
-                                                <span>침대학교 전자도서관</span>
+                                                <span>[[${mylib.EbookVO.belong}]]</span>
                                                 <span> ㅣ </span>
                                                 <label>공급사 : </label>
-                                                <span>교보문고</span>
+                                                <span>[[${mylib.EbookVO.applier}]]</span>
                                                 <span> ㅣ </span>
                                                 <label>대출일 :</label>
-                                                <span>2023-03-16</span>
+                                                <span>[[${mylib.loanDate.substring(0,10)}]]</span>
                                                 <span> ㅣ </span>
                                                 <label>반납예정일 : </label>
-                                                <span>2023-03-30</span>
+                                                <span>[[${mylib.returnDate.substring(0,10)}]]</span>
                                                 <span> ㅣ </span>
                                             </div>
                                         </div>
-                                        <div style="position: absolute;; bottom: 20px; right: 20px; width: 238px;">
-                                            <a href="#" class="btn btn1 book-view">
-                                                <span>책읽기</span>
-                                            </a>
-                                            <a href="#" class="btn btn4 book-return">
-                                                <span>반납하기</span>
-                                            </a>
-                                            <a href="#" class="btn btn5 book-view">
-                                                <span>연장하기</span>
-                                            </a>
-                                        </div> 
-                                    </li>
-                                    <li class="elib">
-                                        <div class="thumb">
-                                            <a href="#">
-                                                <img src="https://via.placeholder.com/118x174" alt="thumb">
-                                            </a>
-                                        </div>
-                                        <div class="cont">
-                                            <div class="flexbox">
-                                                <a href="#" class="book_link">
-                                                    <b>읽었다는 착각</b>
-                                                </a>
-                                                <div class="info">
-                                                    <span>조병영,이형래 저</span>
-                                                    <span> ㅣ </span>
-                                                    <span>EBS BOOKS</span>
-                                                    <span> ㅣ </span>
-                                                    <span>2023-01-03</span>
-                                                </div>
-                                            </div>
-                                            <div class="meta">
-                                                <label>소속도서관</label>
-                                                <span>침대학교 전자도서관</span>
-                                                <span> ㅣ </span>
-                                                <label>공급사</label>
-                                                <span>교보문고</span>
-                                                <span> ㅣ </span>
-                                                <label>대출가능 여부: </label>
-                                                <span>예약가능</span>
-                                                <span> ㅣ </span>
-                                                <label>대출 : </label>
-                                                <span>5/5</span>
-                                                <span> ㅣ </span>
-                                                <label>예약 : </label>
-                                                <span>4/5</span>
-                                                <span> ㅣ </span>
-                                            </div>
-                                        </div>
-                                        <div class="btns">
-                                            <a href="#" class="btn btn1 book-view">
+                                        <div class="btns" style="position: absolute; bottom: 20px; right: 20px; width: 238px;">
+                                            <a th:href="@{/elib/mylibrary/open(bookId=${mylib.bookId})}" class="btn btn1 book-view">
                                                 <span>책읽기</span>
                                             </a>
                                             <a href="#" class="btn btn4 book-return">
