@@ -115,25 +115,71 @@ function searchBtn(){
 				$('#userListTable tbody').empty();
 				let tag = '';
 				data.forEach(function(e, i){
+					
+					/* 전공 지정 */
+					if(!e.majorCode) e.majorCode = "-";						
+										
+					/* 구분 지정 */
+					switch(e.lecGubun){
+						case 0: e.lecGubun = "-"; break;
+						case 1: e.lecGubun = "전필"; break;
+						case 2: e.lecGubun = "전선"; break;
+						case 3: e.lecGubun = "교양"; break;
+					}
+					
+					/* 교수 지정 */
+					if(!e.name) e.name = "-";
+					
+					/* 시간 지정*/
+					let time='';
+					if(e.beginTime){
+						for(let j = e.beginTime; j <= e.endTime; j++){
+							time += j;
+						}	
+					}
+					/* 날짜 지정 */
+					if(!e.lecDay) e.lecDay = "-";
+					
+					/* 장소 지정 */
+					if(!e.lecLoc) e.lecLoc = "-";
+					
+					/* 태그 붙여넣기 */
                     tag += `<tr>
                         <td>${i+1}</td>
+                        <td>${e.depCode}</td>
+                        <td>${e.majorCode}</td>
                         <td>${e.lecClass}</td>
                         <td>${e.lecCode}</td>
                         <td>${e.lecName}</td>
                         <td>${e.lecGubun}</td>
                         <td>${e.credit}</td>
                         <td>${e.name}</td>
-                        <td>화123(과학동203)</td>
-                        <td>40</td>
+                        <td>${e.lecDay}${time}(${e.lecLoc})</td>
+                        <td>${e.lecLimit}</td>
                         <td>
                             <button class="btnResultTable">수정</button>
                             <button class="btnResultTable">삭제</button>
                         </td>
                     </tr>`
 				})
-				$('#userListTable tbody').append(tag);
+				if(data.length == 0){
+					let element = document.createElement('tr');
+					element.innerHTML = '<td colspan="10">검색결과가 없습니다.</td>';
+					let tbody = document.getElementById('resultTbody');
+					tbody.appendChild(element);
+				}else{
+					$('#userListTable tbody').append(tag);	
+				}
+				
 			}
 		});
 		
 	});
+	
+
+}
+function test2(){
+	$(document).on('click','.btnResultTable',function(){
+		alert();
+	})
 }

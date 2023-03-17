@@ -2,9 +2,12 @@
 <script>
 $(()=>{
 	searchBtn();	
+	test2();
+	
 })
 
 </script>
+
 <main>
 	<th:block th:include="@{_aside.html}" />
 	<section id="myinfo" class="myAssistant">
@@ -70,8 +73,10 @@ $(()=>{
  				<thead>
                     <tr>
                         <th>no</th>
+                        <th>학과코드</th>
+                        <th>전공코드</th>
                         <th>학년</th>
-                        <th>코드</th>
+                        <th>과목코드</th>
                         <th>강의명</th>
                         <th>이수구분</th>
                         <th>학점</th>
@@ -81,7 +86,7 @@ $(()=>{
                         <th>관리</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resultTbody"></tbody>
 
 
 

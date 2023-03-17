@@ -19,9 +19,9 @@
 	<select id="selectLectures" resultType="kr.co.ChimAcademy.vo.LectureVO">
 		SELECT a.*, c.name 
 			FROM lecture AS a 
-			JOIN lec_list AS b 
+			LEFT OUTER JOIN lec_list AS b 
 			ON a.lecCode = b.lecCode
-			JOIN member as c
+			LEFT OUTER JOIN member as c
 			ON b.uid = c.uid
 		<where>
 			<if test="depCode != null">
