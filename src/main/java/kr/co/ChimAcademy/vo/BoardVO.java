@@ -13,7 +13,7 @@ public class BoardVO {
 	private String rdate;
 	private int hit;
 	private int parent;
-	private int regip;
+	private String regip;
 	private String file;
 	private int good;
 	private int bad;

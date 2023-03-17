@@ -27,4 +27,13 @@ public interface KoreanDAO {
 	
 	// 국문학과 게시판 페이징
 	public int selectCount();
+	
+	// 국문학과 게시판 조회수(Hit)
+	public int updateBoardHit(BoardVO vo);
+	
+	// 국문학과 게시판 댓글
+	public int insertBoardComment(BoardVO vo);
+	
+	// 국문학과 게시판 댓글 출력
+	public List<BoardVO> selectBoardComment(int no);
 }

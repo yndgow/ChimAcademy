@@ -1,4 +1,4 @@
-package kr.co.ChimAcademy.service.board;
+package kr.co.ChimAcademy.service;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ public class KoreanService {
 	@Autowired
 	private KoreanDAO dao;
 	
+	/* 국문학과 게시판 기본 기능 */
 	// 국문학과 게시판 목록 출력(List)
 	public List<BoardVO> selectBoards(int start) {
 		return dao.selectBoards(start);
@@ -89,5 +90,20 @@ public class KoreanService {
 		}
 		int[] groups = {groupStart, groupEnd};
 		return groups;
+	}
+	
+	/* 국문학과 게시판 조회수 */
+	public int updateBoardHit(BoardVO vo) {
+		return dao.updateBoardHit(vo);
+	}
+	
+	/* 국문학과 게시판 댓글 */
+	public int insertBoardComment(BoardVO vo) {
+		return dao.insertBoardComment(vo);
+	}
+	
+	/* 국문학과 게시판 댓글 출력 */
+	public List<BoardVO>  selectBoardComment(int no) {
+		return dao.selectBoardComment(no);
 	}
 }
