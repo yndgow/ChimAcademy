@@ -1,9 +1,11 @@
 package kr.co.ChimAcademy.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.ChimAcademy.dao.ChineseBoardDAO;
 import kr.co.ChimAcademy.vo.BoardVO;
@@ -18,8 +20,11 @@ public class ChineseBoardService {
 		dao.insertBoard(vo);
 	};
 
+	@Transactional
 	public BoardVO selectBoard(int no) {
-		return dao.selectBoard(no);
+		BoardVO vo = dao.selectBoard(no);
+		dao.boardHitsUpdate(no);
+		return vo;
 	};
 
 	public List<BoardVO> selectBoards(int start) {
@@ -32,6 +37,13 @@ public class ChineseBoardService {
 
 	public void deleteBoard(int no) {
 		dao.deleteBoard(no);
+	};
+	
+	/* 댓글쓰기 */
+	@Transactional
+	public BoardVO insertComment(BoardVO vo) {
+		dao.insertComment(vo);
+		return dao.selectComment();
 	};
 
 	/* 페이징 */
