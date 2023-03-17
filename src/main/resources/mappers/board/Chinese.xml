@@ -44,5 +44,23 @@
 		delete from `board` where `no`=#{no};
 	</delete>
 	
+	<update id="boardHitsUpdate" parameterType="int">
+		update board set hit=hit+1 where `no`=#{no};
+	</update>
+	
+	<!-- 댓글 -->
+	<select id="selectComment" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*,b.name FROM `board` AS a 
+											JOIN `member` AS b USING(`uid`) 
+											WHERE `parent`!=0 ORDER BY `no` DESC LIMIT 1;
+	</select>
+	<insert id="insertComment">
+		insert into `board` set 
+								`uid`=#{uid},	 
+								`parent`=#{parent},	 
+								`content`=#{content},	 
+								`rdate`=now();	
+	</insert>
+	
 	
 </mapper>

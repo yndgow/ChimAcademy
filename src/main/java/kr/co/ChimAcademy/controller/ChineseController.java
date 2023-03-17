@@ -1,6 +1,8 @@
 package kr.co.ChimAcademy.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -8,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.ChineseBoardService;
@@ -61,11 +66,21 @@ public class ChineseController {
 		return "redirect:/board/D107/list";
 	}
 	@GetMapping("board/D107/view")
-	public String D107_view(Model model, int no) {
-//		BoardVO rdfgh5rys= service.selectBoard(no);
+	public String D107_view(@AuthenticationPrincipal MyUserDetails member, Model model, int no) {
+		model.addAttribute("member", member.getUser());
 		model.addAttribute("board", service.selectBoard(no));
 		return "board/D107/view";
 	}
+	
+	@ResponseBody 
+	@RequestMapping(value="board/D107/commentWrite", method = {RequestMethod.POST})
+	public Map<String, BoardVO> commentWrite(BoardVO vo) {
+		BoardVO comment = service.insertComment(vo);
+		Map<String, BoardVO> map = new HashMap<>();
+		map.put("comment", comment);
+		return map;
+	}
+	
 	@GetMapping("board/D107/write")
 	public String D107_write_get(@AuthenticationPrincipal MyUserDetails member, Model model, BoardVO vo) {
 		model.addAttribute("member", member.getUser());
