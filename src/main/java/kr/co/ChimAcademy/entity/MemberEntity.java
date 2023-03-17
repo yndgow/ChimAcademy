@@ -2,11 +2,14 @@ package kr.co.ChimAcademy.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,11 +29,13 @@ public class MemberEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	@Id
 	@Column(name = "uid")
 	private String uid;
 	@JsonIgnore
 	private String pass;
+	
 	private String name;
 	private String birth;
 	private String depCode;
@@ -54,4 +59,7 @@ public class MemberEntity implements Serializable{
 	private String profile;
 	private String member2;
 	private String member3;
+
+	@OneToMany(mappedBy = "memberEntity")
+	private List<BoardEntity> boards;
 }

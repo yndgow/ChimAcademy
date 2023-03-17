@@ -1,22 +1,21 @@
 package kr.co.ChimAcademy.controller;
 
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import kr.co.ChimAcademy.config.MyUserDetails;
 
 
 @Controller
 public class MainController {
 	
 	@GetMapping(value = {"/", "/index"})
-	public String index(Model model, @AuthenticationPrincipal MyUserDetails member) {
-		if(member != null) {
-			model.addAttribute("member", member.getUser());
-			return "notice/list";
+	public String index(Model model, @CookieValue(name = "remember-me", required = false) String remebermeCookie) {
+		if(remebermeCookie!= null) {
+			return "redirect:/notice";
 		}else {
 			return "member/login";
 		}

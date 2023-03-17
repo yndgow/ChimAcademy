@@ -1,5 +1,11 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{notice/_header.html}"/>
+<script>
+$(()=>{
+	btnModify();	
+});
 
+
+</script>
 
         <main>
             <th:block th:include="@{_aside.html}"/>
@@ -9,30 +15,30 @@
 					<tbody>
 						<tr>
 							<th>작성자</th>
-							<td>20231010 홍길동</td>
+							<td th:text="|${view.memberEntity.uid} ${view.memberEntity.name}|">20231010 홍길동</td>
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td>안녕하세요</td>
+							<td th:text="${view.title}">안녕하세요</td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td>반갑습니다</td>
+							<td th:text="${view.content}">반갑습니다</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="btn_div">
-					<button class="btn nomal" >목록</button>
-					<div>
-						<button class="btn blue">수정</button>
-						<button class="btn red">삭제</button>
+					<button class="btn nomal" id="btnNoticeList">목록</button>
+					<div th:if="${#authentication.name} eq ${view.memberEntity.uid}">
+						<button class="btn blue" id="btnNoticeModify" th:data-no="${view.no}">수정</button>
+						<button class="btn red" id="btnNoticeDelete" th:data-no="${view.no}">삭제</button>
 					</div>
 				</div>
 				<div class="comment">
 					<div class="write">
-						<h1>댓글 수 <span>####</span></h1>
+						<h1>댓글 <span id="countReply">####</span></h1>
 						<h2>홍길동</h2>
-						<textarea name="" id="" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
+						<textarea name="" id="" cols="30" rows="10" placeholder="댓글을 작성해주세요"></textarea>
 						<div class="btn_end">
 							<button class="btn blue">등록</button>
 						</div>
@@ -48,30 +54,6 @@
 								<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
 							</div>
 						</div>
-						<ul>
-							<li>
-								<div class="view recoment">
-									<h2>홍길동</h2>
-									<p>댓글 내용입니다</p>
-									<div class="btn_div">
-										<span>2023-01-17</span>
-										<div>
-											<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
-											<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="view recoment write">
-									<h2>홍길동</h2>
-									<textarea name="" id="" cols="30" rows="10">대댓글 쓴 내용 입니다</textarea>
-									<div class="btn_end">
-										<button class="btn blue">등록</button>
-									</div>
-								</div>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>

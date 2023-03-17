@@ -1,15 +1,17 @@
-<th:block th:include="@{board/_header.html}"/>
+<th:block th:include="@{notice/_header.html}"/>
 
         <main>
             <th:block th:include="@{_aside.html}"/>
 			<div class="board">
 				<table>
 					<h1>글 작성하기</h1>
+					<form>
 					<tbody>
 						<tr>
 							<th>작성자</th>
 							<td>20231010 홍길동</td>
 						</tr>
+						
 						<tr>
 							<th>제목</th>
 							<td><input type="text"></td>
@@ -19,9 +21,10 @@
 							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
 						</tr>
 					</tbody>
+					</form>
 				</table>
 				<div class="btn_div">
-					<button class="btn nomal" >목록</button>
+					<button class="btn nomal" id="btnNoticeList" >목록</button>
 					<button class="btn blue">작성</button>
 				</div>
 			</div>

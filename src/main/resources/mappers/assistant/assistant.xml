@@ -41,5 +41,19 @@
 			</if>
 		</where> 
 	</select>
+	
+	<select id="selectNotices" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM board AS a
+		JOIN member AS b
+		ON a.uid=b.uid
+		WHERE lecCode IS NOT NULL
+		AND parent = 0
+		ORDER BY (`no`) DESC
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="countNotice" resultType="int">
+		SELECT COUNT(`no`) FROM board WHERE lecCode IS NOT NULL AND parent = 0;
+	</select>
 
 </mapper>
