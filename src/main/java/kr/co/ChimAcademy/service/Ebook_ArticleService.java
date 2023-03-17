@@ -16,12 +16,14 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.dao.Ebook_ArticleDAO;
+import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
 import lombok.extern.slf4j.Slf4j;
@@ -86,6 +88,7 @@ public class Ebook_ArticleService {
 		
 		return new ResponseEntity<>(resource, headers, HttpStatus.OK); // res 객체
 	}
+
 	// 파일 업로드 ///////////////////////////////////////////////////////
 	
 	private String uploadPath = "elibFile/articleFile/"; // 프로젝트 내 가상 경로

@@ -49,6 +49,15 @@ public class JapaneseService {
 	public List<BoardVO> selectComment(int parent){
 		return dao.selectComment(parent);
 	}
+	
+	//좋아요, 싫어요
+	public int goodComment(BoardVO vo) {
+		return dao.goodComment(vo);
+	}
+	
+	public int badComment(BoardVO vo) {
+		return dao.badComment(vo);
+	};
 
 	//페이징 작업
 	public int selectCountTotal() {

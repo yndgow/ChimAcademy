@@ -2,11 +2,22 @@ package kr.co.ChimAcademy.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -68,6 +79,12 @@ public class EbookService {
 	public List<MylibVO> selectMylibs(String uid){
 		return dao.selectMylibs(uid);
 	};
+	public EbookFileVO selectEbookFile(String bookId) {
+		return dao.selectEbookFile(bookId);
+	};
+	public int updateEbookDown(String bookId) {
+		return dao.updateEbookDown(bookId);
+	};
 	// 책파일 업로드 /////////////////////////////////////////
 
 	private String EbookUploadPath = "elibFile/ebookFile/"; // 프로젝트 내 가상 경로
@@ -117,4 +134,21 @@ public class EbookService {
 		}
 		return fvos;
 	}
+	// PDF 열기 //////////////////////////////////////////////////////
+	public ResponseEntity<Resource> fileOpen(EbookFileVO vo) throws IOException {
+		// String path = new File(uploadPath).getAbsolutePath()+"/"+vo.getNewName();
+		Path path = Paths.get("elibFile/ebookFile/"+vo.getNewName());
+		// String contentType = Files.probeContentType(path);
+		HttpHeaders headers = new HttpHeaders(); // 스프링에서 제공 : HttpHeaders, ResponseEntity
+		headers.setContentDisposition(ContentDisposition
+														.builder("inline")
+														.filename(vo.getOriName(), StandardCharsets.UTF_8)
+														.build());
+		headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF.toString());
+		
+		Resource resource = new InputStreamResource(Files.newInputStream(path));
+		
+		return new ResponseEntity<>(resource, headers, HttpStatus.OK); // res 객체
+	}
+	
 }

@@ -73,8 +73,11 @@ public class JapaneseController {
 	public String view(Model model, int no, int pg,@AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();
 		BoardVO vo = service.selectJapanese(no);
+		//댓글 보기
 		List<BoardVO> comment = service.selectComment(no);
-		service.hitJapanese(vo);		
+		service.hitJapanese(vo);
+		service.goodComment(vo);
+		service.badComment(vo);
 		model.addAttribute("comment", comment);
 		model.addAttribute("member", mem);
 		model.addAttribute("no", no);
@@ -83,24 +86,27 @@ public class JapaneseController {
 		return "board/P701/view";
 	}
 	
-	@GetMapping()
-	public String comment(int no) {
-		
-		List<BoardVO> vo =service.selectComment(no);
-		
-		return "board/P701/view";
-	}
-	
+
 	@ResponseBody
 	@PostMapping("board/P701/comment")
-	public Map<String, Integer> comment(BoardVO vo) {
+	public List<BoardVO> comment(BoardVO vo) {
+		service.insertComment(vo);
+		List<BoardVO> comments =service.selectComment(vo.getParent());
 		
-		int result = service.insertComment(vo);
+		//Map<String, Integer> map = new HashMap<>();
+		//map.put("result", result);
 		
-		Map<String, Integer> map = new HashMap<>();
-		map.put("result", result);
+		return comments;
+	}
+	
+	
+	@GetMapping("board/P701/commentDelete")
+	public String commentDelete(Model model, int no) {
 		
-		return map;
+		service.deleteJapanese(no);
+		model.addAttribute("no", no);
+
+		return "board/P701/view";
 	}
 	
 	

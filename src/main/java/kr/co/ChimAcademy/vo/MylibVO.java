@@ -22,5 +22,4 @@ public class MylibVO {
 	
 	//add
 	private EbookVO EbookVO;
-	private EbookFileVO EbookFileVO;
 }

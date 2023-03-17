@@ -18,6 +18,7 @@ public interface ChineseBoardDAO {
 	public void updateBoard(BoardVO vo);
 	public void deleteBoard(int no);
 	public int selectCountTotal();
-	
-
+	public int boardHitsUpdate(int no);
+	public int insertComment(BoardVO vo);
+	public BoardVO selectComment();
 }
