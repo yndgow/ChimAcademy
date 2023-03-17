@@ -26,6 +26,10 @@ public interface JapaneseDAO {
 	//댓글보기
 	public List<BoardVO> selectComment(int parent);
 	
+	//좋아요, 싫어요
+	public int goodComment(BoardVO vo);
+	public int badComment(BoardVO vo);
+	
 	//페이징 작업
 	public int selectCountTotal();
 }
