@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.annotations.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.entity.MemberEntity;
-import kr.co.ChimAcademy.service.board.KoreanService;
+import kr.co.ChimAcademy.service.KoreanService;
 import kr.co.ChimAcademy.vo.BoardVO;
 
 @Controller
@@ -51,11 +52,20 @@ public class KoreanController {
 	@GetMapping("board/A101/view")
 	public String A101_view(Model model, int no, int pg, @AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();
+		// 글
 		BoardVO vo = service.selectBoard(no);
+		// 조회수 증가
+		service.updateBoardHit(vo);
+		// 댓글
+		List<BoardVO> comment = service.selectBoardComment(no);
+		
+		
 		model.addAttribute("member", mem);
 		model.addAttribute("no", no);
 		model.addAttribute("pg", pg);
 		model.addAttribute("korean", vo);
+		model.addAttribute("comments", comment);
+		
 		return "board/A101/view";
 	}
 
@@ -70,7 +80,8 @@ public class KoreanController {
 
 	@PostMapping("board/A101/write")
 	public String A101_write(BoardVO vo, HttpServletRequest req) {
-		req.getRemoteAddr();
+		String ip = req.getRemoteAddr();
+		vo.setRegip(ip);
 		int result = service.insertBoard(vo);
 		return "redirect:/board/A101/list";
 	}
@@ -99,4 +110,21 @@ public class KoreanController {
 		service.updateBoard(vo);
 		return "redirect:/board/A101/view?no=" + vo.getNo() + "&pg=" + pg;
 	}
+	
+	/* 국문학과 게시판 댓글 작성 */
+	@ResponseBody
+	@PostMapping("board/A101/comment")
+	public List<BoardVO> board_A101_comment(BoardVO vo, HttpServletRequest req) {
+		String ip = req.getRemoteAddr();
+		vo.setRegip(ip);
+		// 작성
+		int result = service.insertBoardComment(vo);
+		
+		// 댓글가져오기
+		List<BoardVO> comments = service.selectBoardComment(vo.getParent());
+		
+		// return 댓글;
+		return comments;
+	}
+
 }

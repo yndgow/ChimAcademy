@@ -2,14 +2,27 @@
 $(document).ready(function() {
 	// 삭제 이벤트 버튼
 	$("#delbtn").click(function() {
-	
-	});
 
+		let no = $('input[name=no]').val();
+		$.ajax({
+			type: "POST",
+			url: "/ChimAcademy/board/A101/delete?no=" + no,
+			success: function(data) {
+				if (data.result > 0) {
+					alert('삭제 완료');
+					location.href = "/ChimAcademy/board/A101/list";
+				} else {
+					alert('삭제 실패');
+				}
+			}
+		});
+	});
+	
 	// 수정 이벤트 버튼
 	$("#regbtn").click(function() {
 		let no = $('input[name=no]').val();
 		let pg = $('input[name=pg]').val();	
-
+		
 		location.href = "/ChimAcademy/board/A101/modify?no=" + no + "&pg=" + pg;
 	});
 
@@ -20,7 +33,7 @@ $(document).ready(function() {
 			uid: $('input[name=uid]').val(),
 			parent: $('input[name=no]').val()
 		};
-
+	
 		$.ajax({
 			type: "POST",
 			url:"/ChimAcademy/board/A101/comment" ,
@@ -30,7 +43,7 @@ $(document).ready(function() {
 				alert('댓글이 작성되었습니다!')
 				console.log(comments);
 				$("#addcomments").empty();
-
+				
 				let tag = '';
 				comments.forEach(function(comment){
 					tag += `<div">
@@ -50,15 +63,15 @@ $(document).ready(function() {
 							</div>
 						</div>`;
 				})
-
+				
 				$("#addcomments").append(tag);
-
+				
 				// textarea 비우기
 				$('textarea[name=comment]').val('');
-
-
+				
+			
 			}
 		});
-
+	
 	});
 });
