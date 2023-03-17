@@ -44,34 +44,37 @@
 								ON a.`cate1`=c.`c1` AND  a.`cate2`=c.`c2`
 								where `bookId`=#{bookId};
 	</select>
+	<select id="selectEbookFile" resultType="kr.co.ChimAcademy.vo.EbookFileVO">
+		select * from `ebook_file` where `parent`=#{bookId};
+	</select>
 	<select id="selectEbooks" resultType="kr.co.ChimAcademy.vo.EbookVO">
 		select * from `ebook` order by `rdate` DESC LIMIT 10;
 	</select>
-<!-- 	<resultMap id="selectMylibsResultMap" type="kr.co.ChimAcademy.vo.Ebook_ArticleVO">
+ 	<resultMap id="selectMylibsResultMap" type="kr.co.ChimAcademy.vo.MylibVO">
 		<id column="no" property="no"/>
-		<result column="parent" property="parent"/>
-		<result column="comment" property="comment"/>
-		<result column="title" property="title"/>
-		<result column="content" property="content"/>
-		<result column="file" property="file"/>
-		
-			<result column="hit" property="hit"/> 
-			<result column="cate" property="cate"/>
-		
 		<result column="uid" property="uid"/>
-		<result column="regip" property="regip"/>
-		<result column="rdate" property="rdate"/>
-		<association property="fileVO" javaType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
-			<id column="fno" property="fno"/>
-			<result column="parent" property="parent"/>
-			<result column="newName" property="newName"/>
-			<result column="oriName" property="oriName"/>
-			<result column="download" property="download"/>
+		<result column="bookId" property="bookId"/>
+		<result column="state" property="state"/>
+		<result column="loanDate" property="loanDate"/>
+		<result column="returnDate" property="returnDate"/>
+		<result column="returnReal" property="returnReal"/>
+		<association property="EbookVO" javaType="kr.co.ChimAcademy.vo.EbookVO">
+			<id column="bookId" property="bookId"/>
+			<result column="title" property="title"/>
+			<result column="author" property="author"/>
+			<result column="publisher" property="publisher"/>
+			<result column="belong" property="belong"/>
+			<result column="applier" property="applier"/>
+			<result column="pubDate" property="pubDate"/>
+			<result column="thumb" property="thumb"/>
 		</association>
 	</resultMap>
 	<select id="selectMylibs" resultMap="selectMylibsResultMap">
-		select * from `mylib` where `state`=1 and `uid`=#{uid} order BY `no` limit 10;
-	</select> -->
+		SELECT a.*, b.title,b.author,b.publisher,b.belong,b.applier,b.pubDate,b.thumb FROM `mylib` AS a 
+													JOIN `ebook` AS b
+													ON a.`bookId`=b.`bookId`
+													where a.uid=#{uid} and a.state=1;
+	</select>
 	<select id="selectCountEbook" resultType="int">
 		select count(*) from `ebook` where `cate1`=#{cate1} and `cate2`=#{cate2}; 
 	</select>
@@ -81,4 +84,7 @@
 	<select id="selectCate2s" resultType="kr.co.ChimAcademy.vo.EbookCate2VO">
 		select * from `ebook_cate2` where `c1`=#{c1};
 	</select>
+	<update id="updateEbookDown">
+		update `ebook_file` set `download` = `download`+1 where `parent`=#{bookId};
+	</update>
 </mapper>

@@ -24,6 +24,7 @@ import kr.co.ChimAcademy.service.EbookService;
 import kr.co.ChimAcademy.service.Ebook_ArticleService;
 import kr.co.ChimAcademy.vo.EbookCate1VO;
 import kr.co.ChimAcademy.vo.EbookCate2VO;
+import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
@@ -179,5 +180,12 @@ public class ELibController {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		return map;
+	}
+	@GetMapping("elib/mylibrary/open")
+	public ResponseEntity<Resource> Open(String bookId) throws IOException {
+		EbookFileVO vo =eService.selectEbookFile(bookId);
+		eService.updateEbookDown(bookId);
+		ResponseEntity<Resource> respEntity = eService.fileOpen(vo);
+		return respEntity;
 	}
 }

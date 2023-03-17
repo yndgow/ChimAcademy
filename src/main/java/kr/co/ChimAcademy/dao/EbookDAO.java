@@ -26,4 +26,6 @@ public interface EbookDAO {
 	// 내서재
 	public int insertMylib(MylibVO vo);
 	public List<MylibVO> selectMylibs(String uid);
+	public EbookFileVO selectEbookFile(String bookId);
+	public int updateEbookDown(String bookId);
 }
