@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,6 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -60,6 +62,4 @@ public class MemberEntity implements Serializable{
 	private String member2;
 	private String member3;
 
-	@OneToMany(mappedBy = "memberEntity")
-	private List<BoardEntity> boards;
 }

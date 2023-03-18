@@ -1,32 +1,50 @@
 <th:block th:include="@{notice/_header.html}"/>
+<script>
+$(()=>{
+	noticeWrite();
+})
+
+</script>
 
         <main>
             <th:block th:include="@{_aside.html}"/>
 			<div class="board">
-				<table>
-					<h1>글 작성하기</h1>
-					<form>
-					<tbody>
-						<tr>
-							<th>작성자</th>
-							<td>20231010 홍길동</td>
-						</tr>
-						
-						<tr>
-							<th>제목</th>
-							<td><input type="text"></td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
-						</tr>
-					</tbody>
-					</form>
-				</table>
-				<div class="btn_div">
-					<button class="btn nomal" id="btnNoticeList" >목록</button>
-					<button class="btn blue">작성</button>
-				</div>
+				<form th:action="@{/notice/write}" method="post" id="formNoticeWrite">
+					<input type="hidden" name="memberEntity" th:value="${member.uid}"/>
+					<table>
+						<h1>글 작성하기</h1>
+						<thead style="display: none">
+							<tr>
+								<th>과목</th>
+								<td>
+									<select name="lecCode">
+										<option value="101101">국어와 이해</option>
+									</select>
+								</td>
+							</tr>						
+						</thead>
+
+						<tbody>
+							<tr>
+								<th>작성자</th>
+								<td th:text="|${member.uid} ${member.name}|">20231010 홍길동</td>
+								
+							</tr>
+							<tr>
+								<th>제목</th>
+								<td><input type="text" name="title"></td>
+							</tr>
+							<tr>
+								<th>내용</th>
+								<td><textarea name="content" id="" cols="30" rows="10"></textarea></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn_div">
+						<button type="button" class="btn nomal" id="btnNoticeList" >목록</button>
+						<button type="submit" class="btn blue" id="btnNoticeWrite">작성</button>
+					</div>
+				</form>
 			</div>
 		</main>
 <th:block th:include="@{_footer.html}"/>>

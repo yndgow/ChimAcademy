@@ -31,11 +31,15 @@ public class SecurityConfig {
 	
 	
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+    	
     	// 접근권한 설정
-        http.authorizeHttpRequests()
+        http.authorizeRequests()
+        	.antMatchers("/member/**").permitAll()
         	.antMatchers("/").permitAll();
+//        	.antMatchers("/index").permitAll()
+//        	.anyRequest().authenticated();
 //        	.antMatchers("/my/**","/admin/**")
 //        	.hasAnyRole("2","3","4","5");
 //        	.antMatchers("/write").hasAnyRole("3","4","5")
@@ -82,13 +86,13 @@ public class SecurityConfig {
 	
 //     비밀번호 암호화
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
     	return new BCryptPasswordEncoder();
     }
 //    
     // JDBC 기반의 tokenRepository 구현체
     @Bean
-    public PersistentTokenRepository tokenRepository() {
+    PersistentTokenRepository tokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
         jdbcTokenRepository.setDataSource(dataSource); // dataSource 주입
         return jdbcTokenRepository;

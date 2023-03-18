@@ -21,7 +21,7 @@
 					<td><a th:href="@{/notice/view(no=${e.no})}" th:text="${e.title}">공지사항입니다~</a></td>
 					<td th:text="|${e.memberEntity.uid} ${e.memberEntity.name}|">홍길동</td>
 					<td th:text="${e.hit}">0</td>
-					<td th:text="${e.rdate.substring(2,10)}">2023/03/09</td>
+					<td th:text="${#temporals.format(e.rdate, 'yy-MM-dd')}">23-03-09</td>
 				</tr>
 
 			</table>
@@ -44,7 +44,7 @@
 					</li>
 				</ul>
 			</div>
-			<div id="btnNoticeDiv">
+			<div id="btnNoticeDiv" sec:authorize="hasAnyRole('ROLE_2', 'ROLE_3', 'ROLE_4')">
 				<a th:href="@{/notice/write}" class="btn-gradient blue">작성하기</a>
 			</div>
 			

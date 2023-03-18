@@ -44,11 +44,12 @@ h1{
 .board input{
     width: 100%;
     height: 30px;
+    border: 1px solid #DFE3EE;
 }
 
 .board textarea{
     width: 100%;
-    height: 400px;
+    height: 360px;
     resize: none;
     border: 1px solid #DFE3EE;
 }
@@ -60,15 +61,16 @@ h1{
 }
 
 .comment > div{
-    padding: 5px;
-    border-bottom: 1px solid #999;
+    padding: 15px;
+    /* border-bottom: 1px solid #999; */
     margin-bottom: 20px;
+}
+.comment > div > div{
+    padding: 15px;
 }
 
 .comment .write{
-    display: block;
-    margin: 0 auto;
-
+    /* margin: 0 auto; */
 }
 .comment .write h1{
     font-size: 20px;
@@ -84,10 +86,15 @@ h1{
 
 .comment .write textarea{
     width: 100%;
+    padding: -3px;
+    height: 100px;
+    box-sizing: border-box;
 }
 
 .comment .view{
     border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    height: auto;
 }
 
 .comment .view h2{
@@ -175,7 +182,7 @@ main>section {
 }
 
 /* 추가 수정 김지홍 */
-.board > .btn_div button{
+.board  .btn_div button{
 	width: 100px;
 	
 }
@@ -214,4 +221,37 @@ main>section {
 .btn-gradient.blue {
   background: rgba(102,152,203,1);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb', endColorstr='#5c8ab8', GradientType=0 );
+}
+.btn_small {
+	margin-bottom: 0px;
+}
+/* 과목 항목 추가 */
+.board > form > table > thead > tr:first-child {
+	border-bottom: 1px solid #d8d8d8;
+}
+.board > form > table > thead > tr > th{
+	height: 56px;
+}
+.board > form > table > thead > tr > td{
+	padding: 10px;
+}
+.board > form > table > thead > tr > td > select{
+	width: 200px;
+	height: 30px;
+	border-radius: 4px; 
+	font-size: 12px;
+	
+}
+.board > form > table > thead > tr > td > select > option{
+	font-size: 12px;
+}
+#countReply{
+	font-size: 22px;
+}
+.comment > #commentsDiv > .view > .commentTextArea{
+	height: auto;
+	border: none;
+	resize: none;
+	box-sizing: border-box;
+	/* overflow: hidden; */
 }

@@ -14,9 +14,12 @@ public class MainController {
 	
 	@GetMapping(value = {"/", "/index"})
 	public String index(Model model, @CookieValue(name = "remember-me", required = false) String remebermeCookie) {
+//		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if(remebermeCookie!= null) {
+//		if(authentication!= null && authentication.isAuthenticated()) {
 			return "redirect:/notice";
 		}else {
+			System.out.println("로그인페이지로");
 			return "member/login";
 		}
 		

@@ -44,11 +44,13 @@ public class MemberController {
 		return json;
 	}
 	
+	// 가입페이지 이동
 	@GetMapping("member/join")
 	public String join() {
 		return "member/join";
 	}
 	
+	// 가입하기
 	@PostMapping("member/join")
 	public String memberJoin(MemberEntity entity, HttpServletRequest req) {
 		log.info("mem: " + entity);
@@ -56,6 +58,7 @@ public class MemberController {
 		return "redirect:/index";
 	}
 
+	// 아이디 찾기 페이지 이동
 	@GetMapping("member/confirm")
 	public String confirmPage() {
 		return "member/confirm";

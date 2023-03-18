@@ -24,6 +24,7 @@
     height: 50px;
     font-size: 15px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn_small{

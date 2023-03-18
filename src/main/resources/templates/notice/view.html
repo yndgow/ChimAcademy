@@ -1,7 +1,9 @@
 <th:block th:include="@{notice/_header.html}"/>
 <script>
 $(()=>{
-	btnModify();	
+	btnModify();
+	insertRep();
+
 });
 
 
@@ -35,26 +37,35 @@ $(()=>{
 					</div>
 				</div>
 				<div class="comment">
+				
 					<div class="write">
-						<h1>댓글 <span id="countReply">####</span></h1>
-						<h2>홍길동</h2>
-						<textarea name="" id="" cols="30" rows="10" placeholder="댓글을 작성해주세요"></textarea>
+						<h1>댓글 <span id="countReply">[[${commentCount}]]</span></h1>
+						<h2 th:text="${view.memberEntity.name}">홍길동</h2>
+						<input type="hidden" name="uid" th:value="${#authentication.name}"/>
+						<input type="hidden" name="parent" th:value="${view.no}"/>
+						<textarea name="comment" id="comment" cols="30" rows="10" placeholder="댓글을 작성해주세요"></textarea>
 						<div class="btn_end">
-							<button class="btn blue">등록</button>
+							<button class="btn blue" id="btnInsertComment">등록</button>
 						</div>
 					</div>
-					<div class="view write">
-						<h2>홍길동</h2>
-						<p>댓글 내용입니다</p>
-						<div class="btn_div">
-							<span>2023-01-17</span>
-							<div>
-								<button class="btn_small btn_comment">답글보기</button>
-								<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
-								<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+					
+					<div id="commentsDiv">
+					
+						<div class="view write" th:each="comment : ${comments}">
+							<h2>[[${comment.name}]]</h2>
+							<textarea th:text="${comment.content}" class="commentTextArea" rows="1" wrap="off" readonly></textarea>
+							<div class="btn_div">
+								<span th:text="${comment.rdate.substring(0, 10)}">2023-01-17</span>
+								<div>
+									<button class="btn_small btn_comment">답글보기</button>
+									<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
+									<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+								</div>
 							</div>
 						</div>
+						
 					</div>
+					
 				</div>
 			</div>
 		</main>
