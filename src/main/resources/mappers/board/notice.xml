@@ -27,16 +27,17 @@
 	    VALUES (#{content}, #{uid}, NOW(), #{parent})
 	</insert>
 
-	<delete id="deleteComment">
-		DELETE board WHERE `no` = #{no};
-	</delete>
-
+	<!-- 공지사항 삭제 -->
+		<delete id="deleteNotice">
+			DELETE FROM board WHERE `no` = #{no} OR `parent` = #{parent};
+		</delete>
+<!--  -->
 	<update id="modifyComment">
 		UPDATE board SET 
-			`content` = #{content}
+			`content` = #{content},
+			`rdate` = NOW()
 		WHERE
-			`no` = #{no},
-			`rdate` = NOW();
+			`no` = #{no};
 	</update>
 
 </mapper>

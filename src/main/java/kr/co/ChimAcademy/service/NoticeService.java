@@ -62,14 +62,20 @@ public class NoticeService {
 	
 	// 공지사항 삭제
 	public int deleteNotice(int no) {
-		BoardEntity entity = repo.findById(no).orElse(null);
-		int result = 0;
-		if(entity != null) {
-			repo.delete(entity);
-			result = 1;
-		}
+		int result = noticeDao.deleteNotice(no);
 		return result;
+		
 	}
+	
+//	public int deleteNotice(int no) {
+//		BoardEntity entity = repo.findById(no).orElse(null);
+//		int result = 0;
+//		if(entity != null) {
+//			repo.delete(entity);
+//			result = 1;
+//		}
+//		return result;
+//	}
 	
 	// 공지사항 업데이트
 	@Transactional
@@ -105,10 +111,6 @@ public class NoticeService {
 		return noticeDao.selectComment(no);
 	}
 	
-	// 댓글 삭제
-	public int deleteComment(int no) {
-		return noticeDao.deleteComment(no);
-	};
 	
 	// 댓글 수정
 	public int modifyComment(BoardVO vo) {

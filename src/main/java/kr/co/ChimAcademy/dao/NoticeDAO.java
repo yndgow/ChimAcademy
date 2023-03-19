@@ -21,7 +21,7 @@ public interface NoticeDAO {
 	BoardVO selectComment(int no);
 	
 	// 댓글 삭제
-	int deleteComment(int no);
+	int deleteNotice(int no);
 	
 	// 댓글 수정
 	int modifyComment(BoardVO vo);

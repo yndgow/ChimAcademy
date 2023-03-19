@@ -110,6 +110,33 @@ public class AcademyBoardController {
 		return json;
 	}
 	
+	// 등록 후 등록한 댓글을 db에서 select 후 반환하여 동적으로 댓글에 추가히기
+	// 댓글 등록 json으로 반환하기 위해	@ResponseBody 선언
+	// 댓글 등록
+	@ResponseBody
+	@PostMapping("notice/comment/insert")
+	public BoardVO insertComment(BoardVO vo) {
+		
+		// mapper 설정으로 추가된 댓글의 no 값을 가져옴
+		int no = service.insertComment(vo);
+
+		// 디비에서 방금 작성한 댓글 가져오기
+		BoardVO comment = service.selectComment(no);
+		
+		// BoardVO 형태로 반환 @ResponseBody 선언으로 json 형태로 변환 후 반환
+		return comment;
+		
+	};
+	
+	// 댓글 수정
+	@ResponseBody
+	@PostMapping("notice/comment/modify")
+	public Map<String, Integer> modifyComment(BoardVO vo) {
+		int result = service.modifyComment(vo);
+		Map<String, Integer> json = new HashMap<>();
+		json.put("result", result);
+		return json;
+	};
 	
 	// Mabatis
 //	@GetMapping("notice")
@@ -133,46 +160,7 @@ public class AcademyBoardController {
 //		
 //		return "notice/list";
 //	}
-	// 등록 후 등록한 댓글을 db에서 select 후 반환하여 동적으로 댓글에 추가히기
-	// 댓글 등록 json으로 반환하기 위해	@ResponseBody 선언
-	@ResponseBody
-	@PostMapping("notice/comment/insert")
-	public BoardVO insertComment(BoardVO vo) {
-		
-		// mapper 설정으로 추가된 댓글의 no 값을 가져옴
-		int no = service.insertComment(vo);
 
-		// 디비에서 방금 작성한 댓글 가져오기
-		BoardVO comment = service.selectComment(no);
-		
-		// BoardVO 형태로 반환 @ResponseBody 선언으로 json 형태로 변환 후 반환
-		return comment;
-		
-	};
-	
-	// 댓글 삭제 
-	@ResponseBody
-	@GetMapping("notice/comment/delete")
-	public Map<String, Integer> deleteComment(int no) {
-		// 댓글 삭제
-		int result = service.deleteComment(no);
-		// json 형태로 반환하기위해 map 선언
-		Map<String, Integer> json = new HashMap<>();
-		// key 값은 문자열, 반환할 값은 숫자이므로 Integer 선언
-		// map 에 put 명령어로 데이터 넣기 "result" 는 key값, result는 value
-		json.put("result", result);
-		// 반환하기 반환형태 맞춰주기
-		return json;
-	};
-	
-	// 댓글 수정
-	@GetMapping("notice/comment/modify")
-	public Map<String, Integer> modifyComment(BoardVO vo) {
-		int result = service.modifyComment(vo);
-		Map<String, Integer> json = new HashMap<>();
-		json.put("result", result);
-		return json;
-	};
 	
 	
 	

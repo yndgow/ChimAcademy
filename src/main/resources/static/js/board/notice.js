@@ -108,7 +108,7 @@ function btnDelete(){
 }
 
 // 댓글 작성
-function insertRep(){
+function insertComment(){
 	$('#btnInsertComment').click(()=>{
 		// 작성한 댓글 내용 가져오기
 		let comment = $('textarea[name=comment]').val();
@@ -140,15 +140,16 @@ function insertRep(){
 					alert('댓글이 등록되었습니다.')	
 					
 					console.log(data);
-					let tag = `<div class="view write">
+					let tag = `<div class="view write" data-no="${data.no}">
 									<h2>${data.name}</h2>
-									<textarea name="">${data.content}</textarea>
+									<p class="commentTextArea">${data.content}</p>
 									<div class="btn_div">
 										<span>${data.rdate.substring(0, 10)}</span>
 										<div>
-											<button class="btn_small btn_comment">답글보기</button>
-											<button class="btn_small"><i class="fas fa-thumbs-up"> 0</i></button>
-											<button class="btn_small"><i class="fas fa-thumbs-down"> 0</i></button>
+											<button class="btn_small btn-gradient cyan mini btnCommentModify" data-no="${data.no}">수정</button>
+											<button class="btn_small btn-gradient red mini btnCommentDelete" data-no="${data.no}">삭제</button>
+											<button class="btn_small btnGoodComment"><i class="fas fa-thumbs-up"> 0</i></button>
+											<button class="btn_small btnBadComment"><i class="fas fa-thumbs-down"> 0</i></button>
 										</div>
 									</div>
 								</div>`;
@@ -156,6 +157,11 @@ function insertRep(){
 					// 댓글등록이 성공하면 입력한 댓글만 기존 댓글 영역에 추가하기
 					$('#commentsDiv').append(tag);
 					$('textarea[name=comment]').val('');
+					
+					//  댓글수 늘이기
+					let countComment = $('#countComments').text();
+					let decreCount = Number(countComment) + 1;
+					$('#countComments').text(decreCount);
 				}else{
 					alert('댓글이 등록 실패하였습니다.')	
 				}
@@ -165,6 +171,102 @@ function insertRep(){
 		});
 		
 	});
+}
+
+// 댓글삭제
+function deleteComment(){
+	$(document).on('click', '.btnCommentDelete', function(){
+		// 삭제 확인
+		let con = confirm('삭제하시겠습니까?');
+		// 확인 값으로 false면 진행막기
+		if(!con) return false;
+		// 댓글의 글번호 가져오기
+		let no = $(this).data('no');
+		// ajax 통신
+		$.ajax({
+			type: 'delete',
+			url: '/ChimAcademy/notice/delete/'+no,
+			dataType: 'json',
+			success: function(data){
+				// 1이상이면 성공
+				if(data.result > 0){
+					alert('삭제하였습니다.');
+					// 댓글 html 지우기
+					let commentDiv = $('.view.write[data-no=' + no + ']');
+					commentDiv.remove();
+					
+					//  댓글수 줄이기
+					let countComment= $('#countComments').text();
+					let decreCount = Number(countComment) - 1;
+					$('#countComments').text(decreCount);
+				}
+				
+				
+			}
+		});
+	});	
+}
+
+// 댓글 수정 
+function modifyComment(){
+	$(document).on('click', '.btnCommentModify', function() {
+		let no = $(this).data('no');
+		// p 태그 textarea 로 바꾸기
+		let commentTextArea = $('.view.write[data-no=' + no + '] .commentTextArea');
+		let commentContent = commentTextArea.text().trim();
+		let textarea = $('<textarea class="commentEditTextArea"></textarea>').val(commentContent);
+		commentTextArea.replaceWith(textarea);
+		// 버튼 숨기기
+		$('.btnCommentModify').hide();
+		$('.btnCommentDelete').hide();
+		$('.btnGoodComment').hide();
+		$('.btnBadComment').hide();
+		// 버튼추가
+		let btnDiv = $('.view.write[data-no=' + no + '] .btn_div > div');
+		let saveBtn = $('<button class="btn_small btn-gradient green mini btnCommentSave" data-no="' + no + '">수정완료</button>');
+		let cancelBtn = $('<button class="btn_small btn-gradient red mini btnCommentCancel" data-no="' + no+ '">취소</button>');
+		btnDiv.append(saveBtn);
+		btnDiv.append(cancelBtn);
+	});
+	
+	$(document).on('click', '.btnCommentSave', function(){
+		let no = $(this).data('no');
+  		var commentEditTextArea = $('.view.write[data-no=' + no + '] .commentEditTextArea');
+  		var content = commentEditTextArea.val();
+		
+		let jsonData = {
+			no : no,
+			content : content
+		};
+		
+		console.log(jsonData);
+		
+		$.ajax({
+			type : 'post',
+			url : '/ChimAcademy/notice/comment/modify',
+			data : jsonData,
+			dataType : 'json',
+			success: function(data){
+				if(data.result > 0){
+					alert('댓글을 수정하였습니다.');	
+					 let commentTextArea = $('<p class="commentTextArea"></p>').text(content);
+					 commentEditTextArea.replaceWith(commentTextArea);
+			         $('.view.write[data-no=' + no + '] .btnCommentSave').remove();
+        			 $('.view.write[data-no=' + no + '] .btnCommentCancel').remove();
+        			 
+			  		 $('.btnCommentModify').show();
+					 $('.btnCommentDelete').show();
+					 $('.btnGoodComment').show();
+					 $('.btnBadComment').show();
+					
+				}else{
+					alert('댓글 수정을 실패하였습니다.');
+				}
+			}
+			
+		});
+		
+	})
 }
 
 
