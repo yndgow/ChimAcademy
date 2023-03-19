@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.EbookService;
 import kr.co.ChimAcademy.service.Ebook_ArticleService;
+import kr.co.ChimAcademy.vo.CountVO;
 import kr.co.ChimAcademy.vo.EbookCate1VO;
 import kr.co.ChimAcademy.vo.EbookCate2VO;
 import kr.co.ChimAcademy.vo.EbookFileVO;
@@ -45,9 +46,45 @@ public class ELibController {
 	}
 	
 	@GetMapping("elib/ebook/list")
-	public String list(Model model) {
-		List<EbookVO> ebooks =eService.selectEbooks();
+	public String list(Model model,String pg,String sort,String type,EbookVO vo) {
+		if(sort == null) {
+			sort = "4";
+		}
+		if(type == null) {
+			type = "1";
+		}
+		if(vo.getGROUP() == null) {
+			vo.setGROUP("ebook");
+			vo.setCate1(10);
+			vo.setCate2(10);
+			vo.setApplier("교보문고");
+		}
+		int currentPage = eService.getCurrnetPage(pg);
+		int start = eService.getLimitStart(currentPage);
+		int total = eService.selectCountTotal(sort,vo);
+		int pageStartNum = eService.getPageStartNum(total, start);
+		int lastPageNum = eService.getLastPageNum(total);
+		
+		// 페이지 그룹 start, end 번호
+		int pageGroupStart = eService.getPageGroup(currentPage, lastPageNum)[0];
+		int pageGroupEnd = eService.getPageGroup(currentPage, lastPageNum)[1];
+		
+		model.addAttribute("pg", pg);
+		model.addAttribute("total", total);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageGroupStart", pageGroupStart);
+		model.addAttribute("pageGroupEnd", pageGroupEnd);
+		model.addAttribute("sort", sort);
+		model.addAttribute("type", type);
+		model.addAttribute("vo", vo);
+		
+		List<EbookVO> ebooks =eService.selectEbooks(sort,type,vo,start);
 		model.addAttribute("ebooks",ebooks);
+		
+		CountVO counts = eService.selectCountEbooks();
+		model.addAttribute("counts",counts);
 		return "elib/ebook/list";
 	}
 	@GetMapping("elib/ebook/view")
@@ -56,6 +93,8 @@ public class ELibController {
 		EbookVO ebook = eService.selectEbook(bookId);
 		model.addAttribute("ebook",ebook);
 		model.addAttribute("bookId",bookId);
+		CountVO counts = eService.selectCountEbooks();
+		model.addAttribute("counts",counts);
 		return "elib/ebook/view";
 	}
 	/*전자도서 공지사항 게시판*////////////////////
@@ -167,9 +206,29 @@ public class ELibController {
 	
 	/*내서재*/////////////////////////
 	@GetMapping("elib/mylibrary/mylib")
-	public String mylib(@AuthenticationPrincipal MyUserDetails member, Model model) {
+	public String mylib(@AuthenticationPrincipal MyUserDetails member, Model model,String sort,String state,String pg) {
+		if(state ==null) {
+			state = "1";
+		}
 		String uid = member.getUser().getUid();
-		List<MylibVO> mylibs = eService.selectMylibs(uid);
+		int currentPage = eService.getCurrnetPage(pg);
+		int start = eService.getLimitStart(currentPage);
+		int total = eService.selectCountTotalMylibs(uid,state);
+		int pageStartNum = eService.getPageStartNum(total, start);
+		int lastPageNum = eService.getLastPageNum(total);
+		
+		// 페이지 그룹 start, end 번호
+		int pageGroupStart = eService.getPageGroup(currentPage, lastPageNum)[0];
+		int pageGroupEnd = eService.getPageGroup(currentPage, lastPageNum)[1];
+		
+		model.addAttribute("pg", pg);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageGroupStart", pageGroupStart);
+		model.addAttribute("pageGroupEnd", pageGroupEnd);
+		
+		List<MylibVO> mylibs = eService.selectMylibs(uid,state,start);
 		model.addAttribute("mylibs",mylibs);
 		return "elib/mylibrary/mylib";
 	}
