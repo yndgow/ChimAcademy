@@ -1,9 +1,7 @@
 package kr.co.ChimAcademy.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.AssistantService;
@@ -69,13 +68,20 @@ public class AssistantController {
 	// 강의 관리 
 	@GetMapping("assistant/lecuture")
 	public String lecuture(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+		// 로그인한 조교의 학과
 		DepartmentVO vo = assistantService.selectDep(userDetails.getUser().getUid());
+		// 학과의 전공
 		List<MajorEntity> list = assistantService.selectMajors(vo.getDepCode());
+		// 학과의 교수
+		List<MemberEntity> professors = assistantService.selectProfessors(vo.getDepCode());
+		
 		model.addAttribute("department", vo);
 		model.addAttribute("majors", list);
+		model.addAttribute("professors", professors);
 		return "assistant/lecuture";
 	}
 
+	// 과목 리스트
 	@ResponseBody
 	@GetMapping("assistant/lecture/search")
 	public List<LectureVO> selectLectures(LectureVO vo){
@@ -83,6 +89,22 @@ public class AssistantController {
 		List<LectureVO> lectures = assistantService.selectLectures(vo);
 		
 		return lectures;
+	}
+	
+	@PostMapping("assistant/lecture/register")
+	public String lecRegister(LectureEntity entity, String uid) {
+		
+		log.info("entity : " + entity);
+		log.info("uid : " + uid);
+		
+		if(!uid.isEmpty()) {
+			assistantService.insertLectureList(entity, uid);
+		}else {
+			// 강의 등록
+			assistantService.insertLecture(entity);
+		}
+		
+		return "redirect:/assistant/lecture";
 	}
 	
 }

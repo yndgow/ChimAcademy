@@ -117,6 +117,25 @@ main>section>article>table>tbody {
     box-sizing: border-box;
 }
 
+#myinfo>section>form>table {
+    height: auto;
+    border-top: 2px solid #8798a3;
+    border-bottom: 2px solid #8798a3;
+    width: 100%;
+}
+
+#myinfo>section>form>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+
+#myinfo>section>form>table tr>td {
+    background: #fff;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 
 /* 학생관리 스크롤 */
 .tableWrapper {
@@ -281,4 +300,20 @@ main #userListTable .btnResultTable{
     height: 20px;
     font-size: 12px;
 	
+}
+#lectureModNav{
+	display: none;
+}
+#myinfo > #lectureModSec{
+	display: none;
+}
+form.lecForm{
+	width: 100%;	
+}
+#lecNameTd{
+	width: 250px;
+	padding: 0 10px;
+}
+#lecNameTd > input[name=lecName]{
+	width: 100%;
 }

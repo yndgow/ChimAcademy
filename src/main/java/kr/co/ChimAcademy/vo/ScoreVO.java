@@ -6,7 +6,7 @@ import lombok.Data;
 public class ScoreVO {
 	private int no;
 	private String uid;
-	private String lecCode;
+	private int lecCode;
 	private int midExam;
 	private int finalExam;
 	private int etc1;

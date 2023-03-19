@@ -85,12 +85,13 @@ function insertMembers(){
 	});
 }
 
+// 강의 찾기
 function searchBtn(){
 	$('#btnSearchLec').click(function(){
 		let lecGubun = $('select[name=lecGubun]').val();
 		let searchData = $('input[name=searchData]').val();
 		let depCode = $('select[name=depCode]').val();
-		let majorCode = $('select[name=majorCode]').val();
+		let majorCode = $('select[name=majorCodeSel]').val();
 		let lecClass = $('select[name=lecClass]').val();
 		
 		/*if(!lecGubun) lecGubun = null;
@@ -157,14 +158,14 @@ function searchBtn(){
                         <td>${e.lecDay}${time}(${e.lecLoc})</td>
                         <td>${e.lecLimit}</td>
                         <td>
-                            <button class="btnResultTable">수정</button>
-                            <button class="btnResultTable">삭제</button>
+                            <button class="btnResultTable btnLecMod">수정</button>
+                            <button class="btnResultTable btnLecDel">삭제</button>
                         </td>
                     </tr>`
 				})
 				if(data.length == 0){
 					let element = document.createElement('tr');
-					element.innerHTML = '<td colspan="10">검색결과가 없습니다.</td>';
+					element.innerHTML = '<td colspan="12">검색결과가 없습니다.</td>';
 					let tbody = document.getElementById('resultTbody');
 					tbody.appendChild(element);
 				}else{
@@ -179,7 +180,8 @@ function searchBtn(){
 
 }
 function test2(){
-	$(document).on('click','.btnResultTable',function(){
-		alert();
+	$(document).on('click','.btnLecMod',function(){
+		$('#lectureModNav').show();
+		$('#lectureModSec').show();
 	})
 }

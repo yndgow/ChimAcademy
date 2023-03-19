@@ -1,5 +1,7 @@
 package kr.co.ChimAcademy.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -11,4 +13,7 @@ public interface MemberRepo extends JpaRepository<MemberEntity, String>{
 	
 	// 이메일 중복 여부
 	int countByEmail(String email);
+	
+	// 학과별 교수 가져오기
+	List<MemberEntity> findByDepCodeAndLevel(String depCode, int level);
 }

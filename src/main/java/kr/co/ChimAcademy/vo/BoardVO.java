@@ -16,7 +16,7 @@ import lombok.ToString;
 public class BoardVO {
 	private int no;
 	private String depCode;
-	private String lecCode;
+	private int lecCode;
 	private String title;
 	private String content;
 	private String uid;
