@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.dao.EbookDAO;
+import kr.co.ChimAcademy.vo.CountVO;
 import kr.co.ChimAcademy.vo.EbookCate1VO;
 import kr.co.ChimAcademy.vo.EbookCate2VO;
 import kr.co.ChimAcademy.vo.EbookFileVO;
@@ -49,7 +50,7 @@ public class EbookService {
 	@Transactional
 	public int insertEbook(EbookVO vo) {
 		// 도서번호 등록
-		String count = dao.selectCountEbook(vo) + "";
+		String count = dao.selectCountTotal("2",vo) + "";
 		String bookId = vo.getBookId()+count;
 		vo.setBookId(bookId);
 		// 책파일 업로드
@@ -66,8 +67,11 @@ public class EbookService {
 		}
 		return result;
 	};
-	public List<EbookVO> selectEbooks(){
-		return dao.selectEbooks();
+	public CountVO selectCountEbooks() {
+		return dao.selectCountEbooks();
+	};
+	public List<EbookVO> selectEbooks(String sort,String type,EbookVO vo,int start){
+		return dao.selectEbooks(sort,type,vo,start);
 	};
 	public EbookVO selectEbook(String bookId) {
 		return dao.selectEbook(bookId);
@@ -76,8 +80,8 @@ public class EbookService {
 	public int insertMylib(MylibVO vo) {
 		return dao.insertMylib(vo);
 	};
-	public List<MylibVO> selectMylibs(String uid){
-		return dao.selectMylibs(uid);
+	public List<MylibVO> selectMylibs(String uid, String state, int start){
+		return dao.selectMylibs(uid,state,start);
 	};
 	public EbookFileVO selectEbookFile(String bookId) {
 		return dao.selectEbookFile(bookId);
@@ -150,5 +154,51 @@ public class EbookService {
 		
 		return new ResponseEntity<>(resource, headers, HttpStatus.OK); // res 객체
 	}
-	
+	// 페이징 처리 시작 ///////////////////////////////////////////////////////
+	// 현재 페이지 번호
+	public int getCurrnetPage(String pg) {
+		int currentPage = 1;
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		return currentPage;
+	}
+	// 페이지 시작값
+	public int getLimitStart(int currentPage) {
+		return (currentPage-1) * 10;
+	}
+	// 전차잭/오디오 총 갯수
+	public int selectCountTotal(String sort, EbookVO vo) {
+		return dao.selectCountTotal(sort,vo);
+	}
+	// 내서재 총 갯수
+	public int selectCountTotalMylibs(String uid, String state) {
+		return dao.selectCountTotalMylibs(uid, state);
+	};
+	// 마지막 페이지 번호
+	public int getLastPageNum(int total) {
+		int lastPageNum = 0;
+		if(total % 10 == 0){
+			lastPageNum = total / 10;
+		}else{
+			lastPageNum = total / 10 + 1;
+		}
+		return lastPageNum;
+	}
+	// 시작 페이지 번호
+	public int getPageStartNum(int total, int start) {
+		return total - start;
+	}
+	// 페이지 그룹
+	public int[] getPageGroup(int currentPage, int lastPageNum) {
+		int currentPageGroup = (int)Math.ceil(currentPage / 10.0);
+		int pageGroupStart = (currentPageGroup - 1) * 10 + 1;
+		int pageGroupEnd = currentPageGroup * 10;
+		if(pageGroupEnd > lastPageNum){
+			pageGroupEnd = lastPageNum;
+		}
+		int[] result = {pageGroupStart,pageGroupEnd};
+		return result;
+	}
+	// 페이징 처리 끝 ///////////////////////////////////////////////////////
 }
