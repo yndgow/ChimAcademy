@@ -202,17 +202,14 @@ function lecRegFormSubmit(){
 function lecModFormShow(){
 	$(document).on('click','.btnLecMod',function(){
 		$('.lectureMod').show();
-		let data = $()
-
 
 		let tr = $(this).closest('tr');
 		let lecCode = tr.children('td:eq(4)').text();
-		let prof = tr.children('td:eq(8)').text();
 
-
-		$.getJSON("url", data,
-			function (data, textStatus, jqXHR) {
-				
+		let url = '/ChimAcademy/assistant/lecture/'+lecCode;
+		$.getJSON(url, 
+			function (data) {
+				console.log(data);
 			}
 		);
 		

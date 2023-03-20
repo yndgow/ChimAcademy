@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -105,6 +106,13 @@ public class AssistantController {
 		}
 		
 		return "redirect:/assistant/lecuture";
+	}
+	
+	// 과목 1개 가져오기
+	@ResponseBody
+	@GetMapping("assistant/lecture/{lecCode}")
+	public LectureEntity getLecture(@PathVariable int lecCode) {
+		return assistantService.getLecture(lecCode);
 	}
 	
 }

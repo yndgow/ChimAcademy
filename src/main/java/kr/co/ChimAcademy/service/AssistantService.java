@@ -100,4 +100,9 @@ public class AssistantService {
 		lecListRepo.save(entity);
 	}
 	
+	// 과목 1개
+	public LectureEntity getLecture(int lecCode) {
+		return lectureRepo.findById(lecCode).orElse(null);
+	}
+	
 }
