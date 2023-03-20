@@ -36,5 +36,6 @@ public interface EbookDAO {
 	public int updateMylibReturn(int no);
 	public int updateMylibReturnDate(int no);
 	public int updateMylibReservToBorrow(int no);
+	public int updateEbookLike(String bookId);
 	
 }

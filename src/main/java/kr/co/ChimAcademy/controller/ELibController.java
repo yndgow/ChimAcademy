@@ -81,20 +81,28 @@ public class ELibController {
 		model.addAttribute("vo", vo);
 		
 		List<EbookVO> ebooks =eService.selectEbooks(sort,type,vo,start);
+		List<EbookCate1VO> cate1s = eService.selectCate1s();
+		List<EbookCate2VO> cate2s = eService.selectCate2s(vo.getCate1());
 		model.addAttribute("ebooks",ebooks);
+		model.addAttribute("cate1s",cate1s);
+		model.addAttribute("cate2s",cate2s);
 		
 		CountVO counts = eService.selectCountEbooks();
 		model.addAttribute("counts",counts);
 		return "elib/ebook/list";
 	}
 	@GetMapping("elib/ebook/view")
-	public String view(@AuthenticationPrincipal MyUserDetails member,Model model, String bookId) {
+	public String view(@AuthenticationPrincipal MyUserDetails member,Model model, String pg, String sort, String type, EbookVO vo) {
 		model.addAttribute("member", member.getUser());
-		EbookVO ebook = eService.selectEbook(bookId);
+		EbookVO ebook = eService.selectEbook(vo.getBookId());
 		model.addAttribute("ebook",ebook);
-		model.addAttribute("bookId",bookId);
+		model.addAttribute("bookId",vo.getBookId());
 		CountVO counts = eService.selectCountEbooks();
 		model.addAttribute("counts",counts);
+		model.addAttribute("sort",sort);
+		model.addAttribute("type",type);
+		model.addAttribute("pg",pg);
+		model.addAttribute("vo",vo);
 		return "elib/ebook/view";
 	}
 	/*전자도서 공지사항 게시판*////////////////////
@@ -206,7 +214,7 @@ public class ELibController {
 	
 	/*내서재*/////////////////////////
 	@GetMapping("elib/mylibrary/mylib")
-	public String mylib(@AuthenticationPrincipal MyUserDetails member, Model model,String sort,String state,String pg) {
+	public String mylib(@AuthenticationPrincipal MyUserDetails member, Model model,String state,String pg) {
 		if(state ==null) {
 			state = "1";
 		}
@@ -221,7 +229,9 @@ public class ELibController {
 		int pageGroupStart = eService.getPageGroup(currentPage, lastPageNum)[0];
 		int pageGroupEnd = eService.getPageGroup(currentPage, lastPageNum)[1];
 		
-		model.addAttribute("pg", pg);
+		model.addAttribute("pg", currentPage);
+		model.addAttribute("total", total);
+		model.addAttribute("state", state);
 		model.addAttribute("pageStartNum", pageStartNum);
 		model.addAttribute("lastPageNum", lastPageNum);
 		model.addAttribute("currentPage", currentPage);
@@ -233,9 +243,22 @@ public class ELibController {
 		return "elib/mylibrary/mylib";
 	}
 	@ResponseBody
-	@PostMapping("elib/mylibrary/register/")
+	@PostMapping("elib/mylibrary/register")
 	public Map<String, Integer> registerMylib(MylibVO vo) {
 		int result = eService.insertMylib(vo);
+		if(vo.getState() == 1) {
+			eService.updateEbookLoan(2, vo.getBookId());
+		}else if(vo.getState() == 2){
+			eService.updateEbookReserv(2, vo.getBookId());
+		}
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		return map;
+	}
+	@ResponseBody
+	@PostMapping("elib/ebook/like")
+	public Map<String, Integer> like(String bookId) {
+		int result = eService.updateEbookLike(bookId);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		return map;
