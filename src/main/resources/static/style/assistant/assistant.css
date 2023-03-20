@@ -90,7 +90,7 @@ main>section>article>table>tbody {
     overflow: hidden;
 }
 #myinfo>section{
-    display: flex;
+    /* display: flex; */
 }
 
 #myinfo>section>div {
@@ -316,4 +316,19 @@ form.lecForm{
 }
 #lecNameTd > input[name=lecName]{
 	width: 100%;
+}
+
+section#myinfo input{
+	border: 1px solid #DFE3EE;
+	height: 25px;
+    text-align: center;	
+}
+section#myinfo select{
+	height: 25px;
+}
+.lecRegister, .lectureMod{
+	display: none;
+}
+#btnRegFormShow{
+	margin: 15px 0;
 }

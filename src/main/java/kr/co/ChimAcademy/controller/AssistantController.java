@@ -104,7 +104,7 @@ public class AssistantController {
 			assistantService.insertLecture(entity);
 		}
 		
-		return "redirect:/assistant/lecture";
+		return "redirect:/assistant/lecuture";
 	}
 	
 }

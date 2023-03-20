@@ -179,9 +179,45 @@ function searchBtn(){
 	
 
 }
-function test2(){
+
+function lecRegFormShow(){
+	$('#btnRegFormShow').click(function(){
+		$('.lecRegister').toggle();
+	});
+}
+
+
+// 강의 등록 체크
+function lecRegFormSubmit(){
+	$('.btnLecRegister').click(function(){
+		let con = confirm('등록하시겠습니까?')
+		if(!con){
+			return false;
+		}
+		$('.lecRegForm').submit();
+	})
+}
+
+// 강의 수정
+function lecModFormShow(){
 	$(document).on('click','.btnLecMod',function(){
-		$('#lectureModNav').show();
-		$('#lectureModSec').show();
+		$('.lectureMod').show();
+		let data = $()
+
+
+		let tr = $(this).closest('tr');
+		let lecCode = tr.children('td:eq(4)').text();
+		let prof = tr.children('td:eq(8)').text();
+
+
+		$.getJSON("url", data,
+			function (data, textStatus, jqXHR) {
+				
+			}
+		);
+		
+		
+		
+		
 	})
 }
