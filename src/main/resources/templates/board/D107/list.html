@@ -18,7 +18,7 @@
                         </tr>
                         <tr th:each="board : ${boards}">
                            <td>[[${pageStartNum-boardStat.index}]]</td>
-                           <td><a th:href="@{/board/D107/view(no=${board.no})}">[[${board.title}]]</a></td>
+                           <td class="taL"><a th:href="@{/board/D107/view(no=${board.no})}">[[${board.title}]] <span style="color: blue;">([[${board.commentsCount}]])</span></a></td>
                            <td>[[${board.name}]]</td>
                            <td>[[${board.hit}]]</td>
                            <td>[[${board.rdate.substring(2,10)}]]</td>

@@ -30,4 +30,5 @@ public class BoardVO {
 	
 	/* 추가필드 */
 	private String name;
+	private int commentsCount;
 }

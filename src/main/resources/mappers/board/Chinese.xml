@@ -31,6 +31,10 @@
 		select count(`no`) from `board` where `parent`=0 AND `depCode`='D107';
 	</select>
 	
+	<select id="selectCountComments" resultType="int">
+		SELECT COUNT(*) FROM board WHERE parent=#{parent};
+	</select>
+	
 	<update id="updateBoard" useGeneratedKeys="true" keyProperty="no">
 		update `board` set
 			`depCode`='D107',
@@ -42,6 +46,10 @@
 	
 	<delete id="deleteBoard">
 		delete from `board` where `no`=#{no};
+	</delete>
+	
+	<delete id="deleteComments">
+		delete from `board` where `parent`=#{no};
 	</delete>
 	
 	<update id="boardHitsUpdate" parameterType="int">
@@ -61,6 +69,7 @@
 								`content`=#{content},	 
 								`rdate`=now();	
 	</insert>
+	
 	
 	
 </mapper>

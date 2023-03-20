@@ -12,15 +12,9 @@
     <!-- 작업 css -->
     <link rel="stylesheet" th:href="@{/style/board/board_D107.css}"/>
 
-    <script>
-        $(function(){
-            $('#side > li > ol').hide();
+	<script th:src="@{/js/board/notice.js}"></script>
+	
 
-            $('#side > li > a').click(function(){
-                $(this).siblings().slideToggle(300);
-            });
-        });
-    </script> 
 
 </head>
 <th:block th:include="@{_body.html}"/>

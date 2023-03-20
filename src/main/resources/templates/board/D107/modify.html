@@ -9,7 +9,7 @@
 					<tbody>
 						<tr>
 							<th>작성자</th>
-							<td>[[${board.uid}]]</td>
+							<td>[[${board.uid}]]학번  [[${board.name}]]</td>
 						</tr>
 						<tr>
 							<th>제목</th>
@@ -22,7 +22,7 @@
 					</tbody>
 				</table>
 				<section class="btn_div" style="margin-bottom: 200px;">
-					<button class="btn nomal" >목록</button>
+					<button class="btn nomal" type="button" th:onclick="'location.href=\'' + @{/board/D107/list} + '\''">목록</button>
 					<button class="btn blue" type="submit">수정완료</button>
                 </section>
                 <input type="hidden" name="no" th:value="${board.no}">
