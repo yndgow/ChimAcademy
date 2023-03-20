@@ -91,11 +91,11 @@
                             <div class="body">
                                 <div class="elib-top">
                                     <div class="lsort">
-                                        <span>12,077</span>
-                                        권의 전자책이 있습니다. &nbsp;
-                                        <span>1</span>
-                                        of 1 page 
-                                    </div>
+								        <span>[[${total}]]</span>
+								        종의 책이 있습니다. &nbsp;
+								        <span>[[${currentPage}]]</span>
+								        of [[${pageGroupEnd}]] page 
+								    </div>
                                 </div>
                                 <ul class="list">
                                     <li class="elib" th:each="mylib : ${mylibs}">
@@ -145,22 +145,15 @@
                                         </div> 
                                     </li>
                                 </ul>
-                                <div class="paging">
-                                    <span>
-                                        <a class="pBtn previous" href="#">이전</a>
-                                        <a class="pBtn current" href="#">1</a>
-                                        <a class="pBtn" href="#">2</a>
-                                        <a class="pBtn" href="#">3</a>
-                                        <a class="pBtn" href="#">4</a>
-                                        <a class="pBtn" href="#">5</a>
-                                        <a class="pBtn" href="#">6</a>
-                                        <a class="pBtn" href="#">7</a>
-                                        <a class="pBtn" href="#">8</a>
-                                        <a class="pBtn" href="#">9</a>
-                                        <a class="pBtn" href="#">10</a>
-                                        <a class="pBtn next" href="#">다음</a>
-                                    </span>
-                                </div>
+							<div class="paging">
+							    <span>
+							        <a th:href="@{/elib/ebook/list(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+							        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
+				                		<a th:href="@{/elib/ebook/list(pg=${page},state=${state})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+				                	</th:block>
+							        <a th:href="@{/elib/ebook/list(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+							    </span>
+							</div>
                             </div>
                         </div>
                         <div class="doc-admin">

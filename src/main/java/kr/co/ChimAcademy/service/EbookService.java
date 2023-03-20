@@ -76,6 +76,12 @@ public class EbookService {
 	public EbookVO selectEbook(String bookId) {
 		return dao.selectEbook(bookId);
 	};
+	public int updateEbookLoan(int sort,String bookId) {
+		return dao.updateEbookLoan(sort, bookId);
+	};
+	public int updateEbookReserv(int sort,String bookId) {
+		return dao.updateEbookReserv(sort, bookId);
+	};
 	// 내서재 //////////////////////////////////////////
 	public int insertMylib(MylibVO vo) {
 		return dao.insertMylib(vo);
@@ -88,6 +94,9 @@ public class EbookService {
 	};
 	public int updateEbookDown(String bookId) {
 		return dao.updateEbookDown(bookId);
+	};
+	public int updateEbookLike(String bookId) {
+		return dao.updateEbookLike(bookId);
 	};
 	// 책파일 업로드 /////////////////////////////////////////
 

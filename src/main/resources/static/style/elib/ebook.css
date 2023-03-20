@@ -528,6 +528,29 @@
     margin-right: 15px;
     font-style: normal;
 }
+.elib-cate {
+	border-top: 2px solid #1f5aa0;
+    padding: 10px 0 20px;
+}
+.elib-cate h2 {
+	font-weight:bold;
+	color: #777;
+    font-size: 130%;
+    background: none;
+    padding: 0 0 5px;
+    margin: 10px;
+}
+.elib-cate .box {
+	background: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+.elib-cate .box a {
+	color: #8f7a65;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 5px;
+}
 /*view*/
 .serial-wrap {
     font-size: 110%;

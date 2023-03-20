@@ -150,16 +150,16 @@
 	<update id="updateEbookLoan">
 		update `ebook` set `loan`=`loan`
 									<choose>
-										<when test="sort=='1'">-1</when>
-										<when test="sort=='2'">+1</when>
+										<when test="sort==1">-1</when>
+										<when test="sort==2">+1</when>
 									</choose>
 				 					where `bookId`=#{bookId}; 
 	</update>
 	<update id="updateEbookReserv">
 		update `ebook` set `reserv`=`reserv`
 									<choose>
-										<when test="sort=='1'">-1</when>
-										<when test="sort=='2'">+1</when>
+										<when test="sort==1">-1</when>
+										<when test="sort==2">+1</when>
 									</choose>
 				 					where `bookId`=#{bookId}; 
 	</update>
@@ -168,5 +168,8 @@
 	</update>
 	<update id="updateMylibReturnDate">
 		update `mylib` set `returnDate`=date_add(`returnDate`, interval 7 day) where `no`=#{no};
+	</update>
+	<update id="updateEbookLike">
+		update `ebook` set `like`=`like`+1 where `bookId`=#{bookId};
 	</update>
 </mapper>
