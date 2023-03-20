@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.ChineseBoardService;
+import kr.co.ChimAcademy.service.NoticeService;
 import kr.co.ChimAcademy.vo.BoardVO;
 
 
@@ -25,6 +26,9 @@ public class ChineseController {
 	
 	@Autowired
 	private ChineseBoardService service;
+	
+	@Autowired
+	private NoticeService Nservice;
 	
 	@GetMapping("board/D107/list")
 	public String D107_list(Model model, @RequestParam(defaultValue = "1") String pg) {
@@ -63,23 +67,27 @@ public class ChineseController {
 	@GetMapping("board/D107/delete")
 	public String D107_delete(int no) {
 		service.deleteBoard(no);
+		service.deleteComments(no);
 		return "redirect:/board/D107/list";
 	}
 	@GetMapping("board/D107/view")
 	public String D107_view(@AuthenticationPrincipal MyUserDetails member, Model model, int no) {
 		model.addAttribute("member", member.getUser());
 		model.addAttribute("board", service.selectBoard(no));
+		// 댓글 가져오기
+		List<BoardVO> comments = Nservice.selectComments(no);
+		model.addAttribute("comments", comments);
 		return "board/D107/view";
 	}
 	
-	@ResponseBody 
-	@RequestMapping(value="board/D107/commentWrite", method = {RequestMethod.POST})
-	public Map<String, BoardVO> commentWrite(BoardVO vo) {
-		BoardVO comment = service.insertComment(vo);
-		Map<String, BoardVO> map = new HashMap<>();
-		map.put("comment", comment);
-		return map;
-	}
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value="board/D107/commentWrite", method =
+	 * {RequestMethod.POST}) public Map<String, BoardVO> commentWrite(BoardVO vo) {
+	 * BoardVO comment = service.insertComment(vo); Map<String, BoardVO> map = new
+	 * HashMap<>(); map.put("comment", comment); return map; }
+	 */
 	
 	@GetMapping("board/D107/write")
 	public String D107_write_get(@AuthenticationPrincipal MyUserDetails member, Model model, BoardVO vo) {
@@ -93,7 +101,7 @@ public class ChineseController {
 		return "redirect:/board/D107/list";
 	}
 	
-	
+
 	
 	
 	

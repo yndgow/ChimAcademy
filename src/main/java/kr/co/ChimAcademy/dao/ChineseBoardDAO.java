@@ -17,8 +17,10 @@ public interface ChineseBoardDAO {
 	public List<BoardVO> selectBoards(int start);
 	public void updateBoard(BoardVO vo);
 	public void deleteBoard(int no);
+	public void deleteComments(int no);
 	public int selectCountTotal();
 	public int boardHitsUpdate(int no);
 	public int insertComment(BoardVO vo);
 	public BoardVO selectComment();
+	public int selectCountComments(int parent);
 }

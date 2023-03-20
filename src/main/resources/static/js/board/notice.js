@@ -224,10 +224,13 @@ function modifyComment(){
 		// 버튼추가
 		let btnDiv = $('.view.write[data-no=' + no + '] .btn_div > div');
 		let saveBtn = $('<button class="btn_small btn-gradient green mini btnCommentSave" data-no="' + no + '">수정완료</button>');
-		let cancelBtn = $('<button class="btn_small btn-gradient red mini btnCommentCancel" data-no="' + no+ '">취소</button>');
+		let cancelBtn = $('<button class="btn_small btn-gradient red mini btnCommentCancel" onclick="location.reload();" data-no="' + no+ '">취소</button>');
 		btnDiv.append(saveBtn);
 		btnDiv.append(cancelBtn);
 	});
+	
+	
+	
 	
 	$(document).on('click', '.btnCommentSave', function(){
 		let no = $(this).data('no');
