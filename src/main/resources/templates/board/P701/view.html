@@ -8,7 +8,7 @@
 					<tbody>
 						<tr>
 							<th>작성자</th>
-							<td>[[${member.uid}]] [[${member.name}]]</td>
+							<td>[[${vo.uid}]] [[${vo.name}]]</td>
 						</tr>
 						<tr>
 							<th>제목</th>
@@ -25,13 +25,13 @@
 										
 					<div th:if="${#authentication.name == vo.uid}">
 						<a class="btn blue"  th:href="@{/board/P701/modify(no=${no},pg=${pg})}">수정<a>
-						<a class="btn red" th:href="@{/board/P701/delete(no=${no})}">삭제</a>
+						<a class="btn red" id="deleteBoard" th:href="@{/board/P701/delete(no=${no})}">삭제</a>
 					</div>
 				</div>
 				<div class="comment">
 					<div class="write">
-						<h1>댓글 수 <span>####</span></h1>
-						<h2>홍길동</h2>
+						<h1>댓글 수 <span>[[${countComment}]]</span></h1>
+						<h2>[[${member.uid}]]</h2>
 						<textarea name="content" id="content" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
 						<div class="btn_end">
 							<button id="btnCommentInsert" class="btn blue" type="button">등록</button>

@@ -22,13 +22,16 @@ public interface JapaneseDAO {
 	
 	//댓글작성
 	public int insertComment(BoardVO vo);
+	
+	//댓글수정
+	public int updateComment(BoardVO vo);
 
 	//댓글보기
 	public List<BoardVO> selectComment(int parent);
 	
-	//좋아요, 싫어요
-	public int goodComment(BoardVO vo);
-	public int badComment(BoardVO vo);
+	//댓글 카운트
+	public int countComment(int no);
+	
 	
 	//페이징 작업
 	public int selectCountTotal();

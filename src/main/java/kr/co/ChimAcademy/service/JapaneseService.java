@@ -45,19 +45,21 @@ public class JapaneseService {
 		return dao.insertComment(vo);
 	}
 	
+	//댓글수정
+	public int updateComment(BoardVO vo) {
+		return dao.updateComment(vo);
+	}
+	
 	//댓글보기
 	public List<BoardVO> selectComment(int parent){
 		return dao.selectComment(parent);
 	}
 	
-	//좋아요, 싫어요
-	public int goodComment(BoardVO vo) {
-		return dao.goodComment(vo);
+	//댓글카운트
+	public int countComment(int no) {
+		return dao.countComment(no);
 	}
 	
-	public int badComment(BoardVO vo) {
-		return dao.badComment(vo);
-	};
 
 	//페이징 작업
 	public int selectCountTotal() {
