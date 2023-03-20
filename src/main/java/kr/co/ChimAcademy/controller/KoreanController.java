@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,12 +60,12 @@ public class KoreanController {
 		// 댓글
 		List<BoardVO> comment = service.selectBoardComment(no);
 		
-		
 		model.addAttribute("member", mem);
 		model.addAttribute("no", no);
 		model.addAttribute("pg", pg);
 		model.addAttribute("korean", vo);
 		model.addAttribute("comments", comment);
+		model.addAttribute("commentCount", comment.size());
 		
 		return "board/A101/view";
 	}
@@ -114,17 +115,37 @@ public class KoreanController {
 	/* 국문학과 게시판 댓글 작성 */
 	@ResponseBody
 	@PostMapping("board/A101/comment")
-	public List<BoardVO> board_A101_comment(BoardVO vo, HttpServletRequest req) {
+	public BoardVO board_A101_comment(BoardVO vo, HttpServletRequest req) {
 		String ip = req.getRemoteAddr();
 		vo.setRegip(ip);
 		// 작성
 		int result = service.insertBoardComment(vo);
 		
 		// 댓글가져오기
-		List<BoardVO> comments = service.selectBoardComment(vo.getParent());
+		BoardVO board = service.selectBoard(vo.getNo());
 		
 		// return 댓글;
-		return comments;
+		return board;
+	}
+
+	/* 국문학과 댓글 삭제 */
+	@ResponseBody
+	@DeleteMapping("board/A101/comment/delete")
+	public Map<String, Integer> deleteComment(int no) {
+		int result = service.deleteBoard(no);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		return map;
+	}
+	
+	/* 국문학과 댓글 수정 */
+	@ResponseBody
+	@PostMapping("board/A101/comment/modify")
+	public Map<String, Integer> modifyBoardComment(BoardVO vo) {
+		int result = service.modifyBoardComment(vo);
+		Map<String, Integer> json = new HashMap<>();
+		json.put("result", result);
+		return json;
 	}
 
 }

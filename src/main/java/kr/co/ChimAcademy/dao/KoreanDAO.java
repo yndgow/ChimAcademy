@@ -1,6 +1,7 @@
 package kr.co.ChimAcademy.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -36,4 +37,7 @@ public interface KoreanDAO {
 	
 	// 국문학과 게시판 댓글 출력
 	public List<BoardVO> selectBoardComment(int no);
+	
+	// 국문학과 게시판 댓글 수정
+	public int modifyBoardComment(BoardVO vo);
 }

@@ -1,6 +1,7 @@
 package kr.co.ChimAcademy.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -105,5 +106,10 @@ public class KoreanService {
 	/* 국문학과 게시판 댓글 출력 */
 	public List<BoardVO>  selectBoardComment(int no) {
 		return dao.selectBoardComment(no);
+	}
+	
+	/* 국문학과 게시판 댓글 수정 */
+	public int modifyBoardComment(BoardVO vo) {
+		return dao.modifyBoardComment(vo);
 	}
 }
