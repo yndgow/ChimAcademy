@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import kr.co.ChimAcademy.entity.BoardEntity;
 
 public interface BoardRepo extends JpaRepository<BoardEntity, Integer>{
-	Page<BoardEntity> findByLecCodeNotNullAndParent(int parent, Pageable pageable);
+	Page<BoardEntity> findByTypeAndParent(int type, int parent, Pageable pageable);
 //	
 //	
 //	List<BoardEntity> findByLecCode(String lecCode);

@@ -11,6 +11,7 @@ $(()=>{
 			<div class="board">
 				<form th:action="@{/notice/write}" method="post" id="formNoticeWrite">
 					<input type="hidden" name="memberEntity" th:value="${member.uid}"/>
+					<input type="hidden" name="type" value="1"/>
 					<table>
 						<h1>글 작성하기</h1>
 						<thead style="display: none">

@@ -34,9 +34,9 @@ public class NoticeService {
 	}
 	
 	// 공지사항 글목록(JPA)
-	public Page<BoardEntity> list2(int pg){
+	public Page<BoardEntity> list2(int type,int pg){
 		Pageable pageable = PageRequest.of(pg-1, 10, Sort.by("rdate").descending());
-		return repo.findByLecCodeNotNullAndParent(0, pageable);
+		return repo.findByTypeAndParent(type, 0, pageable);
 	}
 
 	// 공지사항 글목록(Mybatis)

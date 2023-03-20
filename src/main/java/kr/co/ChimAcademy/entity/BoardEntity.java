@@ -48,6 +48,8 @@ public class BoardEntity {
 	private String file;
 	private int good;
 	private int bad;
+	private int type;
+	
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "uid", referencedColumnName = "uid")

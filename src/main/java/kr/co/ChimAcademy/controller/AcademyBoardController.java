@@ -36,8 +36,9 @@ public class AcademyBoardController {
 	// JPA 공지사항 리스트
 	@GetMapping("notice")
 	public String list(Model model, @RequestParam(defaultValue = "1")int pg) {
-
-		Page<BoardEntity> page = service.list2(pg);
+		// 공지사항은 1
+		int type = 1;
+		Page<BoardEntity> page = service.list2(type, pg);
 		int[] pageNumbers = service.getPageNumbers(page);
 		
 		model.addAttribute("startPages", pageNumbers[0]);
