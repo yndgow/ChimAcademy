@@ -14,7 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
@@ -75,9 +78,12 @@ public class JapaneseController {
 		BoardVO vo = service.selectJapanese(no);
 		//댓글 보기
 		List<BoardVO> comment = service.selectComment(no);
+		
+		
+		//댓글 카운트
+		//int countComment = service.countComment(no);
 		service.hitJapanese(vo);
-		service.goodComment(vo);
-		service.badComment(vo);
+		model.addAttribute("countComment", comment.size());
 		model.addAttribute("comment", comment);
 		model.addAttribute("member", mem);
 		model.addAttribute("no", no);
@@ -85,7 +91,7 @@ public class JapaneseController {
 		model.addAttribute("vo", vo);
 		return "board/P701/view";
 	}
-	
+		
 
 	@ResponseBody
 	@PostMapping("board/P701/comment")
@@ -99,14 +105,26 @@ public class JapaneseController {
 		return comments;
 	}
 	
-	
-	@GetMapping("board/P701/commentDelete")
-	public String commentDelete(Model model, int no) {
+	@ResponseBody
+	@PutMapping("board/P701/updatecomment")
+	public Map<String, String> updatecomment(BoardVO vo){
+		service.updateComment(vo);
+		String content = vo.getContent();
 		
-		service.deleteJapanese(no);
-		model.addAttribute("no", no);
+		Map<String, String> map = new HashMap<>();
+		map.put("content", content);
+		return map;
+	}
+	
+	@ResponseBody
+	@GetMapping("board/P701/commentDelete")
+	public List<BoardVO> commentDelete(Model model, BoardVO vo, int no) {
+	    service.deleteJapanese(no);
+	    System.out.println("vo" + vo.getParent());
+	    List<BoardVO> comments = service.selectComment(vo.getParent());
+	    model.addAttribute("no", no);
 
-		return "board/P701/view";
+	    return comments;
 	}
 	
 	

@@ -27,8 +27,16 @@ public class ChineseBoardService {
 		return vo;
 	};
 
+	@Transactional
 	public List<BoardVO> selectBoards(int start) {
-		return dao.selectBoards(start);
+	 	List<BoardVO> boards = dao.selectBoards(start);
+	 	
+	 	for(BoardVO board : boards) {
+	 	int commentsCount = dao.selectCountComments(board.getNo());
+	 	board.setCommentsCount(commentsCount);
+	 	}
+		
+		return boards;
 	};
 
 	public void updateBoard(BoardVO vo) {
@@ -38,6 +46,12 @@ public class ChineseBoardService {
 	public void deleteBoard(int no) {
 		dao.deleteBoard(no);
 	};
+	
+	public void deleteComments(int no) {
+		dao.deleteComments(no);
+	}
+	
+	
 	
 	/* 댓글쓰기 */
 	@Transactional
