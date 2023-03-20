@@ -4,8 +4,10 @@
 		$('#book-borrow').click(function(e){
 			e.preventDefault();
 			let loan = Number($('.loan').text())
-			if(loan > 5){
+			console.log(loan)
+			if(loan >= 5){
 				alert("대출이 불가능합니다.");
+				location.reload();
 				return false;
 			}
 			let uid = $('.uid').val();
@@ -37,8 +39,9 @@
 		$('#book-reserve').click(function(e){
 			e.preventDefault();
 			let reserv = Number($('.reserv').text())
-			if(reserv > 5){
+			if(reserv >= 5){
 				alert("예약이 불가능합니다.");
+				location.reload();
 				return false;
 			}
 			let uid = $('.uid').val();
@@ -172,7 +175,7 @@
 						                <a href="#" class="btn btn1" id="book-borrow" th:if="${ebook.loan < 5}">
 						                    <span>대출하기</span>
 						                </a>
-						                <a href="#" class="btn btn2" id="book-reserve" th:if="${ebook.loan >= 5 and ebook.reserv <= 5}">
+						                <a href="#" class="btn btn2" id="book-reserve" th:if="${ebook.loan >= 5 and ebook.reserv < 5}">
 						                    <span>예약하기</span>
 						                </a>
 						                <a href="#" class="btn btn3" id="book-recommend">
