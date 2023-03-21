@@ -70,6 +70,9 @@ public class EbookService {
 	public CountVO selectCountEbooks() {
 		return dao.selectCountEbooks();
 	};
+	public int selectCountForCheckMylib(String uid, String bookId, String state) {
+		return dao.selectCountForCheckMylib(uid, bookId, state);
+	};
 	public List<EbookVO> selectEbooks(String sort,String type,EbookVO vo,int start){
 		return dao.selectEbooks(sort,type,vo,start);
 	};
@@ -97,6 +100,9 @@ public class EbookService {
 	};
 	public int updateEbookLike(String bookId) {
 		return dao.updateEbookLike(bookId);
+	};
+	public int updateMylibReturn(int no) {
+		return dao.updateMylibReturn(no);
 	};
 	// 책파일 업로드 /////////////////////////////////////////
 

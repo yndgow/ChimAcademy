@@ -197,7 +197,12 @@ main>section {
 	height: 360px;
 }
 
-/* 게시판 수정 삭제 버튼 */
+/* 댓글 수 표시*/
+.taL {
+	text-align: left;
+}
+
+
 #btnNoticeDiv{
     text-align : end;
 }

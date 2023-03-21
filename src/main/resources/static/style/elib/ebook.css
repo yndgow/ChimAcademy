@@ -452,9 +452,16 @@
     vertical-align: middle;
 }
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox > .snipet {
-    display: block;
     padding: 0;
     color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.5em;
+    height: 6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
 #sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .meta {
     padding-top: 10px;
@@ -677,6 +684,16 @@
     border-color: #1a518b;
 }
 .sview > .bInfo {}
+
+.none {display: none;}
+
+.nolist {
+	text-align: center;
+	margin-top: 10px
+}
+.nolist > span {
+	font: 20px bold;
+}
 
 /*notice - list*/
 table {
@@ -906,6 +923,7 @@ table th, table td {
 }
 .reg input[type=text] {
 	width: 50%;
+	padding: 3px;
 }
 .reg textarea {
 	width: 100%;

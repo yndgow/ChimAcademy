@@ -3,6 +3,8 @@ package kr.co.ChimAcademy.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,14 @@ public class KoreanService {
 	
 	/* 국문학과 게시판 기본 기능 */
 	// 국문학과 게시판 목록 출력(List)
+	@Transactional
 	public List<BoardVO> selectBoards(int start) {
-		return dao.selectBoards(start);
+		List<BoardVO> boards = dao.selectBoards(start);
+		for(BoardVO board : boards) {
+		int commentsCount = dao.selectCountComments(board.getNo());
+		board.setCommentsCount(commentsCount);
+		}
+		return boards;
 	}
 	
 	// 국문학과 게시판 보기(View)

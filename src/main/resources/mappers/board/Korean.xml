@@ -92,4 +92,10 @@
 		WHERE
 		`no` = #{no};
 	</update>
+	
+	<!-- 댓글 카운트 표시 -->
+	<select id="selectCountComments" resultType="int">
+		SELECT COUNT(*) FROM board WHERE parent=#{parent};
+	</select>
+	
 </mapper>
