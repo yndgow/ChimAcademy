@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DAO Mapper 설정 -->
+<mapper namespace="kr.co.ChimAcademy.dao.ProfessorDAO">
+
+	<!-- 교수 내 정보 출력 -->
+	<select id="selectPro" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.uid, a.name, b.depCode, b.depName, a.hp, c.*
+		FROM member AS a
+		JOIN department AS b
+		ON a.depCode = b.depCode
+		JOIN professor AS c
+		ON a.uid = c.uid
+		WHERE a.uid = #{uid};
+	</select>
+</mapper>

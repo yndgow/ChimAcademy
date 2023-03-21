@@ -28,4 +28,46 @@ public class MemberVO {
 	private String profile;
 	private String member2;
 	private String member3;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	교수-추가필드
+	private String depName;
+	private String career;
+	private String lab;
+	private String csTime;
+	
 }

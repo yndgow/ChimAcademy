@@ -40,4 +40,7 @@ public interface KoreanDAO {
 	
 	// 국문학과 게시판 댓글 수정
 	public int modifyBoardComment(BoardVO vo);
+	
+	// 국문학과 게시판 댓글 카운트 표시
+	public int selectCountComments(int parent);
 }
