@@ -31,6 +31,7 @@ public interface EbookDAO {
 	public int insertMylib(MylibVO vo);
 	public List<MylibVO> selectMylibs(String uid, String state, int start);
 	public int selectCountTotalMylibs(String uid, String state);
+	public int selectCountForCheckMylib(String uid, String bookId, String state);
 	public EbookFileVO selectEbookFile(String bookId);
 	public int updateEbookDown(String bookId);
 	public int updateMylibReturn(int no);

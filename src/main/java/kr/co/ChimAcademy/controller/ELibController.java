@@ -94,15 +94,27 @@ public class ELibController {
 	@GetMapping("elib/ebook/view")
 	public String view(@AuthenticationPrincipal MyUserDetails member,Model model, String pg, String sort, String type, EbookVO vo) {
 		model.addAttribute("member", member.getUser());
+		String uid = member.getUser().getUid();
+		// 학생이 해당 책을 이미 대출했는지 확인 ( result1 > 0 대출 중이다.)
+		int result1 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "1");
+		// 학생이 해당 책을 이미 예약했는지 확인 ( result2 > 0 예약 중이다.)
+		int result2 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "2");
+		// 학생이 해당 책을 이미 관심도서에 추가했는지 확인 ( result3 > 0 관심도서 목록에 이미 있다.)
+		int result3 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "0");
+		// 도서 정보 불러오기
 		EbookVO ebook = eService.selectEbook(vo.getBookId());
 		model.addAttribute("ebook",ebook);
 		model.addAttribute("bookId",vo.getBookId());
+		// lnb 등록된 책 권수 불러오기
 		CountVO counts = eService.selectCountEbooks();
 		model.addAttribute("counts",counts);
 		model.addAttribute("sort",sort);
 		model.addAttribute("type",type);
 		model.addAttribute("pg",pg);
 		model.addAttribute("vo",vo);
+		model.addAttribute("result1",result1);
+		model.addAttribute("result2",result2);
+		model.addAttribute("result3",result3);
 		return "elib/ebook/view";
 	}
 	/*전자도서 공지사항 게시판*////////////////////

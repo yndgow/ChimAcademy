@@ -89,6 +89,9 @@
 											</when>
 										</choose>
 	</select>
+	<select id="selectCountForCheckMylib" resultType="int">
+		select count(*) from `mylib` where `uid`=#{uid} and `bookId`=#{bookId} and `state`=#{state}
+	</select>
  	<resultMap id="selectMylibsResultMap" type="kr.co.ChimAcademy.vo.MylibVO">
 		<id column="no" property="no"/>
 		<result column="uid" property="uid"/>
