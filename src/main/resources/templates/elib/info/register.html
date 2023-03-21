@@ -27,7 +27,14 @@
 		$('.cate2').click(function(){
 			let c1 = $('.cate1').val();
 			let c2 = $(this).val();
-			$('input[name=bookId]').val("ISBN-978-"+c1+"-"+c2+"-");
+			let group = $('select[name=GROUP]').val();
+			let gr = 0;
+			if(group == "ebook"){
+				gr = 989;
+			}else {
+				gr = 979;
+			}
+			$('input[name=bookId]').val("ISBN-"+gr+"-"+c1+"-"+c2+"-");
 		});
 		$('.submit').click(function(){
 			$('.form').submit();
@@ -138,7 +145,7 @@
                                 		<tr>
                                 			<th>소속도서관</th>
                                 			<td>
-                                				<input type="text" name="belong" placeholder="소속도서관">
+                                				<input type="text" name="belong" value="침대학교 전자도서관">
                                 			</td>
                                 		</tr>
                                 		<tr>
