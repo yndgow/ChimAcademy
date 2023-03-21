@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -93,13 +94,13 @@ public class AssistantController {
 	}
 	
 	@PostMapping("assistant/lecture/register")
-	public String lecRegister(LectureEntity entity, String uid) {
+	public String lecRegister(LectureEntity entity, MemberEntity memberEntity) {
 		
 		log.info("entity : " + entity);
-		log.info("uid : " + uid);
+		log.info("uid : " + memberEntity.getUid());
 		
-		if(!uid.isEmpty()) {
-			assistantService.insertLectureList(entity, uid);
+		if(memberEntity.getUid() != null) {
+			assistantService.insertLectureList(entity, memberEntity);
 		}else {
 			// 강의 등록
 			assistantService.insertLecture(entity);
@@ -111,7 +112,9 @@ public class AssistantController {
 	// 과목 1개 가져오기
 	@ResponseBody
 	@GetMapping("assistant/lecture/{lecCode}")
-	public LectureEntity getLecture(@PathVariable int lecCode) {
+	public LecListEntity getLecture(@PathVariable int lecCode) {
+		log.info("lecCode : " + lecCode);
+		log.info("entity : " + assistantService.getLecture(lecCode));
 		return assistantService.getLecture(lecCode);
 	}
 	

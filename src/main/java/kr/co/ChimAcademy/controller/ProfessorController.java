@@ -23,12 +23,13 @@ public class ProfessorController {
 	
 	@GetMapping("professor/my")
 	public String mypage() {
-		return "professor/my";
+		return "mypage/professor/my";
 	}
 	
 	@GetMapping("professor/my/modify")
 	public String mypagemodify() {
 		return "mypage/professor/modify";
 	}
+
 	
 }
