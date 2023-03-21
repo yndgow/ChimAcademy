@@ -144,7 +144,7 @@ $(()=>{
 						</td>
 						<th>교수명</th>
 						<td>
-							<select name="uid" id="selProfessors">
+							<select name="memberEntity" id="selProfessors">
 								<option value="">-</option>
 								<option th:value="${pro.uid}" th:text="${pro.name}" th:each="pro : ${professors}">장보고</option>
 							</select>
@@ -223,7 +223,7 @@ $(()=>{
 								<option value="">-</option>
 								<th:block th:each="major : ${majors}">
 									<option th:value="${major.majorCode}">[[${major.majorName}]]</option>
-								</th:block>
+								</th:block>	
 							</select>
 						</td>
 						<th>강의명</th>

@@ -210,6 +210,10 @@ function lecModFormShow(){
 		$.getJSON(url, 
 			function (data) {
 				console.log(data);
+				$('.lecModForm input[name=lecCode]').val(data.lecCode);
+				$('.lecModForm input[name=lecName]').val(data.lecName);
+				
+				
 			}
 		);
 		

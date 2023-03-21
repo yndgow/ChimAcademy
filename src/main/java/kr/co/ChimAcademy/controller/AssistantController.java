@@ -113,9 +113,11 @@ public class AssistantController {
 	@ResponseBody
 	@GetMapping("assistant/lecture/{lecCode}")
 	public LecListEntity getLecture(@PathVariable int lecCode) {
+		LectureEntity lectureEntity= assistantService.getLectureEn(lecCode);
+				
 		log.info("lecCode : " + lecCode);
-		log.info("entity : " + assistantService.getLecture(lecCode));
-		return assistantService.getLecture(lecCode);
+		log.info("entity : " + lectureEntity);
+		return assistantService.getLecture(lectureEntity);
 	}
 	
 }

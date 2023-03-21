@@ -87,22 +87,29 @@ public class AssistantService {
 	
 	// 교수 - 강의 등록
 	@Transactional
-	public void insertLectureList(LectureEntity lectureEntity, String uid) {
+	public void insertLectureList(LectureEntity lectureEntity, MemberEntity memberEntity) {
 		LecListEntity entity = new LecListEntity();
-		MemberEntity memberEntity = new MemberEntity();
+//		MemberEntity memberEntity = new MemberEntity();
 		
 		LectureEntity lecEntity = lectureRepo.save(lectureEntity);
 		
 		entity.setLectureEntity(lecEntity);
-		memberEntity.setUid(uid);
+//		memberEntity.setUid(uid);
 		entity.setMemberEntity(memberEntity);
 		
 		lecListRepo.save(entity);
 	}
 	
 	// 과목 1개
-	public LectureEntity getLecture(int lecCode) {
+	public LecListEntity getLecture(LectureEntity entity) {
+		return lecListRepo.findByLectureEntity(entity);
+		//return lectureRepo.findById(lecCode).orElse(null);
+	}
+	
+	// 과목 1개
+	public LectureEntity getLectureEn(int lecCode) {
 		return lectureRepo.findById(lecCode).orElse(null);
+		//return lectureRepo.findById(lecCode).orElse(null);
 	}
 	
 }
