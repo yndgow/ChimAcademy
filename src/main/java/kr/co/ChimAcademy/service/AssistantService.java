@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.ChimAcademy.dao.AssistantDAO;
+import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
@@ -75,8 +76,9 @@ public class AssistantService {
 	}
 	
 	// 학과별 교수
-	public List<MemberEntity> selectProfessors(String depCode){
-		return memberRepo.findByDepCodeAndLevel(depCode, 3);
+	public List<MemberEntity> selectProfessors(DepartmentEntity departmentEntity){
+		
+		return memberRepo.findByDepartmentEntityAndLevel(departmentEntity, 3);
 	}
 	
 	// 강의 등록
@@ -112,12 +114,21 @@ public class AssistantService {
 	// 과목 수정 담당교수가 있는
 	@Transactional
 	public void updateLecture(LectureEntity lectureEntity, MemberEntity memberEntity, int no) {
-		
+		// 과목 업데이트
 		lectureRepo.save(lectureEntity);
-		
-		
-		
-		//lecListRepo.save(lectureEntity, memberEntity);
+		// no가 있으면 찾아서 업데이트 없으면 새로 만든 후 저장
+		LecListEntity lecListEntity = lecListRepo.findById(no).orElse(new LecListEntity());
+		lecListEntity.setLectureEntity(lectureEntity);
+		lecListEntity.setMemberEntity(memberEntity);
+		lecListRepo.save(lecListEntity);
+	}
+	
+	// 과목 삭제
+	public void deleteLecture() {
 		
 	}
+	
+	
+	
+	
 }

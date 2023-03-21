@@ -94,11 +94,6 @@ function searchBtn(){
 		let majorCode = $('select[name=majorCodeSel]').val();
 		let lecClass = $('select[name=lecClass]').val();
 		
-		/*if(!lecGubun) lecGubun = null;
-		if(!majorCode) majorCode = null;
-		if(!lecClass) lecClass = null;*/
-		
-		
 		let jsonData = {};
 		if(lecGubun) jsonData.lecGubun = lecGubun;
 		if(majorCode) jsonData.majorCode = majorCode;
@@ -212,7 +207,6 @@ function lecModFormShow(){
 		let url = '/ChimAcademy/assistant/lecture/'+lecCode;
 		$.getJSON(url, 
 			function (data) {
-				console.log(data);
 			   	let lectureEntity = data.lectureEntity ? data.lectureEntity : data;
 			
 			    $('.lecModForm input[name=lecCode]').val(lectureEntity.lecCode);
@@ -227,13 +221,11 @@ function lecModFormShow(){
 					$('.lecModForm select[name=memberEntity]').val('');
 				}
 			    
-			    
 			    $('.lecModForm input[name=lecLoc]').val(lectureEntity.lecLoc);
-			    $('.lecModForm select[name=lecDay]').val(lectureEntity.lecDay);
+			    $('.lecModForm select[name=lecDay]').val(lectureEntity.lecDay || "월");
 			    $('.lecModForm select[name=beginTime]').val(lectureEntity.beginTime);
 			    $('.lecModForm select[name=endTime]').val(lectureEntity.endTime);
 			    $('.lecModForm input[name=lecLimit]').val(lectureEntity.lecLimit);
-			    
 			    $('.lecModForm input[name=depCode]').val(lectureEntity.depCode);
 			    $('.lecModForm input[name=no]').val(data.no);
 			    alert('정보를 불러왔습니다.');
@@ -241,8 +233,16 @@ function lecModFormShow(){
 			}
 		);
 		
-		
-		
-		
 	})
+}
+
+function lecModComp(){
+	$(document).on('click', '.btnLecModify', function(e){
+		e.preventDefault();
+		if(!confirm('수정하시겠습니까?')){
+			return false;
+		}else{
+			$('.lecModForm').submit();
+		}
+	});
 }

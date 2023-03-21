@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,11 +17,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "major")
-public class MajorEntity {
+@Builder
+@Table(name = "department")
+public class DepartmentEntity {
 	@Id
-	private String majorCode;
-	private String majorName;
 	private String depCode;
-	
+	private String depName;
 }

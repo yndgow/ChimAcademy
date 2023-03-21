@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.LastModifiedDate;
@@ -35,8 +38,8 @@ public class MemberEntity implements Serializable{
 	
 	private String name;
 	private String birth;
-	private String depCode;
-	private String majorCode;
+	//private String depCode;
+	//private String majorCode;
 	private int sYear;
 	private int gender;
 	private int totCredit;
@@ -56,5 +59,13 @@ public class MemberEntity implements Serializable{
 	private String profile;
 	private String member2;
 	private String member3;
+	
+	@ManyToOne
+	@JoinColumn(name = "depCode", referencedColumnName = "depCode")
+	private DepartmentEntity departmentEntity;
+	
+	@ManyToOne
+	@JoinColumn(name= "majorCode", referencedColumnName = "majorCode")
+	private MajorEntity majorEntity;
 
 }

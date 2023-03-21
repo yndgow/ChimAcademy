@@ -5,6 +5,7 @@ $(()=>{
 	lecRegFormSubmit();
 	lecModFormShow();
 	lecRegFormShow();
+	lecModComp();
 })
 
 </script>
@@ -271,6 +272,7 @@ $(()=>{
 						<td>
 							<select name="lecDay" id="">
 								<option value="월" selected>월</option>
+								<option value="월" selected>월</option>
 								<option value="화">화</option>
 								<option value="수">수</option>
 								<option value="목">목</option>
@@ -311,8 +313,8 @@ $(()=>{
 					</tr>
 				</tbody>
 			</table>
-				<input type="text" name="depCode"/>
-				<input type="text" name="no"/>
+				<input type="hidden" name="depCode"/>
+				<input type="hidden" name="no"/>
 			</form>
 		</section>
 	</section>

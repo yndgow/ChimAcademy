@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
@@ -76,7 +77,8 @@ public class AssistantController {
 		// 학과의 전공
 		List<MajorEntity> list = assistantService.selectMajors(vo.getDepCode());
 		// 학과의 교수
-		List<MemberEntity> professors = assistantService.selectProfessors(vo.getDepCode());
+		DepartmentEntity departmentEntity = DepartmentEntity.builder().depCode(vo.getDepCode()).build();
+		List<MemberEntity> professors = assistantService.selectProfessors(departmentEntity);
 		
 		model.addAttribute("department", vo);
 		model.addAttribute("majors", list);
@@ -131,16 +133,11 @@ public class AssistantController {
 	// 과목 수정하기
 	@PostMapping("assistant/lecture/modify")
 	public String updateLecture(MemberEntity memberEntity, LectureEntity lectureEntity, @RequestParam(defaultValue = "0") int no) {
-		log.info("mem:                 " + memberEntity);
-		log.info("lec :                " + lectureEntity);
-		log.info("no :                " + no);
 		if(memberEntity.getUid() == null) {
 			assistantService.insertLecture(lectureEntity);
 		}else {
 			assistantService.updateLecture(lectureEntity, memberEntity, no);
 		}
-		
-		
 		return "redirect:/assistant/lecuture";
 	}
 }
