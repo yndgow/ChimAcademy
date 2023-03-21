@@ -41,6 +41,7 @@ public class KoreanController {
 		List<BoardVO> vo = service.selectBoards(start);
 		model.addAttribute("korean", vo);
 		model.addAttribute("pg", pg);
+		model.addAttribute("start", start);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPageNum", lastPageNum);
 		model.addAttribute("pageStartNum", pageStartNum);

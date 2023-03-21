@@ -11,12 +11,12 @@
                 </nav>
                <section>
                 <div>
-                    <tr><img src="../img/my/myinfo.png" alt="증명사진" class="idphoto"></tr>
+                    <tr><img th:src="@{/img/mypage/myinfo.png}" alt="증명사진" class="idphoto"></tr>
                 </div>
                     <table>
                         <tr>
                             <th>이름</th>
-                            <td>교수</td>
+                            <td>[[${professor.name}]]</td>
                             <th>연구실</th>
                             <td>침대관 놀이동</td>
                             <th>이력</th>

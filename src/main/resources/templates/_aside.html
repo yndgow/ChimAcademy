@@ -8,7 +8,7 @@
                 <li><a th:href="@{/professor/my/modify}">내 정보수정(학생)</a></li>
                 <!-- </th:block> -->
                 <!-- <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')"> -->
-                <li><a th:href="@{/professor/my}">내 정보(교수)</a></li>
+                <li><a th:href="@{/professor/my(uid=${uid})}">내 정보(교수)</a></li>
                 <li><a th:href="@{/professor/my/modify}">내 정보수정(교수)</a></li>
                 <!-- </th:block> -->
             </ol>
