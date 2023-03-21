@@ -22,7 +22,6 @@ import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.AssistantService;
-import kr.co.ChimAcademy.service.MemberService;
 import kr.co.ChimAcademy.vo.DepartmentVO;
 import kr.co.ChimAcademy.vo.LectureVO;
 import lombok.extern.slf4j.Slf4j;
