@@ -29,45 +29,17 @@ public class MemberVO {
 	private String member2;
 	private String member3;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+  // 추가필드 통합 김지홍
+	//추가필드
+	private String majorName;
+	private String lecName;
+	private String totalScore;
+	private int credit;
+		
 //	교수-추가필드
 	private String depName;
 	private String career;
 	private String lab;
 	private String csTime;
-	
+
 }
