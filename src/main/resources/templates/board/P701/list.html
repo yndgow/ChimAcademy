@@ -11,7 +11,7 @@
             <section id="depList">
                 <!-- 내 정보 -->
                 <div class="banner">
-
+					<img th:src="@{/img/board/P701/P701_banner.png}" alt="일문학과_배너">
                 </div>
                <section>
                     <table>
@@ -22,8 +22,8 @@
                             <th style="width: 7%">조회수</th>
                             <th style="width: 15%">작성일</th>
                         </tr>
-                        <tr th:each="japanese : ${vo}">
-	                        <td>[[${japanese.no}]]</td>
+                        <tr th:each="japanese, idx  : ${vo}">
+	                        <td>[[${idx.index + 1}]]</td>
 	                       	<td><a th:href="@{/board/P701/view(no=${japanese.no},pg=${currentPage})}">[[${japanese.title}]]</a></td>
 		                    <td>[[${japanese.name}]]</td>
 	                        <td>[[${japanese.hit}]]</td>

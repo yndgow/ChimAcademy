@@ -20,7 +20,6 @@
 	<insert id="insertJapanese">
 		insert into `board` set
 			`depCode`='P701',
-            `lecCode`=#{lecCode},
             `title`=#{title},
             `content`=#{content},
             `uid`=#{uid},

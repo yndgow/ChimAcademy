@@ -28,4 +28,12 @@ public class MemberVO {
 	private String profile;
 	private String member2;
 	private String member3;
+	
+	
+	//추가필드
+	private String majorName;
+	private String depName;
+	private String lecName;
+	private String totalScore;
+	private int credit;
 }

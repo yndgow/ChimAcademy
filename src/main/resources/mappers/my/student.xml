@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.StudentDAO">
+	
+	<select id="selectStudent" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.*,b.depName,c.majorName FROM member AS a
+		JOIN department AS b
+		ON a.depCode = b.depCode
+		JOIN major AS c
+		ON a.majorCode = c.majorCode
+		WHERE uid = #{uid};
+	</select>
+	
+	<select id="selectLectures" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.*, b.*, c.name, d.*, e.* FROM lec_sugang AS a 
+		JOIN lec_list AS b 
+		ON a.lecCode = b.lecCode 
+		JOIN member AS c
+		ON b.uid = c.uid
+		JOIN lecture AS d
+		ON a.lecCode = d.lecCode
+		JOIN score AS e
+		ON a.uid = e.uid
+		
+		WHERE a.uid = #{uid};
+	</select>
+	
+	
+	
+	
+
+</mapper>

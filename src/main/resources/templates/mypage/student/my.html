@@ -14,19 +14,22 @@
                     <table>
                         <tr>
                             <th>이름</th>
-                            <td>홍길동</td>
+                            <td th:text=${vo.name}></td>
                             <th>학번</th>
-                            <td>20231112</td>
+                            <td th:text=${vo.uid}>2022</td>
                             <th>학과</th>
-                            <td>국문학과 / 한글전공</td>
+                            <td>[[${vo.majorName}]] / [[${vo.depName}]]</td>
                         </tr>
                         <tr>
                             <th>연락처</th>
-                            <td>010-0000-0001</td>
+                            <td th:text=${vo.hp}>010-0000-0001</td>
                             <th>평균학점</th>
-                            <td>2.0 / 4.5</td>
+                            <td>[[${vo.avgCredit}]]/ 4.5</td>
                             <th>학적구분</th>
-                            <td>재학</td>
+                            <th:block th:switch="${vo.status}">
+                            <td th:case="1">재학</td>
+                            <td th:case="2">휴학</td>
+							</th:block>
                         </tr>
                    </table>
                    </section>
@@ -95,16 +98,18 @@
                         <th>강의시간</th>
                         <th>성적</th>
                     </tr>
-                    <tr>
-                       <td>1</td>
-                       <td>1</td>
-                       <td>브릿징 영어쓰기</td>
-                       <td>전필</td>
-                       <td>3</td>
-                       <td>이성계</td>
-                       <td>화123(과학동203)</td>
-                       <td>A</td>
-                    </tr>
+					<tr th:each="lecture : ${lecture}">
+                        <td>[[${lectureStat.count}]]</td>
+	                    <td>[[${lecture.sYear}]]</td>
+	                    <td>[[${lecture.lecName}]]</td>
+                        <td>이수구분</td>
+                        <td></td>
+                        <td>[[${lecture.credit}]]</td>
+                        <td>[[${lecture.name}]]</td>
+                        <td>강의시간</td>
+                        <td>[[${lecture.totalScore}]]</td>
+               		</tr>
+
                     <tr>
                        <td>2</td>
                        <td>1</td>
