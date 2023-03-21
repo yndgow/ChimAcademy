@@ -89,27 +89,35 @@ public class AssistantService {
 	@Transactional
 	public void insertLectureList(LectureEntity lectureEntity, MemberEntity memberEntity) {
 		LecListEntity entity = new LecListEntity();
-//		MemberEntity memberEntity = new MemberEntity();
 		
 		LectureEntity lecEntity = lectureRepo.save(lectureEntity);
 		
 		entity.setLectureEntity(lecEntity);
-//		memberEntity.setUid(uid);
 		entity.setMemberEntity(memberEntity);
 		
 		lecListRepo.save(entity);
 	}
 	
-	// 과목 1개
+	// 과목 1개 담당교수가 있는
 	public LecListEntity getLecture(LectureEntity entity) {
 		return lecListRepo.findByLectureEntity(entity);
-		//return lectureRepo.findById(lecCode).orElse(null);
 	}
 	
-	// 과목 1개
+	// 과목 1개 담당교수가 없는
 	public LectureEntity getLectureEn(int lecCode) {
 		return lectureRepo.findById(lecCode).orElse(null);
-		//return lectureRepo.findById(lecCode).orElse(null);
 	}
 	
+	
+	// 과목 수정 담당교수가 있는
+	@Transactional
+	public void updateLecture(LectureEntity lectureEntity, MemberEntity memberEntity, int no) {
+		
+		lectureRepo.save(lectureEntity);
+		
+		
+		
+		//lecListRepo.save(lectureEntity, memberEntity);
+		
+	}
 }

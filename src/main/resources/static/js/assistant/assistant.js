@@ -138,11 +138,14 @@ function searchBtn(){
 							time += j;
 						}	
 					}
+					if(time == '1'){
+						time = '';
+					}
 					/* 날짜 지정 */
-					if(!e.lecDay) e.lecDay = "-";
+					if(!e.lecDay) e.lecDay = "";
 					
 					/* 장소 지정 */
-					if(!e.lecLoc) e.lecLoc = "-";
+					if(!e.lecLoc) e.lecLoc = "";
 					
 					/* 태그 붙여넣기 */
                     tag += `<tr>
@@ -155,7 +158,7 @@ function searchBtn(){
                         <td>${e.lecGubun}</td>
                         <td>${e.credit}</td>
                         <td>${e.name}</td>
-                        <td>${e.lecDay}${time}(${e.lecLoc})</td>
+                        <td>${e.lecDay}${time}&nbsp;${e.lecLoc}</td>
                         <td>${e.lecLimit}</td>
                         <td>
                             <button class="btnResultTable btnLecMod">수정</button>
@@ -201,7 +204,7 @@ function lecRegFormSubmit(){
 // 강의 수정
 function lecModFormShow(){
 	$(document).on('click','.btnLecMod',function(){
-		$('.lectureMod').show();
+		$('.lectureMod').hide();
 
 		let tr = $(this).closest('tr');
 		let lecCode = tr.children('td:eq(4)').text();
@@ -210,10 +213,31 @@ function lecModFormShow(){
 		$.getJSON(url, 
 			function (data) {
 				console.log(data);
-				$('.lecModForm input[name=lecCode]').val(data.lecCode);
-				$('.lecModForm input[name=lecName]').val(data.lecName);
-				
-				
+			   	let lectureEntity = data.lectureEntity ? data.lectureEntity : data;
+			
+			    $('.lecModForm input[name=lecCode]').val(lectureEntity.lecCode);
+			    $('.lecModForm input[name=lecName]').val(lectureEntity.lecName);
+			    $('.lecModForm select[name=lecClass]').val(lectureEntity.lecClass);
+			    $('.lecModForm select[name=lecGubun]').val(lectureEntity.lecGubun);
+			    $('.lecModForm input[name=credit]').val(lectureEntity.credit);
+			    
+			    if (data.memberEntity) {
+			        $('.lecModForm select[name=memberEntity]').val(data.memberEntity.uid);
+			    }else{
+					$('.lecModForm select[name=memberEntity]').val('');
+				}
+			    
+			    
+			    $('.lecModForm input[name=lecLoc]').val(lectureEntity.lecLoc);
+			    $('.lecModForm select[name=lecDay]').val(lectureEntity.lecDay);
+			    $('.lecModForm select[name=beginTime]').val(lectureEntity.beginTime);
+			    $('.lecModForm select[name=endTime]').val(lectureEntity.endTime);
+			    $('.lecModForm input[name=lecLimit]').val(lectureEntity.lecLimit);
+			    
+			    $('.lecModForm input[name=depCode]').val(lectureEntity.depCode);
+			    $('.lecModForm input[name=no]').val(data.no);
+			    alert('정보를 불러왔습니다.');
+			    $('.lectureMod').show();
 			}
 		);
 		

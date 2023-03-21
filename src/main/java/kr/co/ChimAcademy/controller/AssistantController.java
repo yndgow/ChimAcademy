@@ -3,6 +3,8 @@ package kr.co.ChimAcademy.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
@@ -28,11 +31,9 @@ import lombok.extern.slf4j.Slf4j;
 public class AssistantController {
 
 	private final AssistantService assistantService;
-	private final MemberService memberService;
 	
-	public AssistantController(AssistantService assistantService, MemberService memberService) {
+	public AssistantController(AssistantService assistantService) {
 		this.assistantService = assistantService;
-		this.memberService = memberService;
 	}
 
 	// 인원 추가페이지 이동
@@ -112,12 +113,34 @@ public class AssistantController {
 	// 과목 1개 가져오기
 	@ResponseBody
 	@GetMapping("assistant/lecture/{lecCode}")
-	public LecListEntity getLecture(@PathVariable int lecCode) {
-		LectureEntity lectureEntity= assistantService.getLectureEn(lecCode);
-				
-		log.info("lecCode : " + lecCode);
+	public ResponseEntity<?> getLecture(@PathVariable int lecCode) {
+		LectureEntity lectureEntity = assistantService.getLectureEn(lecCode);
+		LecListEntity lecListEntity = assistantService.getLecture(lectureEntity);
+		
+		log.info("lecCode : " + lectureEntity);
 		log.info("entity : " + lectureEntity);
-		return assistantService.getLecture(lectureEntity);
+		if(lecListEntity == null) {
+			return new ResponseEntity<>(lectureEntity, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(lecListEntity, HttpStatus.OK);
+		}
+		 
 	}
 	
+	
+	// 과목 수정하기
+	@PostMapping("assistant/lecture/modify")
+	public String updateLecture(MemberEntity memberEntity, LectureEntity lectureEntity, @RequestParam(defaultValue = "0") int no) {
+		log.info("mem:                 " + memberEntity);
+		log.info("lec :                " + lectureEntity);
+		log.info("no :                " + no);
+		if(memberEntity.getUid() == null) {
+			assistantService.insertLecture(lectureEntity);
+		}else {
+			assistantService.updateLecture(lectureEntity, memberEntity, no);
+		}
+		
+		
+		return "redirect:/assistant/lecuture";
+	}
 }

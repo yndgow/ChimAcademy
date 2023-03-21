@@ -194,11 +194,13 @@ $(()=>{
 						</td>
 						<th>수정</th>
 						<td>
+
 							<button type="button" class="btnLecRegister">등록</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
+
 			</form>
 		</section>
 		<!-- 강의 수정 -->
@@ -254,7 +256,7 @@ $(()=>{
 						</td>
 						<th>교수명</th>
 						<td>
-							<select name="uid" id="selProfessors">
+							<select name="memberEntity" id="selProfessors">
 								<option value="">-</option>
 								<option th:value="${pro.uid}" th:text="${pro.name}" th:each="pro : ${professors}">장보고</option>
 							</select>
@@ -309,8 +311,11 @@ $(()=>{
 					</tr>
 				</tbody>
 			</table>
+				<input type="text" name="depCode"/>
+				<input type="text" name="no"/>
 			</form>
 		</section>
 	</section>
 </main>
 <th:block th:include="@{_footer.html}" />
+
