@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/ChimAcademy/style/elib/ebook.css">
+    <link rel="stylesheet" href="/ChimAcademy/style/elib/online.css">
     <script>
         $(document).ready(function(){
           $('.slider').bxSlider();
@@ -73,7 +74,7 @@
                                 <a href="#">온라인컨텐츠</a>
                                 <ul class="subMenu">
                                     <li><a href="#">전체보기</a></li>
-                                    <li><a href="#">독서</a></li>
+                                    <li><a th:href="@{/elib/online/reading}">독서</a></li>
                                     <li><a href="#">인문·예술</a></li>
                                     <li><a href="#">학술DB</a></li>
                                     <li><a href="#">이러닝</a></li>
