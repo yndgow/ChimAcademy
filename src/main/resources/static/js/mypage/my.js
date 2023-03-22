@@ -33,3 +33,19 @@ function inputPhoneNumber(obj) {
 	}
 	obj.value = phone;
 }
+
+
+/*세이브 버튼 클릭시 넘어가도록함 */
+
+$(function(){
+	
+		$('#savebtn').click(function(){
+		if (!confirm("정말로 수정하시겠습니까?")) {
+            return false;
+        } else {
+            return true;
+        }
+	})
+	
+})
+

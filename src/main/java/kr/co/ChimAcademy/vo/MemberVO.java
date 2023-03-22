@@ -35,12 +35,9 @@ public class MemberVO {
 	private String lecName;
 	private String totalScore;
 	private int credit;
+  private String sGrade;
 	
-	
-	
-	
-	
-	
+
 //	교수-추가필드
 	private String depName;
 	private String career;

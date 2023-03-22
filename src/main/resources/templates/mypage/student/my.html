@@ -100,18 +100,26 @@
                     </tr>
 					<tr th:each="lecture : ${lecture}">
                         <td>[[${lectureStat.count}]]</td>
-	                    <td>[[${lecture.sYear}]]</td>
+	                    <td>[[${lecture.lecClass}]]</td>
 	                    <td>[[${lecture.lecName}]]</td>
-                        <td>이수구분</td>
-                        <td></td>
+                        <td>
+                        <!--
+                        	<th:block th:switch="${lecture.lecGubun}">
+                            <td th:case="0" data-th-case="0">구분없음</td>
+                            <td th:case="1" data-th-case="1">전공필수</td>
+                            <td th:case="2" data-th-case="2">전공선택</td>
+                            <td th:case="3" data-th-case="3">교양</td>
+							</th:block>
+						 -->
+                        </td>
                         <td>[[${lecture.credit}]]</td>
                         <td>[[${lecture.name}]]</td>
                         <td>강의시간</td>
-                        <td>[[${lecture.totalScore}]]</td>
+                        <td>[[${lecture.sGrade}]]</td>
                		</tr>
 
                     <tr>
-                       <td>2</td>
+                       <td>2</td>s
                        <td>1</td>
                        <td>국제법</td>
                        <td>전선</td>

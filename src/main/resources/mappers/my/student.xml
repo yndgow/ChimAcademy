@@ -27,6 +27,18 @@
 		WHERE a.uid = #{uid};
 	</select>
 	
+	<!-- 회원 정보 수정-->
+		<update id="updateStudent">
+		  UPDATE `member` set
+		    `hp`=#{hp},
+		    `email`=#{email},
+		    `zip`=#{zip},
+		    `addr1`=#{addr1},
+		    `addr2`=#{addr2},
+		    `info`=#{info}
+		  WHERE `uid` = #{uid}
+		</update>
+
 	
 	
 	
