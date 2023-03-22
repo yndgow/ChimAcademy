@@ -52,11 +52,13 @@ h1{
     
 }
 
-.board textarea{
-    width: 100%;
+.board textarea {
+    width: 98%;
     height: 500px;
     resize: none;
-    padding: 15px;
+    font-size: 14px;
+    line-height: 23px;
+    padding: 20px;
 }
 
 .taL {
