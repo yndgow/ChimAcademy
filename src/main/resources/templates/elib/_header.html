@@ -23,16 +23,22 @@
                 <section>
                     <div class="left-util">
                         <ul>
-                            <li><a href="#" class="link1">학사관리시스템</a></li>
-                            <li><a href="#" class="link2">학과게시판</a></li>
+                            <li><a th:href="@{/}" class="link1">학사관리시스템</a></li>
+                            <li><a th:href="@{/board/A101/list}" class="link2">학과게시판</a></li>
                         </ul>
                     </div>
                     <div class="right-util">
                         <ul>
-                            <li><a th:href="@{/}">로그인</a></li>
-                            <li><a th:href="@{/member/join}">학번찾기</a></li>
-                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
-                            <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
+                        	<th:block sec:authorize="isAnonymous()">
+	                            <li><a th:href="@{/}">로그인</a></li>
+	                            <li><a th:href="@{/member/join}">학번찾기</a></li>
+                            </th:block>
+                        	<th:block sec:authorize="hasAnyRole('1','2','3','4')">
+	                            <li style="width: 176px;"><a>[[${#authentication.principal.user.name}]]님 반갑습니다.</a></li>
+	                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
+	                            <li><a th:href="@{/logout}">로그아웃</a></li>
+                            </th:block>
+	                            <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
                         </ul>
                     </div>
                 </section>
@@ -41,7 +47,7 @@
                 <section>
                     <h1>
                         <a th:href="@{/elib/}">
-                            <img src="#" alt="침대학교 로고">
+                            <img th:src="@{/img/elib/elibLogo.png}" alt="침대학교 로고">
                         </a>
                     </h1>
                     <div class="g-menu">
@@ -50,9 +56,9 @@
                                 <a href="#">전자책</a>
                                 <ul class="subMenu">
                                     <li><a th:href="@{/elib/ebook/list}">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">유통사별</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -64,10 +70,10 @@
                             <li>
                                 <a href="#">오디오북</a>
                                 <ul class="subMenu">
-                                    <li><a th:href="@{/elib/ebook/list}">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio')}">새로 들어온 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',applier='예스24',sort=3,type=1)}">유통사별</a></li>
                                 </ul>
                             </li>
                             <li>

@@ -100,11 +100,13 @@
     .Gnb > section > h1 {
         position: absolute;
         z-index: 1000;
-        float: left;
-        padding-top: 20px;
+        left: 0;
+        top: -5px;
     }
     .Gnb > section > h1 > a {}
-    .Gnb > section > h1 > a > img {}
+    .Gnb > section > h1 > a > img {
+    	width: 260px;
+    }
     .Gnb > section > .g-menu{
     }
     .Gnb > section > .g-menu > .gnb-menu {
@@ -1001,7 +1003,9 @@ table th, table td {
         float: left;
         margin-top: 5px;
     }
-    footer > .address > .logo > img {}
+    footer > .address > .logo > img {
+    	width: 200px;
+    }
     footer > .address > .location {
         float: left;
         padding-left: 18px;

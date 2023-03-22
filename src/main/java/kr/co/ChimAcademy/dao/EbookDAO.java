@@ -22,7 +22,7 @@ public interface EbookDAO {
 	public List<EbookCate1VO> selectCate1s();
 	public List<EbookCate2VO> selectCate2s(int c1);
 	public int selectCountTotal(String sort, @Param("vo")EbookVO vo);
-	public CountVO selectCountEbooks();
+	public CountVO selectCountEbooks(String GROUP);
 	public List<EbookVO> selectEbooks(String sort, String type, @Param("vo")EbookVO vo, int start);
 	public EbookVO selectEbook(String bookId);
 	public int updateEbookLoan(int sort,String bookId);

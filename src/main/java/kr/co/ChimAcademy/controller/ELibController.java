@@ -41,7 +41,9 @@ public class ELibController {
 	private Ebook_ArticleService aService;
 	
 	@GetMapping(value = {"elib/","elib/index"})
-	public String index() {
+	public String index(Model model) {
+		List<Ebook_ArticleVO> articles = aService.selectArticles(0);
+		model.addAttribute("articles",articles);
 		return "elib/index";
 	}
 	
@@ -87,7 +89,7 @@ public class ELibController {
 		model.addAttribute("cate1s",cate1s);
 		model.addAttribute("cate2s",cate2s);
 		
-		CountVO counts = eService.selectCountEbooks();
+		CountVO counts = eService.selectCountEbooks(vo.getGROUP());
 		model.addAttribute("counts",counts);
 		return "elib/ebook/list";
 	}
@@ -106,7 +108,7 @@ public class ELibController {
 		model.addAttribute("ebook",ebook);
 		model.addAttribute("bookId",vo.getBookId());
 		// lnb 등록된 책 권수 불러오기
-		CountVO counts = eService.selectCountEbooks();
+		CountVO counts = eService.selectCountEbooks(vo.getGROUP());
 		model.addAttribute("counts",counts);
 		model.addAttribute("sort",sort);
 		model.addAttribute("type",type);
@@ -254,6 +256,7 @@ public class ELibController {
 		model.addAttribute("mylibs",mylibs);
 		return "elib/mylibrary/mylib";
 	}
+	// 책 등록하기
 	@ResponseBody
 	@PostMapping("elib/mylibrary/register")
 	public Map<String, Integer> registerMylib(MylibVO vo) {
@@ -267,6 +270,7 @@ public class ELibController {
 		map.put("result", result);
 		return map;
 	}
+	// 좋아요버튼 누를 시 +1 like
 	@ResponseBody
 	@PostMapping("elib/ebook/like")
 	public Map<String, Integer> like(String bookId) {
@@ -275,11 +279,30 @@ public class ELibController {
 		map.put("result", result);
 		return map;
 	}
-	@GetMapping("elib/mylibrary/open")
-	public ResponseEntity<Resource> Open(String bookId) throws IOException {
+	// 책 반납하기
+	@ResponseBody
+	@PostMapping("elib/mylibrary/return")
+	public Map<String, Integer> returnMylib(int no) {
+		int result = eService.updateMylibReturn(no);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		return map;
+	}
+	// 전자책 읽기
+	@GetMapping("elib/mylibrary/openEbook")
+	public ResponseEntity<Resource> OpenEbook(String bookId,String group) throws IOException {
 		EbookFileVO vo =eService.selectEbookFile(bookId);
 		eService.updateEbookDown(bookId);
-		ResponseEntity<Resource> respEntity = eService.fileOpen(vo);
+		ResponseEntity<Resource> respEntity = eService.fileOpen(vo,group);
 		return respEntity;
+	}
+	// 책 연장하기
+	@ResponseBody
+	@PostMapping("elib/mylibrary/extension")
+	public Map<String, Integer> extension(int no) {
+		int result = eService.updateMylibReturnDate(no);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		return map;
 	}
 }

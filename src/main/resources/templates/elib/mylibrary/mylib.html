@@ -1,34 +1,50 @@
 <th:block th:include="@{elib/_header.html}"/>
 <script type="text/javascript">
 	$(function(){
-		/* $('.book-return').click(function(e){
+		$('.book-return').click(function(e){
 			e.preventDefault();
-			let uid = $('.uid').val();
-			let bookId = $('.bookId').val();
+			let no = $(this).data('no');
+			console.log(no);
 			let jsonData = {
-					"uid":uid,
-					"bookId":bookId,
-					"state":"0"
+					"no":no,
 			}
  			$.ajax({
-				url:"/ChimAcademy/elib/mylibrary/register",
+				url:"/ChimAcademy/elib/mylibrary/return",
 				type:"post",
 				data:jsonData,
 				dataType:"json",
 				success:function(data){
 					if(data.result > 0){
-						alert('관심도서로 추가되었습니다.')
-				        if (!confirm("관심서재 목록으로 가시겠습니까?")) {
-				            
-				        } else {
-				            location.href = "/ChimAcademy/elib/mylibrary/mylib?bookId="+bookId+"&state=0";
-				        }
+						alert('반납 완료')
+						location.reload();
 					}else{
 						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
 					}
 				}
 			});
-		}); */
+		}); 
+		$('.book-extension').click(function(e){
+			e.preventDefault();
+			let no = $(this).data('no');
+			console.log(no);
+			let jsonData = {
+					"no":no,
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/extension",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('연장 완료')
+						location.reload();
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		}); 
 	});
 </script>
         <main id="sub-container">
@@ -168,6 +184,7 @@
                                                 <span> ㅣ </span>
                                                 <label>공급사 : </label>
                                                 <span>[[${mylib.EbookVO.applier}]]</span>
+                                                <th:block th:if="${state == '1'}">
                                                 <span> ㅣ </span>
                                                 <label>대출일 :</label>
                                                 <span>[[${mylib.loanDate.substring(0,10)}]]</span>
@@ -175,16 +192,17 @@
                                                 <label>반납예정일 : </label>
                                                 <span>[[${mylib.returnDate.substring(0,10)}]]</span>
                                                 <span> ㅣ </span>
+                                                </th:block>
                                             </div>
                                         </div>
-                                        <div class="btns" style="position: absolute; bottom: 20px; right: 20px; width: 238px;">
-                                            <a th:href="@{/elib/mylibrary/open(bookId=${mylib.bookId})}" class="btn btn1 book-view">
+                                        <div th:if="${state == '1'}" class="btns" style="position: absolute; bottom: 20px; right: 20px; width: 238px;">
+                                            <a th:href="@{/elib/mylibrary/openEbook(bookId=${mylib.bookId},group=${mylib.EbookVO.GROUP})}" class="btn btn1 book-view">
                                                 <span>책읽기</span>
                                             </a>
-                                            <a href="#" class="btn btn4 book-return">
+                                            <a href="#" class="btn btn4 book-return" th:data-no="${mylib.no}">
                                                 <span>반납하기</span>
                                             </a>
-                                            <a href="#" class="btn btn5 book-view">
+                                            <a href="#" class="btn btn5 book-extension" th:data-no="${mylib.no}">
                                                 <span>연장하기</span>
                                             </a>
                                         </div> 

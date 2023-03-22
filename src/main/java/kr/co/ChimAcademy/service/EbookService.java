@@ -67,8 +67,8 @@ public class EbookService {
 		}
 		return result;
 	};
-	public CountVO selectCountEbooks() {
-		return dao.selectCountEbooks();
+	public CountVO selectCountEbooks(String GROUP) {
+		return dao.selectCountEbooks(GROUP);
 	};
 	public int selectCountForCheckMylib(String uid, String bookId, String state) {
 		return dao.selectCountForCheckMylib(uid, bookId, state);
@@ -103,6 +103,9 @@ public class EbookService {
 	};
 	public int updateMylibReturn(int no) {
 		return dao.updateMylibReturn(no);
+	};
+	public int updateMylibReturnDate(int no) {
+		return dao.updateMylibReturnDate(no);
 	};
 	// 책파일 업로드 /////////////////////////////////////////
 
@@ -154,7 +157,7 @@ public class EbookService {
 		return fvos;
 	}
 	// PDF 열기 //////////////////////////////////////////////////////
-	public ResponseEntity<Resource> fileOpen(EbookFileVO vo) throws IOException {
+	public ResponseEntity<Resource> fileOpen(EbookFileVO vo,String group) throws IOException {
 		// String path = new File(uploadPath).getAbsolutePath()+"/"+vo.getNewName();
 		Path path = Paths.get("elibFile/ebookFile/"+vo.getNewName());
 		// String contentType = Files.probeContentType(path);
@@ -163,7 +166,11 @@ public class EbookService {
 														.builder("inline")
 														.filename(vo.getOriName(), StandardCharsets.UTF_8)
 														.build());
-		headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF.toString());
+		if(group.equals("ebook")) {
+			headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF.toString());
+		}else {
+			headers.add(HttpHeaders.CONTENT_TYPE, "audio/mpeg");
+		}
 		
 		Resource resource = new InputStreamResource(Files.newInputStream(path));
 		

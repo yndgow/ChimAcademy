@@ -12,6 +12,12 @@
     <script>
         $(document).ready(function(){
           $('.slider').bxSlider();
+          
+          $('.book-box > div > ul > li > a').click(function(e){
+        	 e.preventDefault();
+        	 $(this).parent().siblings().removeClass('on'); 
+        	 $(this).parent().addClass('on'); 
+          });
         });
     </script>
 </head>
@@ -23,15 +29,21 @@
                     <div class="left-util">
                         <ul>
                             <li><a th:href="@{/}" class="link1">학사관리시스템</a></li>
-                            <li><a href="#" class="link2">학과게시판</a></li>
+                            <li><a th:href="@{/board/A101/list}" class="link2">학과게시판</a></li>
                         </ul>
                     </div>
                     <div class="right-util">
                         <ul>
-                            <li><a th:href="@{/}">로그인</a></li>
-                            <li><a th:href="@{/member/join}">학번찾기</a></li>
-                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
-                            <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
+                        	<th:block sec:authorize="isAnonymous()">
+	                            <li><a th:href="@{/}">로그인</a></li>
+	                            <li><a th:href="@{/member/join}">학번찾기</a></li>
+                            </th:block>
+                        	<th:block sec:authorize="hasAnyRole('1','2','3','4')">
+	                            <li style="width: 176px;"><a>[[${#authentication.principal.user.name}]]님 반갑습니다.</a></li>
+	                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
+	                            <li><a th:href="@{/logout}">로그아웃</a></li>
+                            </th:block>
+	                            <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
                         </ul>
                     </div>
                 </section>
@@ -39,8 +51,8 @@
             <div class="Gnb">
                 <section>
                     <h1>
-                        <a href="#">
-                            <img src="#" alt="침대학교 로고">
+                        <a th:href="@{/elib/}">
+                            <img th:src="@{/img/elib/elibLogo.png}" alt="침대학교 로고">
                         </a>
                     </h1>
                     <div class="g-menu">
@@ -49,9 +61,9 @@
                                 <a href="#">전자책</a>
                                 <ul class="subMenu">
                                     <li><a th:href="@{/elib/ebook/list}">새로 들어온 책</a></li>
-                                    <li><a th:href="@{/elib/ebook/list}">대출이 많은 책</a></li>
-                                    <li><a th:href="@{/elib/ebook/list}">주제별</a></li>
-                                    <li><a th:href="@{/elib/ebook/list}">유통사별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">유통사별</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -63,17 +75,17 @@
                             <li>
                                 <a href="#">오디오북</a>
                                 <ul class="subMenu">
-                                    <li><a href="#">새로 들어온 책</a></li>
-                                    <li><a href="#">대출이 많은 책</a></li>
-                                    <li><a href="#">주제별</a></li>
-                                    <li><a href="#">유통사별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio')}">새로 들어온 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',applier='예스24',sort=3,type=1)}">유통사별</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">온라인컨텐츠</a>
                                 <ul class="subMenu">
                                     <li><a href="#">전체보기</a></li>
-                                    <li><a href="#">독서</a></li>
+                                    <li><a th:href="@{/elib/online/reading}">독서</a></li>
                                     <li><a href="#">인문·예술</a></li>
                                     <li><a href="#">학술DB</a></li>
                                     <li><a href="#">이러닝</a></li>
@@ -130,14 +142,14 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick3">
+                                    <a th:href="@{/elib/ebook/list(GROUP='audio')}" class="quick3">
                                         <div class="b3">
                                             <h4>오디오북</h4>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick4">
+                                    <a th:href="@{/elib/online/reading}" class="quick4">
                                         <div class="b4">
                                             <h4>독서콘텐츠</h4>
                                         </div>
@@ -183,8 +195,8 @@
                     </div>
                     <div class="right">
                         <div class="slider">
-                            <div><a href="#"><img src="https://via.placeholder.com/640x190" alt="img"></a></div>
-                            <div><a href="#"><img src="https://via.placeholder.com/640x190" alt="img"></a></div>
+                            <div><a href="#"><img th:src="@{/img/elib/ind1.jpg}" alt="img"></a></div>
+                            <div><a href="#"><img th:src="@{/img/elib/ind2.png}" alt="img"></a></div>
                         </div>
                         <div class="notice">
                             <ul>
@@ -195,38 +207,18 @@
                                         </div>
                                         <div class="cont">
                                             <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="material-icons">arrow_right</span>신착도서(시민 희망 전자책 3차, 15종) 안내
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="material-icons">arrow_right</span>신착도서(시민 희망 전자책 3차, 15종) 안내
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="material-icons">arrow_right</span>신착도서(시민 희망 전자책 3차, 15종) 안내
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="material-icons">arrow_right</span>신착도서(시민 희망 전자책 3차, 15종) 안내
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="material-icons">arrow_right</span>신착도서(시민 희망 전자책 3차, 15종) 안내
+                                                <li th:each="article : ${articles}">
+                                                    <a th:href="@{/elib/info/view(no=${article.no})}">
+                                                        <span class="material-icons">arrow_right</span>[[${article.title}]]
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <a href="#"><span class="material-icons">add</span></a>
+                                            <a th:href="@{/elib/info/list}"><span class="material-icons">add</span></a>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="use">
-                                    <a href="#">
+                                    <a th:href="@{/elib/info/how}">
                                         <div class="guide">
                                             <h4>
                                                 전자도서관<br>
@@ -357,7 +349,7 @@
             </div>
             <section class="address">
                 <div class="logo">
-                    <img src="#" alt="침대학교 전자도서관">
+                    <img th:src="@{/img/elib/elibLogo.png}" alt="침대학교 전자도서관">
                 </div>
                 <div class="location">
                     <address>
@@ -376,7 +368,7 @@
                 </div>
             </section>
             <div class="home-up">
-                <img src="/static/img/elib/m-top-btn.png" alt="위로" id="home-up">
+                <img th:src="@{/img/elib/m-top-btn.png}" alt="위로" id="home-up">
             </div>
         </footer>
     </div>

@@ -102,6 +102,7 @@
 		<result column="returnReal" property="returnReal"/>
 		<association property="EbookVO" javaType="kr.co.ChimAcademy.vo.EbookVO">
 			<id column="bookId" property="bookId"/>
+			<result column="GROUP" property="GROUP"/>
 			<result column="title" property="title"/>
 			<result column="author" property="author"/>
 			<result column="publisher" property="publisher"/>
@@ -112,7 +113,7 @@
 		</association>
 	</resultMap>
 	<select id="selectMylibs" resultMap="selectMylibsResultMap">
-		SELECT a.*, b.title,b.author,b.publisher,b.belong,b.applier,b.pubDate,b.thumb FROM `mylib` AS a 
+		SELECT a.*,b.GROUP,b.title,b.author,b.publisher,b.belong,b.applier,b.pubDate,b.thumb FROM `mylib` AS a 
 													JOIN `ebook` AS b
 													ON a.`bookId`=b.`bookId`
 													where a.uid=#{uid} and a.state=#{state}
@@ -139,7 +140,7 @@
 				COUNT(case when `applier`='북큐브' then 1 END) AS book,
 				COUNT(case when `applier`='교보문고' then 1 END) AS kyobo,
 				COUNT(case when `applier`='알라딘' then 1 END) AS al
- 																	FROM `ebook`
+																	from `ebook` where `GROUP`=#{GROUP}
 	</select>
 	<update id="updateEbookDown">
 		update `ebook_file` set `download` = `download`+1 where `parent`=#{bookId};
