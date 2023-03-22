@@ -6,13 +6,25 @@
 <mapper namespace="kr.co.ChimAcademy.dao.ProfessorDAO">
 
 	<!-- 교수 내 정보 출력 -->
-	<select id="selectPro" resultType="kr.co.ChimAcademy.vo.MemberVO">
+	<select id="selectProMy"
+		resultType="kr.co.ChimAcademy.vo.MemberVO">
 		SELECT a.uid, a.name, b.depCode, b.depName, a.hp, c.*
-		FROM member AS a
+		FROM
+		member AS a
 		JOIN department AS b
 		ON a.depCode = b.depCode
-		JOIN professor AS c
+		JOIN professor
+		AS c
 		ON a.uid = c.uid
 		WHERE a.uid = #{uid};
+	</select>
+
+	<!-- 교수 수강내역 출력 -->
+	<select id="selectProlecture"
+		resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT * FROM lec_list AS a
+		JOIN lecture AS b
+		ON	a.lecCode = b.lecCode
+		WHERE uid = #{uid};
 	</select>
 </mapper>
