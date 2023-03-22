@@ -106,16 +106,16 @@ main#signUp > section > #resultLec > table th {
 }
 main#signUp > section > #resultLec > table th:nth-child(1) {width: 25px;}
 main#signUp > section > #resultLec > table th:nth-child(2) {width: 55px;}
-main#signUp > section > #resultLec > table th:nth-child(3) {width: 40px;}
-main#signUp > section > #resultLec > table th:nth-child(4) {width: 201px;}
+main#signUp > section > #resultLec > table th:nth-child(3) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(4) {width: 40px;}
 main#signUp > section > #resultLec > table th:nth-child(5) {width: 60px;}
-main#signUp > section > #resultLec > table th:nth-child(6) {width: 50px;}
-main#signUp > section > #resultLec > table th:nth-child(7) {width: 100px;}
-main#signUp > section > #resultLec > table th:nth-child(8) {width: 160px;}
-main#signUp > section > #resultLec > table th:nth-child(9) {width: 60px;}
-main#signUp > section > #resultLec > table th:nth-child(10) {width: 60px;}
-main#signUp > section > #resultLec > table th:nth-child(11) {width: 70px;}
-main#signUp > section > #resultLec > table th:nth-child(12) {width: 70px;}
+main#signUp > section > #resultLec > table th:nth-child(6) {width: 210px;}
+main#signUp > section > #resultLec > table th:nth-child(7) {width: 55px;}
+main#signUp > section > #resultLec > table th:nth-child(8) {width: 40px;}
+main#signUp > section > #resultLec > table th:nth-child(9) {width: 90px;}
+main#signUp > section > #resultLec > table th:nth-child(10) {width: 140px;}
+main#signUp > section > #resultLec > table th:nth-child(11) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(12) {width: 120px;}
 main#signUp > section > #resultLec > table th,
 main#signUp > section > #resultLec > table td{
     line-height: 35px;
