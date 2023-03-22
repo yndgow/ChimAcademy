@@ -1,5 +1,7 @@
 package kr.co.ChimAcademy.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,12 @@ public class ProfessorService {
 	private ProfessorDAO dao;
 	
 	// 교수 내 정보 페이지
-	public MemberVO selectPro(String uid) {
-		return dao.selectPro(uid);
+	public MemberVO selectProMy(String uid) {
+		return dao.selectProMy(uid);
+	}
+	
+	// 교수 수강내역
+	public List<MemberVO> selectProlecture(String uid){
+		return dao.selectProlecture(uid);
 	}
 }
