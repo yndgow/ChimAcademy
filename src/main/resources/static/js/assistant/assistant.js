@@ -53,7 +53,11 @@ function insertMembers(){
 		    row.birth = $(this).find('input[name="birth"]').val();
     		row.hp = $(this).find('input[name="hp"]').val();
     		row.level = $(this).find('select[name="level"]').val();
-    		row.depCode = $('input[name=depCode]').val();
+
+    		let depCode = $('input[name=depCode]').val();
+    		let departmentEntity = { depCode: depCode };
+    		row.departmentEntity = departmentEntity;
+
     		data.push(row);
 		});
 		if(data.length == 0){
@@ -80,11 +84,14 @@ function insertMembers(){
 					}
 				})
 				alert(data.length+'건의 데이터가 추가(변경)되었습니다.\n'+msg);
+				location.reload();
+			},
+			error: function(data){
+				alert('아이디 또는 휴대폰 번호가 이미 존재합니다.');
 			}
 		})
 	});
 }
-
 // 강의 찾기
 function searchBtn(){
 	$('#btnSearchLec').click(function(){
@@ -107,6 +114,8 @@ function searchBtn(){
 			data: jsonData,
 			dataType: 'json',
 			success: function(data){
+				console.log(data);
+				alert('정보를 검색했습니다.')
 				$('#searchResult').text(data.length);
 				$('#userListTable tbody').empty();
 				let tag = '';
@@ -236,6 +245,7 @@ function lecModFormShow(){
 	})
 }
 
+// 수정 확인
 function lecModComp(){
 	$(document).on('click', '.btnLecModify', function(e){
 		e.preventDefault();
@@ -245,4 +255,25 @@ function lecModComp(){
 			$('.lecModForm').submit();
 		}
 	});
+}
+
+// 삭제
+function delLecutre(){
+	$(document).on('click', '.btnLecDel', function(){
+		let tr = $(this).closest('tr');
+		let lecCode = tr.children('td:eq(4)').text();
+		let url = '/ChimAcademy/assistant/lecture/'+lecCode;
+
+		$.ajax({
+			type: "delete",
+			url: url,
+			dataType: "json",
+			success: function (data) {
+				if(data > 0){
+					alert('삭제에 성공하였습니다.');
+					location.reload();
+				}
+			}
+		});		
+	})	
 }

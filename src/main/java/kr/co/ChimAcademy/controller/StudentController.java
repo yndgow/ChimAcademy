@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -48,8 +49,24 @@ public class StudentController {
 	}
 	
 	@GetMapping("student/my/modify")
-	public String mypagemodify() {
+	public String mypagemodify(@AuthenticationPrincipal MyUserDetails member, Model model) {
+		MemberEntity mem = member.getUser();
+		MemberVO vo = service.selectStudent(mem.getUid());
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("member", mem);
+
 		return "mypage/student/modify";
+	}
+	
+	@PostMapping("student/my/modify")
+	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
+		MemberEntity mem = member.getUser();
+		String uid = mem.getUid();
+		
+		service.updateStudent(vo);
+		
+		return "redirect:/student/my/modify";
 	}
 
 }

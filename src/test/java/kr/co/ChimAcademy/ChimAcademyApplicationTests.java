@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.repository.ProfessorRepo;
@@ -30,9 +31,9 @@ class ChimAcademyApplicationTests {
 	@Test
 	public void test() {
 		String id = "qwer";
-		MemberEntity entity= memberRepo.findById(id).get();
-		log.info("entity : " + entity);
-		log.info("dep : " + entity.getDepartmentEntity().getDepName());
+		DepartmentEntity departmentEntity = new DepartmentEntity();
+		departmentEntity.setDepCode("D107");
+		memberRepo.findByDepartmentEntityAndLevel(departmentEntity, 3);
 	}
 	
 	
