@@ -18,4 +18,7 @@ public interface StudentDAO {
 	//수강내역 불러오기
 	public List<MemberVO> selectLectures(String uid);
 	
+	
+	//회원정보 수정
+	public int updateStudent(MemberVO vo);
 }

@@ -262,25 +262,31 @@ main>section>nav.distance {
 }
 
 /* 텍스트박스 크기 - 휴대전화번호, 이메일 */
-#box1{
+.box1{
     width: 170px;
     margin-left: 35px;
 }
 
-#box2{
+.box2{
     width: 170px;
     margin-left: 80px;
 }
 
 /* 텍스트박스 크기 - 우편번호 */
-#box3{
+.box3{
     width: 70px;
     margin-left: 95px;
     margin-bottom: 5px;
 }
 
-#box4{
-    width: 720px;
+.box4{
+    width: 45%;
+    margin-left: 129px;
+    margin-bottom: 5px;
+}
+
+.box5{
+    width: 400px;
     margin-left: 129px;
     margin-bottom: 5px;
 }
@@ -324,12 +330,13 @@ main>section>nav.distance {
     padding-left: 7px;
 }
 
-#detail>div>div>button {
+#detail>div>div>.searchBtn {
     height: 30px;
     width: 45px;
     background-color: #1464f6;
     text-align: center;
     border: none;
+    padding: 0px !important;
     color: #ffffff;
     border-radius: 3px;
 }

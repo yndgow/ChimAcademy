@@ -29,6 +29,11 @@ public class StudentService {
 		
 		return dao.selectLectures(uid);
 	};
+	
+	//회원정보 수정하기
+	public int updateStudent(MemberVO vo) {
+		return dao.updateStudent(vo);
+	}
 
 
 	

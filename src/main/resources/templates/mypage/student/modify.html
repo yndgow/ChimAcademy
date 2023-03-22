@@ -1,4 +1,53 @@
 <th:block th:include="@{mypage/_header.html}"/>
+<!-- 우편번호 api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                
+                } else {
+                    document.getElementById("extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailAddress").focus();
+            }
+        }).open();
+    }
+   
+</script>
+
+
+
 <main>
 <th:block th:include="@{_aside.html}"/>
 
@@ -14,27 +63,30 @@
                     <div>
                         <article><img th:src="@{/img/mypage/myinfo.png}" alt="증명사진" class="idphoto"></article>
                         <br />
-                        <p>홍길동</p>
-                        <span>dong@cu.ac.kr</span>
+                        <p th:text=${vo.name}>홍길동</p>
+                        <span th:text=${vo.email}>dong@cu.ac.kr</span>
                         <button type="button" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"></button>
                     </div>
                     <div>
                         <table>
                             <tr>
                                 <td>학번</td>
-                                <td>20231112</td>
+                                <td th:text=${vo.uid}>20231112</td>
                             </tr>
                             <tr>
                                 <td>학과</td>
-                                <td>국문학과</td>
+                                <td th:text=${vo.majorName}>국문학과</td>
                             </tr>
                             <tr>
                                 <td>평균학점</td>
-                                <td>2.0 / 4.5</td>
+                                <td>[[${vo.avgCredit}]] / 4.5</td>
                             </tr>
                             <tr>
                                 <td>학적구분</td>
-                                <td>재학</td>
+                                 <th:block th:switch="${vo.status}">
+	                            <td th:case="1">재학</td>
+	                            <td th:case="2">휴학</td>
+								</th:block>
                             </tr>
                         </table>
                     </div>
@@ -44,31 +96,36 @@
                 <section>
                     <h3>상세정보</h3>
                 </section>
+                <form method="post">
                 <div id="detail">
-                    <div>
-                        <section>
-                            <span>휴대전화번호</span>
-                            <input id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
-                                value="010-0000-0001" />
-                        </section>
-                        <section>
-                            <span>이메일</span>
-                            <input id="box2" type="text" value="dong@cu.ac.kr" />
-                        </section>
-                        <div>
-                            <span>주소</span>
-                            <input id="box3" type="text" placeholder="우편번호">
-                            <button>검색</button><br>
-                            <td><input id="box4" type="text" placeholder="주소"></td><br>
-                            <td><input id="box4" type="text" placeholder="상세주소"></td><br>
-                        </div>
-                        <section>
-                            <span>자기소개</span><br>
-                            <textarea name="자기소개" placeholder="내용을 입력해 주세요."></textarea>
-                        </section>
-                    </div>
-                </div>
-                <button id="savebtn">저장</button>
-                <button id="cancelbtn">취소</button>
+	                    <div>
+                       <section>
+					    <span>휴대전화번호</span>
+					    <input name="hp" id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
+					        th:value="${vo.hp}" />
+						</section>
+						<section>
+						    <span>이메일</span>
+						    <input name="email" id="box2" type="text" th:value="${vo.email}" />
+						</section>
+						<div>
+						    <span>주소</span>
+						    <input type="text" name="zip" class="box3" id="postcode" th:value="${vo.zip}" />
+						    <input type="button" class="searchBtn" onclick="execDaumPostcode()" value="검색"><br>
+						    <input type="text" name="addr1" class="box4" id="address" th:value="${vo.addr1}" /><br>
+						    <input type="text" name="addr2" class="box5" id="detailAddress" th:value="${vo.addr2}" />
+						</div>
+						<input type="hidden" name="uid" th:value="${member.uid}" />
+						<input type="hidden" name="name" th:value="${member.name}" />
+						<section>
+						    <span>자기소개</span><br>
+						    <textarea name="info" th:text="${vo.info}"></textarea>
+						</section>
+	                       
+	                    </div>
+	                </div>
+	                <button id="savebtn" type="submit">저장</button>
+	                <button id="cancelbtn">취소</button>
+	           </form>
         </main>
 <th:block th:include="@{_footer.html}"/>
