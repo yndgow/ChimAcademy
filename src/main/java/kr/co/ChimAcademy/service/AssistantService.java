@@ -124,8 +124,8 @@ public class AssistantService {
 	}
 	
 	// 과목 삭제
-	public void deleteLecture() {
-		
+	public void deleteLecture(int lecCode) {
+		lectureRepo.deleteById(lecCode);
 	}
 	
 	
