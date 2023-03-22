@@ -47,60 +47,60 @@
                     </a>
                 </li>
                 <li th:classappend="${sort=='4'} and ${type=='4'} ? 'active'">
-                    <a th:href="@{/elib/ebook/list(GROUP='ebook',sort='4',type='4')}">
+                    <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort='4',type='4')}">
                         <span>대출이 많은 책</span>
                     </a>
                 </li>
                 <li th:classappend="${sort=='1'} or ${sort=='2'} ? 'active'">
-                    <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">
+                    <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=10,cate2=10)}">
                         <span>주제별</span>
                     </a>
                     <ul class="subMenu">
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=10,cate2=10)}">
                                 <span>유아/어린이</span>
                                 <span class="count">([[${counts.c10}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=11,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=11,cate2=10)}">
                                 <span>컴퓨터/IT</span>
                                 <span class="count">([[${counts.c11}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=12,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=12,cate2=10)}">
                                 <span>기타</span>
                                 <span class="count">([[${counts.c12}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=13,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=13,cate2=10)}">
                                 <span>인문/교양</span>
                                 <span class="count">([[${counts.c13}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=14,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=14,cate2=10)}">
                                 <span>철학/종교</span>
                                 <span class="count">([[${counts.c14}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=15,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=15,cate2=10)}">
                                 <span>사회</span>
                                 <span class="count">([[${counts.c15}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=16,cate2=10)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=16,cate2=10)}">
                                 <span>자연과학</span>
                                 <span class="count">([[${counts.c16}]])</span>
                             </a>
@@ -108,34 +108,34 @@
                     </ul>
                 </li>
                 <li th:classappend="${sort=='3'} and ${type=='1'} ? 'active'">
-                    <a th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">
+                    <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='예스24',sort=3,type=1)}">
                         <span>유통사별</span>
                     </a>
                     <ul class="subMenu">
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='예스24',sort=3,type=1)}">
                                 <span>예스24</span>
                                 <span class="count">([[${counts.yes}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',applier='북큐브',sort=3,type=1)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='북큐브',sort=3,type=1)}">
                                 <span>북큐브</span>
                                 <span class="count">([[${counts.book}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',applier='교보문고',sort=3,type=1)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='교보문고',sort=3,type=1)}">
                                 <span>교보문고</span>
                                 <span class="count">([[${counts.kyobo}]])</span>
                             </a>
                         </li>
                         <li>
                             <br>
-                            <a th:href="@{/elib/ebook/list(GROUP='ebook',applier='알라딘',sort=3,type=1)}">
+                            <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='알라딘',sort=3,type=1)}">
                                 <span>알라딘</span>
                                 <span class="count">([[${counts.al}]])</span>
                             </a>

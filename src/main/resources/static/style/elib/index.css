@@ -100,11 +100,13 @@
     .Gnb > section > h1 {
         position: absolute;
         z-index: 1000;
-        float: left;
-        padding-top: 20px;
+        left: 0;
+        top: -5px;
     }
     .Gnb > section > h1 > a {}
-    .Gnb > section > h1 > a > img {}
+    .Gnb > section > h1 > a > img {
+    	width: 260px;
+    }
     .Gnb > section > .g-menu{
     }
     .Gnb > section > .g-menu > .gnb-menu {
@@ -286,6 +288,9 @@
     #container .bx-wrapper {
         margin: 10px;
     }
+    #container .bx-wrapper img {
+    	height: 180px;
+    }
     #container .bx-wrapper .bx-pager {
         bottom: 15px;
     }
@@ -327,6 +332,9 @@
     #container section .notice > ul > li >div >div.cont > ul{padding: 15px 0 0 0;}
     #container section .notice > ul > li >div >div.cont > ul > li {
         padding: 3px 0 3px 10px;
+    }
+    #container section .notice > ul > li >div >div.cont > ul > li:nth-child(n+6){
+    	display: none;
     }
     #container section .notice > ul > li >div >div.cont > ul > li > a{
         display: block;
@@ -559,7 +567,9 @@
         float: left;
         margin-top: 5px;
     }
-    footer > .address > .logo > img {}
+    footer > .address > .logo > img {
+    	width: 200px;
+    }
     footer > .address > .location {
         float: left;
         padding-left: 18px;
