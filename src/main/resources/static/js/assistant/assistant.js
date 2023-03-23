@@ -114,11 +114,11 @@ function searchBtn(){
 			data: jsonData,
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
 				alert('정보를 검색했습니다.')
 				$('#searchResult').text(data.length);
 				$('#userListTable tbody').empty();
 				let tag = '';
+				let reqUrl = location.pathname;
 				data.forEach(function(e, i){
 					
 					/* 전공 지정 */
@@ -150,7 +150,28 @@ function searchBtn(){
 					
 					/* 장소 지정 */
 					if(!e.lecLoc) e.lecLoc = "";
+
+				
 					
+					let btnTd = '';
+					switch(reqUrl){
+						case '/ChimAcademy/student/class/signup':
+						btnTd = `<td>${e.lecRequest}</td>
+								<td>
+		                            <button class="btnSugangTb btnSyllabus">보기</button>
+	                            </td>
+	                            <td>
+		                            <button class="btnSugangTb btnLecReg">신청</button>
+		                        </td>`;
+                        break;
+                        
+                        case '/ChimAcademy/assistant/lecuture': 
+                  		btnTd = `<td>
+	                            <button class="btnResultTable btnLecMod">수정</button>
+	                            <button class="btnResultTable btnLecDel">삭제</button>
+	                        	</td>`;
+					}
+
 					/* 태그 붙여넣기 */
                     tag += `<tr>
                         <td>${i+1}</td>
@@ -164,15 +185,16 @@ function searchBtn(){
                         <td>${e.name}</td>
                         <td>${e.lecDay}${time}&nbsp;${e.lecLoc}</td>
                         <td>${e.lecLimit}</td>
-                        <td>
-                            <button class="btnResultTable btnLecMod">수정</button>
-                            <button class="btnResultTable btnLecDel">삭제</button>
-                        </td>
+      					${btnTd}
                     </tr>`
 				})
 				if(data.length == 0){
 					let element = document.createElement('tr');
-					element.innerHTML = '<td colspan="12">검색결과가 없습니다.</td>';
+					if(reqUrl == '/ChimAcademy/student/class/signup'){
+						element.innerHTML = '<td colspan="14">검색결과가 없습니다.</td>';
+					}else{
+						element.innerHTML = '<td colspan="12">검색결과가 없습니다.</td>';	
+					}
 					let tbody = document.getElementById('resultTbody');
 					tbody.appendChild(element);
 				}else{

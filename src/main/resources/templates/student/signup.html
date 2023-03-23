@@ -3,6 +3,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 	searchBtn();
 	selectMajors();
+	regLecSuang();
+	viewSyllabus();
 });
 </script>	 
 <main id="signUp">
@@ -16,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     <td>이름</td>
                     <td th:text="${member.name}">홍길동</td>
                     <td>학번</td>
-                    <td th:text="${member.uid}">20231112</td>
+                    <td th:text="${member.uid}" id="uid">20231112</td>
                 </tr>
                 <tr>
                     <td>학과</td>
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
             </div>
         </section>
         <section id="resultLec">
-            <h1>개설과목 : 총 <span id="searchResult"></span> 건</h1>
+            <h1>개설과목 : 총 <span id="searchResult">0</span> 건</h1>
            <table id="userListTable">
  				<thead>
                     <tr>
@@ -108,7 +110,9 @@ document.addEventListener('DOMContentLoaded', function(){
                         <th>담당교수</th>
                         <th>강의시간</th>
                         <th>인원제한</th>
-                        <th>관리</th>
+                        <th>신청인원</th>
+                        <th>강의<br>계획서</th>
+                        <th>수강<br>신청</th>
                     </tr>
                 </thead>
                 <tbody id="resultTbody"></tbody>
@@ -130,91 +134,23 @@ document.addEventListener('DOMContentLoaded', function(){
                     </tr>
                 </thead>
                 <tbody>
+                	<th:block th:if="${sugangs == null}">
                     <tr>
-                        <td>
-                            <button>삭제</button>
+                        <td colspan="8">
+                            수강 신청한 과목이 없습니다.
                         </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
+                    </th:block>
+					<tr th:each="sugang : ${sugangs}">
+                        <td><button class="btnDelSugang">삭제</button></td>
+                        <td th:text="${sugang.lectureEntity.lecCode}"></td>
+                        <td th:text="${sugang.lectureEntity.lecClass}"></td>
+                        <td th:text="${sugang.lectureEntity.lecName}"></td>
+                        <td th:text="${sugang.lectureEntity.lecGubun}"></td>
+                        <td th:text="${sugang.lectureEntity.credit}"></td>
+                        <!-- <td th:text="${sugang.lectureEntity.}"></td> -->
+                        <td th:text="${sugang.lectureEntity.beginTime}"></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button>삭제</button>
-                        </td>
-                        <td>410000</td>
-                        <td>2</td>
-                        <td>브릿징 영어쓰기</td>
-                        <td>전필</td>
-                        <td>3</td>
-                        <td>이성계</td>
-                        <td>화123(과학동203)</td>
-                    </tr>
-
                     
                 </tbody>
             </table>

@@ -1,6 +1,8 @@
 package kr.co.ChimAcademy.entity;
 
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,9 +13,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "lec_list")
-public class LecListEntity {
-	
+@Table(name = "lec_sugang")
+public class Lec_SugangEntity {
 	@Id
 	private int no;
 	
@@ -21,8 +22,10 @@ public class LecListEntity {
 	@JoinColumn(name = "uid", referencedColumnName = "uid")
 	private MemberEntity memberEntity;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "lecCode", referencedColumnName = "lecCode")
 	private LectureEntity lectureEntity;
 	
+    @OneToOne(mappedBy = "lec_sugangEntity", fetch = FetchType.LAZY)
+    private LecListEntity lecListEntity;
 }

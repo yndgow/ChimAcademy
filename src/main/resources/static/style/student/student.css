@@ -113,9 +113,11 @@ main#signUp > section > #resultLec > table th:nth-child(6) {width: 210px;}
 main#signUp > section > #resultLec > table th:nth-child(7) {width: 55px;}
 main#signUp > section > #resultLec > table th:nth-child(8) {width: 40px;}
 main#signUp > section > #resultLec > table th:nth-child(9) {width: 90px;}
-main#signUp > section > #resultLec > table th:nth-child(10) {width: 140px;}
+main#signUp > section > #resultLec > table th:nth-child(10) {width: 130px;}
 main#signUp > section > #resultLec > table th:nth-child(11) {width: 60px;}
-main#signUp > section > #resultLec > table th:nth-child(12) {width: 120px;}
+main#signUp > section > #resultLec > table th:nth-child(12) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(13) {width: 65px; line-height: 16px;}
+main#signUp > section > #resultLec > table th:nth-child(14) {width: 65px; line-height: 16px;}
 main#signUp > section > #resultLec > table th,
 main#signUp > section > #resultLec > table td{
     line-height: 35px;
@@ -211,4 +213,139 @@ main#eval > section > .btn_div > button{
 /* 이미지 조절 */
 footer > .footerData > .footerLogo > img{
 	box-sizing: initial;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 수강신청 */
+main#signUp button{
+	background: #3B5998;
+	color: #ffffff;
+	border: none;
+	border-radius : 4px;
+}
+.btnSugangTb, .btnDelSugang{
+	width: 30px;
+	height: 20px; 
+	background: #3B5998;
+	color: #ffffff;
+	border: none;
+	border-radius : 4px;
+	
+}
+#btnSearchLec{
+	width: 145px; 
+	height: 22px;
 }
