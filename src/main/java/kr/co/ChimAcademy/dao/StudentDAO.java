@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.vo.MemberVO;
 
 @Repository
@@ -21,4 +22,7 @@ public interface StudentDAO {
 	
 	//회원정보 수정
 	public int updateStudent(MemberVO vo);
+	
+	// 수강 신청내역(수강신청페이지) 
+	List<LecSugangDto> selectSugangs(String uid);
 }

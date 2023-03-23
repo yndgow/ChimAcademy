@@ -37,7 +37,8 @@ public class SecurityConfig {
     	// 접근권한 설정
         http.authorizeRequests()
         	.antMatchers("/member/**").permitAll()
-        	.antMatchers("/").permitAll();
+        	.antMatchers("/").permitAll()
+        	.antMatchers("/student/**").authenticated();
 //        	.antMatchers("/index").permitAll()
 //        	.anyRequest().authenticated();
 //        	.antMatchers("/my/**","/admin/**")
@@ -54,6 +55,7 @@ public class SecurityConfig {
 			.failureUrl("/index?success=100")
 			.usernameParameter("uid")
 			.passwordParameter("pass");
+		
 //        
         // 사이트 위조 방지 설정
         http.csrf().disable();

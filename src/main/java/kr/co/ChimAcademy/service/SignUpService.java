@@ -1,12 +1,13 @@
 package kr.co.ChimAcademy.service;
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.ChimAcademy.dao.StudentDAO;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
@@ -25,12 +26,14 @@ public class SignUpService {
 	private final MajorRepo majorRepo;
 	private final Lec_SugangRepo sugangRepo;
 	private final LectureRepo lectureRepo;
+	private final StudentDAO studentDAO;
 	
-	public SignUpService(DepartmentRepo departmentRepo, MajorRepo majorRepo, Lec_SugangRepo sugangRepo, LectureRepo lectureRepo) {
+	public SignUpService(DepartmentRepo departmentRepo, MajorRepo majorRepo, Lec_SugangRepo sugangRepo, LectureRepo lectureRepo, StudentDAO studentDAO) {
 		this.departmentRepo = departmentRepo;
 		this.majorRepo = majorRepo;
 		this.sugangRepo = sugangRepo;
 		this.lectureRepo = lectureRepo;
+		this.studentDAO = studentDAO;
 	}
 	
 	// 모든 학과 조회
@@ -89,8 +92,8 @@ public class SignUpService {
 	
 	
 	// 수강 내역 가져오기
-	public List<Lec_SugangEntity> getSugangs(String uid){
-		return sugangRepo.findByMemberEntityUid(uid);
+	public List<LecSugangDto> getSugangs(String uid){
+		return studentDAO.selectSugangs(uid);
 	}
 	
 	

@@ -143,13 +143,13 @@ document.addEventListener('DOMContentLoaded', function(){
                     </th:block>
 					<tr th:each="sugang : ${sugangs}">
                         <td><button class="btnDelSugang">삭제</button></td>
-                        <td th:text="${sugang.lectureEntity.lecCode}"></td>
-                        <td th:text="${sugang.lectureEntity.lecClass}"></td>
-                        <td th:text="${sugang.lectureEntity.lecName}"></td>
-                        <td th:text="${sugang.lectureEntity.lecGubun}"></td>
-                        <td th:text="${sugang.lectureEntity.credit}"></td>
-                        <!-- <td th:text="${sugang.lectureEntity.}"></td> -->
-                        <td th:text="${sugang.lectureEntity.beginTime}"></td>
+                        <td th:text="${sugang.lecCode}"></td>
+                        <td th:text="${sugang.lecClass}"></td>
+                        <td th:text="${sugang.lecName}"></td>
+                        <td th:text="${sugang.lecGubun}"></td>
+                        <td th:text="${sugang.credit}"></td>
+                        <td th:text="${sugang.name}"></td>
+                        <td th:text="${sugang.beginTime}"></td>
                     </tr>
                     
                 </tbody>

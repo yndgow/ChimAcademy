@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
@@ -55,7 +56,7 @@ public class SignUpController {
 		List<DepartmentEntity> departments = signUpService.getDeparments();
 		
 		// 수강 신청 내역
-		List<Lec_SugangEntity> sugangs = signUpService.getSugangs(member.getUid());
+		List<LecSugangDto> sugangs = signUpService.getSugangs(member.getUid());
 		
 		model.addAttribute("member", member);
 		model.addAttribute("year", year);
