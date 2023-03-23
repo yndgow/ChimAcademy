@@ -3,11 +3,11 @@
                     	<div class="elib-cate" th:if="${sort=='1' or sort=='2'}">
                     		<h2>카테고리</h2>
                     		<div class="box">
-                    			<a th:each="cate1 : ${cate1s}" th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=${cate1.c1},cate2=10)}">[[${cate1.c1Name}]]</a>
+                    			<a th:each="cate1 : ${cate1s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=${cate1.c1},cate2=10)}">[[${cate1.c1Name}]]</a>
                     		</div>
                     		<h2>하위카테고리</h2>
                     		<div class="box">
-                    			<a th:each="cate2 : ${cate2s}" th:href="@{/elib/ebook/list(GROUP='ebook',sort=2,cate1=${cate2.c1},cate2=${cate2.c2})}">[[${cate2.c2Name}]]</a>
+                    			<a th:each="cate2 : ${cate2s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=2,cate1=${cate2.c1},cate2=${cate2.c2})}">[[${cate2.c2Name}]]</a>
                     		</div>
                     	</div>
 						<div class="elib-top">

@@ -22,4 +22,14 @@ public class ProfessorService {
 	public List<MemberVO> selectProlecture(String uid){
 		return dao.selectProlecture(uid);
 	}
+	
+	// 개인정보 수정
+	public int updateProMy(MemberVO vo) {
+		return dao.updateProMy(vo);
+	}
+	// 개인정보 수정2
+	
+	public int updateProMyinfo(MemberVO vo) {
+		return dao.updateProMyinfo(vo);
+	}
 }

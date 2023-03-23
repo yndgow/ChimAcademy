@@ -21,13 +21,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a th:href="@{/elib/ebook/list}">전자책</a>
+                                <a th:href="@{/elib/ebook/list(GROUP=${vo.GROUP})}" th:text="${vo.GROUP} == 'ebook' ? '전자책' : '오디오북'">전자책</a>
                             </li>
                             <li>
-                                <a th:if="${sort=='4' and type=='1'}" th:href="@{/elib/ebook/list}">새로 들어온 책</a>
-                                <a th:if="${sort=='4' and type=='4'}" th:href="@{/elib/ebook/list(GROUP='ebook',sort='4',type='4')}">대출이 많은 책</a>
-                                <a th:if="${sort=='1' or sort=='2'}" th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">주제별</a>
-                                <a th:if="${sort=='3' and type=='1'}" th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">유통사별</a>
+                                <a th:if="${sort=='4' and type=='1'}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP})}">새로 들어온 책</a>
+                                <a th:if="${sort=='4' and type=='4'}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort='4',type='4')}">대출이 많은 책</a>
+                                <a th:if="${sort=='1' or sort=='2'}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=10,cate2=10)}">주제별</a>
+                                <a th:if="${sort=='3' and type=='1'}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},applier='예스24',sort=3,type=1)}">유통사별</a>
                             </li>
                         </ol>
                     </section>

@@ -1,6 +1,8 @@
 package kr.co.ChimAcademy.controller;
 
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.service.EbookService;
@@ -29,7 +38,9 @@ import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
+import kr.co.ChimAcademy.vo.ItemVO;
 import kr.co.ChimAcademy.vo.MylibVO;
+import kr.co.ChimAcademy.vo.ResultVO;
 
 @Controller
 public class ELibController {
@@ -42,10 +53,85 @@ public class ELibController {
 	
 	@GetMapping(value = {"elib/","elib/index"})
 	public String index(Model model) {
+		// 도서관 소식 불러오기
 		List<Ebook_ArticleVO> articles = aService.selectArticles(0);
 		model.addAttribute("articles",articles);
+		// 인덱스 도서 목록 불러오기
+		EbookVO vo = new EbookVO();
+		vo.setGROUP("ebook");
+		List<EbookVO> ebooks = eService.selectEbooks("4", "1", vo, 0);
+		vo.setGROUP("audio");
+		List<EbookVO> audios = eService.selectEbooks("4", "1", vo, 0);
+		model.addAttribute("ebooks",ebooks);
+		model.addAttribute("audios",audios);
+		//부산 도서관 정보 공공API///////////////////////// 
+		//API 정보
+        String apiURL = "http://apis.data.go.kr/6260000/BusanLibraryInfoService/getLibraryInfo";
+        String serviceKey = "WWltWyH%2BBfK2QsquwkUSkcF7sT5RXBLwPTyIqgwayge40%2BhNxWswEaYhOfL29YQcTBPCyxp4vA%2BIEP3Y7dmo6Q%3D%3D";
+        String resultType = "json";
+        String pageNo = "1";
+        String numOfRows = "20";
+        String library_nm = "강서";
+        
+
+        URI uri = UriComponentsBuilder
+                .fromUriString(apiURL)
+                .queryParam("serviceKey", serviceKey)
+                .queryParam("pageNo", pageNo)
+                .queryParam("numOfRows", numOfRows)
+                .queryParam("resultType", resultType)
+                .queryParam("library_nm", library_nm)
+                .build(true)
+                .toUri();
+
+        RequestEntity<Void> req = RequestEntity
+                .get(uri)
+                .build();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+
+
+        //JSON 문자열
+        String jsonData = result.getBody();
+
+        //json 파싱
+        ObjectMapper om = new ObjectMapper();
+        try {
+
+            ResultVO resultVO = om.readValue(jsonData, ResultVO.class );
+            ItemVO[] items = resultVO.getGetLibraryInfo().getBody().getItems().getItem();
+            model.addAttribute("items",items);
+
+        } catch (JsonMappingException e){
+            e.getStackTrace();
+        }
+        catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+		
 		return "elib/index";
 	}
+	@ResponseBody
+	@PostMapping("elib/selectIdxs")
+	public Map<String, List<EbookVO>> selectIdxs(String type) {
+		EbookVO vo = new EbookVO();
+		vo.setGROUP("ebook");
+		List<EbookVO> idx1 = eService.selectEbooks("4", type, vo, 0);
+		vo.setGROUP("audio");
+		List<EbookVO> idx2 = eService.selectEbooks("4", type, vo, 0);
+		List<EbookVO> list = new ArrayList<>();
+		for(int i=0;i<3;i++) {
+			list.add(idx1.get(i));
+		}
+		for(int i=0;i<3;i++) {
+			list.add(idx2.get(i));
+		}
+		Map<String, List<EbookVO>> map = new HashMap<>();
+		map.put("list", list);
+		return map;
+	}
+	
 	
 	@GetMapping("elib/ebook/list")
 	public String list(Model model,String pg,String sort,String type,EbookVO vo) {
