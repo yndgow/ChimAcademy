@@ -34,15 +34,15 @@
                         <tr>
                         	<th>이력</th>
                             <td colspan="5">
-                                <textarea readonly="readonly" rows="8">[[${professor.career}]]</textarea>
+                                <textarea readonly="readonly">[[${professor.career}]]</textarea>
                             </td>
                         </tr>
                    </table>
                    </section>
                    
-              <!-- 수강내역 -->
+              <!-- 강의내역 -->
               <nav class="distance">
-                <h3>수강내역</h3>
+                <h3>강의내역</h3>
                 </nav>
                 <section class="tableWrapper">
                         <table id="proListTable">
@@ -69,7 +69,7 @@
 	                            <td>[[${professorlec.lecDay}]]
 	                            [[${professorlec.beginTime}]]
 	                            ([[${professorlec.lecLoc}]])</td>
-	                            <td>이동</td>
+	                            <td><a th:href="@{#}">이동</a></td>
                             </tr>
                     </table>
                 </section>

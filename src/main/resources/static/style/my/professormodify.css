@@ -251,12 +251,6 @@ main>section>nav.distance {
     font-size: 15px
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:last-child {
-    font-size: 15px;
-    vertical-align: top;
-    padding-top: 25px;
-}
-
 /* ============================== */
 
 /* 상세정보 영역 */
@@ -356,21 +350,25 @@ main>section>nav.distance {
 }
 /* ============================== */
 
-/* 자기소개 영역 */
+/* 이력, 자기소개 영역 */
 #detail div section:last-child {
-    padding-top: 25px;
+    padding-top: 115px;
 }
 
 #detail > div >section>textarea {
     margin-top: 10px;
     padding: 5px;
-    height: 30px;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
     width: 880px;
-    height: 260px;
+    height: 100px;
     resize: none;
 }
+
+.career{
+	margin-top: 15px;
+}
+
 /* ============================== */
 /* 버튼 */
 #cancelbtn{
@@ -422,4 +420,13 @@ main>section>nav.distance {
     width: 30px;
 }
 
+.resume{
+	background: none;
+    font-size: 15px;
+    width: 377px;
+    height: 164px;
+    border: none;
+    resize: none;
+    margin-left: 15px;
+}
 /* ============================== */
