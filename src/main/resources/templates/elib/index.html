@@ -11,12 +11,50 @@
     <link rel="stylesheet" href="/ChimAcademy/style/elib/index.css">
     <script>
         $(document).ready(function(){
+        	
           $('.slider').bxSlider();
           
           $('.book-box > div > ul > li > a').click(function(e){
         	 e.preventDefault();
         	 $(this).parent().siblings().removeClass('on'); 
         	 $(this).parent().addClass('on'); 
+        	 let type = $(this).data('type');
+        	 let jsonData = {
+        			 "type":type
+        	 }
+        	 $.ajax({
+        		 url:"/ChimAcademy/elib/selectIdxs",
+        		 method:"post",
+        		 data:jsonData,
+        		 dataType:"json",
+        		 success:function(data){
+        			 if(data.list.length > 0){
+        				 $('.eb > li').remove();
+        				 let tag1 = "";
+        				 for(let i=0;i<3;i++){
+        					 	 tag1 += "<li>";
+        					 	 tag1 += "<a href='/ChimAcademy/elib/ebook/view?bookId="+data.list[i].bookId+"&GROUP=ebook&sort=4&type=1'>";
+        					 	 tag1 += "<img src='/ChimAcademy"+data.list[i].thumb+"' alt='img'>";
+        					 	 tag1 += "<br>";
+        					 	 tag1 += "<span>"+data.list[i].title+"</span>";
+        					 	 tag1 += "</a>";
+        					 	 tag1 += "</li>";
+        				 }
+        				 $('.idx1').append(tag1);
+        				 let tag2 = "";
+        				 for(let i=3;i<6;i++){
+        					 	 tag2 += "<li>";
+        					 	 tag2 += "<a href='/ChimAcademy/elib/ebook/view?bookId="+data.list[i].bookId+"&GROUP=audio&sort=4&type=1'>";
+        					 	 tag2 += "<img src='/ChimAcademy"+data.list[i].thumb+"' alt='img'>";
+        					 	 tag2 += "<br>";
+        					 	 tag2 += "<span>"+data.list[i].title+"</span>";
+        					 	 tag2 += "</a>";
+        					 	 tag2 += "</li>";
+        				 }
+        				 $('.idx2').append(tag2);
+        			 }
+        		 }
+        	 })
           });
         });
     </script>
@@ -241,9 +279,9 @@
                 <section class="book-box">
                     <div>
                         <ul>
-                            <li class="on"><a href="#">새로 들어온 책</a></li>
-                            <li><a href="#">대출이 많은 책</a></li>
-                            <li><a href="#">추천하는 책</a></li>
+                            <li class="on"><a href="#" data-type="1">새로 들어온 책</a></li>
+                            <li><a href="#" data-type="4">대출이 많은 책</a></li>
+                            <li><a href="#" data-type="2">추천하는 책</a></li>
                         </ul>
                         <div class="contents">
                             <div>
@@ -251,28 +289,14 @@
                                     <li>
                                         <div class="tit">
                                             <h3 class="book">일반전자책</h3>
-                                            <a href="#"><span class="material-icons">add</span></a>
+                                            <a th:href="@{/elib/ebook/list(GROUP='ebook')}"><span class="material-icons">add</span></a>
                                         </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
+                                        <ul class="eb idx1">
+                                            <li th:each="ebook : ${ebooks}">
+                                                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},GROUP='ebook',sort=4,type=1)}">
+                                                    <img th:src="@{${ebook.thumb}}" alt="img">
                                                     <br>
-                                                    <span>개인주의자의 철학 수업</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
-                                                    <br>
-                                                    <span>개인주의자의 철학 수업</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
-                                                    <br>
-                                                    <span>개인주의자의 철학 수업</span>
+                                                    <span>[[${ebook.title}]]</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -280,28 +304,14 @@
                                     <li>
                                         <div class="tit">
                                             <h3 class="audio">오디오북</h3>
-                                            <a href="#"><span class="material-icons">add</span></a>
+                                            <a th:href="@{/elib/ebook/list(GROUP='audio')}"><span class="material-icons">add</span></a>
                                         </div>
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
+                                        <ul class="eb idx2">
+                                            <li th:each="audio : ${audios}">
+                                                <a th:href="@{/elib/ebook/view(bookId=${audio.bookId},GROUP='audio',sort=4,type=1)}">
+                                                    <img th:src="@{${audio.thumb}}" alt="img">
                                                     <br>
-                                                    <span>개인주의자의 철학 수업</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
-                                                    <br>
-                                                    <span>개인주의자의 철학 수업</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="https://via.placeholder.com/142x197" alt="img">
-                                                    <br>
-                                                    <span>개인주의자의 철학 수업</span>
+                                                    <span>[[${audio.title}]]</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -339,10 +349,19 @@
                         <div class="right">
                             <select name="recommendSite1" class="recommendSite1" title="타대학도서관">
                                 <option value="#">타대학도서관</option>
+                                <option th:each="item : ${items}" th:data-home="${item.library_hompage}" class="univLib">[[${item.library_nm}]]</option>
                             </select>
                             <select name="recommendSite2" class="recommendSite2" title="타지역도서관">
                                 <option value="#">타지역도서관</option>
                             </select>
+                            <script>
+	                            $(function(){
+	                            	$('.recommendSite1').change(function(){
+	                            		let homepage = $(this).children('.univLib').data('home');
+	                            		window.open(homepage, '_blank'); 
+	                            	});
+	                            });
+                            </script>
                         </div>
                     </section>
                 </div>

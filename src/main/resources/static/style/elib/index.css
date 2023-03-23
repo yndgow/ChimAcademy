@@ -426,6 +426,7 @@
         box-sizing: border-box;
         width: 23%;
         text-align: center;
+        left: 20px;
     }
     #container .book-box > div > ul > li > a {
         position: relative;
@@ -456,7 +457,7 @@
         position: relative;
         display: inline-block;
         width: 40.5%;
-        padding-right: 7%;
+        margin-left: 2%;
     }
     #container .book-box > div > .contents > div > ul > li > .tit{
         position: relative;
@@ -489,10 +490,15 @@
     #container .book-box > div > .contents > div > ul > li > .tit > a > span {}
     #container .book-box > div > .contents > div > ul > li > ul {}
     #container .book-box > div > .contents > div > ul > li > ul > li {
+    
         display: inline-block;
         width: 32.5%;
         text-align: Center;
     }
+    #container .book-box > div > .contents > div > ul > li > ul > li:nth-child(n+4) {
+    	display: none;
+    }
+    
     #container .book-box > div > .contents > div > ul > li > ul > li > a {
         display: inline-block;
         width: 100%;
@@ -502,7 +508,12 @@
         height: 195px;
         border: 1px solid #d9d9d9;
     }
-    #container .book-box > div > .contents > div > ul > li > ul > li > a > span {}
+    #container .book-box > div > .contents > div > ul > li > ul > li > a > span {
+    	display:block;
+    	overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
 
     /*footer*/
     footer {

@@ -204,7 +204,7 @@
 						                    <li>
 						                        지원기기 : [[${ebook.support}]]
 						                        <span> ㅣ </span>
-						                        서비스 형태: EPUB
+						                        서비스 형태: <span th:text="${ebook.GROUP}=='ebook'?'PDF':'MP3'"></span>
 						                    </li>
 						                    <li>
 						                        좋아요 : <span class="like">[[${ebook.like}]]</span>
