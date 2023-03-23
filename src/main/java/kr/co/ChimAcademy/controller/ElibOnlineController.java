@@ -11,4 +11,29 @@ public class ElibOnlineController {
 		return "elib/online/reading";
 	};
 	
+	@GetMapping("elib/online/magazine")
+	public String magazine() {
+		return "elib/online/magazine";
+	};
+	
+	@GetMapping("elib/online/humanArt")
+	public String humanArt() {
+		return "elib/online/humanArt";
+	};
+	
+	@GetMapping("elib/online/DBpia")
+	public String DBpia() {
+		return "elib/online/DBpia";
+	};
+	
+	@GetMapping("elib/online/E_learning")
+	public String E_learning() {
+		return "elib/online/E_learning";
+	};
+	
+	@GetMapping("elib/online/busanPost")
+	public String busanPost() {
+		return "elib/online/busanPost";
+	};
+	
 }
