@@ -412,3 +412,11 @@ a:focus, a:hover {
 }
 
 
+/* gudok */
+.kyobo_bgbox {
+    position: relative;
+    height: 321px;
+    background: url(/ChimAcademy/img/elib/kyobo_bg.jpg) no-repeat;
+    background-size: 100%;
+}
+

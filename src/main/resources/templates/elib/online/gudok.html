@@ -1,0 +1,141 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+                        <form action="#">
+                            <section class="search">
+                                <div class="box1">
+                                    <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+                                </div>
+                                <div class="box2">
+                                    <button><span class="material-icons">search</span></button>
+                                </div>
+                            </section>
+                        </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>구독형전자책</b>
+			    </h2>
+			    <ul>
+			        <li class="active">
+			            <a href="#">
+			                <span>구독형 전자책</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>구독형 전자책</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="kyobo_bgbox bgbox">
+                                	<div class="if-txt">
+                                		<p>
+                                			<span class="tt">제한없는 전자책서비스</span>
+                                			<br>
+                                			<span class="btit">구독형전자책</span>
+                                		</p>
+                                		<br>
+                                		<ul class="btns_wrap_tac">
+                                			<li>
+                                				<a href="#" class="btn_link02">
+	                                				<span>북큐브 구독형 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                			<li>
+                                				<a href="#" class="btn_link02">
+	                                				<span>알라딘 구독형 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                		</ul>
+                                	</div>
+                                </div>
+                                <br>
+                                <h3>구독형 전자책이란?</h3>
+                                <div class="txt-box">
+                                	<p>
+                                		한 도서당 이용자 수 제한이 없어 원하는 도서를 기다림 없이 바로 이용할 수 있는 서비스입니다.
+                                	</p>
+                                </div>
+                                <br>
+                                <h3>이용안내</h3>
+                                <div>
+                                	<table class="tbl-type01">
+                                		<caption>전자책/오디오북 이용안내</caption>
+                                		<colgroup>
+                                			<col width="50%" class="col1">
+                                		</colgroup>
+                                		<thead>
+                                			<tr class="first">
+                                				<th scope="col" colspan="2" class="first last th1">구독형 전자책(오디오북)</th>
+                                			</tr>
+                                		</thead>
+                                		<tbody>
+                                			<tr class="fisrt">
+                                				<td class="first td1">대출 가능 권수</td>
+                                				<td class="last td2">일 최대 20권</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">대출기간</td>
+                                				<td class="last td2">15일(대출일포함/자동반납)</td>
+                                			</tr>
+                                		</tbody>
+                                	</table>
+                                </div>
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

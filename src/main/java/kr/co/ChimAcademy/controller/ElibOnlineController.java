@@ -36,4 +36,8 @@ public class ElibOnlineController {
 		return "elib/online/busanPost";
 	};
 	
+	@GetMapping("elib/online/gudok")
+	public String gudok() {
+		return "elib/online/gudok";
+	};
 }
