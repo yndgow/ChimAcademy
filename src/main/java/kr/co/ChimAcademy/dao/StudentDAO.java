@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.infoFileVO;
 
 @Repository
 @Mapper
@@ -25,4 +26,8 @@ public interface StudentDAO {
 	
 	// 수강 신청내역(수강신청페이지) 
 	List<LecSugangDto> selectSugangs(String uid);
+	
+	//프로필 넣기
+	public int insertProfile(infoFileVO vo);
+
 }

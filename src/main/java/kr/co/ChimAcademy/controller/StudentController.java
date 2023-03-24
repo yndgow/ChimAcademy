@@ -14,6 +14,7 @@ import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.infoFileVO;
 
 @Controller
 public class StudentController {
@@ -53,12 +54,23 @@ public class StudentController {
 		MemberEntity mem = member.getUser();
 		MemberVO vo = service.selectStudent(mem.getUid());
 		
+		
+		
 		model.addAttribute("vo", vo);
 		model.addAttribute("member", mem);
 
 		return "mypage/student/modify";
 	}
+	// 이미지 업데이트
+	@PostMapping("student/my/modifyProfile")
+	public String insertProfile(MemberVO vo) {
+		
+		int result = service.insertProfile(vo);
+		System.out.println(result);
+		return "redirect:/student/my/modify";
+	}
 	
+	// 상세정보 업데이트
 	@PostMapping("student/my/modify")
 	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();

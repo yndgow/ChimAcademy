@@ -1,5 +1,7 @@
 package kr.co.ChimAcademy.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -26,6 +28,7 @@ public class MemberVO {
 	private String rdate;
 	private String info;
 	private String profile;
+	private MultipartFile profileThumb;
 	private String member2;
 	private String member3;
 	
