@@ -2,7 +2,7 @@
 <main>
 <th:block th:include="@{_aside.html}"/>
 
-            <section id="mymodify">
+            <section id="myinfopro">
                 <!-- 내 정보 -->
                 <nav>
                     <h3>마이페이지 > 개인정보 수정</h3>
@@ -35,21 +35,25 @@
                         </table>
                     </div>
                     <div>
-                        <table>
+                        <table id="carrer">
                             <tr>
                                 <td>이력</td>
                                 <td><textarea class="resume" readonly="readonly">[[${professor.career}]]</textarea><td>
+                            </tr>
+                            <tr>
+                            	<td>상담시간</td>
+                            	<td id="cstime">[[${professor.csTime}]]</td>
                             </tr>
                         </table>
                     </div>
                 </section>
 
                 <!-- 상세정보 -->
-                <section>
+                <section id="viewinfopro">
                     <h3>상세정보</h3>
                 </section>
                	<form method="post">
-                <div id="detail">
+                <div id="detailpro">
                     <div>
                         <section>
                             <span>휴대전화번호</span>
@@ -59,6 +63,14 @@
                         <section>
                             <span>이메일</span>
                             <input name="email" id="box2" type="text" th:value="${professor.email}" />
+                        </section>
+                        <section>
+                            <span>연구실</span>
+                            <input name="lab" id="box2" type="text" th:value="${professor.lab}" />
+                        </section>
+                        <section>
+                            <span>상담가능시간</span>
+                            <input name="csTime" id="box5" type="text" th:value="${professor.csTime}" />
                         </section>
                         <div>
                             <span>주소</span>

@@ -76,7 +76,7 @@ main>section>article>table>tbody {
 }
 
 /* 마이페이지 수정 - 증명사진 */
-#mymodify img.idphoto {
+#myinfopro img.idphoto {
     width: 130px;
     margin: 25px;
     margin-top: 5px;
@@ -147,7 +147,7 @@ main>section>nav.distance {
 }
 
 /* 마이페이지 - 개인정보 수정 */
-#mymodify>section>h3 {
+#myinfopro>section>h3 {
     margin: 10px;
     margin-left: 15px;
     font-size: 18px;
@@ -156,7 +156,7 @@ main>section>nav.distance {
 
 
 /* 프로필 영역 */
-#mymodify>section:nth-of-type(1) {
+#myinfopro>section:nth-of-type(1) {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: 2px solid #f5f6f6;
@@ -165,7 +165,7 @@ main>section>nav.distance {
     overflow: hidden;
 }
 
-#mymodify>section:nth-of-type(3) {
+#myinfopro>section:nth-of-type(3) {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: 2px solid #f5f6f6;
@@ -175,7 +175,7 @@ main>section>nav.distance {
     margin-top: 35px;
 }
 
-#mymodify>section:nth-of-type(2) {
+#myinfopro>section:nth-of-type(2) {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border: 2px solid #ebecef;
@@ -183,71 +183,75 @@ main>section>nav.distance {
     overflow: hidden;
 }
 
-#mymodify>section:nth-of-type(2)>div {
+#myinfopro>section:nth-of-type(2)>div {
     float: left;
 }
 
 /* 프로필사진 */
-#mymodify>section:nth-of-type(2) article {
+#myinfopro>section:nth-of-type(2) article {
     display: inline-block;
 }
 
-#mymodify>section:nth-of-type(2) span {
+#myinfopro>section:nth-of-type(2) span {
     width: 300px;
 }
 
 /* 프로필 사진 하단 글자 크기 */
-#mymodify>section>div>p {
+#myinfopro>section>div>p {
     font-weight: bold;
     font-size: 15px;
 }
 
-#mymodify>section>div>span {
+#myinfopro>section>div>span {
     font-size: 13px;
     margin-top: 3px;
 }
 
 /* 표 하단 사이즈 */
-#mymodify>section:nth-of-type(2)>div:first-child {
+#myinfopro>section:nth-of-type(2)>div:first-child {
     height: 250px;
     text-align: center;
     box-sizing: border-box;
 }
 
 /* 내부 글자 위치 */
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2) {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(2) {
     width: 250px;
     height: 200px;
     margin-left: 50px;
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table {
     width: 250px;
     height: 220px;
     margin-top: 12px;
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table {
     width: 440px;
     height: 220px;
-    margin-top: 12px;
+    margin-top: 37px;
+}
+
+#carrer tr{
+	height: 67%;
 }
 
 /* 프로필 폰트 크기 */
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:first-child {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px;
-    padding-left: 10px;
     vertical-align: top;
-    padding-top: 25px;
 }
-
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td{
+	vertical-align: top;
+}
+#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
     font-size: 15px
 }
 
@@ -256,20 +260,20 @@ main>section>nav.distance {
 /* 상세정보 영역 */
 
 /* 폰트 크기 */
-#detail>div>section>span {
+#detailpro>div>section>span {
     font-weight: bold;
     font-size: 15px;
     height: 50px;
 }
 
-#detail>div>div>span {
+#detailpro>div>div>span {
     font-weight: bold;
     font-size: 15px;
     height: 50px;
 }
 
 /* 텍스트박스 크기 - 공통 */
-#detail>div>section>input {
+#detailpro>div>section>input {
     height: 30px;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
@@ -300,10 +304,16 @@ main>section>nav.distance {
     margin-bottom: 5px;
 }
 
+#box5{
+    width: 170px;
+    margin-left: 35px;
+    margin-bottom: 5px;
+}
+
 /* 주소 box 영역 */
-#detail>div {
+#detailpro>div {
     width: 930px;
-    height: 600px;
+    height: 700px;
     box-sizing: border-box;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -315,13 +325,13 @@ main>section>nav.distance {
     overflow: hidden;
 }
 
-#detail > div >section {
+#detailpro > div >section {
     width: 100%;
     height: 50px;
     box-sizing: border-box;
 }
 
-#detail > div >div {
+#detailpro > div >div {
     width: 100%;
     height: 130px;
     box-sizing: border-box;
@@ -332,30 +342,35 @@ main>section>nav.distance {
 }
 
 /* 텍스트박스 옵션 - 주소영역 */
-#detail>div>div>input {
+#detailpro>div>div>input {
     height: 30px;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
     padding-left: 7px;
 }
 
-#detail>div>div>button {
+#detailpro>div>div>.searchBtn {
     height: 30px;
     width: 45px;
     background-color: #1464f6;
     text-align: center;
     border: none;
+    padding: 0px !important;
     color: #ffffff;
     border-radius: 3px;
 }
+
+/* 텍스트박스 옵션 - 연구실 */
+
+
 /* ============================== */
 
 /* 이력, 자기소개 영역 */
-#detail div section:last-child {
+#detailpro div section:last-child {
     padding-top: 115px;
 }
 
-#detail > div >section>textarea {
+#detailpro > div >section>textarea {
     margin-top: 10px;
     padding: 5px;
     border: 1px solid #e5e7ea;
@@ -424,9 +439,14 @@ main>section>nav.distance {
 	background: none;
     font-size: 15px;
     width: 377px;
-    height: 164px;
+    height: 120px;
     border: none;
     resize: none;
     margin-left: 15px;
+}
+
+#cstime {
+	font-size: 15px;
+	padding-left: 13px;
 }
 /* ============================== */

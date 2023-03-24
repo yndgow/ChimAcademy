@@ -48,7 +48,9 @@
 
 	<update id="updateProMyinfo">
 		UPDATE `professor` set
-		`career`=#{career}
+		`career`=#{career},
+		`lab`=#{lab},
+		`csTime`=#{csTime}
 		WHERE `uid` = #{uid}
 	</update>
 </mapper>
