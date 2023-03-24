@@ -40,7 +40,13 @@
 		</update>
 
 	
-	
-	
+	<!-- 프로필 넣기-->
+	<insert id="insertProfile">
+	insert into `infoFile` set 
+							`parent`=#{parent}, 
+							`newName`=#{newName}, 
+							`oriName`=#{oriName}, 
+							`rdate`=now();
+	</insert>
 
 </mapper>

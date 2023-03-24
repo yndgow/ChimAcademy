@@ -60,13 +60,19 @@
                     <h3>프로필</h3>
                 </section>
                 <section>
+                	<form th:action="@{student/my/modifyProfile}" method="post" enctype="multipart/form-data">
                     <div>
                         <article><img th:src="@{/img/mypage/myinfo.png}" alt="증명사진" class="idphoto"></article>
-                        <br />
+                        <br/>
+                        
+                    
                         <p th:text=${vo.name}>홍길동</p>
                         <span th:text=${vo.email}>dong@cu.ac.kr</span>
-                        <button type="button" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"></button>
+                        <input type="file" name="profileThumb" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
+                        <input type="hidden" name="uid" th:value="${member.uid}" />
+                        <input type="submit" value="저장"/>
                     </div>
+                    </form>
                     <div>
                         <table>
                             <tr>
@@ -96,7 +102,7 @@
                 <section>
                     <h3>상세정보</h3>
                 </section>
-                <form method="post">
+                <form th:action="@{student/my/modify}" method="post">
                 <div id="detail">
 	                    <div>
                        <section>
