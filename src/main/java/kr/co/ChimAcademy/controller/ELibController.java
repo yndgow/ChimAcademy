@@ -64,52 +64,9 @@ public class ELibController {
 		List<EbookVO> audios = eService.selectEbooks("4", "1", vo, 0);
 		model.addAttribute("ebooks",ebooks);
 		model.addAttribute("audios",audios);
-		//부산 도서관 정보 공공API///////////////////////// 
-		//API 정보
-        String apiURL = "http://apis.data.go.kr/6260000/BusanLibraryInfoService/getLibraryInfo";
-        String serviceKey = "WWltWyH%2BBfK2QsquwkUSkcF7sT5RXBLwPTyIqgwayge40%2BhNxWswEaYhOfL29YQcTBPCyxp4vA%2BIEP3Y7dmo6Q%3D%3D";
-        String resultType = "json";
-        String pageNo = "1";
-        String numOfRows = "20";
-        String library_nm = "강서";
-        
-
-        URI uri = UriComponentsBuilder
-                .fromUriString(apiURL)
-                .queryParam("serviceKey", serviceKey)
-                .queryParam("pageNo", pageNo)
-                .queryParam("numOfRows", numOfRows)
-                .queryParam("resultType", resultType)
-                .queryParam("library_nm", library_nm)
-                .build(true)
-                .toUri();
-
-        RequestEntity<Void> req = RequestEntity
-                .get(uri)
-                .build();
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
-
-
-        //JSON 문자열
-        String jsonData = result.getBody();
-
-        //json 파싱
-        ObjectMapper om = new ObjectMapper();
-        try {
-
-            ResultVO resultVO = om.readValue(jsonData, ResultVO.class );
-            ItemVO[] items = resultVO.getGetLibraryInfo().getBody().getItems().getItem();
-            model.addAttribute("items",items);
-
-        } catch (JsonMappingException e){
-            e.getStackTrace();
-        }
-        catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-		
+		//부산 도서관 정보 공공API///////////////
+		ItemVO[] items = eService.LibAPI();
+		model.addAttribute("items",items);
 		return "elib/index";
 	}
 	@ResponseBody
@@ -177,6 +134,9 @@ public class ELibController {
 		
 		CountVO counts = eService.selectCountEbooks(vo.getGROUP());
 		model.addAttribute("counts",counts);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/ebook/list";
 	}
 	@GetMapping("elib/ebook/view")
@@ -203,6 +163,9 @@ public class ELibController {
 		model.addAttribute("result1",result1);
 		model.addAttribute("result2",result2);
 		model.addAttribute("result3",result3);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/ebook/view";
 	}
 	/*전자도서 공지사항 게시판*////////////////////
@@ -230,10 +193,16 @@ public class ELibController {
 		model.addAttribute("pageGroupEnd", pageGroupEnd);
 		model.addAttribute("articles", articles);
 		model.addAttribute("notices", notices);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/list";
 	}
 	@GetMapping("elib/info/write")
-	public String noticeWrite() {
+	public String noticeWrite(Model model) {
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/write";
 	}
 	@PostMapping("elib/info/write")
@@ -248,6 +217,9 @@ public class ELibController {
 	public String noticeModify(Model model, int no) {
 		Ebook_ArticleVO article = aService.selectArticle(no);
 		model.addAttribute("article",article);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/modify";
 	}
 	@PostMapping("elib/info/modify")
@@ -263,6 +235,9 @@ public class ELibController {
 		model.addAttribute("article",article);
 		// 게시물 조회수 +1
 		aService.updateArticleHit(no);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/view";
 	}
 	@GetMapping("elib/info/download")
@@ -273,17 +248,26 @@ public class ELibController {
 		return respEntity;
 	}
 	@GetMapping("elib/info/how")
-	public String how() {
+	public String how(Model model) {
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/how";
 	}
 	@GetMapping("elib/info/install")
-	public String install() {
+	public String install(Model model) {
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/install";
 	}
 	@GetMapping("elib/info/register")
 	public String register(Model model) {
 		List<EbookCate1VO> cate1s = eService.selectCate1s();
 		model.addAttribute("cate1s",cate1s);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/info/register";
 	}
 	@PostMapping("elib/info/register")
@@ -340,6 +324,9 @@ public class ELibController {
 		
 		List<MylibVO> mylibs = eService.selectMylibs(uid,state,start);
 		model.addAttribute("mylibs",mylibs);
+		//부산 도서관 정보 공공API///////////////
+				ItemVO[] items = eService.LibAPI();
+				model.addAttribute("items",items);
 		return "elib/mylibrary/mylib";
 	}
 	// 책 등록하기

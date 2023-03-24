@@ -23,11 +23,18 @@
                         </div>
                         <div class="right">
                             <select name="recommendSite1" class="recommendSite1" title="타대학도서관">
-                                <option value="#">타대학도서관</option>
+                                <option value="#">지역도서관</option>
+                                <option th:each="item : ${items}" th:value="${item.library_hompage}" class="univLib">[[${item.library_nm}]]</option>
                             </select>
-                            <select name="recommendSite2" class="recommendSite2" title="타지역도서관">
-                                <option value="#">타지역도서관</option>
-                            </select>
+                            <script>
+	                            $(function(){
+	                            	$('.recommendSite1').change(function(){
+	                            		let homepage = $(this).val();
+	                            		console.log(homepage);
+	                            		window.open(homepage, '_blank'); 
+	                            	});
+	                            });
+                            </script>
                         </div>
                     </section>
                 </div>

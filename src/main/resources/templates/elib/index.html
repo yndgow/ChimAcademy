@@ -135,9 +135,8 @@
                                 <a href="#">이용안내</a>
                                 <ul class="subMenu">
                                     <li><a th:href="@{/elib/info/list}">도서관소식</a></li>
-                                    <li><a href="#">자주하는질문</a></li>
-                                    <li><a href="#">희망자료 설문조사</a></li>
-                                    <li><a href="#">키보드보안설치안내</a></li>
+                                    <li><a th:href="@{/elib/info/how}">전자책/오디오북 이용안내</a></li>
+                                    <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -194,35 +193,35 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick5">
+                                    <a th:href="@{/elib/online/magazine}" class="quick5">
                                         <div class="b5">
                                             <h4>전자잡지/신문</h4>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick6">
+                                    <a th:href="@{/elib/online/humanArt}" class="quick6">
                                         <div class="b6">
                                             <h4>인문/예술</h4>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick7">
+                                    <a th:href="@{/elib/online/DBpia}" class="quick7">
                                         <div class="b7">
                                             <h4>학술DB</h4>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick8">
+                                    <a th:href="@{/elib/online/busanPost}" class="quick8">
                                         <div class="b8">
                                             <h4>희망자료</h4>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="quick9">
+                                    <a th:href="@{/elib/online/E_learning}" class="quick9">
                                         <div class="b9">
                                             <h4>이러닝</h4>
                                         </div>
@@ -348,16 +347,14 @@
                         </div>
                         <div class="right">
                             <select name="recommendSite1" class="recommendSite1" title="타대학도서관">
-                                <option value="#">타대학도서관</option>
-                                <option th:each="item : ${items}" th:data-home="${item.library_hompage}" class="univLib">[[${item.library_nm}]]</option>
-                            </select>
-                            <select name="recommendSite2" class="recommendSite2" title="타지역도서관">
-                                <option value="#">타지역도서관</option>
+                                <option value="#">지역도서관</option>
+                                <option th:each="item : ${items}" th:value="${item.library_hompage}" class="univLib">[[${item.library_nm}]]</option>
                             </select>
                             <script>
 	                            $(function(){
 	                            	$('.recommendSite1').change(function(){
-	                            		let homepage = $(this).children('.univLib').data('home');
+	                            		let homepage = $(this).val();
+	                            		console.log(homepage);
 	                            		window.open(homepage, '_blank'); 
 	                            	});
 	                            });

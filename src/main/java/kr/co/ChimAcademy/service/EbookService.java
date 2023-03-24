@@ -2,6 +2,9 @@ package kr.co.ChimAcademy.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,10 +20,17 @@ import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.ChimAcademy.dao.EbookDAO;
 import kr.co.ChimAcademy.vo.CountVO;
@@ -30,7 +40,9 @@ import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.Ebook_ArticleVO;
 import kr.co.ChimAcademy.vo.Ebook_Article_fileVO;
+import kr.co.ChimAcademy.vo.ItemVO;
 import kr.co.ChimAcademy.vo.MylibVO;
+import kr.co.ChimAcademy.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -156,7 +168,55 @@ public class EbookService {
 		}
 		return fvos;
 	}
-	// PDF 열기 //////////////////////////////////////////////////////
+	//부산 도서관 정보 공공API///////////////////////// 
+	public ItemVO[] LibAPI () {
+		//API 정보
+        String apiURL = "http://apis.data.go.kr/6260000/BusanLibraryInfoService/getLibraryInfo";
+        String serviceKey = "WWltWyH%2BBfK2QsquwkUSkcF7sT5RXBLwPTyIqgwayge40%2BhNxWswEaYhOfL29YQcTBPCyxp4vA%2BIEP3Y7dmo6Q%3D%3D";
+        String resultType = "json";
+        String pageNo = "1";
+        String numOfRows = "100";
+
+        //String str2 = URLEncoder.encode(str, StandardCharsets.UTF_8);
+        
+        URI uri = UriComponentsBuilder
+                .fromUriString(apiURL)
+                .queryParam("serviceKey", serviceKey)
+                .queryParam("pageNo", pageNo)
+                .queryParam("numOfRows", numOfRows)
+                .queryParam("resultType", resultType)
+                //.queryParam("library_nm", str2)
+                .build(true)
+                .toUri();
+
+        RequestEntity<Void> req = RequestEntity
+                .get(uri)
+                .build();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+
+
+        //JSON 문자열
+        String jsonData = result.getBody();
+
+        //json 파싱
+        ObjectMapper om = new ObjectMapper();
+        ItemVO[] items = {};
+        try {
+
+            ResultVO resultVO = om.readValue(jsonData, ResultVO.class );
+            items = resultVO.getGetLibraryInfo().getBody().getItems().getItem();
+
+        } catch (JsonMappingException e){
+            e.getStackTrace();
+        }
+        catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+		return items;
+	}
+	// PDF 및 MP3 열기 //////////////////////////////////////////////////////
 	public ResponseEntity<Resource> fileOpen(EbookFileVO vo,String group) throws IOException {
 		// String path = new File(uploadPath).getAbsolutePath()+"/"+vo.getNewName();
 		Path path = Paths.get("elibFile/ebookFile/"+vo.getNewName());
