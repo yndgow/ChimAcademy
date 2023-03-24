@@ -12,19 +12,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 	
+//	@GetMapping(value = {"/", "/index"})
+//	public String index(Model model, @CookieValue(name = "remember-me", required = false) String remebermeCookie, Principal principal) {
+//		if(remebermeCookie!= null || principal != null) {
+//			return "redirect:/notice";
+//		}else {
+//			System.out.println("로그인페이지로");
+//			return "redirect:/login";
+//		}
+//		
+//	}
 	@GetMapping(value = {"/", "/index"})
-	public String index(Model model, @CookieValue(name = "remember-me", required = false) String remebermeCookie, Principal principal) {
-		if(remebermeCookie!= null || principal != null) {
-			return "redirect:/notice";
+	public String index(Principal principal) {
+		if(principal == null) {
+			return "redirect:/login";
 		}else {
-			System.out.println("로그인페이지로");
-			return "member/login";
+			return "redirect:/notice";
 		}
 		
 	}
 	
-	@GetMapping("member/login")
+	@GetMapping(value={"login", "member/login"})
 	public String login() {
 		return "member/login";
 	}
+	
+	@GetMapping("accessDenied")
+	public String denied() {
+		return "denied";
+	}
+
 }

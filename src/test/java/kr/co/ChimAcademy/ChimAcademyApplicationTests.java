@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -36,8 +37,14 @@ class ChimAcademyApplicationTests {
 	
 	@Test
 	public void test() {
-		List<Lec_SugangEntity> list= repo.findAll();
-		log.info("list : " + list);
+		LecSugangDto dto = new LecSugangDto();
+		dto.setBeginTime(1);
+		dto.setEndTime(3);
+		
+		log.info("ctime : " + dto.getCTime());
+		
+		
+		
 	}
 	
 	

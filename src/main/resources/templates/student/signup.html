@@ -146,10 +146,10 @@ document.addEventListener('DOMContentLoaded', function(){
                         <td th:text="${sugang.lecCode}"></td>
                         <td th:text="${sugang.lecClass}"></td>
                         <td th:text="${sugang.lecName}"></td>
-                        <td th:text="${sugang.lecGubun}"></td>
+                        <td th:text="${sugang.gubun}"></td>
                         <td th:text="${sugang.credit}"></td>
                         <td th:text="${sugang.name}"></td>
-                        <td th:text="${sugang.beginTime}"></td>
+                        <td th:text="|${sugang.lecDay} ${sugang.cTime} (${sugang.lecLoc})|"></td>
                     </tr>
                     
                 </tbody>

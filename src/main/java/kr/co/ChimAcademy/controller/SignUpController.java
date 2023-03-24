@@ -57,7 +57,7 @@ public class SignUpController {
 		
 		// 수강 신청 내역
 		List<LecSugangDto> sugangs = signUpService.getSugangs(member.getUid());
-		
+		 
 		model.addAttribute("member", member);
 		model.addAttribute("year", year);
 		model.addAttribute("semester", semester);

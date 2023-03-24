@@ -15,4 +15,34 @@ public class LecSugangDto {
 	private int beginTime;
 	private int endTime;
 	private String lecLoc;
+	
+	// 시간 순차 출력
+	private String cTime;
+	
+	// 조건에 맞게 출력
+	private String gubun;
+	
+	public String getGubun() {
+		int gubun = this.lecGubun;
+		if(gubun == 0) {
+			this.gubun = "-";
+		}else if(gubun == 1) {
+			this.gubun = "전공필수";
+		}else if(gubun == 2) {
+			this.gubun = "전공선택";
+		}else if(gubun == 3) {
+			this.gubun = "교양";
+		}
+		
+		return this.gubun;
+	}
+	
+	public String getCTime() {
+		this.cTime = "";
+		for(int i = this.beginTime; i <= this.endTime; i++) {
+			this.cTime += i;
+		}
+		
+		return cTime;
+	}
 }
