@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,9 @@ public class SignUpController {
 		
 		// 수강 신청 내역
 		List<LecSugangDto> sugangs = signUpService.getSugangs(member.getUid());
+		
+		// 학생별 총 신청 학점
+		int sumCredit = signUpService.sumCredit(member.getUid());
 		 
 		model.addAttribute("member", member);
 		model.addAttribute("year", year);
@@ -65,6 +69,7 @@ public class SignUpController {
 		model.addAttribute("majorName", majorName);
 		model.addAttribute("departments", departments);
 		model.addAttribute("sugangs", sugangs);
+		model.addAttribute("sumCredit", sumCredit);
 		
 		return "student/signUp";
 	}
@@ -88,18 +93,38 @@ public class SignUpController {
 		
 		// 조건 체크(기신청여부, 인원)
 		boolean chk = signUpService.checkSugang(entity);
+		int result = 0; 
+		
 		if(chk) {
 			// 수강 신청 진행
-			signUpService.insertSugang(entity);
-			
-			json.put("result", 1);
-			return json;
-		}else {
-			// 수강 불가
-			json.put("result", 0);
-			return json;
+			// 총 학점 20초과 체크
+			result = signUpService.insertSugang(entity);
 		}
-		
+		json.put("result", result);
+		return json;
 	}
+	
+	// 수강신청 삭제
+	@ResponseBody
+	@DeleteMapping("student/class/signup/{lecCode}")
+	public Map<String, Integer> delSugang(@PathVariable int lecCode, @AuthenticationPrincipal MyUserDetails userDetails){
+		
+		// 반환할 map 생성
+		Map<String, Integer> json = new HashMap<>();
+		
+		// 로그인 아이디 가져오기
+		String uid = userDetails.getUser().getUid();
+		
+		// 수강 내역 삭제
+		signUpService.delSugang(uid, lecCode);
+		
+		// 수강 인원 감소
+		signUpService.decreSugang(lecCode);
+		
+		json.put("result", 1);
+		
+		return json;
+	}
+	
 	
 }
