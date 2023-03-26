@@ -19,7 +19,7 @@ function selectMajors(){
 			url: url,
 			dataType: "json",
 			success: function (data) {
-				console.log(data);
+				//console.log(data);
 
 				let major = $('select[name=majorCodeSel]');
 				major.empty();
@@ -63,15 +63,40 @@ function regLecSuang(){
 			data: jsonData,
 			dataType: "json",
 			success: function (data) {
-				if(data.result > 0){
-					alert('수강신청에 성공하였습니다.')
+				console.log(data);
+				if(data.result == 0){
+					alert('이미 신청하였거나 수강인원이 꽉 찼습니다.');
+				}else if(data.result == 1){
+					alert('수강신청에 성공하였습니다.');
 					location.reload();
-				}else{
-					alert('이미 신청하였거나 수강인원이 꽉 찼습니다.')
+				}else if(data.result == 2){
+					alert('신청할 수 있는 학점은 최대 20학점입니다.');
 				}
 			}
 		});
 		
 		 
 	})
+}
+
+// 수강 신청 내역 삭제
+function delSugang(){
+	$('.btnDelSugang').click(function(){
+		let tr = $(this).closest('tr');
+		let lecCode = tr.children('td:eq(1)').text();
+		
+		$.ajax({
+			type : 'delete',
+			url : '/ChimAcademy/student/class/signup/'+lecCode,
+			dataType : 'json',
+			success : function(data){
+				if(data.result > 0){
+					alert('해당 과목의 수강을 취소하셨습니다.');
+				}else{
+					alert('삭제에 실패했습니다.');
+				}
+				
+			}
+		})
+	});
 }

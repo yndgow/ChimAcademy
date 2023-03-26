@@ -17,6 +17,14 @@
 		JOIN member AS d ON c.uid = d.uid
 		WHERE a.uid = #{uid};
 	</select>
+	
+	<select id="sumCredit" resultType="int">
+		SELECT SUM(b.credit) AS sumCredit
+		FROM lec_sugang AS a
+		JOIN lecture AS b ON a.lecCode = b.lecCode
+		GROUP BY a.uid
+		HAVING a.uid = 'qwer';
+	</select>
 
 
 </mapper>

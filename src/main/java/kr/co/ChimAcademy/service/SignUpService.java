@@ -77,17 +77,24 @@ public class SignUpService {
 	
 	// 수강 신청 진행
 	@Transactional
-	public void insertSugang(Lec_SugangEntity entity) {
+	public int insertSugang(Lec_SugangEntity entity) {
 		
-		// 수강 테이블 입력
-		sugangRepo.save(entity);
-		
-		// 수강 인원 증가
-		int lecCode = entity.getLectureEntity().getLecCode();
-		LectureEntity lectureEntity = lectureRepo.findById(lecCode).orElseThrow();
-		int cur = lectureEntity.getLecRequest();
-		lectureEntity.setLecRequest(cur + 1);
-		
+		int credit = entity.getLectureEntity().getCredit();
+		int curCredit = studentDAO.sumCredit(entity.getMemberEntity().getUid());
+		if(credit + curCredit > 20) {
+			return 2;
+		}else {
+			// 수강 테이블 입력
+			sugangRepo.save(entity);
+			
+			// 수강 인원 증가
+			int lecCode = entity.getLectureEntity().getLecCode();
+			LectureEntity lectureEntity = lectureRepo.findById(lecCode).orElseThrow();
+			int cur = lectureEntity.getLecRequest();
+			lectureEntity.setLecRequest(cur + 1);
+			
+			return 1;
+		}
 	}
 	
 	
@@ -96,6 +103,23 @@ public class SignUpService {
 		return studentDAO.selectSugangs(uid);
 	}
 	
+	// 학생별 총 신청 학점
+	public int sumCredit(String uid) {
+		return studentDAO.sumCredit(uid);
+	}
 	
+	// 수강내역 삭제
+	public void delSugang(String uid, int lecCode) {
+		sugangRepo.deleteByMemberEntityUidAndLectureEntityLecCode(uid, lecCode);
+	}
+	
+	// 수강 인원 감소
+	@Transactional
+	public void decreSugang(int lecCode) {
+		LectureEntity lectureEntity = lectureRepo.findById(lecCode).orElseThrow();
+		int reqCount = lectureEntity.getLecRequest();
+		lectureEntity.setLecRequest(reqCount-1);
+		
+	}
 	
 }

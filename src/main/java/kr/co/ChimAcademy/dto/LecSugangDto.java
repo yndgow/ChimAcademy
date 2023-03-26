@@ -2,6 +2,8 @@ package kr.co.ChimAcademy.dto;
 
 import lombok.Data;
 
+
+// 아이디별 수강 내역
 @Data
 public class LecSugangDto {
 
@@ -15,6 +17,9 @@ public class LecSugangDto {
 	private int beginTime;
 	private int endTime;
 	private String lecLoc;
+	
+	// 현재 수강 총학점
+	private int sumCredit;
 	
 	// 시간 순차 출력
 	private String cTime;
