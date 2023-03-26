@@ -18,8 +18,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
-//@RequiredArgsConstructor
-//@EnableWebSecurity
 public class SecurityConfig {
 	
 	@Autowired
@@ -28,28 +26,22 @@ public class SecurityConfig {
 	@Autowired
 	private SecurityUserService securityUserService;
 
-
-//    @Bean
-//    WebSecurityCustomizer webSecurityCustomizer() {
-//		return web -> web.ignoring().antMatchers("/img/**", "/js/**", "/style/**");
-//		return web -> web.ignoring().antMatchers("/img/**", "/js/**", "/style/**");
-//	}
-
-
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    	// 주소 허용
         http.authorizeHttpRequests((authorize) -> authorize
         		// resources 허용
         		.antMatchers("/js/**", "/img/**", "/style/**").permitAll()
         		// 로그인 전체 허용
-        		.antMatchers("/member/**").permitAll()
-        		.antMatchers("/", "/index").permitAll()
-        		.antMatchers("/login").permitAll()
-        		// 교수 허용
-        		.antMatchers("/professor/**").hasRole("3")
+        		.antMatchers("/member/**", "/", "/index", "/login").permitAll()
+        		// 교수, 학생, 조교 허용
+//        		.antMatchers("/professor/**").hasAnyRole("3", "4")
+//        		.antMatchers("/student/**").hasAnyRole("1", "4")
+//        		.antMatchers("/assistant/**").hasAnyRole("2", "4")
+        		// 그외 주소 로그인 필요
         		.anyRequest().authenticated()
 		        );
-                
+        // 로그인 설정
         http.formLogin(login -> login
                 .loginPage("/member/login")
                 .defaultSuccessUrl("/notice")
@@ -63,14 +55,15 @@ public class SecurityConfig {
         http.logout(logout -> logout
                 .invalidateHttpSession(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/index?success=200")
+                .logoutSuccessUrl("/login?success=200")
                 .permitAll()
                 );
+        // 자동로그인
         http.rememberMe(me -> me
                 .userDetailsService(securityUserService)
                 .tokenRepository(tokenRepository())
                 .tokenValiditySeconds(604800)); // 1주일
-        
+        // 권한 접근 불가 페이지
         http.exceptionHandling(handling -> handling.accessDeniedPage("/accessDenied"));
         	
         
