@@ -1,6 +1,8 @@
 <th:block th:include="@{elib/_header.html}"/>
 <script type="text/javascript" th:inline="javascript">
 	$(function(){
+		/* let header = $("meta[name='_csrf_header']").attr('content');
+		let token = $("meta[name='_csrf']").attr('content'); */
 		$('#book-borrow').click(function(e){
 			e.preventDefault();
 			let result = $('.result1').val()
@@ -81,8 +83,15 @@
 		});
 		$('#book-recommend').click(function(e){
 			e.preventDefault();
+			let result = $('.result4').val()
+			if(result > 0){
+				alert("이미 좋아요를 완료했습니다.")
+				return false;
+			}
+			let uid = $('.uid').val();
 			let bookId = $('.bookId').val();
 			let jsonData = {
+					"uid":uid,
 					"bookId":bookId
 			}
  			$.ajax({
@@ -90,11 +99,15 @@
 				type:"post",
 				data:jsonData,
 				dataType:"json",
+				/* beforeSend: function(xhr){
+			        xhr.setRequestHeader(header, token);
+			    }, */
 				success:function(data){
 					if(data.result > 0){
 						alert('좋아요 성공')
 						let like = $('.like').text()
 						$('.like').text(Number(like)+1);
+						$('.result4').val(1)
 					}else{
 						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
 					}
@@ -168,6 +181,7 @@
 						        <input type="hidden" class="result1" th:value="${result1}">
 						        <input type="hidden" class="result2" th:value="${result2}">
 						        <input type="hidden" class="result3" th:value="${result3}">
+						        <input type="hidden" class="result4" th:value="${result4}">
 						            <div class="thumb">
 						                <img th:src="@{${ebook.thumb}}" alt="썸네일">
 						            </div>
