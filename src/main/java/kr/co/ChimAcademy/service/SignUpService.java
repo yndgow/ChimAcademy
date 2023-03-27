@@ -109,6 +109,7 @@ public class SignUpService {
 	}
 	
 	// 수강내역 삭제
+	@Transactional
 	public void delSugang(String uid, int lecCode) {
 		sugangRepo.deleteByMemberEntityUidAndLectureEntityLecCode(uid, lecCode);
 	}

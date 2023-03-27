@@ -9,8 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.DepartmentEntity;
+import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
+import kr.co.ChimAcademy.repository.LecListRepo;
 import kr.co.ChimAcademy.repository.Lec_SugangRepo;
 import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.repository.ProfessorRepo;
@@ -34,16 +36,13 @@ class ChimAcademyApplicationTests {
 	private ProfessorRepo professorRepo;
 	@Autowired
 	private Lec_SugangRepo repo;
+	@Autowired
+	private LecListRepo lecListRepo;
 	
 	@Test
 	public void test() {
-		LecSugangDto dto = new LecSugangDto();
-		dto.setBeginTime(1);
-		dto.setEndTime(3);
-		
-		log.info("ctime : " + dto.getCTime());
-		
-		
+		 List<LecListEntity> list = lecListRepo.findByMemberEntityUid("qwer");
+		 log.info("list : " + list);
 		
 	}
 	

@@ -10,70 +10,36 @@
                     <h3>강의목록</h3>
                 </nav>
                <section>
-                    <table>
+                    <table id="profClassTable">
                         <tr>
                             <th>no</th>
-                            <th>학년</th>
                             <th>교과목명</th>
+                            <th>학년</th>
                             <th>이수구분</th>
                             <th>학점</th>
                             <th>강의시간</th>
-                            <th>인원제한</th>
+                            <th>강의장소</th>
                             <th>수강인원</th>
                             <th>강의계획서</th>
                         </tr>
-                        <tr>
-                           <td>1</td>
-                           <td>1</td>
-                           <td>고고학의 첫걸음</td>
-                           <td>전필</td>
-                           <td>3</td>
-                           <td>3시간</td>
-                           <td>45</td>
-                           <td>28</td>
+                        <th:block th:if="${classs.size == 0}">
+                        	<tr>
+                        		<td colspan="9">강의 목록이 없습니다.</td>
+                        	</tr>
+                        </th:block>
+                        <tr th:each="class : ${classs}">
+                           <td th:text="${classStat.count}">1</td>
+                           <td th:text="${class.lecName}">고고학의 첫걸음</td>
+                           <td th:text="${class.lecClass}">1</td>
+                           <td th:text="${class.gubun}">전필</td>
+                           <td th:text="${class.credit}">3</td>
+                           <td th:text="|${class.lecDay} ${class.cTime}|">3시간</td>
+                           <td th:text="${class.lecLoc}">OO관</td>
+                           <td th:text="${class.lecRequest}">45</td>
                            <td>
                                 <button class="btn_plan">작성</button>
                            </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                            <td>28</td>
-                            <td>
-                                 <button class="btn_plan">작성</button>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                            <td>28</td>
-                            <td>
-                                 <button class="btn_plan">작성</button>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                            <td>28</td>
-                            <td>
-                                 <button class="btn_plan">작성</button>
-                            </td>
-                         </tr>
                    </table>
                 </section>
                 <div class="page">

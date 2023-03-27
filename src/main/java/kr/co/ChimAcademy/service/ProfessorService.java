@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.dao.ProfessorDAO;
+import kr.co.ChimAcademy.entity.LecListEntity;
+import kr.co.ChimAcademy.repository.LecListRepo;
 import kr.co.ChimAcademy.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ProfessorService {
 	@Autowired
 	private ProfessorDAO dao;
+  		
+	@Autowired
+	private LecListRepo lecListRepo;
 	
 	// 교수 내 정보 페이지
 	public MemberVO selectProMy(String uid) {
@@ -39,6 +44,10 @@ public class ProfessorService {
 		return dao.updateProMyinfo(vo);
 	}
 	
+	public List<LecListEntity> selectClasss(String uid){
+		return lecListRepo.findByMemberEntityUid(uid);
+	}
+		
 	/* ::::::::::프로필 사진:::::::::: */	
 	// 프로필 업데이트
 		public String updateProfile(MemberVO vo) {
@@ -73,4 +82,5 @@ public class ProfessorService {
 				}
 			return nName;
 		}
+
 }

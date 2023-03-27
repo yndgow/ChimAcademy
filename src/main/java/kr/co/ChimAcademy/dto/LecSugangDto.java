@@ -3,7 +3,7 @@ package kr.co.ChimAcademy.dto;
 import lombok.Data;
 
 
-// 아이디별 수강 내역
+// 아이디별 수강 내역 or 강의 내역
 @Data
 public class LecSugangDto {
 
@@ -17,6 +17,9 @@ public class LecSugangDto {
 	private int beginTime;
 	private int endTime;
 	private String lecLoc;
+	
+	// 수강인원
+	private int lecRequest;
 	
 	// 현재 수강 총학점
 	private int sumCredit;

@@ -1,6 +1,7 @@
 package kr.co.ChimAcademy.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.dto.LecSugangDto;
+import kr.co.ChimAcademy.entity.LecListEntity;
+import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.ProfessorService;
+import kr.co.ChimAcademy.util.GunbunName;
 import kr.co.ChimAcademy.vo.MemberVO;
 
 @Controller
@@ -31,7 +36,27 @@ public class ProfessorController {
 	}
 	
 	@GetMapping("professor/manage")
-	public String manage() {
+	public String manage(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+		// 교수 - 강의 내역
+		List<LecListEntity> list = service.selectClasss(userDetails.getUser().getUid());
+		List<LecSugangDto> list2 = new ArrayList<>();
+		
+		for(LecListEntity ele : list) {
+			// 구분 변환
+			LecSugangDto dto = new LecSugangDto();
+			LectureEntity entity= ele.getLectureEntity();
+			dto.setLecName(entity.getLecName());
+			dto.setLecClass(entity.getLecClass());
+			dto.setLecGubun(entity.getLecGubun());
+			dto.setCredit(entity.getCredit());
+			dto.setBeginTime(entity.getBeginTime());
+			dto.setEndTime(entity.getEndTime());
+			dto.setLecRequest(entity.getLecRequest());
+			dto.setLecDay(entity.getLecDay());
+			dto.setLecLoc(entity.getLecLoc());
+			list2.add(dto);
+		}
+		model.addAttribute("classs", list2);
 		return "professor/manage";
 	}
 	
@@ -94,7 +119,7 @@ public class ProfessorController {
 		
 		return "redirect:/professor/my/modify";
 	}
-	
+
 	// 이미지 업데이트
 		@PostMapping("professor/my/modifyProfile")
 		public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
@@ -103,4 +128,5 @@ public class ProfessorController {
 			member.getUser().setProfile(nName);
 			return "redirect:/professor/my/modify";
 		}
+
 }
