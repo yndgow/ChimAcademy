@@ -183,7 +183,7 @@ main>section>nav.distance {
     overflow: hidden;
 }
 
-#mymodify>section:nth-of-type(2)>div {
+#mymodify>section:nth-of-type(2) div {
     float: left;
 }
 
@@ -228,32 +228,32 @@ main>section>nav.distance {
 }
 
 /* 표 하단 사이즈 */
-#mymodify>section:nth-of-type(2)>div:first-child {
+#mymodify>section:nth-of-type(2) div:first-child {
     height: 250px;
     text-align: center;
     box-sizing: border-box;
 }
 
 /* 내부 글자 위치 */
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2) {
+#mymodify>section:nth-of-type(2) div:nth-of-type(2) {
     width: 250px;
     height: 200px;
     margin-left: 50px;
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table {
+#mymodify>section:nth-of-type(2) div:nth-of-type(2)>table {
     width: 250px;
     height: 220px;
     margin-top: 12px;
 }
 
 /* 프로필 폰트 크기 */
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
+#mymodify>section:nth-of-type(2) div:nth-of-type(2)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px
 }
 
-#mymodify>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
+#mymodify>section:nth-of-type(2) div:nth-of-type(2)>table tr>td:last-child {
     font-size: 15px
 }
 
@@ -405,16 +405,32 @@ main>section>nav.distance {
     float: right;
 }
 
-#imgeditbtn{
+.savebtn{
+    height: 30px;
+    width: 45px;
+    background-color: #1464f6;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: right;
+}
+
+
+.imgeditbtnlabel{
     position: absolute;
     height: 30px;
     border: none;
     background-color: transparent;
-    transform: translate(5px, -55px);
+    transform: translate(-5px, -55px);
 }
+
 
 .imgeditbtnicon{
     width: 30px;
 }
+
 
 /* ============================== */

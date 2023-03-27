@@ -91,3 +91,40 @@ function execDaumPostcode() {
 		}
 	}).open();
 }
+/* ::::::::::프로필 사진:::::::::: */
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	} else {
+		document.getElementById('preview').src = "";
+	}
+}
+
+/* 정규식 */
+// 휴대폰 번호 12, 13자리
+const regexHp =/^(01[016789]{1})-[0-9]{3,4}-[0-9]{4}$/;
+const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+// 휴대폰 유효성 검사
+function hpCheck(){
+	$('input[name=hp]').on('keyup focusout',function(){
+		let hp = $(this).val();
+		
+		hpVal = regexHp.test(hp);
+	});
+}
+
+// 이메일 유효성 검사
+function emailCheck(){
+	$('input[name=email]').on('keyup focusout',function(){
+		let email = $(this).val();
+		
+		emailVal = regexEmail.test(email);
+	});
+}
+
+let emailCode;

@@ -183,7 +183,7 @@ main>section>nav.distance {
     overflow: hidden;
 }
 
-#myinfopro>section:nth-of-type(2)>div {
+#myinfopro>section:nth-of-type(2) div {
     float: left;
 }
 
@@ -208,26 +208,26 @@ main>section>nav.distance {
 }
 
 /* 표 하단 사이즈 */
-#myinfopro>section:nth-of-type(2)>div:first-child {
+#myinfopro>section:nth-of-type(2) div:first-child {
     height: 250px;
     text-align: center;
     box-sizing: border-box;
 }
 
 /* 내부 글자 위치 */
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(2) {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(2) {
     width: 250px;
     height: 200px;
     margin-left: 50px;
 }
 
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(2)>table {
     width: 250px;
     height: 220px;
     margin-top: 12px;
 }
 
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(3)>table {
     width: 440px;
     height: 220px;
     margin-top: 37px;
@@ -238,20 +238,20 @@ main>section>nav.distance {
 }
 
 /* 프로필 폰트 크기 */
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:first-child {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(2)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px
 }
 
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td:first-child {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(3)>table tr>td:first-child {
     font-weight: bold;
     font-size: 15px;
     vertical-align: top;
 }
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(3)>table tr>td{
+#myinfopro>section:nth-of-type(2) div:nth-of-type(3)>table tr>td{
 	vertical-align: top;
 }
-#myinfopro>section:nth-of-type(2)>div:nth-of-type(2)>table tr>td:last-child {
+#myinfopro>section:nth-of-type(2) div:nth-of-type(2)>table tr>td:last-child {
     font-size: 15px
 }
 
@@ -423,12 +423,12 @@ main>section>nav.distance {
     margin-bottom: 5px;
 }
 
-#imgeditbtn{
+.imgeditbtnlabel{
     position: absolute;
     height: 30px;
     border: none;
     background-color: transparent;
-    transform: translate(5px, -55px);
+    transform: translate(12px, -55px);
 }
 
 .imgeditbtnicon{
