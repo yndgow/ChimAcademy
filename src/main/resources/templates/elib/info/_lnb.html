@@ -44,10 +44,12 @@
                 <span>희망자료 설문조사</span>
             </a>
         </li>
+        <th:block sec:authorize="hasAnyRole('4')">
         <li>
             <a th:href="@{/elib/info/register}">
                 <span>전자도서/오디오북 추가하기</span>
             </a>
         </li>
+        </th:block>
     </ul>
 </div>

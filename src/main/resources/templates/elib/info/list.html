@@ -53,7 +53,7 @@
                                             <th style="width: 9%;">작성일</th>
                                             <th style="width: 7%;">조회수</th>
                                             <th style="width: 6%;">파일</th>
-                                            <th style="width: 11%;">관리</th>
+                                            <th style="width: 11%;" sec:authorize="hasAnyRole('4')">관리</th>
                                         </tr>
                                         <tr th:each="article,artStat : ${notices}" class="notice">
                                             <td>
@@ -70,7 +70,7 @@
                                             <td>
                                                 <span th:if="${article.file == 1}" class="material-icons">save</span>
                                             </td>
-                                            <td>
+                                            <td sec:authorize="hasAnyRole('4')">
                                                 <a th:href="@{/elib/info/modify(no=${article.no})}">
                                                 	[수정]
                                                 </a>
@@ -94,7 +94,7 @@
                                             <td>
                                                 <span th:if="${article.file == 1}" class="material-icons">save</span>
                                             </td>
-                                            <td>
+                                            <td sec:authorize="hasAnyRole('4')">
                                                 <a th:href="@{/elib/info/modify(no=${article.no})}">
                                                 	[수정]
                                                 </a>

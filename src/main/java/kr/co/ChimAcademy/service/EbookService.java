@@ -110,14 +110,26 @@ public class EbookService {
 	public int updateEbookDown(String bookId) {
 		return dao.updateEbookDown(bookId);
 	};
-	public int updateEbookLike(String bookId) {
+	@Transactional
+	public int updateEbookLike(String uid, String bookId) {
+		// 좋아요 기록하기
+		MylibVO vo = new MylibVO();
+		vo.setUid(uid);
+		vo.setBookId(bookId);
+		vo.setState(4);
+		dao.insertMylib(vo);
+		// 좋아요 업데이트
 		return dao.updateEbookLike(bookId);
 	};
 	public int updateMylibReturn(int no) {
 		return dao.updateMylibReturn(no);
 	};
 	public int updateMylibReturnDate(int no) {
-		return dao.updateMylibReturnDate(no);
+		int result = dao.selectDateDIFF(no);
+		if(result < 21) {
+			dao.updateMylibReturnDate(no);
+		}
+		return result;
 	};
 	// 책파일 업로드 /////////////////////////////////////////
 

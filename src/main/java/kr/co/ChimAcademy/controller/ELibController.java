@@ -149,6 +149,8 @@ public class ELibController {
 		int result2 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "2");
 		// 학생이 해당 책을 이미 관심도서에 추가했는지 확인 ( result3 > 0 관심도서 목록에 이미 있다.)
 		int result3 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "0");
+		// 학생이 해당 책을 이미 좋아요했는지 확인 ( result3 > 0 관심도서 목록에 이미 있다.)
+		int result4 = eService.selectCountForCheckMylib(uid, vo.getBookId(), "4");
 		// 도서 정보 불러오기
 		EbookVO ebook = eService.selectEbook(vo.getBookId());
 		model.addAttribute("ebook",ebook);
@@ -163,6 +165,7 @@ public class ELibController {
 		model.addAttribute("result1",result1);
 		model.addAttribute("result2",result2);
 		model.addAttribute("result3",result3);
+		model.addAttribute("result4",result4);
 		//부산 도서관 정보 공공API///////////////
 				ItemVO[] items = eService.LibAPI();
 				model.addAttribute("items",items);
@@ -346,8 +349,8 @@ public class ELibController {
 	// 좋아요버튼 누를 시 +1 like
 	@ResponseBody
 	@PostMapping("elib/ebook/like")
-	public Map<String, Integer> like(String bookId) {
-		int result = eService.updateEbookLike(bookId);
+	public Map<String, Integer> like(String uid, String bookId) {
+		int result = eService.updateEbookLike(uid,bookId);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", result);
 		return map;

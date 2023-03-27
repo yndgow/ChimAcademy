@@ -36,11 +36,11 @@
 				data:jsonData,
 				dataType:"json",
 				success:function(data){
-					if(data.result > 0){
+					if(data.result < 21){
 						alert('연장 완료')
 						location.reload();
 					}else{
-						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+						alert('더이상 연장은 불가능합니다.')
 					}
 				}
 			});
