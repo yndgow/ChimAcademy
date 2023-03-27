@@ -81,6 +81,7 @@ public class ProfessorController {
 		return "mypage/professor/modify";
 	}
 	
+	// 상세정보 업데이트
 	@PostMapping("professor/my/modify")
 	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();
@@ -94,4 +95,12 @@ public class ProfessorController {
 		return "redirect:/professor/my/modify";
 	}
 	
+	// 이미지 업데이트
+		@PostMapping("professor/my/modifyProfile")
+		public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
+			
+			String nName = service.updateProfile(vo);
+			member.getUser().setProfile(nName);
+			return "redirect:/professor/my/modify";
+		}
 }

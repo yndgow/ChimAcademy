@@ -8,7 +8,7 @@
 	<!-- 교수 내 정보 출력 -->
 	<select id="selectProMy"
 		resultType="kr.co.ChimAcademy.vo.MemberVO">
-		SELECT a.uid, a.name, b.depCode, b.depName, a.hp, c.*,
+		SELECT a.uid,profile, a.name, b.depCode, b.depName, a.hp, c.*,
 		a.email, a.zip, a.addr1, a.addr2, a.info
 		FROM
 		member AS a

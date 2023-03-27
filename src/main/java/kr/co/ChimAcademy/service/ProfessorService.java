@@ -1,13 +1,19 @@
 package kr.co.ChimAcademy.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.dao.ProfessorDAO;
 import kr.co.ChimAcademy.vo.MemberVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class ProfessorService {
 	@Autowired
@@ -32,4 +38,39 @@ public class ProfessorService {
 	public int updateProMyinfo(MemberVO vo) {
 		return dao.updateProMyinfo(vo);
 	}
+	
+	/* ::::::::::프로필 사진:::::::::: */	
+	// 프로필 업데이트
+		public String updateProfile(MemberVO vo) {
+			
+			// 프로파일 업로드
+			String nName = fileUpload(vo);
+			dao.updateProfile(nName, vo.getUid());
+			return nName;
+		}
+		// 파일 업로드
+		public String fileUpload(MemberVO vo) {
+			// 썸네일 파일 첨부 
+			MultipartFile thumb = vo.getProfileThumb();
+			String nName = null;
+			if(!thumb.isEmpty()) {
+					// 새 파일명 생성
+					String oName = thumb.getOriginalFilename();
+					String ext = oName.substring(oName.lastIndexOf("."));
+					nName = UUID.randomUUID().toString()+ext;
+					String path = null;
+					// 시스템 경로
+						path = new File("profileThumb/").getAbsolutePath();
+					// 파일 저장
+					try {
+						thumb.transferTo(new File(path, nName));
+					} catch (IllegalStateException e) {
+						log.error(e.getMessage());
+					} catch (IOException e) {
+						log.error(e.getMessage());
+					}
+					
+				}
+			return nName;
+		}
 }

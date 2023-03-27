@@ -23,4 +23,6 @@ public interface ProfessorDAO {
 	// 개인정보 수정
 	public int updateProMyinfo(MemberVO vo);
 	
+	//프로필 넣기
+	public int updateProfile(String nName, String uid);
 }
