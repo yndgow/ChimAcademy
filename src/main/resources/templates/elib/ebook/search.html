@@ -1,0 +1,104 @@
+<th:block th:include="@{elib/_header.html}"/>
+<th:block th:include="@{elib/ebook/_lnb.html}"/>
+                    	<div class="elib-cate" th:if="${sort=='1' or sort=='2'}">
+                    		<h2>카테고리</h2>
+                    		<div class="box">
+                    			<a th:each="cate1 : ${cate1s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=${cate1.c1},cate2=10)}">[[${cate1.c1Name}]]</a>
+                    		</div>
+                    		<h2>하위카테고리</h2>
+                    		<div class="box">
+                    			<a th:each="cate2 : ${cate2s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=2,cate1=${cate2.c1},cate2=${cate2.c2})}">[[${cate2.c2Name}]]</a>
+                    		</div>
+                    	</div>
+						<div class="elib-top">
+						    <div class="lsort">
+						        <span>[[${total}]]</span>
+						        종의 책이 있습니다. &nbsp;
+						        <span>[[${currentPage}]]</span>
+						        of [[${pageGroupEnd}]] page 
+						    </div>
+						    <div class="sort">
+						        <a th:href="@{/elib/ebook/list(sort=${sort},type=2,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='2'} ? 'active'">인기순</a>
+						        <a th:href="@{/elib/ebook/list(sort=${sort},type=3,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='3'} ? 'active'">제목순</a>
+						        <a th:href="@{/elib/ebook/list(sort=${sort},type=1,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='1'} ? 'active'">최신순</a>
+						    </div>
+						</div>
+						<ul class="list">
+						    <li class="elib" th:each="ebook : ${ebooks}">
+						        <div class="thumb">
+						            <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}">
+						                <img th:src="@{${ebook.thumb}}" alt="thumb">
+						            </a>
+						        </div>
+						        <div class="cont">
+						            <div class="flexbox">
+						                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="book_link">
+						                    <b>[[${ebook.title}]]</b>
+						                </a>
+						                <div class="info">
+						                    <span>[[${ebook.author}]]</span>
+						                    <span> ㅣ </span>
+						                    <span>[[${ebook.publisher}]]</span>
+						                    <span> ㅣ </span>
+						                    <span>[[${ebook.pubDate.substring(0,10)}]]</span>
+						                </div>
+						                <span class="snipet">
+						                    [[${ebook.bintro}]]
+						                </span>
+						            </div>
+						            <div class="meta">
+						                <label>소속도서관</label>
+						                <span>[[${ebook.belong}]]</span>
+						                <span> ㅣ </span>
+						                <label>공급사</label>
+						                <span>[[${ebook.applier}]]</span>
+						                <span> ㅣ </span>
+						                <label>대출가능 여부: </label>
+						                <span th:text="${ebook.loan} < 5 ? '대출가능':'대출불가능'"></span>
+						                <span> ㅣ </span>
+						                <label>대출 : </label>
+						                <span>[[${ebook.loan}]]/5</span>
+						                <span> ㅣ </span>
+						                <label>예약 : </label>
+						                <span>[[${ebook.reserv}]]/5</span>
+						                <span> ㅣ </span>
+						            </div>
+						        </div>
+						    </li>
+						</ul>
+                        <div class="paging">
+						    <span>
+						        <a th:href="@{/elib/ebook/list(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+						        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
+			                		<a th:href="@{/elib/ebook/list(pg=${page},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+			                	</th:block>
+						        <a th:href="@{/elib/ebook/list(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+						    </span>
+						</div>
+                    </div>
+                </div>
+                <div class="doc-admin">
+                    <div class="manager-box">
+                        <span>
+                            <label>담당부서</label>
+                            <em> : 정보서비스팀</em>
+                        </span>
+                        <span>
+                            <label>담당자</label>
+                            <em> : 구홍모</em>
+                        </span>
+                        <span>
+                            <label>전화번호</label>
+                            <em> : 051-333-3333</em>
+                        </span>
+                        <span>
+                            <label>최종수정일</label>
+                            <em> : 2023.03.09</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<th:block th:include="@{elib/_footer.html}"/>

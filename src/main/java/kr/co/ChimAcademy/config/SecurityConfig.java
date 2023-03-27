@@ -38,6 +38,8 @@ public class SecurityConfig {
 //        		.antMatchers("/professor/**").hasAnyRole("3", "4")
 //        		.antMatchers("/student/**").hasAnyRole("1", "4")
 //        		.antMatchers("/assistant/**").hasAnyRole("2", "4")
+        		// 도서관 전자책 등록 페이지 접근 ( 관리자만 ) - 홍모
+        		.antMatchers("/elib/info/register").hasAnyRole("4") 
         		// 그외 주소 로그인 필요
         		.anyRequest().authenticated()
 		        );
@@ -50,8 +52,9 @@ public class SecurityConfig {
                 .passwordParameter("pass")
                 );
 
-        // 사이트 위조 방지 설정
+        // 사이트 위조 방지 설정 (구홍모: 배포 시 주석처리해야함, 그러나 주석 처리 시 ajax 불가능)
         http.csrf(csrf -> csrf.disable());
+        
         http.logout(logout -> logout
                 .invalidateHttpSession(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
