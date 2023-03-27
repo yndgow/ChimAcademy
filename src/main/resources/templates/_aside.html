@@ -4,11 +4,11 @@
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-user"></i>마이페이지</a>
             <ol>
             	<!-- <th:block sec:authorize="hasAnyRole('ROLE_0', 'ROLE_1', 'ROLE_3', 'ROLE_4')"> -->
-                <li><a th:href="@{/student/my(uid=${uid})}">내 정보(학생)</a></li>
+                <li><a th:href="@{/student/my}">내 정보(학생)</a></li>
                 <li><a th:href="@{/student/my/modify}">내 정보수정(학생)</a></li>
                 <!-- </th:block> -->
                 <!-- <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')"> -->
-                <li><a th:href="@{/professor/my(uid=${uid})}">내 정보(교수)</a></li>
+                <li><a th:href="@{/professor/my}">내 정보(교수)</a></li>
                 <li><a th:href="@{/professor/my/modify}">내 정보수정(교수)</a></li>
                 <!-- </th:block> -->
             </ol>

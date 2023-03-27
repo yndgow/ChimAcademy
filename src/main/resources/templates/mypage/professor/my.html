@@ -18,9 +18,9 @@
                             <th>이름</th>
                             <td>[[${professor.name}]]</td>
                             <th>연구실</th>
-                            <td>[[${professor.lab}]]</td>
+                            <td th:if="${professor.lab = ''}" th:text="입력주세요"}>[[${professor.lab}]]</td>
                             <th>상담 가능시간</th>
-                            <td>[[${professor.csTime}]]</td>
+                            <td th:if="${professor.csTime = ''}" th:text="입력주세요">[[${professor.csTime}]]</td>
                             
                         </tr>
                         <tr>
@@ -37,6 +37,7 @@
                                 <textarea readonly="readonly">[[${professor.career}]]</textarea>
                             </td>
                         </tr>
+                        
                    </table>
                    </section>
                    
@@ -59,7 +60,7 @@
 	                            <td>[[${professorlecStat.count}]]</td>
 	                            <td>[[${professorlec.lecClass}]]</td>
 	                            <td>[[${professorlec.lecName}]]</td>
-	                            <th:block th:switch="${professorlec.lecGubun}">
+                            <th:block th:switch="${professorlec.lecGubun}">
                            	 	<td th:case="0">구분없음</td>
                            	 	<td th:case="1">전공필수</td>
                             	<td th:case="2">전공선택</td>
@@ -71,6 +72,7 @@
 	                            ([[${professorlec.lecLoc}]])</td>
 	                            <td><a th:href="@{#}">이동</a></td>
                             </tr>
+                            
                     </table>
                 </section>
             </section>

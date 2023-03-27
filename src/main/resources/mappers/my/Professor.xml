@@ -16,7 +16,7 @@
 		AS b
 		ON
 		a.depCode = b.depCode
-		JOIN professor
+		LEFT JOIN professor
 		AS c
 		ON a.uid = c.uid
 		WHERE
