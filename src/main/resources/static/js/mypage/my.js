@@ -91,3 +91,66 @@ function execDaumPostcode() {
 		}
 	}).open();
 }
+
+/* 유효성 검사 */
+// 휴대폰번호 유효성 검사 함수
+function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    obj.value = number;
+    addHyphen(obj);
+}
+
+// 하이픈(-)을 자동으로 삽입해주는 함수
+function addHyphen(obj) {
+    var number = obj.value.replace(/-/g, "");
+    var tel = "";
+
+    if (number.length < 4) {
+        return number;
+    } else if (number.length < 7) {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3);
+    } else if (number.length < 11) {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3, 3);
+        tel += "-";
+        tel += number.substr(6);
+    } else {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3, 4);
+        tel += "-";
+        tel += number.substr(7);
+    }
+
+    obj.value = tel;
+}
+
+// 이메일 유효성 검사 함수
+function isValidEmail(email) {
+    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailRegex.test(email);
+}
+
+// 유효성 검사를 위한 jQuery 코드
+$(document).ready(function() {
+    // 휴대폰번호 유효성 검사
+     $("#box1").blur(function() {
+        var inputPhone = $(this).val().replace(/-/gi, "");
+        if (inputPhone.length < 10 || inputPhone.length > 11 || inputPhone.charAt(0) !== "0") {
+            alert("유효하지 않은 휴대폰번호입니다.");
+            $(this).val("");
+        }
+    });
+
+    // 이메일 유효성 검사
+      $("#box2").blur(function() {
+        var inputEmail = $(this).val();
+        if (!isValidEmail(inputEmail)) {
+            alert("유효하지 않은 이메일입니다.");
+            $(this).val("");
+        }
+    });
+});
