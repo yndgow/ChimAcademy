@@ -28,7 +28,7 @@ public interface StudentDAO {
 	List<LecSugangDto> selectSugangs(String uid);
 	
 	//프로필 넣기
-	public int insertProfile(infoFileVO vo);
+	public int updateProfile(String nName, String uid);
 	
 	// 학생별 총 신청학점
 	int sumCredit(String uid);

@@ -5,15 +5,17 @@ package kr.co.ChimAcademy.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dao.StudentDAO;
 import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
@@ -48,22 +50,23 @@ public class StudentService {
 	
 
 	// 프로필 업데이트
-	public int insertProfile(MemberVO vo) {
-		// 프로파일 업로드
-		infoFileVO fvo = fileUpload(vo);
+	public String updateProfile(MemberVO vo) {
 		
-		return dao.insertProfile(fvo);
+		// 프로파일 업로드
+		String nName = fileUpload(vo);
+		dao.updateProfile(nName, vo.getUid());
+		return nName;
 	}
 	// 파일 업로드
-	public infoFileVO fileUpload(MemberVO vo) {
+	public String fileUpload(MemberVO vo) {
 		// 썸네일 파일 첨부 
 		MultipartFile thumb = vo.getProfileThumb();
-		infoFileVO fvo = null;
-			if(!thumb.isEmpty()) {
+		String nName = null;
+		if(!thumb.isEmpty()) {
 				// 새 파일명 생성
 				String oName = thumb.getOriginalFilename();
 				String ext = oName.substring(oName.lastIndexOf("."));
-				String nName = UUID.randomUUID().toString()+ext;
+				nName = UUID.randomUUID().toString()+ext;
 				String path = null;
 				// 시스템 경로
 					path = new File("profileThumb/").getAbsolutePath();
@@ -76,13 +79,8 @@ public class StudentService {
 					log.error(e.getMessage());
 				}
 				
-				 fvo = infoFileVO.builder()
-												.parent(vo.getUid())
-												.oriName(oName)
-												.newName(nName)
-												.build();
 			}
-		return fvo;
+		return nName;
 	}
 
 	
