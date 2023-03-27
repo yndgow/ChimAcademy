@@ -43,7 +43,8 @@
 		`addr1`=#{addr1},
 		`addr2`=#{addr2},
 		`info`=#{info}
-		WHERE `uid` = #{uid}
+		WHERE
+		`uid` = #{uid}
 	</update>
 
 	<update id="updateProMyinfo">
@@ -52,5 +53,11 @@
 		`lab`=#{lab},
 		`csTime`=#{csTime}
 		WHERE `uid` = #{uid}
+	</update>
+
+	<!-- 프로필 업데이트 -->
+	<update id="updateProfile">
+		update `member` set `profile`=#{nName} where
+		`uid`=#{uid};
 	</update>
 </mapper>
