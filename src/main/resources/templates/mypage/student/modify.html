@@ -45,7 +45,19 @@
     }
    
 </script>
-
+<script>
+		function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+		      document.getElementById('preview').src = e.target.result;
+		    };
+		    reader.readAsDataURL(input.files[0]);
+		  } else {
+		    document.getElementById('preview').src = "";
+		  }
+		}
+</script>
 
 
 <main>
@@ -60,15 +72,15 @@
                     <h3>프로필</h3>
                 </section>
                 <section>
-                	<form th:action="@{student/my/modifyProfile}" method="post" enctype="multipart/form-data">
+                	<form th:action="@{/student/my/modifyProfile}" method="post" enctype="multipart/form-data">
                     <div>
-                        <article><img th:src="@{/img/mypage/myinfo.png}" alt="증명사진" class="idphoto"></article>
+                        <article><img th:src="@{/profileThumb/}+${member.profile}" alt="증명사진" class="idphoto" id="preview"></article>
                         <br/>
                         
                     
                         <p th:text=${vo.name}>홍길동</p>
                         <span th:text=${vo.email}>dong@cu.ac.kr</span>
-                        <input type="file" name="profileThumb" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
+                        <input type="file" onchange="readURL(this);" name="profileThumb" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
                         <input type="hidden" name="uid" th:value="${member.uid}" />
                         <input type="submit" value="저장"/>
                     </div>

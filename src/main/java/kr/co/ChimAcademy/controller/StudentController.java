@@ -63,10 +63,10 @@ public class StudentController {
 	}
 	// 이미지 업데이트
 	@PostMapping("student/my/modifyProfile")
-	public String insertProfile(MemberVO vo) {
+	public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
 		
-		int result = service.insertProfile(vo);
-		System.out.println(result);
+		String nName = service.updateProfile(vo);
+		member.getUser().setProfile(nName);
 		return "redirect:/student/my/modify";
 	}
 	
