@@ -420,3 +420,56 @@ a:focus, a:hover {
     background-size: 100%;
 }
 
+.doc-body ul.con>li>ul {
+    padding: 3px 0;
+}
+.doc-body ul.con2>li, .doc-body ul.con>li>ul>li {
+    background: url(/ChimAcademy/img/elib/doc-arr3.gif) no-repeat 0 10px;
+    padding: 2px 0 2px 10px;
+}
+.img_wrap {
+    padding: 30px 0;
+    text-align: center;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.doc-body ul.con {
+    padding-left: 2%;
+}
+.tab-menu, .tabmenu {
+    padding-bottom: 20px;
+}
+.tab-menu>ul, .tabmenu>ul {
+    font-size: 0;
+    border-bottom: 1px solid #1a518b;
+    padding-left: 1px;
+}
+.tab-menu li, .tabmenu li {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: bottom;
+}
+.tab-menu li a:hover, .tab-menu li a:focus, .tabmenu li a:hover, .tabmenu li a:focus {
+    background: #f1f1f1;
+}
+.tab-menu li.active a, .tabmenu li.active a {
+    color: #fff;
+    z-index: 2;
+    background: #3661c4;
+    border-color: #3661c4;
+}
+.tab-menu li a, .tabmenu li a {
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: #fafafa;
+    border: 1px solid #d2d2d2;
+    border-bottom-width: 0;
+    padding: 8px 20px 9px;
+    font-weight: bold;
+    color: #2f3743;
+    margin: 0 0 0 -1px;
+}
+
