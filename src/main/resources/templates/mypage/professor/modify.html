@@ -11,13 +11,19 @@
                     <h3>프로필</h3>
                 </section>
                 <section>
+                <form th:action="@{/professor/my/modifyProfile}" method="post" enctype="multipart/form-data">
                     <div>
-                        <article><img th:src="@{/img/mypage/myinfo.png}" alt="증명사진" class="idphoto"></article>
+                        <article><img th:src="@{/profileThumb/}+${member.profile}" style="width: 130px; height: 173.33px;" alt="증명사진" class="idphoto" id="preview"></article>
                         <br />
                         <p th:text=${professor.name}></p>
                         <span th:text=${professor.email}></span>
-                        <button type="button" id="imgeditbtn"><img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"></button>
+                        <label for="imgeditbtn" class="imgeditbtnlabel">
+							<img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
+						</label>
+                        <input type="file" onchange="readURL(this);" name="profileThumb" id="imgeditbtn" alt="프로필 변경 아이콘" class="imgeditbtnicon" style="display:none;"/>
+                        <input type="hidden" name="uid" th:value="${member.uid}" />
                     </div>
+                  	
                     <div>
                         <table>
                             <tr>
@@ -47,7 +53,8 @@
                         </table>
                     </div>
                 </section>
-
+				    <input type="submit" value="저장" class="savebtn"/>
+                </form>
                 <!-- 상세정보 -->
                 <section id="viewinfopro">
                     <h3>상세정보</h3>

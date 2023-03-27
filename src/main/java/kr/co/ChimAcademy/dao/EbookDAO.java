@@ -32,11 +32,11 @@ public interface EbookDAO {
 	public List<MylibVO> selectMylibs(String uid, String state, int start);
 	public int selectCountTotalMylibs(String uid, String state);
 	public int selectCountForCheckMylib(String uid, String bookId, String state);
+	public int selectDateDIFF(int no);
 	public EbookFileVO selectEbookFile(String bookId);
 	public int updateEbookDown(String bookId);
 	public int updateMylibReturn(int no);
 	public int updateMylibReturnDate(int no);
 	public int updateMylibReservToBorrow(int no);
 	public int updateEbookLike(String bookId);
-	
 }

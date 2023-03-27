@@ -91,3 +91,106 @@ function execDaumPostcode() {
 		}
 	}).open();
 }
+
+/* ::::::::::프로필 사진:::::::::: */
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	} else {
+		document.getElementById('preview').src = "";
+	}
+}
+
+/* 정규식 */
+// 휴대폰 번호 12, 13자리
+const regexHp =/^(01[016789]{1})-[0-9]{3,4}-[0-9]{4}$/;
+const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+// 휴대폰 유효성 검사
+function hpCheck(){
+	$('input[name=hp]').on('keyup focusout',function(){
+		let hp = $(this).val();
+		
+		hpVal = regexHp.test(hp);
+	});
+}
+
+// 이메일 유효성 검사
+function emailCheck(){
+	$('input[name=email]').on('keyup focusout',function(){
+		let email = $(this).val();
+		
+		emailVal = regexEmail.test(email);
+	});
+}
+
+let emailCode;
+
+
+/* 유효성 검사 */
+// 휴대폰번호 유효성 검사 함수
+function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    obj.value = number;
+    addHyphen(obj);
+}
+
+// 하이픈(-)을 자동으로 삽입해주는 함수
+function addHyphen(obj) {
+    var number = obj.value.replace(/-/g, "");
+    var tel = "";
+
+    if (number.length < 4) {
+        return number;
+    } else if (number.length < 7) {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3);
+    } else if (number.length < 11) {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3, 3);
+        tel += "-";
+        tel += number.substr(6);
+    } else {
+        tel += number.substr(0, 3);
+        tel += "-";
+        tel += number.substr(3, 4);
+        tel += "-";
+        tel += number.substr(7);
+    }
+
+    obj.value = tel;
+}
+
+// 이메일 유효성 검사 함수
+function isValidEmail(email) {
+    var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailRegex.test(email);
+}
+
+// 유효성 검사를 위한 jQuery 코드
+$(document).ready(function() {
+    // 휴대폰번호 유효성 검사
+     $("#box1").blur(function() {
+        var inputPhone = $(this).val().replace(/-/gi, "");
+        if (inputPhone.length < 10 || inputPhone.length > 11 || inputPhone.charAt(0) !== "0") {
+            alert("유효하지 않은 휴대폰번호입니다.");
+            $(this).val("");
+        }
+    });
+
+    // 이메일 유효성 검사
+      $("#box2").blur(function() {
+        var inputEmail = $(this).val();
+        if (!isValidEmail(inputEmail)) {
+            alert("유효하지 않은 이메일입니다.");
+            $(this).val("");
+        }
+    });
+});
+
