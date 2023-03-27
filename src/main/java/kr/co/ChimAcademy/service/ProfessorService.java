@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ChimAcademy.dao.ProfessorDAO;
+import kr.co.ChimAcademy.entity.LecListEntity;
+import kr.co.ChimAcademy.repository.LecListRepo;
 import kr.co.ChimAcademy.vo.MemberVO;
 
 @Service
@@ -32,4 +34,72 @@ public class ProfessorService {
 	public int updateProMyinfo(MemberVO vo) {
 		return dao.updateProMyinfo(vo);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Autowired
+	private LecListRepo lecListRepo;
+	
+	public List<LecListEntity> selectClasss(String uid){
+		return lecListRepo.findByMemberEntityUid(uid);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

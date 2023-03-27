@@ -92,6 +92,7 @@ function delSugang(){
 			success : function(data){
 				if(data.result > 0){
 					alert('해당 과목의 수강을 취소하셨습니다.');
+					location.reload();
 				}else{
 					alert('삭제에 실패했습니다.');
 				}
