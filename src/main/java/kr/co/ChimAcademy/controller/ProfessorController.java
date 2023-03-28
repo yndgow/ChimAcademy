@@ -61,6 +61,7 @@ public class ProfessorController {
 			dto.setLecRequest(entity.getLecRequest());
 			dto.setLecDay(entity.getLecDay());
 			dto.setLecLoc(entity.getLecLoc());
+			dto.setLecCode(entity.getLecCode());
 			list2.add(dto);
 		}
 		model.addAttribute("classs", list2);
