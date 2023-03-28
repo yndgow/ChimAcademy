@@ -55,7 +55,9 @@ public class LecSugangDto {
 		for(int i = this.beginTime; i <= this.endTime; i++) {
 			this.cTime += i;
 		}
-		
+		if(cTime.equals("1")) {
+			cTime = "";
+		}
 		return cTime;
 	}
 }

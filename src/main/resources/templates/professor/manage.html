@@ -34,12 +34,14 @@
                         <tr th:each="class : ${classs}">
                            <td th:text="${classStat.count}">1</td>
                            <td th:text="${class.lecName}">고고학의 첫걸음</td>
+                           <td th:text="${class.lecCode}" style="display: none;">45</td>
                            <td th:text="${class.lecClass}">1</td>
                            <td th:text="${class.gubun}">전필</td>
                            <td th:text="${class.credit}">3</td>
                            <td th:text="|${class.lecDay} ${class.cTime}|">3시간</td>
                            <td th:text="${class.lecLoc}">OO관</td>
                            <td th:text="${class.lecRequest}">45</td>
+                           
                            <td>
                                 <button class="btn_plan">작성</button>
                            </td>
