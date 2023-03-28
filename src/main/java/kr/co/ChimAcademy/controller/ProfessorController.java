@@ -31,7 +31,6 @@ public class ProfessorController {
 	}
 
 	@GetMapping("professor/eval")
-	
 	public String eval(@RequestParam(defaultValue = "0") int lecCode, @AuthenticationPrincipal MyUserDetails details,
 			Model model) {
 		String uid = details.getUsername();
@@ -52,7 +51,6 @@ public class ProfessorController {
 
 			// 구분 변환
 			LecSugangDto dto = new LecSugangDto();
-			LectureEntity entity= ele.getLectureEntity();
 			LectureEntity entity = ele.getLectureEntity();
 			dto.setLecName(entity.getLecName());
 			dto.setLecClass(entity.getLecClass());
@@ -109,7 +107,6 @@ public class ProfessorController {
 	}
 
 	// 이미지 업데이트
-
 	@PostMapping("professor/my/modifyProfile")
 	public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
 		
@@ -123,20 +120,11 @@ public class ProfessorController {
 		return "professor/writeClass";
 	}
 
-		String nName = service.updateProfile(vo);
-		member.getUser().setProfile(nName);
-		return "redirect:/professor/my/modify";
-	}
-
 	// 강의 평가 출력
-	
 	@GetMapping("professor/eval/view")
 	public String evalView(int no, Model model) {
-		
 		EvalBoardDTO vo  = service.selectEvalView(no);
-		
 		model.addAttribute("vo", vo);
-		
 		return "professor/evalView";
 	}
 }
