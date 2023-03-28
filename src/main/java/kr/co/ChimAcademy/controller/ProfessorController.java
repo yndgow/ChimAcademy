@@ -1,6 +1,5 @@
 package kr.co.ChimAcademy.controller;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,41 +9,49 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.dto.EvalBoardDTO;
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.ProfessorService;
-import kr.co.ChimAcademy.util.GunbunName;
 import kr.co.ChimAcademy.vo.MemberVO;
 
 @Controller
 public class ProfessorController {
 	@Autowired
 	private ProfessorService service;
-	
+
 	@GetMapping("professor/credit")
 	public String credit() {
 		return "professor/credit";
 	}
-	
+
 	@GetMapping("professor/eval")
-	public String eval() {
+	public String eval(@RequestParam(defaultValue = "0") int lecCode, @AuthenticationPrincipal MyUserDetails details,
+			Model model) {
+		String uid = details.getUsername();
+
+		List<EvalBoardDTO> boards = service.selectEvals(uid, lecCode);
+
+		model.addAttribute("boards", boards);
+
 		return "professor/eval";
 	}
-	
+
 	@GetMapping("professor/manage")
 	public String manage(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
 		// 교수 - 강의 내역
 		List<LecListEntity> list = service.selectClasss(userDetails.getUser().getUid());
 		List<LecSugangDto> list2 = new ArrayList<>();
-		
-		for(LecListEntity ele : list) {
+
+		for (LecListEntity ele : list) {
 			// 구분 변환
 			LecSugangDto dto = new LecSugangDto();
-			LectureEntity entity= ele.getLectureEntity();
+			LectureEntity entity = ele.getLectureEntity();
 			dto.setLecName(entity.getLecName());
 			dto.setLecClass(entity.getLecClass());
 			dto.setLecGubun(entity.getLecGubun());
@@ -59,74 +66,64 @@ public class ProfessorController {
 		model.addAttribute("classs", list2);
 		return "professor/manage";
 	}
-	
+
 	@GetMapping("professor/my")
 	public String mypage(Model model, @AuthenticationPrincipal MyUserDetails member) {
 		String uid = member.getUser().getUid();
-		
-		MemberVO vo = service.selectProMy(uid);
-		List<MemberVO> lecture = service.selectProlecture(uid);
-		
-		// 강의시간 출력(time)
-		for(MemberVO lec : lecture) {
-			String begin = lec.getBeginTime();
-			String end = lec.getEndTime();
-			
-			int beginT = Integer.parseInt(begin);
-			int endT = Integer.parseInt(end);
-			
-			String time = "";
-						
-			for(int i = beginT; i<=endT; i++) {
-				time += i ;
-				
-			}
-			if(time == "1"){
-				lec.setBeginTime("");
-			}else {
-				lec.setBeginTime(time);
-			}
 
-		}
+		MemberVO vo = service.selectProMy(uid);
+		List<LecSugangDto> lecture = service.selectProlecture(uid);
+
 		model.addAttribute("uid", uid);
 		model.addAttribute("professor", vo);
 		model.addAttribute("professorlec", lecture);
-		
+
 		return "mypage/professor/my";
 	}
-	
+
 	@GetMapping("professor/my/modify")
 	public String mypagemodify(@AuthenticationPrincipal MyUserDetails member, Model model) {
 		MemberEntity mem = member.getUser();
 		MemberVO vo = service.selectProMy(mem.getUid());
-		
+
 		model.addAttribute("professor", vo);
 		model.addAttribute("member", mem);
-				
+
 		return "mypage/professor/modify";
 	}
-	
+
 	// 상세정보 업데이트
 	@PostMapping("professor/my/modify")
 	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
 		MemberEntity mem = member.getUser();
 		String uid = mem.getUid();
-		
+
 		service.updateProMy(vo);
-		
+
 		String career = vo.getCareer();
 		service.updateProMyinfo(vo);
-		
+
 		return "redirect:/professor/my/modify";
 	}
 
 	// 이미지 업데이트
-		@PostMapping("professor/my/modifyProfile")
-		public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
-			
-			String nName = service.updateProfile(vo);
-			member.getUser().setProfile(nName);
-			return "redirect:/professor/my/modify";
-		}
+	@PostMapping("professor/my/modifyProfile")
+	public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
 
+		String nName = service.updateProfile(vo);
+		member.getUser().setProfile(nName);
+		return "redirect:/professor/my/modify";
+	}
+
+	// 강의 평가 출력
+	
+	@GetMapping("professor/eval/view")
+	public String evalView(int no, Model model) {
+		
+		EvalBoardDTO vo  = service.selectEvalView(no);
+		
+		model.addAttribute("vo", vo);
+		
+		return "professor/evalView";
+	}
 }

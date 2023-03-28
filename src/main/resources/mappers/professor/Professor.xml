@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DAO Mapper 설정 -->
+<mapper namespace="kr.co.ChimAcademy.dao.ProfessorDAO">
+
+	<select id="selectEvals" resultType="kr.co.ChimAcademy.dto.EvalBoardDTO">
+		SELECT * 
+			FROM lec_eval_board AS a
+		JOIN lecture AS b
+		ON a.lecCode = b.lecCode
+		<where>
+		    <if test="uid != null">
+		         uid = #{uid}
+		    </if>
+		    <if test="lecCode != 0">
+		        AND a.lecCode = #{lecCode}
+		    </if>
+	  </where>
+	</select>
+	
+	<select id="selectEvalView" resultType="kr.co.ChimAcademy.dto.EvalBoardDTO">
+	SELECT * FROM lec_eval_board AS a
+		JOIN lecture AS b
+		ON a.lecCode =
+		b.lecCode
+		WHERE `no` = #{no};
+	</select>
+</mapper>

@@ -105,33 +105,6 @@ function readURL(input) {
 	}
 }
 
-/* 정규식 */
-// 휴대폰 번호 12, 13자리
-const regexHp =/^(01[016789]{1})-[0-9]{3,4}-[0-9]{4}$/;
-const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-// 휴대폰 유효성 검사
-function hpCheck(){
-	$('input[name=hp]').on('keyup focusout',function(){
-		let hp = $(this).val();
-		
-		hpVal = regexHp.test(hp);
-	});
-}
-
-// 이메일 유효성 검사
-function emailCheck(){
-	$('input[name=email]').on('keyup focusout',function(){
-		let email = $(this).val();
-		
-		emailVal = regexEmail.test(email);
-	});
-}
-
-let emailCode;
-
-
-/* 유효성 검사 */
 // 휴대폰번호 유효성 검사 함수
 function inputPhoneNumber(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
@@ -180,8 +153,10 @@ $(document).ready(function() {
         var inputPhone = $(this).val().replace(/-/gi, "");
         if (inputPhone.length < 10 || inputPhone.length > 11 || inputPhone.charAt(0) !== "0") {
             alert("유효하지 않은 휴대폰번호입니다.");
-            $(this).val("");
-        }
+            document.location.reload(true);
+        }else if(!!inputPhone.length < 10 || inputPhone.length > 11 || inputPhone.charAt(0) !== "0"){
+			$(this).css('background', '#f5f6f7');
+		}
     });
 
     // 이메일 유효성 검사
@@ -189,8 +164,12 @@ $(document).ready(function() {
         var inputEmail = $(this).val();
         if (!isValidEmail(inputEmail)) {
             alert("유효하지 않은 이메일입니다.");
+			$(this).css('background', '#ffffff');
             $(this).val("");
-        }
+        }else if(!!isValidEmail(inputEmail)) {
+			$(this).css('background', '#f5f6f7');
+		}
     });
 });
+
 
