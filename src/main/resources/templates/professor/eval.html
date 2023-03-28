@@ -16,45 +16,15 @@
                             <th>교과목명</th>
                             <th>이수구분</th>
                             <th>학점</th>
-                            <th>강의시간</th>
-                            <th>제목</th>
                         </tr>
-                        <tr>
-                           <td>1</td>
-                           <td>1</td>
-                           <td>고고학의 첫걸음</td>
-                           <td>전필</td>
-                           <td>3</td>
-                           <td>3시간</td>
-                           <td>45</td>
+                        <tr th:each="board : ${boards}">
+                           <td>[[${board.no}]]</td>
+                           <td>[[${board.lecClass}]]</td>
+                           <td><a th:href="@{/professor/eval/view(no=${board.no})}">[[${board.lecName}]]</a></td>
+                           <td>[[${board.credit}]]</td>
+                           <td>[[${board.gubun}]]</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                         </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>고고학의 첫걸음</td>
-                            <td>전필</td>
-                            <td>3</td>
-                            <td>3시간</td>
-                            <td>45</td>
-                         </tr>
+
                    </table>
                 </section>
                 <div class="page">

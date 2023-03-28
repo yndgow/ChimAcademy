@@ -11,5 +11,6 @@ public class EvalBoardVO {
 	private int evalScore;
 	private String content;
 	private String rdate;
+	private int evalScore;
 	private int result;
 }

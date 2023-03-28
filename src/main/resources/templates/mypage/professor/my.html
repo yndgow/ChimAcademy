@@ -28,8 +28,6 @@
                             <td>[[${professor.hp}]]</td>
                             <th>담당학과</th>
                             <td>[[${professor.depName}]]</td>
-                            
-                            
                         </tr>
                         <tr>
                         	<th>이력</th>
@@ -60,17 +58,18 @@
 	                            <td>[[${professorlecStat.count}]]</td>
 	                            <td>[[${professorlec.lecClass}]]</td>
 	                            <td>[[${professorlec.lecName}]]</td>
-                            <th:block th:switch="${professorlec.lecGubun}">
-                           	 	<td th:case="0">구분없음</td>
-                           	 	<td th:case="1">전공필수</td>
-                            	<td th:case="2">전공선택</td>
-                            	<td th:case="3">교양</td>
-							</th:block>
+	                            <th:block th:switch="${professorlec.lecGubun}">
+	                           	 	<td th:case="0">구분없음</td>
+	                           	 	<td th:case="1">전공필수</td>
+	                            	<td th:case="2">전공선택</td>
+	                            	<td th:case="3">교양</td>
+								</th:block>
+								
 	                            <td>[[${professorlec.credit}]]</td>
 	                            <td>[[${professorlec.lecDay}]]
-	                            [[${professorlec.beginTime}]]
+	                            [[${professorlec.cTime}]]
 	                            ([[${professorlec.lecLoc}]])</td>
-	                            <td><a th:href="@{#}">이동</a></td>
+	                            <td><a th:href="@{/professor/eval(lecCode=${professorlec.lecCode})}">이동</a></td>
                             </tr>
                             
                     </table>

@@ -26,7 +26,7 @@
 
 	<!-- 교수 수강내역 출력 -->
 	<select id="selectProlecture"
-		resultType="kr.co.ChimAcademy.vo.MemberVO">
+		resultType="kr.co.ChimAcademy.dto.LecSugangDto">
 		SELECT * FROM lec_list AS a
 		JOIN lecture AS b
 		ON a.lecCode =
