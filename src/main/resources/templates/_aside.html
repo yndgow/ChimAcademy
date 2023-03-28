@@ -3,17 +3,17 @@
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-user"></i>마이페이지</a>
             <ol>
-            	<!-- <th:block sec:authorize="hasAnyRole('ROLE_0', 'ROLE_1', 'ROLE_3', 'ROLE_4')"> -->
+            	<th:block sec:authorize="hasAnyRole('ROLE_0', 'ROLE_1', 'ROLE_2', 'ROLE_4')">
                 <li><a th:href="@{/student/my}">내 정보(학생)</a></li>
                 <li><a th:href="@{/student/my/modify}">내 정보수정(학생)</a></li>
-                <!-- </th:block> -->
-                <!-- <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')"> -->
+                </th:block>
+                <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')">
                 <li><a th:href="@{/professor/my}">내 정보(교수)</a></li>
                 <li><a th:href="@{/professor/my/modify}">내 정보수정(교수)</a></li>
-                <!-- </th:block> -->
+                </th:block>
             </ol>
         </li>
-        <!-- <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')"> -->        
+        <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')">        
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>학사관리(교수)</a>
             <ol>
@@ -22,8 +22,8 @@
        	       <li><a th:href="@{/professor/eval}">강의평가</a></li>
             </ol>
         </li>
-        <!-- </th:block> -->
-		<!-- <th:block sec:authorize="hasAnyRole('ROLE_1', 'ROLE_3', 'ROLE_4')"> -->        
+        </th:block>
+		<th:block sec:authorize="hasAnyRole('ROLE_1', 'ROLE_3', 'ROLE_4')">        
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>학사관리(학생)</a>
             <ol>
@@ -32,7 +32,7 @@
                 <li><a th:href="@{/student/class/eval}">강의평가</a></li>
             </ol>
         </li>
-        <!-- </th:block> -->
+        </th:block>
 		<th:block sec:authorize="hasAnyRole('ROLE_2', 'ROLE_4')">         
         <li>
             <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>조교</a>
