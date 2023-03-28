@@ -121,12 +121,17 @@ public class ProfessorController {
 	}
 
 	// 이미지 업데이트
-		@PostMapping("professor/my/modifyProfile")
-		public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
-			
-			String nName = service.updateProfile(vo);
-			member.getUser().setProfile(nName);
-			return "redirect:/professor/my/modify";
-		}
+	@PostMapping("professor/my/modifyProfile")
+	public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
+		
+		String nName = service.updateProfile(vo);
+		member.getUser().setProfile(nName);
+		return "redirect:/professor/my/modify";
+	}
+	
+	@GetMapping("professor/class/write")
+	public String writeClassSc() {
+		return "professor/writeClass";
+	}
 
 }
