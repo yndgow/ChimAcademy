@@ -10,9 +10,9 @@
 
 	<select id="selectDep" resultType="kr.co.ChimAcademy.vo.DepartmentVO">
 		SELECT a.*
-		FROM department AS a 
-		JOIN member AS b 
-		USING(depCode) 
+		FROM department AS a
+		JOIN member AS b
+		USING(depCode)
 		WHERE uid = #{uid};
 	</select>
 	
@@ -50,6 +50,14 @@
 		AND parent = 0
 		ORDER BY (`no`) DESC
 		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectMembers" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		select * from `member` WHERE `depCode`=#{depCode} AND `level`=1;
+	</select>
+	
+	<select id="selectMember" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		select * from `member` where `uid`=#{uid};
 	</select>
 	
 	<select id="countNotice" resultType="int">

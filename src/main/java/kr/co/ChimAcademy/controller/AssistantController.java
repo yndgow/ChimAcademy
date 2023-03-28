@@ -25,6 +25,7 @@ import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.AssistantService;
 import kr.co.ChimAcademy.vo.DepartmentVO;
 import kr.co.ChimAcademy.vo.LectureVO;
+import kr.co.ChimAcademy.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -36,6 +37,7 @@ public class AssistantController {
 	public AssistantController(AssistantService assistantService) {
 		this.assistantService = assistantService;
 	}
+	
 
 	// 인원 추가페이지 이동
 	@GetMapping("assistant/insert")
@@ -59,14 +61,20 @@ public class AssistantController {
 	}
 	
 	
-	
+	// 학생 목록 출력
 	@GetMapping("assistant/manage")
-	public String manage() {
+	public String manage(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+		String depCode = userDetails.getUser().getDepartmentEntity().getDepCode();
+		List<MemberVO> members = assistantService.selectMembers(depCode);
+		model.addAttribute("members", members);
 		return "assistant/manage";
 	}
 	
+	// 학생 정보 수정
 	@GetMapping("assistant/modify")
-	public String modify() {
+	public String modify(String uid, Model model) {
+		List<MemberVO> member = assistantService.selectMember(uid);
+		model.addAttribute("member", member);
 		return "assistant/modify";
 	}
 	
