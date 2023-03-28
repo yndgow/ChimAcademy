@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dao.StudentDAO;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
 import kr.co.ChimAcademy.vo.MemberVO;
@@ -35,6 +36,11 @@ public class StudentService {
 		
 		return dao.selectStudent(uid);
 	}
+	
+	// 수강 신청내역(수강신청페이지) - 구홍모
+	public List<LecSugangDto> selectSugangs(String uid){
+		return dao.selectSugangs(uid);
+	};
 	
 	//수강내역 불러오기
 	public List<MemberVO> selectLectures(String uid){

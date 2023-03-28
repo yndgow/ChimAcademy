@@ -15,7 +15,22 @@
     <script>
         $(document).ready(function(){
           $('.slider').bxSlider();
+          
+          $('.search-box > form').submit(function(){
+        	 let keyword = $('input[name=keyword]').val();
+        	 if(!checkEmpty(keyword)){
+ 				alert('검색할 내용을 입력해주세요.')
+ 				return false;
+ 			 }
+          });
         });
+    	function checkEmpty(content){
+    		if(content.trim()){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
     </script>
 </head>
 <body>

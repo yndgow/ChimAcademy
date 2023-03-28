@@ -47,6 +47,11 @@
 	<select id="selectEbookFile" resultType="kr.co.ChimAcademy.vo.EbookFileVO">
 		select * from `ebook_file` where `parent`=#{bookId};
 	</select>
+	<select id="selectEbooksSearch" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select * from `ebook` where `title` like CONCAT('%',#{keyword},'%') 
+																		or `author` like CONCAT('%',#{keyword},'%')
+																		order by `rdate` desc limit #{start},10;
+	</select>
 	<select id="selectEbooks" resultType="kr.co.ChimAcademy.vo.EbookVO">
 		select * from `ebook` where `GROUP`=#{vo.GROUP} 
 										<choose>
@@ -88,6 +93,9 @@
 											
 											</when>
 										</choose>
+	</select>
+	<select id="selectCountTotalSearch" resultType="int">
+		SELECT COUNT(*) FROM `ebook` where `title` like CONCAT('%',#{keyword},'%') or `author` like CONCAT('%',#{keyword},'%');
 	</select>
 	<select id="selectCountForCheckMylib" resultType="int">
 		select count(*) from `mylib` where `uid`=#{uid} and `bookId`=#{bookId} and `state`=#{state}

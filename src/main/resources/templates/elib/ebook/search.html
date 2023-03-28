@@ -1,15 +1,60 @@
 <th:block th:include="@{elib/_header.html}"/>
-<th:block th:include="@{elib/ebook/_lnb.html}"/>
-                    	<div class="elib-cate" th:if="${sort=='1' or sort=='2'}">
-                    		<h2>카테고리</h2>
-                    		<div class="box">
-                    			<a th:each="cate1 : ${cate1s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=1,cate1=${cate1.c1},cate2=10)}">[[${cate1.c1Name}]]</a>
-                    		</div>
-                    		<h2>하위카테고리</h2>
-                    		<div class="box">
-                    			<a th:each="cate2 : ${cate2s}" th:href="@{/elib/ebook/list(GROUP=${vo.GROUP},sort=2,cate1=${cate2.c1},cate2=${cate2.c2})}">[[${cate2.c2Name}]]</a>
-                    		</div>
-                    	</div>
+<main id="sub-container">
+    <div class="sub-visual">
+        <div class="bg">
+            <div class="search-box">
+                <form th:action="@{/elib/ebook/search}" method="get">
+                    <section class="search">
+                        <div class="box1">
+                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+                        </div>
+                        <div class="box2">
+                            <button type="submit"><span class="material-icons">search</span></button>
+                        </div>
+                    </section>
+                </form>
+                <div class="doc-info">
+                    <section>
+                        <ol>
+                            <li class="first">
+                                <a th:href="@{/elib/}">
+                                    <img src="/ChimAcademy/img/elib/home.png" alt="index">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">자료검색</a>
+                            </li>
+                            <li>
+                                <a href="#">소장자료 검색</a>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="lnb">
+            <h2>
+                <b>자료검색</b>
+            </h2>
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <span>소장자료 검색</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="doc">
+                <div class="doc-head">
+                    <div class="doc-title">
+                        <h3>소장자료 검색</h3>
+                    </div>
+                </div>
+                <div class="doc-body">
+                    <div class="body">
 						<div class="elib-top">
 						    <div class="lsort">
 						        <span>[[${total}]]</span>
@@ -17,22 +62,20 @@
 						        <span>[[${currentPage}]]</span>
 						        of [[${pageGroupEnd}]] page 
 						    </div>
-						    <div class="sort">
-						        <a th:href="@{/elib/ebook/list(sort=${sort},type=2,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='2'} ? 'active'">인기순</a>
-						        <a th:href="@{/elib/ebook/list(sort=${sort},type=3,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='3'} ? 'active'">제목순</a>
-						        <a th:href="@{/elib/ebook/list(sort=${sort},type=1,GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="btn" th:classappend="${type=='1'} ? 'active'">최신순</a>
-						    </div>
 						</div>
 						<ul class="list">
+							<li th:if="${ebooks.size() < 1}" class="nolist">
+                            	<span>검색 결과가 없습니다.</span>
+                            </li>
 						    <li class="elib" th:each="ebook : ${ebooks}">
 						        <div class="thumb">
-						            <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}">
+						            <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=4,type=1,GROUP=${ebook.GROUP},cate1=${ebook.cate1},cate2=${ebook.cate2},applier=${ebook.applier})}">
 						                <img th:src="@{${ebook.thumb}}" alt="thumb">
 						            </a>
 						        </div>
 						        <div class="cont">
 						            <div class="flexbox">
-						                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="book_link">
+						                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=4,type=1,GROUP=${ebook.GROUP},cate1=${ebook.cate1},cate2=${ebook.cate2},applier=${ebook.applier})}" class="book_link">
 						                    <b>[[${ebook.title}]]</b>
 						                </a>
 						                <div class="info">
@@ -66,13 +109,13 @@
 						        </div>
 						    </li>
 						</ul>
-                        <div class="paging">
+                        <div class="paging" th:if="${ebooks.size() >= 1}">
 						    <span>
-						        <a th:href="@{/elib/ebook/list(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+						        <a th:href="@{/elib/ebook/search(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
 						        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
-			                		<a th:href="@{/elib/ebook/list(pg=${page},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+			                		<a th:href="@{/elib/ebook/search(pg=${page})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
 			                	</th:block>
-						        <a th:href="@{/elib/ebook/list(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+						        <a th:href="@{/elib/ebook/search(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
 						    </span>
 						</div>
                     </div>

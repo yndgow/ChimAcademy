@@ -97,6 +97,9 @@ public class EbookService {
 	public int updateEbookReserv(int sort,String bookId) {
 		return dao.updateEbookReserv(sort, bookId);
 	};
+	public List<EbookVO> selectEbooksSearch(String keyword, int start){
+		return dao.selectEbooksSearch(keyword, start);
+	};
 	// 내서재 //////////////////////////////////////////
 	public int insertMylib(MylibVO vo) {
 		return dao.insertMylib(vo);
@@ -265,6 +268,10 @@ public class EbookService {
 	public int selectCountTotal(String sort, EbookVO vo) {
 		return dao.selectCountTotal(sort,vo);
 	}
+	// 검색 도서 총 갯수
+	public int selectCountTotalSearch(String keyword) {
+		return dao.selectCountTotalSearch(keyword);
+	};
 	// 내서재 총 갯수
 	public int selectCountTotalMylibs(String uid, String state) {
 		return dao.selectCountTotalMylibs(uid, state);

@@ -14,6 +14,14 @@
         	
           $('.slider').bxSlider();
           
+          $('.search-box > form').submit(function(){
+         	 let keyword = $('input[name=keyword]').val();
+         	 if(!checkEmpty(keyword)){
+  				alert('검색할 내용을 입력해주세요.')
+  				return false;
+  			 }
+          });
+          
           $('.book-box > div > ul > li > a').click(function(e){
         	 e.preventDefault();
         	 $(this).parent().siblings().removeClass('on'); 
@@ -57,6 +65,13 @@
         	 })
           });
         });
+    	function checkEmpty(content){
+    		if(content.trim()){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
     </script>
 </head>
 <body>
@@ -147,7 +162,7 @@
             <div id="container">
                 <div class="section-box">
                     <div class="search-box">
-                        <form action="#">
+                        <form th:action="@{/elib/ebook/search}" method="get">
                             <div class="search">
                                 <div class="box1">
                                     <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        

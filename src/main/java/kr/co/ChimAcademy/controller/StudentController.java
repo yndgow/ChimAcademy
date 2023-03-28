@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
 import kr.co.ChimAcademy.vo.MemberVO;
@@ -28,7 +29,9 @@ public class StudentController {
 	}
 	
 	@GetMapping("student/class/timeTable")
-	public String timeTable() {
+	public String timeTable(@AuthenticationPrincipal MyUserDetails member,Model model){
+		List<LecSugangDto> table = service.selectSugangs(member.getUser().getUid());
+		model.addAttribute("table",table);
 		return "student/timeTable";
 	}
 	
