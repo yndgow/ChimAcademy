@@ -36,9 +36,10 @@ public class MemberVO {
 	//추가필드
 	private String majorName;
 	private String lecName;
-	private String totalScore;
+	private int lecCode;
+	//private String totalScore;
 	private int credit;
-  private String sGrade;
+	//private String sGrade;
 	
 
 //	교수-추가필드

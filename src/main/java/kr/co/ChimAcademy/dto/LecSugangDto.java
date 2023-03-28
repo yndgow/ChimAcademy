@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class LecSugangDto {
 
+	private String pid;
 	private int lecCode;
 	private int lecClass;
 	private String lecName;
@@ -17,6 +18,10 @@ public class LecSugangDto {
 	private int beginTime;
 	private int endTime;
 	private String lecLoc;
+	private String sGrade;
+	private int result;
+	
+	
 	
 	// 수강인원
 	private int lecRequest;

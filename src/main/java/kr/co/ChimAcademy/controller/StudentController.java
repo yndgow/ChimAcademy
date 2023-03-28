@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
+import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
 import kr.co.ChimAcademy.vo.infoFileVO;
 
@@ -42,11 +44,20 @@ public class StudentController {
 		
 		String uid = pricipal.getName();
 		MemberVO vo = service.selectStudent(uid);
-		List<MemberVO> lecture = service.selectLectures(uid);
+		List<LecSugangDto> lecture = service.selectLectures(uid);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("lecture", lecture);
 		return "mypage/student/my";
+	}
+	
+	@PostMapping("student/my")
+	public String mypage(EvalBoardVO vo, String pid) {
+		vo.setUid(pid);
+		
+		service.insertLecEval(vo);
+		
+		return "redirect:/student/my";
 	}
 	
 	@GetMapping("student/my/modify")
