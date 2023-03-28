@@ -21,6 +21,7 @@ import kr.co.ChimAcademy.repository.MajorRepo;
 import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.vo.DepartmentVO;
 import kr.co.ChimAcademy.vo.LectureVO;
+import kr.co.ChimAcademy.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -73,6 +74,16 @@ public class AssistantService {
 	public List<LectureVO> selectLectures(LectureVO vo){
 		log.info("lecutres : " + dao.selectLectures(vo));
 		return dao.selectLectures(vo);
+	}
+	
+	//조교 학생목록 출력
+	public List<MemberVO> selectMembers(String depCode){
+		return dao.selectMembers(depCode);
+	}
+	
+	//조교 학생 수정
+	public List<MemberVO> selectMember(String uid){
+		return dao.selectMember(uid);
 	}
 	
 	// 학과별 교수

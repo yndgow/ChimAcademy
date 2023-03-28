@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.ChimAcademy.vo.BoardVO;
 import kr.co.ChimAcademy.vo.DepartmentVO;
 import kr.co.ChimAcademy.vo.LectureVO;
+import kr.co.ChimAcademy.vo.MemberVO;
 
 @Mapper
 @Repository
@@ -16,4 +17,7 @@ public interface AssistantDAO {
 	List<LectureVO> selectLectures(LectureVO vo);
 	List<BoardVO> selectNotices(int start);
 	int countNotice();
+	
+	public List<MemberVO> selectMembers(String depCode);
+	public List<MemberVO> selectMember(String uid);
 }
