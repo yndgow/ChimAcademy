@@ -30,7 +30,9 @@ public class StudentController {
 	}
 	
 	@GetMapping("student/class/timeTable")
-	public String timeTable() {
+	public String timeTable(@AuthenticationPrincipal MyUserDetails member,Model model){
+		List<LecSugangDto> table = service.selectSugangs(member.getUser().getUid());
+		model.addAttribute("table",table);
 		return "student/timeTable";
 	}
 	

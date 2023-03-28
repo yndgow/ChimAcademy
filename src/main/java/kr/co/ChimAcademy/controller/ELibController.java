@@ -139,6 +139,35 @@ public class ELibController {
 				model.addAttribute("items",items);
 		return "elib/ebook/list";
 	}
+	@GetMapping("elib/ebook/search")
+	public String search(Model model,String pg,String keyword) {
+		int currentPage = eService.getCurrnetPage(pg);
+		int start = eService.getLimitStart(currentPage);
+		int total = eService.selectCountTotalSearch(keyword);
+		int pageStartNum = eService.getPageStartNum(total, start);
+		int lastPageNum = eService.getLastPageNum(total);
+		
+		// 페이지 그룹 start, end 번호
+		int pageGroupStart = eService.getPageGroup(currentPage, lastPageNum)[0];
+		int pageGroupEnd = eService.getPageGroup(currentPage, lastPageNum)[1];
+		
+		model.addAttribute("pg", pg);
+		model.addAttribute("total", total);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageGroupStart", pageGroupStart);
+		model.addAttribute("pageGroupEnd", pageGroupEnd);
+		
+		List<EbookVO> ebooks = eService.selectEbooksSearch(keyword, start);
+		model.addAttribute("ebooks",ebooks);
+		model.addAttribute("keyword",keyword);
+		
+		//부산 도서관 정보 공공API///////////////
+		ItemVO[] items = eService.LibAPI();
+		model.addAttribute("items",items);
+		return "elib/ebook/search";
+	}
 	@GetMapping("elib/ebook/view")
 	public String view(@AuthenticationPrincipal MyUserDetails member,Model model, String pg, String sort, String type, EbookVO vo) {
 		model.addAttribute("member", member.getUser());

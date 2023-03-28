@@ -38,6 +38,11 @@ public class StudentService {
 		return dao.selectStudent(uid);
 	}
 	
+	// 수강 신청내역(수강신청페이지) - 구홍모
+	public List<LecSugangDto> selectSugangs(String uid){
+		return dao.selectSugangs(uid);
+	};
+	
 	//수강내역 불러오기
 	public List<LecSugangDto> selectLectures(String uid){
 		
