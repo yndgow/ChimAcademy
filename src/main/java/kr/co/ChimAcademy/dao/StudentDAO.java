@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.ChimAcademy.dto.LecSugangDto;
+import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
 import kr.co.ChimAcademy.vo.infoFileVO;
 
@@ -18,7 +19,7 @@ public interface StudentDAO {
 	
 	
 	//수강내역 불러오기
-	public List<MemberVO> selectLectures(String uid);
+	public List<LecSugangDto> selectLectures(String uid);
 	
 	
 	//회원정보 수정
@@ -32,5 +33,8 @@ public interface StudentDAO {
 	
 	// 학생별 총 신청학점
 	int sumCredit(String uid);
+	
+	//강의평가 넣기
+	public int insertLecEval(EvalBoardVO vo);
 
 }

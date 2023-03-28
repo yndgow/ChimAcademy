@@ -17,8 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dao.StudentDAO;
+import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.vo.EbookFileVO;
 import kr.co.ChimAcademy.vo.EbookVO;
+import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
 import kr.co.ChimAcademy.vo.infoFileVO;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +39,7 @@ public class StudentService {
 	}
 	
 	//수강내역 불러오기
-	public List<MemberVO> selectLectures(String uid){
+	public List<LecSugangDto> selectLectures(String uid){
 		
 		return dao.selectLectures(uid);
 	};
@@ -47,6 +49,11 @@ public class StudentService {
 		
 		return dao.updateStudent(vo);
 	}
+	
+	//강의평가 넣기
+	public int insertLecEval(EvalBoardVO vo) {
+		return dao.insertLecEval(vo);
+	};
 	
 
 	// 프로필 업데이트

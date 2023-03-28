@@ -194,3 +194,39 @@ $(document).ready(function() {
     });
 });
 
+
+
+//모달창 열기
+$(document).ready(function(){
+  // 모달 열기 버튼 클릭 시
+  $(".openModalBtn").click(function(){
+    $("#myModal").fadeIn();
+  });
+  
+  // 모달 닫기 버튼 클릭 시
+  $(".close").click(function(){
+    $("#myModal").fadeOut();
+  });
+  
+  // 모달 외부 클릭 시
+  $(window).click(function(event) {
+    if (event.target == $("#myModal")[0]) {
+      $("#myModal").fadeOut();
+    }
+  });
+});
+
+
+//강의평가 값 가져오기
+
+$(document).ready(function() {
+  $('.openModalBtn').click(function() {
+	var tr = $(this).closest("tr");
+  	var slecCode = tr.find("input[name=slecCode]").val();
+    var pid = tr.find("input[name=spid]").val();
+    var lecName = $(this).closest('tr').find('td:nth-child(3)').text();
+ 	$("#myModal input[name=lecCode]").val(slecCode);
+    $("#myModal input[name=pid]").val(pid);
+    $('#myModal input[name="lecName"]').val(lecName);
+  });
+});
