@@ -11,15 +11,7 @@
     <!-- 작업 css -->
     <link rel="stylesheet" th:href="@{/style/professor/professor.css}"/>
     <!-- <link rel="stylesheet" th:href="@{/style/modify.css}"/> -->
-    <script>
-        $(function(){
-            $('#side > li > ol').hide();
-
-            $('#side > li > a').click(function(){
-                $(this).siblings().slideToggle(300);
-            });
-        });
-    </script> 
+    <script th:src="@{/js/professor/professor.js}"></script> 
 
 </head>
 <th:block th:include="@{_body.html}"/>

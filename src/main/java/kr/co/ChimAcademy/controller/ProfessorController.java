@@ -31,6 +31,7 @@ public class ProfessorController {
 	}
 
 	@GetMapping("professor/eval")
+	
 	public String eval(@RequestParam(defaultValue = "0") int lecCode, @AuthenticationPrincipal MyUserDetails details,
 			Model model) {
 		String uid = details.getUsername();
@@ -47,10 +48,11 @@ public class ProfessorController {
 		// 교수 - 강의 내역
 		List<LecListEntity> list = service.selectClasss(userDetails.getUser().getUid());
 		List<LecSugangDto> list2 = new ArrayList<>();
+		for(LecListEntity ele : list) {
 
-		for (LecListEntity ele : list) {
 			// 구분 변환
 			LecSugangDto dto = new LecSugangDto();
+			LectureEntity entity= ele.getLectureEntity();
 			LectureEntity entity = ele.getLectureEntity();
 			dto.setLecName(entity.getLecName());
 			dto.setLecClass(entity.getLecClass());
@@ -107,8 +109,19 @@ public class ProfessorController {
 	}
 
 	// 이미지 업데이트
+
 	@PostMapping("professor/my/modifyProfile")
 	public String insertProfile(@AuthenticationPrincipal MyUserDetails member, MemberVO vo) {
+		
+		String nName = service.updateProfile(vo);
+		member.getUser().setProfile(nName);
+		return "redirect:/professor/my/modify";
+	}
+	
+	@GetMapping("professor/class/write")
+	public String writeClassSc() {
+		return "professor/writeClass";
+	}
 
 		String nName = service.updateProfile(vo);
 		member.getUser().setProfile(nName);
