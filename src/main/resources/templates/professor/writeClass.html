@@ -39,8 +39,8 @@
 			<div class="text-center mt-5">
 				<h3 class="fw-bold">강의계획서 작성</h3>
 			</div>
-			<form>
-				<div class="mb-3">
+			<form th:action="@{/professor/class/write}" method="post" enctype="multipart/form-data">
+				<div class="mb-3"> 
 				  <label for="formControlInputTitle" class="form-label">제 목</label>
 				  <input type="text" class="form-control" id="formControlInputTitle" placeholder="제목을 입력해 주세요." required>
 				</div>

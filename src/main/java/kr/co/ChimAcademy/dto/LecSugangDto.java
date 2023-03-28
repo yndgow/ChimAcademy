@@ -60,4 +60,12 @@ public class LecSugangDto {
 		}
 		return cTime;
 	}
+	
+	public String getLecDay() {
+		if(this.lecDay == null) {
+			return "";
+		}else {
+			return this.lecDay;
+		}
+	}
 }
