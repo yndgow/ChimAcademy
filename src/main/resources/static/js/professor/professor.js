@@ -20,8 +20,13 @@ function popupOpen(){
 		let url = "/ChimAcademy/professor/class/write";
 		// 팝업 제목
 		let name = "강의계획서";
+		// 화면 중앙에 팝업 시키기 위한 값 구하기
+		let width = 1220;
+		let height = 760;
+		let left = (screen.width/2)-(width/2);
+		let top  = (screen.height/2)-(height/2);
 		// 팝업 옵션(크기, 위치)
-		let option = "width = 1220, height = 755, top = 100, left = 300";
+		let option = `width = ${width}, height = ${height}, top = ${top}, left = ${left}`;
 		
 		// 넘길 데이터 오브젝트 만들기 
 		let lecture = {};
