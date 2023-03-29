@@ -31,7 +31,6 @@
 	<update id="updateJapanese">
 	  UPDATE `board` set
 		`depCode`='P701',
-	    `lecCode`=#{lecCode},
 	    `title`=#{title},
 	    `content`=#{content},
 	    `uid`=#{uid},
@@ -62,7 +61,6 @@
 	<update id="updateComment">
 	  UPDATE `board` set
 		`depCode`='P701',
-	    `lecCode`=#{lecCode},
 	    `content`=#{content},
 	    `regip`=#{regip},
 	    `rdate`=NOW()
