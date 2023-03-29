@@ -7,21 +7,22 @@
                 <nav class="nav_div">
                     <h3>학과 인원 수정</h3>
                 </nav>
+               <form th:action="@{/assistant/modify}" method="post">
                <section class="as_modify">
-                    <table th:each="member : ${member}">
+                    <table th:each="member : ${member}" >
                         <tr>
                             <th rowspan="2">프로필</th>
                             <td rowspan="2">사진</td>
                             <th>학번</th>
-                            <td>20220102</td>
+                            <td><input readonly="readonly" type="text" name="uid" th:value="${member.uid}"></td>
                         </tr>
                         <tr>
                             <th>제적구분</th>
                             <td>
                                 <select name="status">
-                                    <option value="1">재학</option>
-                                    <option value="2">휴학</option>
-                                    <option value="3">졸업</option>
+                                    <option th:selected="${member.status}==1" value="1">재학</option>
+                                    <option th:selected="${member.status}==2" value="2">휴학</option>
+                                    <option th:selected="${member.status}==3" value="3">졸업</option>
                                 </select>
                             </td>
                         </tr>
@@ -31,9 +32,11 @@
                             <th>등급</th>
                             <td>
                                 <select name="level">
-                                    <option value="">학생</option>
-                                    <option value="">조교</option>
-                                    <option value="">교수</option>
+                                    <option th:selected="${member.level}==0" value="0">탈퇴</option>
+                                    <option th:selected="${member.level}==1" value="1">학생</option>
+                                    <option th:selected="${member.level}==2" value="2">조교</option>
+                                    <option th:selected="${member.level}==3" value="3">교수</option>
+                                    <option th:selected="${member.level}==4" value="4">관리자</option>
                                 </select>
                             </td>
                         </tr>
@@ -41,15 +44,15 @@
                             <th>생년월일</th>
                             <td><input type="text" name="birth" th:value="${member.birth}"></td>
                             <th>우편번호</th>
-                            <td>[[${member.zip}]]</td>
+                            <td><input type="text" name="zip" th:value="${member.zip}"></td>
                         </tr>
                         <tr>
                             <th>학과</th>
                             <td>
                                 <select name="depCode">
-                                    <option value="A107">국문학과</option>
-                                    <option value="D107">중어중문학과</option>
-                                    <option value="P701">일문학과</option>
+                                    <option th:selected="${member.depCode}=='A101'" value="A101">국문학과</option>
+                                    <option th:selected="${member.depCode}=='D107'" value="D107">중어중문학과</option>
+                                    <option th:selected="${member.depCode}=='P701'" value="P701">일문학과</option>
                                 </select>
                             </td>
                             <th>주소</th>
@@ -59,25 +62,25 @@
                             <th>학년</th>
                             <td>
                                 <select name="sYear">
-                                    <option value="1">1학년</option>
-                                    <option value="2">2학년</option>
-                                    <option value="3">3학년</option>
-                                    <option value="4">4학년</option>
+                                    <option th:selected="${member.sYear}==1" value="1">1학년</option>
+                                    <option th:selected="${member.sYear}==2" value="2">2학년</option>
+                                    <option th:selected="${member.sYear}==3" value="3">3학년</option>
+                                    <option th:selected="${member.sYear}==4" value="4">4학년</option>
                                 </select>
                             </td>
                             <th>가입일</th>
-                            <td><input type="text" name="rdate" th:value="${member.rdate}"></td>
+                            <td><input type="date" name="rdate" th:value="${member.rdate}"></td>
                         </tr>
                         <tr>
                             <th>성별</th>
                             <td>
                                 <select name="gender">
-                                    <option value="1">남</option>
-                                    <option value="2">여</option>
+                                    <option th:selected="${member.gender}==1" value="1">남</option>
+                                    <option th:selected="${member.gender}==2"value="2">여</option>
                                 </select>
                             </td>
                             <th>졸업일</th>
-                            <td><input type="text" name="wdate" th:value="${member.wdate}"></td>
+                            <td><input type="date" name="wdate" th:value="${member.wdate}"></td>
                         </tr>
                         <tr>
                             <th>휴대폰</th>
@@ -90,13 +93,15 @@
                             <td><input type="text" name="email" th:value="${member.email}"></td>
                         </tr>
                    </table>
+               
                 </section>
                 <div class="page_div">
                     <div class="addPage">
-                        <button class="btn blue">추가</button>
+                        <button class="btn blue">수정</button>
                     </div>
                 </div>
-
+               	</form>
+			
             
             </section>
 		</main>
