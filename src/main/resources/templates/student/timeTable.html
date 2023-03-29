@@ -1,5 +1,10 @@
 <th:block th:include="@{student/_header.html}"/>
-
+<style>
+	.m0 {background-color: #FFFF99;} /* 구분없음 */
+	.m1 {background-color: #CCCCFF;} /* 전공필수 */
+	.m2 {background-color: #CCFFCC;} /* 전공선택 */
+	.m3 {background-color: #FF99FF;} /* 교양 */
+</style>
 <main id="timetable">
 	<th:block th:include="@{_aside.html}"/>
 <script type="text/javascript" th:inline="javascript">
@@ -9,33 +14,51 @@
 			table = /*[[${table}]]*/
 		console.log(table[0].lecName);
 		for(let lec of table){
+			// 1~10 시간대
 			for(let i = 1; i<=10; i++){
+				// 시간별 강의(ex.1,2,3 - 세로축)
 				for(let ct of lec.ctime){
 					if(ct==i){
+						// 요일별 강의(가로축)
 						if(lec.lecDay=='월'){
 							let cls = "."+i;
 							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
 							$(cls).children('td:nth-child(2)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(2)').addClass(m);
 						}
 						if(lec.lecDay=='화'){
 							let cls = "."+i;
 							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
 							$(cls).children('td:nth-child(3)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(3)').addClass(m);
 						}
 						if(lec.lecDay=='수'){
 							let cls = "."+i;
 							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
 							$(cls).children('td:nth-child(4)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(4)').addClass(m);
 						}
 						if(lec.lecDay=='목'){
 							let cls = "."+i;
 							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
 							$(cls).children('td:nth-child(5)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(5)').addClass(m);
 						}
 						if(lec.lecDay=='금'){
 							let cls = "."+i;
 							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
 							$(cls).children('td:nth-child(6)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(6)').addClass(m);
 						}
 					}
 				}
@@ -46,7 +69,7 @@
 	});
 </script>
     <section>
-        <h1>내 시간표</h1>
+        <h1>내 시간표 구분없음:<span class="m0">___</span>전공선택:<span class="m1">___</span>전공필수:<span class="m2">___</span>교양:<span class="m3">___</span> </h1>
         <table>
             <tr>
                 <td></td>

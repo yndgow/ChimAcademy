@@ -67,8 +67,6 @@ public class StudentController {
 		MemberEntity mem = member.getUser();
 		MemberVO vo = service.selectStudent(mem.getUid());
 		
-		
-		
 		model.addAttribute("vo", vo);
 		model.addAttribute("member", mem);
 

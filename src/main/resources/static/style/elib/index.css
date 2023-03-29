@@ -223,9 +223,11 @@
     }
     #container  > .section-box > .search-box > form > .search > .box2 > button{
         border: 0;
+        background-color: #fff;
     }
     #container  > .section-box > .search-box > form > .search > .box2 > button >span{
         font-size: 45px;
+        background-color: #fff;
     }
     #container  > section {
         clear: both;
