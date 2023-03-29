@@ -3,8 +3,6 @@ package kr.co.ChimAcademy.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.EvalBoardDTO;
 import kr.co.ChimAcademy.dto.LecSugangDto;
+import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -99,12 +97,12 @@ public class ProfessorController {
 	// 상세정보 업데이트
 	@PostMapping("professor/my/modify")
 	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
-		MemberEntity mem = member.getUser();
-		String uid = mem.getUid();
+		//MemberEntity mem = member.getUser();
+		//String uid = mem.getUid();
 
 		service.updateProMy(vo);
 
-		String career = vo.getCareer();
+		//String career = vo.getCareer();
 		service.updateProMyinfo(vo);
 
 		return "redirect:/professor/my/modify";
@@ -122,17 +120,15 @@ public class ProfessorController {
 	// 강의 계획서 작성 팝업 띄우기
 	@GetMapping("professor/class/write")
 	public String writeClassSc() {
-		return "professor/writeClass";
+		return "syllabus/write";
 	}
 	
 	// 강의 계획서 입력
 	@PostMapping("professor/class/write")
-	public String writeSyllabus(MultipartFile file) {
-		if(!file.isEmpty()) {
-			String fileName = FilenameUtils.getName(file.getOriginalFilename());
-			
-		}
-		
+	public String writeSyllabus(SyllabusDto dto) {
+
+		// 파일 && 계획서 업로드
+		service.insertBoardSyllabus(dto);
 		
 		return "redirect:/professor/manage";
 	}

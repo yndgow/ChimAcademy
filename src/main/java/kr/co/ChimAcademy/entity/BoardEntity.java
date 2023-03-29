@@ -2,7 +2,6 @@ package kr.co.ChimAcademy.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -37,8 +36,10 @@ public class BoardEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int no;
+	@Column(nullable = true)
 	private String depCode;
-	private String lecCode;
+	@Column(nullable = true)
+	private Integer lecCode;
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
@@ -47,7 +48,7 @@ public class BoardEntity {
 	private int hit;
 	private int parent;
 	private String regip;
-	private int file;
+//	private int file;
 	private int good;
 	private int bad;
 	private int type;
@@ -58,8 +59,8 @@ public class BoardEntity {
 	private MemberEntity memberEntity;
 	
 	 
-//	@OneToOne(cascade = CascadeType.PERSIST)
-//	@JoinColumn(name= "file", referencedColumnName = "no")
-//	private LecFileEntity fileEntity; 
+	@OneToOne
+	@JoinColumn(name= "file", referencedColumnName = "no", nullable = true)
+	private LecFileEntity fileEntity; 
 	
 }

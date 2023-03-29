@@ -55,10 +55,20 @@ class ChimAcademyApplicationTests {
 		 
 		
 		BoardEntity boardEntity = new BoardEntity();
-		boardEntity.setContent("Test22");
+		boardEntity.setContent("Test23");
 		boardEntity.setMemberEntity(memberRepo.findById("qwer").get());
-		boardEntity.setFileEntity(fileRepo.findById(2).get());
-				
+		
+		LecFileEntity fileEntity = LecFileEntity.builder()
+									.newName("newname")
+									.oriName("oriName")
+									.parent(122)
+									.build();
+		
+		fileRepo.save(fileEntity);
+		boardEntity.setFileEntity(fileEntity);
+		
+		
+		
 		boardRepo.save(boardEntity);		//		log.info("newName :" + board.getFileEntity().getNewName());
 		
 	}
