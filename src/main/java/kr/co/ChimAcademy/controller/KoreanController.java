@@ -116,9 +116,12 @@ public class KoreanController {
 	/* 국문학과 게시판 댓글 작성 */
 	@ResponseBody
 	@PostMapping("board/A101/comment")
-	public BoardVO board_A101_comment(BoardVO vo, HttpServletRequest req) {
+	public BoardVO board_A101_comment(@AuthenticationPrincipal MyUserDetails member, Model model, BoardVO vo, HttpServletRequest req) {
 		String ip = req.getRemoteAddr();
 		vo.setRegip(ip);
+		
+		MemberEntity mem = member.getUser();
+		model.addAttribute("member", mem);
 		// 작성
 		int result = service.insertBoardComment(vo);
 		
