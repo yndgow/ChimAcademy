@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class CountVO {
-
+	// 카테고리별 전자도서/오디오북 도서 갯수(/elib/ebook/_lnb에 이용) 
 	private int c10;
 	private int c11;
 	private int c12;

@@ -361,7 +361,7 @@ public class ELibController {
 				model.addAttribute("items",items);
 		return "elib/mylibrary/mylib";
 	}
-	// 책 등록하기
+	// 책 등록하기(대출,연장)
 	@ResponseBody
 	@PostMapping("elib/mylibrary/register")
 	public Map<String, Integer> registerMylib(MylibVO vo) {

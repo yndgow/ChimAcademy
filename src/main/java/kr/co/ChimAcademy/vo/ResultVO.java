@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ResultVO {
-
+	// 전자도서관 _footer에 지역도서관 공공API 이용 시 파싱에 이용 
 	private getLibraryInfo getLibraryInfo;
 	
 	@Getter
