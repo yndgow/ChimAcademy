@@ -115,6 +115,7 @@ main>section>article>table>tbody {
     height: 30px;
     text-align: center;
     box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
 }
 
 #myinfo>section>form>table {
@@ -227,11 +228,19 @@ main>section>article>table>tbody {
 }
 
 .addPage > a{
-    text-decoration: underline;
-    font-size: 15px;
     position: absolute;
-    top: 5px;
+    top: -13px;
     right: 5px;
+    width: 100px;
+    height: 28px;
+    background: #3B5998;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
 }
 
 /* insert */
@@ -331,4 +340,16 @@ section#myinfo select{
 }
 #btnRegFormShow{
 	margin: 15px 0;
+}
+
+
+.assisManageModifyBtn {
+	width: 62px;
+    height: 31px;
+    margin-right: -3px;
+    margin-bottom: 7px;
+    background-color: #8fa7db;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
 }

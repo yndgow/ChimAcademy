@@ -19,5 +19,6 @@ public interface AssistantDAO {
 	int countNotice();
 	
 	public List<MemberVO> selectMembers(String depCode);
-	public List<MemberVO> selectMember(String uid);
+	public MemberVO selectMember(String uid);
+	public int updateMember(MemberVO vo);
 }
