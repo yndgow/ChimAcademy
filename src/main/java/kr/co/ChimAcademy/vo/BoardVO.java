@@ -24,7 +24,7 @@ public class BoardVO {
 	private int hit;
 	private int parent;
 	private String regip;
-	private String file;
+	private int file;
 	private int good;
 	private int bad;
 	// type 추가 0: 일반글(기본값), 1: 공지사항, 2: 강의계획서
