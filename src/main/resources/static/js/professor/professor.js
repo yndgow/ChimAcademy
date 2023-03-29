@@ -4,7 +4,7 @@
  * 내용 : 교수 자바스크립트 함수
  */
 $(function(){
-    
+   
 });
 function aside(){
 	$('#side > li > ol').hide();

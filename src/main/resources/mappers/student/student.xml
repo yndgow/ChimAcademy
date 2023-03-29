@@ -19,11 +19,13 @@
 	</select>
 	
 	<select id="sumCredit" resultType="int">
-		SELECT SUM(b.credit) AS sumCredit
-		FROM lec_sugang AS a
-		JOIN lecture AS b ON a.lecCode = b.lecCode
-		GROUP BY a.uid
-		HAVING a.uid = 'qwer';
+		SELECT COALESCE(
+					(SELECT SUM(b.credit)
+						FROM lec_sugang AS a
+       					JOIN lecture AS b ON a.lecCode = b.lecCode
+       					WHERE a.uid = #{uid}
+       					GROUP BY a.uid)
+				, 0) AS sumCredit;
 	</select>
 
 

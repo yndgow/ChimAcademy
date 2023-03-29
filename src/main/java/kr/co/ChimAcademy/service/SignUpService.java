@@ -105,7 +105,8 @@ public class SignUpService {
 	
 	// 학생별 총 신청 학점
 	public int sumCredit(String uid) {
-		return studentDAO.sumCredit(uid);
+		int result = studentDAO.sumCredit(uid);
+		return result;
 	}
 	
 	// 수강내역 삭제
