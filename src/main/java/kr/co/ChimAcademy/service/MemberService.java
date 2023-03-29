@@ -65,6 +65,7 @@ public class MemberService {
 		member.setAddr1(entity.getAddr1());
 		member.setAddr2(entity.getAddr2());
 		member.setRegip(ipAddress);
+		member.setProfile("myinfo.png");
 		log.info("member:" + member);
 	}
 	
