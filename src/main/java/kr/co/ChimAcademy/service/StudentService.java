@@ -4,25 +4,19 @@ package kr.co.ChimAcademy.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dao.StudentDAO;
 import kr.co.ChimAcademy.dto.LecSugangDto;
-import kr.co.ChimAcademy.vo.EbookFileVO;
-import kr.co.ChimAcademy.vo.EbookVO;
+import kr.co.ChimAcademy.entity.BoardEntity;
+import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
-import kr.co.ChimAcademy.vo.infoFileVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -31,6 +25,8 @@ public class StudentService {
 	
 	@Autowired
 	private StudentDAO dao;
+	@Autowired
+	private BoardRepo boardRepo;
 
 	
 	public MemberVO selectStudent(String uid) {
@@ -59,16 +55,15 @@ public class StudentService {
 	public int insertLecEval(EvalBoardVO vo) {
 		return dao.insertLecEval(vo);
 	};
-	
 
 	// 프로필 업데이트
 	public String updateProfile(MemberVO vo) {
-		
 		// 프로파일 업로드
 		String nName = fileUpload(vo);
 		dao.updateProfile(nName, vo.getUid());
 		return nName;
 	}
+	
 	// 파일 업로드
 	public String fileUpload(MemberVO vo) {
 		// 썸네일 파일 첨부 
@@ -95,5 +90,8 @@ public class StudentService {
 		return nName;
 	}
 
+	public BoardEntity selectSyllabus(int lecCode) {
+		return boardRepo.findByLecCode(lecCode);
+	}
 	
 }

@@ -9,6 +9,9 @@ import kr.co.ChimAcademy.entity.BoardEntity;
 
 public interface BoardRepo extends JpaRepository<BoardEntity, Integer>{
 	Page<BoardEntity> findByTypeAndParent(int type, int parent, Pageable pageable);
+	
+	// 강의계획서 보기
+	BoardEntity findByLecCode(int lecCode);
 //	
 //	
 //	List<BoardEntity> findByLecCode(String lecCode);

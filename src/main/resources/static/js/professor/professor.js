@@ -54,6 +54,11 @@ function submitSyllabus(){
 			return false;
 		}
 		
+		$('#syllabusForm').submit();
+		
+		setTimeout(()=>{
+			window.close();
+		}, 100)
 		
 		
 	});

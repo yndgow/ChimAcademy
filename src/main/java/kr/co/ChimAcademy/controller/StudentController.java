@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.LecSugangDto;
+import kr.co.ChimAcademy.dto.SyllabusDto;
+import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
-import kr.co.ChimAcademy.vo.infoFileVO;
 
 @Controller
 public class StudentController {
@@ -84,12 +85,19 @@ public class StudentController {
 	// 상세정보 업데이트
 	@PostMapping("student/my/modify")
 	public String mypagemodify(MemberVO vo, @AuthenticationPrincipal MyUserDetails member) {
-		MemberEntity mem = member.getUser();
-		String uid = mem.getUid();
+		//MemberEntity mem = member.getUser();
+		//String uid = mem.getUid();
 		
 		service.updateStudent(vo);
 		
 		return "redirect:/student/my/modify";
 	}
 
+	// 강의 계획서 보기
+	@GetMapping("student/class/view")
+	public String viewSyllabus(int lecCode, Model model) {
+		BoardEntity boardEntity = service.selectSyllabus(lecCode);
+		model.addAttribute("board", boardEntity);
+		return "syllabus/view";
+	}
 }

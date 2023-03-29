@@ -26,7 +26,6 @@ import kr.co.ChimAcademy.service.AssistantService;
 import kr.co.ChimAcademy.vo.DepartmentVO;
 import kr.co.ChimAcademy.vo.LectureVO;
 import kr.co.ChimAcademy.vo.MemberVO;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

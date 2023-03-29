@@ -31,6 +31,7 @@
 			let lec = JSON.parse(sessionStorage.getItem('data'));
 			$('#lecName').val(lec.lecName);
 			$('#lecCode').val(lec.lecCode);
+			sessionStorage.remove('data');
 		});
 	</script>
 	</head>
@@ -39,21 +40,22 @@
 			<div class="text-center mt-5">
 				<h3 class="fw-bold">강의계획서 작성</h3>
 			</div>
-			<form th:action="@{/professor/class/write}" method="post" enctype="multipart/form-data">
+			
+				
 				<div class="mb-3"> 
 				  <label for="formControlInputTitle" class="form-label">제 목</label>
-				  <input type="text" class="form-control" id="formControlInputTitle" placeholder="제목을 입력해 주세요." required>
+				  <input type="text" class="form-control" id="formControlInputTitle" name="title" readonly="readonly" th:value="${board.title}">
 				</div>
 				<div class="mb-3 row">
 					<div class="col-6">
 						<label for="lecName" class="col-form-label">강의과목명</label>
 						<input type="text" readonly class="form-control-plaintext" id="lecName" value="강의계획서 과목">
-						<input type="hidden" readonly class="form-control-plaintext" id="lecCode">
+						<input type="hidden" class="form-control-plaintext" id="lecCode" name="lecCode" readonly>
 					</div>
 					<div class="col-6">
 						
 						<label for="formFile" class="form-label">강의 계획서 파일(PDF)</label>
-	  					<input class="form-control" type="file" id="formFile" accept="application/pdf">
+	  					<input class="form-control" type="file" id="formFile" name="profFile" accept="application/pdf">
 					</div>
 					<div class="col-6">
 						
@@ -61,12 +63,12 @@
 				</div>
 				<div class="mb-3">
 				  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
-				  <textarea class="form-control" id="formControlTextareaContent" rows="25" required></textarea>
+				  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content" required></textarea>
 				</div>
 			<div class="btn_end text-end">
 				<button class="btn btn-lg btn-dark" id="btnSumitSyllabus">등록</button>
 			</div>
-			</form>
+			
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>
