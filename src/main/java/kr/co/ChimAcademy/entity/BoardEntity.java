@@ -2,6 +2,7 @@ package kr.co.ChimAcademy.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -45,7 +47,7 @@ public class BoardEntity {
 	private int hit;
 	private int parent;
 	private String regip;
-	private String file;
+	private int file;
 	private int good;
 	private int bad;
 	private int type;
@@ -55,5 +57,9 @@ public class BoardEntity {
 	@JoinColumn(name = "uid", referencedColumnName = "uid")
 	private MemberEntity memberEntity;
 	
+	 
+//	@OneToOne(cascade = CascadeType.PERSIST)
+//	@JoinColumn(name= "file", referencedColumnName = "no")
+//	private LecFileEntity fileEntity; 
 	
 }
