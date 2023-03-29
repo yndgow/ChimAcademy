@@ -6,9 +6,9 @@
 	
 	<select id="selectStudent" resultType="kr.co.ChimAcademy.vo.MemberVO">
 		SELECT a.*,b.depName,c.majorName FROM member AS a
-		JOIN department AS b
+		LEFT JOIN department AS b
 		ON a.depCode = b.depCode
-		JOIN major AS c
+		LEFT JOIN major AS c
 		ON a.majorCode = c.majorCode
 		WHERE uid = #{uid};
 	</select>
