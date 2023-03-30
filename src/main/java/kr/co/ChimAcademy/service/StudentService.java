@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.ChimAcademy.dao.StudentDAO;
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
+import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
@@ -90,8 +91,14 @@ public class StudentService {
 		return nName;
 	}
 
+	// 강의계획서 가져오기
 	public BoardEntity selectSyllabus(int lecCode) {
 		return boardRepo.findByLecCode(lecCode);
+	}
+	
+	// 계획서 파일 정보 가져오기
+	public LecFileEntity selectFile(int no) {
+		return null;
 	}
 	
 }

@@ -25,48 +25,62 @@
 			border-radius : 4px;
 		}
 	</style>
-	<script>
-		document.addEventListener("DOMContentLoaded", function(){
-			submitSyllabus();
+	<script th:inline="javascript">
+		$(()=>{
+			// 강의계획서 닫기
+			$('#btnCloseSyllabus').click(function(){
+				window.close();
+			});
+		   let board = /*[[${board}]]*/ null;
+		   if(board == null){
+			   alert('강의계획서가 준비중입니다.');
+			   window.close();
+		   }
+			
+		   
 			let lec = JSON.parse(sessionStorage.getItem('data'));
 			$('#lecName').val(lec.lecName);
-			$('#lecCode').val(lec.lecCode);
-			sessionStorage.remove('data');
+		   
 		});
 	</script>
+	
 	</head>
 	<body>
 		<main class="container">
 			<div class="text-center mt-5">
-				<h3 class="fw-bold">강의계획서 작성</h3>
+				<h3 class="fw-bold">강의계획서 보기</h3>
 			</div>
 			
+				<th:block th:if="${board} == null">
+					<div class="h-100"><h3>강의 계획서 준비중입니다.</h3></div>
+				</th:block>
 				
-				<div class="mb-3"> 
-				  <label for="formControlInputTitle" class="form-label">제 목</label>
-				  <input type="text" class="form-control" id="formControlInputTitle" name="title" readonly="readonly" th:value="${board.title}">
-				</div>
-				<div class="mb-3 row">
-					<div class="col-6">
-						<label for="lecName" class="col-form-label">강의과목명</label>
-						<input type="text" readonly class="form-control-plaintext" id="lecName" value="강의계획서 과목">
-						<input type="hidden" class="form-control-plaintext" id="lecCode" name="lecCode" readonly>
+				<th:block th:if="${board} != null">
+					<div class="mb-3"> 
+					  <label for="formControlInputTitle" class="form-label fw-bold">제 목</label>
+					  <input type="text" class="form-control-plaintext" id="formControlInputTitle" name="title" readonly="readonly" th:value="${board.title}">
 					</div>
-					<div class="col-6">
-						
-						<label for="formFile" class="form-label">강의 계획서 파일(PDF)</label>
-	  					<input class="form-control" type="file" id="formFile" name="profFile" accept="application/pdf">
+					<div class="mb-3 row">
+						<div class="col-6">
+							<label for="lecName" class="col-form-label fw-bold">강의과목명</label>
+							<input type="text" readonly class="form-control-plaintext" id="lecName">
+						</div>
+						<div class="col-6">
+							<label for="formFile" class="col-form-label me-3 fw-bold">강의 계획서 파일(PDF)</label><a th:href="@{/syllabus/download(no=${board.fileEntity.no})}" class="btn btn-primary">다운로드</a>
+		  					<input class="form-control-plaintext" type="text" id="formFile" name="fileName">
+						</div>
+						<div class="col-6">
+							
+						</div>
 					</div>
-					<div class="col-6">
-						
+					<div class="mb-3">
+					  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
+					  <textarea class="form-control-plaintext" id="formControlTextareaContent" rows="25" name="content" readonly="readonly">[[${board.content}]]</textarea>
 					</div>
-				</div>
-				<div class="mb-3">
-				  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
-				  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content" required></textarea>
-				</div>
+				</th:block>
+				
 			<div class="btn_end text-end">
-				<button class="btn btn-lg btn-dark" id="btnSumitSyllabus">등록</button>
+				<button class="btn btn-lg btn-dark" id="btnCloseSyllabus">닫기</button>
 			</div>
 			
 		</main>

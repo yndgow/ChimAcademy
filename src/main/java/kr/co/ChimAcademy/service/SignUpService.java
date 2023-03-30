@@ -68,6 +68,7 @@ public class SignUpService {
 		int req = lectureEntity.getLecRequest();
 		chk2 = limit > req ? true : false; 
 		
+		log.info("chk2 : " + chk2);
 		if(chk1 == true && chk2 == true) {
 			return true;
 		}else {
@@ -122,6 +123,49 @@ public class SignUpService {
 		int reqCount = lectureEntity.getLecRequest();
 		lectureEntity.setLecRequest(reqCount-1);
 		
+	}
+	
+	// 수강 시간표 겹치기 여부 체크
+	public boolean checkDuplicationLecTime(Lec_SugangEntity entity) {
+		// 조건 판단 변수
+		boolean checkDup = true;
+		
+		// 신청하려는 요일
+		String nDay = entity.getLectureEntity().getLecDay();
+		
+		List<Lec_SugangEntity> sugangs = sugangRepo.findByMemberEntityUid(entity.getMemberEntity().getUid());
+		for(Lec_SugangEntity lec : sugangs) {
+			// 이미 신청한 요일
+			String oDay = lec.getLectureEntity().getLecDay();
+			
+			// 둘의 요일이 같다면
+			if(nDay.equals(oDay)) {
+				int oBegin = lec.getLectureEntity().getBeginTime();
+				int oEnd= lec.getLectureEntity().getEndTime();
+				
+				int nBegin = entity.getLectureEntity().getBeginTime();
+				int nEnd = entity.getLectureEntity().getEndTime();
+				
+				
+				// 이미 신청한 시작시간 부터 끝나는 시간까지
+				for(int i = oBegin; i <= oEnd; i++) {
+					// 새로 신청한 시작시간부터 끝나는 시간까지
+					for(int j = nBegin; j <= nEnd; j++) {
+						// 둘의 시간에서 겹치는 시간이 발생한다면 신청 불가
+						if(i == j) {
+							checkDup = false;
+							break;
+						}
+					}
+					if(!checkDup) {
+						break;
+					}
+				}
+						
+			}
+		}
+		
+		return checkDup;
 	}
 	
 }

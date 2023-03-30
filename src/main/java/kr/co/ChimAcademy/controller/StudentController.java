@@ -1,9 +1,15 @@
 package kr.co.ChimAcademy.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.LecSugangDto;
-import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
@@ -24,6 +29,8 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService service;
+	
+	
 	
 	@GetMapping("student/class/signup2")
 	public String signUp() {
@@ -100,4 +107,33 @@ public class StudentController {
 		model.addAttribute("board", boardEntity);
 		return "syllabus/view";
 	}
+	
+	
+	@GetMapping("syllabus/download")
+	public ResponseEntity<Resource> downloadFile(int no) throws IOException {
+	    // Get the file as a resource from the classpath or filesystem
+		
+		// 파일정보 찾아오기
+		
+		
+		// 경로
+		
+		// 현재 파일이름
+		
+		// 원래 파일이름
+		
+	    Resource resource = new FileSystemResource("file/2023/da700c70-14d6-4d3c-a394-88f9c6da2c85.pdf");
+
+	    // Set the response headers
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=file.pdf");
+
+	    // Return the file as a ResponseEntity
+	    return ResponseEntity.ok()
+	            .headers(headers)
+	            .contentLength(resource.contentLength())
+	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+	            .body(resource);
+	}
+
 }

@@ -90,16 +90,30 @@ public class SignUpController {
 		// 반환할 map 생성
 		Map<String, Integer> json = new HashMap<>();
 		
+		int result = 0;
+		
+		// 신청한 과목의 날짜 존재 여부 체크
+		if(entity.getLectureEntity().getLecDay() == null) {
+			result = 4;
+			json.put("result", result);
+			return json;
+		}
+		
+		// 수강신청한 과목과 시간이 겹치는지 체크
+		boolean chkDup = signUpService.checkDuplicationLecTime(entity);
+		if(!chkDup) {
+			result = 3;
+		}
 		
 		// 조건 체크(기신청여부, 인원)
 		boolean chk = signUpService.checkSugang(entity);
-		int result = 0; 
 		
-		if(chk) {
+		if(chk && chkDup) {
 			// 수강 신청 진행
 			// 총 학점 20초과 체크
 			result = signUpService.insertSugang(entity);
 		}
+		
 		json.put("result", result);
 		return json;
 	}
