@@ -105,7 +105,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="btns">
+                                <div class="btns" sec:authorize="hasAnyRole('4')">
 									<a class="btn btn2" th:href="@{/elib/info/write}">
 									<span class="material-icons">edit</span>
 									작성하기
