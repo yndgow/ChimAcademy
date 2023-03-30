@@ -25,7 +25,7 @@ function selectMajors(){
 				major.empty();
 
 				let tag = `<option value="">-</option>`;
-				data.forEach(e => {
+				data.forEach(e => {	
 					tag += `<option value="${e.majorCode}">${e.majorName}</option>`;
 				});
 				major.append(tag);
@@ -54,9 +54,14 @@ function viewSyllabus(){
 		// 팝업 옵션(크기, 위치)
 		let option = `width = ${width}, height = ${height}, top = ${top}, left = ${left}`;
 		
+		let lecture = {};
+		lecture.lecName = $(this).closest('tr').find('td:nth-child(6)').text();
+		setData(lecture);
+		
 		window.open(url, name, option);
 	})
 }
+
 
 
 
@@ -78,7 +83,7 @@ function regLecSuang(){
 			data: jsonData,
 			dataType: "json",
 			success: function (data) {
-				console.log(data);
+				//console.log(data);
 				if(data.result == 0){
 					alert('이미 신청하였거나 수강인원이 꽉 찼습니다.');
 				}else if(data.result == 1){
@@ -86,6 +91,10 @@ function regLecSuang(){
 					location.reload();
 				}else if(data.result == 2){
 					alert('신청할 수 있는 학점은 최대 20학점입니다.');
+				}else if(data.result == 3){
+					alert('이미 신청하였거나 신청한 다른 강의와 시간이 겹칩니다.');
+				}else if(data.result ==4){
+					alert('날짜가 정해지지 않은 강의는 신청하실 수 없습니다.');
 				}
 			}
 		});
@@ -115,4 +124,10 @@ function delSugang(){
 			}
 		})
 	});
+}
+
+
+function setData(data){
+	
+	sessionStorage.setItem('data', JSON.stringify(data));
 }
