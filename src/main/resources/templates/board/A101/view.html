@@ -26,7 +26,7 @@ $(()=>{
 				</tr>
 			</tbody>
 		</table>
-		<input type="hidden" name="uid" th:value="${korean.uid}" />
+		<!-- <input type="hidden" name="uid" th:value="${korean.uid}" /> -->
 		<div class="btn_div">
 			<a class="btn nomal" th:href="@{/board/A101/list(pg=${pg})}">목록</a>
 			<div th:if="${#authentication.principal.user.uid} eq ${korean.uid}">

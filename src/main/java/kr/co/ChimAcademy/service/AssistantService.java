@@ -82,9 +82,13 @@ public class AssistantService {
 	}
 	
 	//조교 학생 수정
-	public List<MemberVO> selectMember(String uid){
+	public MemberVO selectMember(String uid){
 		return dao.selectMember(uid);
 	}
+	public int updateMember(MemberVO vo) {
+		return dao.updateMember(vo);
+	}
+	
 	
 	// 학과별 교수
 	public List<MemberEntity> selectProfessors(DepartmentEntity departmentEntity){

@@ -53,12 +53,33 @@
 	</select>
 	
 	<select id="selectMembers" resultType="kr.co.ChimAcademy.vo.MemberVO">
-		select * from `member` WHERE `depCode`=#{depCode} AND `level`=1;
+		select * from `member` WHERE `depCode`=#{depCode} AND (`level`=1 or `level`=2);
 	</select>
 	
 	<select id="selectMember" resultType="kr.co.ChimAcademy.vo.MemberVO">
 		select * from `member` where `uid`=#{uid};
 	</select>
+	
+	<update id="updateMember">
+		update `member` 
+			<set>
+				`status`=#{status},
+				`name`=#{name},
+				`level`=#{level},
+				`birth`=#{birth},
+				`addr1`=#{addr1},
+				`sYear`=#{sYear},
+				`rdate`=#{rdate},
+				<if test="wdate != ''">`wdate`=#{wdate},</if>
+				<if test="wdate == ''">`wdate` = null,</if>
+				`zip`=#{zip},
+				`gender`=#{gender},
+				`hp`=#{hp},
+				`info`=#{info},
+				`email`= #{email}
+			</set>
+			where `uid`=#{uid};	
+	</update>
 	
 	<select id="countNotice" resultType="int">
 		SELECT COUNT(`no`) FROM board WHERE lecCode IS NOT NULL AND parent = 0;

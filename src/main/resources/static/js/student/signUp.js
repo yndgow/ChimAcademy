@@ -40,6 +40,21 @@ function viewSyllabus(){
 	$(document).on('click', '.btnSyllabus', function(){
 		let tr = $(this).closest('tr');
 		let lecCode = tr.children('td:eq(4)').text();
+		
+		// 팝업 오픈
+		// 팝업주소
+		let url = "/ChimAcademy/student/class/view?lecCode="+lecCode;
+		// 팝업 제목
+		let name = "강의계획서";
+		// 화면 중앙에 팝업 시키기 위한 값 구하기
+		let width = 1220;
+		let height = 760;
+		let left = (screen.width/2)-(width/2);
+		let top  = (screen.height/2)-(height/2);
+		// 팝업 옵션(크기, 위치)
+		let option = `width = ${width}, height = ${height}, top = ${top}, left = ${left}`;
+		
+		window.open(url, name, option);
 	})
 }
 

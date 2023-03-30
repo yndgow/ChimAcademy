@@ -101,6 +101,9 @@
                         	강의평가
                         </th>
                     </tr>
+                    <th:block th:if="${#lists.isEmpty(lecture)}">
+				        	<td colspan="10">수강신청한 과목이 없습니다.</td>
+					</th:block>
 					<tr th:each="lecture : ${lecture}">
                         <td>[[${lectureStat.count}]]</td>
 	                    <td>[[${lecture.lecClass}]]</td>
@@ -115,7 +118,7 @@
 				        	강의평가완료
 					    </th:block>
 					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}!= null">
-					        <button class="btn_small blue openModalBtn">강의 평가</button>
+					        <button class="btn_small blue openModalBtn" style="border: 0">강의 평가</button>
 					    </th:block>
 					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}== null">
 					        평가준비중
@@ -156,8 +159,8 @@
 						    <input type="hidden" name="pid">
 						    <input type="hidden" name="lecCode">
 					        <div class="btn_div">
-						        <button  class="close">취소</button>
-						        <button type="submit">등록</button>
+						        <button  class="close red" style="border: 0">취소</button>
+						        <button class="blue" type="submit" style="border: 0">등록</button>
 						    </div>
 					  </form>
 				  </div>

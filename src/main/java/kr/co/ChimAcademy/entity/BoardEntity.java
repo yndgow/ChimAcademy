@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -35,8 +36,10 @@ public class BoardEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int no;
+	@Column(nullable = true)
 	private String depCode;
-	private String lecCode;
+	@Column(nullable = true)
+	private Integer lecCode;
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
@@ -45,7 +48,7 @@ public class BoardEntity {
 	private int hit;
 	private int parent;
 	private String regip;
-	private String file;
+//	private int file;
 	private int good;
 	private int bad;
 	private int type;
@@ -55,5 +58,9 @@ public class BoardEntity {
 	@JoinColumn(name = "uid", referencedColumnName = "uid")
 	private MemberEntity memberEntity;
 	
+	 
+	@OneToOne
+	@JoinColumn(name= "file", referencedColumnName = "no", nullable = true)
+	private LecFileEntity fileEntity; 
 	
 }

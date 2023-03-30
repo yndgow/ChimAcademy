@@ -66,16 +66,32 @@ public class AssistantController {
 	public String manage(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
 		String depCode = userDetails.getUser().getDepartmentEntity().getDepCode();
 		List<MemberVO> members = assistantService.selectMembers(depCode);
+		MemberEntity member = userDetails.getUser();
+		DepartmentVO vo = assistantService.selectDep(member.getUid());
 		model.addAttribute("members", members);
+		model.addAttribute("department", vo);
 		return "assistant/manage";
 	}
 	
 	// 학생 정보 수정
 	@GetMapping("assistant/modify")
-	public String modify(String uid, Model model) {
-		List<MemberVO> member = assistantService.selectMember(uid);
+	public String modifyGet(String uid, Model model) {
+		MemberVO member = assistantService.selectMember(uid);
+		try {
+			member.setRdate(member.getRdate().substring(0,10));
+			member.setWdate(member.getWdate().substring(0,10));
+		} catch (Exception e) {
+			log.info("error : " + e.getMessage());
+		}
 		model.addAttribute("member", member);
 		return "assistant/modify";
+	}
+	@PostMapping("assistant/modify")
+	public String modifyPost(MemberVO vo) {
+		log.info("wdate : "+vo.getWdate()+"////////////////////////////////////");
+		assistantService.updateMember(vo);
+		
+		return "redirect:/assistant/manage";
 	}
 	
 	// 강의 관리 

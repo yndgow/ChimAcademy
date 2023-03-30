@@ -48,6 +48,9 @@ h1{
 }
 
 .board table > tbody > tr td > textarea{
+	width: 100%;
+    border:1px;
+    height: 500px;
     border: 1px solid #e5e7ea;
     border-radius: 3px;
 }
@@ -58,7 +61,14 @@ h1{
 }
 
 .board textarea{
+    border:1px;
+    height: 500px;
+}
+
+
+.modifyInfo textarea{
     width: 100%;
+    border:1px;
     height: 500px;
 }
 
