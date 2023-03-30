@@ -39,6 +39,7 @@ function popupOpen(){
 	});
 }
 
+// 강의계획서 폼 유효성검사 및 출력
 function submitSyllabus(){
 	$('#btnSumitSyllabus').click(function(e){
 		e.preventDefault();
@@ -64,7 +65,65 @@ function submitSyllabus(){
 	});
 }
 
+// 세션스토리지 데이터 저장
 function setData(data){
-	
 	sessionStorage.setItem('data', JSON.stringify(data));
+}
+
+// 과목코드에 따라 수강인원(성적) 불러오기
+function getScores(){
+	$(document).on('click', '.btnStdList', function(){
+		let count = $(this).data('lecreq');
+		if(!count){
+			alert('수강인원이 없습니다.');
+			return false;
+		}
+		let lecCode = $(this).data('leccode');
+		
+		$.ajax({
+			type : 'get',
+			url : '/ChimAcademy/professor/credit/'+lecCode,
+			dataType : 'json',
+			success : function(data){
+				console.log(data);
+				let tag = '';
+				data.forEach(function(ele, index){
+					tag += ` <tr>
+                           <td>${index+1}</td>
+                           <td>${ele.lectureEntity.lecClass}</td>
+                           <td>${ele.lectureEntity.depCode}</td>
+                           <td>${ele.memberEntity.uid}</td>
+                           <td>${ele.memberEntity.name}</td>
+                           <td>${ele.midExam}</td>
+                           <td>${ele.finalExam}</td>
+                           <td>${ele.etc1}</td>
+                           <td>${ele.etc2}</td>
+                           <td>${ele.etc3}</td>
+                           <td>${ele.etc4}</td>
+                           <td>${ele.totalScore}/100</td>
+                           <td>${ele.grade}</td>
+                           <td><button class="btnInputCredit" data-no="${ele.no}">입력</button></td>
+                        </tr>`;
+					
+					
+					$('#scoreTbody').empty();
+					$('#scoreTbody').append(tag);
+				});
+			}
+		})
+		
+		
+	});
+}
+
+function editTest(){
+	$(document).on('click', '.btnInputCredit', function(){
+		for(let i =0; i<6; i++){
+			
+		}
+		let mid = $(this).closest('tr').find('td:nth-child(6)');
+		
+		mid.css('color', 'red');
+		mid.attr('contenteditable', true);
+	})
 }

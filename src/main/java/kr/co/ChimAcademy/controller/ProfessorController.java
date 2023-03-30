@@ -8,8 +8,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.EvalBoardDTO;
@@ -18,6 +20,7 @@ import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
+import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.service.ProfessorService;
 import kr.co.ChimAcademy.vo.MemberVO;
 
@@ -27,8 +30,36 @@ public class ProfessorController {
 	private ProfessorService service;
 
 	@GetMapping("professor/credit")
-	public String credit() {
+	public String credit(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+		// 교수 - 강의 내역
+		List<LecListEntity> list = service.selectClasss(userDetails.getUser().getUid());
+		List<LecSugangDto> list2 = new ArrayList<>();
+		for(LecListEntity ele : list) {
+
+			// 구분 변환
+			LecSugangDto dto = new LecSugangDto();
+			LectureEntity entity = ele.getLectureEntity();
+			dto.setLecName(entity.getLecName());
+			dto.setLecClass(entity.getLecClass());
+			dto.setLecGubun(entity.getLecGubun());
+			dto.setCredit(entity.getCredit());
+			dto.setBeginTime(entity.getBeginTime());
+			dto.setEndTime(entity.getEndTime());
+			dto.setLecRequest(entity.getLecRequest());
+			dto.setLecDay(entity.getLecDay());
+			dto.setLecLoc(entity.getLecLoc());
+			dto.setLecCode(entity.getLecCode());
+			list2.add(dto);
+		}
+		model.addAttribute("classs", list2);
+		
 		return "professor/credit";
+	}
+	
+	@ResponseBody
+	@GetMapping("professor/credit/{lecCode}")
+	public List<ScoreEntity> selectScoresBylecCode(@PathVariable int lecCode){
+		return service.selectScoresBylecCode(lecCode);
 	}
 
 	@GetMapping("professor/eval")
