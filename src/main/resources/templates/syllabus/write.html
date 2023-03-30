@@ -42,18 +42,18 @@
 			<form id="syllabusForm" th:action="@{/professor/class/write}" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="uid" th:value="${#authentication.principal.user.uid}"/>
 				<div class="mb-3"> 
-				  <label for="formControlInputTitle" class="form-label">제 목</label>
+				  <label for="formControlInputTitle" class="form-label fw-bold">제 목</label>
 				  <input type="text" class="form-control" id="formControlInputTitle" name="title" placeholder="제목을 입력해 주세요." required>
 				</div>
 				<div class="mb-3 row">
 					<div class="col-6">
-						<label for="lecName" class="col-form-label">강의과목명</label>
+						<label for="lecName" class="col-form-label fw-bold">강의과목명</label>
 						<input type="text" readonly class="form-control-plaintext" id="lecName" value="강의계획서 과목">
 						<input type="hidden" class="form-control-plaintext" id="lecCode" name="lecCode" readonly>
 					</div>
 					<div class="col-6">
 						
-						<label for="formFile" class="col-form-label">강의 계획서 파일(PDF)</label>
+						<label for="formFile" class="col-form-label fw-bold">강의 계획서 파일(PDF)</label>
 	  					<input class="form-control" type="file" id="formFile" name="profFile" accept="application/pdf">
 					</div>
 					<div class="col-6">
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 				<div class="mb-3">
-				  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
+				  <label for="formControlTextareaContent" class="form-label fw-bold">세부 내용</label>
 				  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content" required></textarea>
 				</div>
 			<div class="btn_end text-end">

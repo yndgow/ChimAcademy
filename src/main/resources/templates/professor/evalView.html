@@ -1,5 +1,11 @@
 <th:block th:include="@{student/_header.html}"/>
-
+<script>
+	$(()=>{
+		$('#btnEvalList').click(function(){
+			location.href="/ChimAcademy/professor/eval";
+		});
+	});
+</script>
 <main id="eval">
    	<th:block th:include="@{_aside.html}"/>
 	<section>
@@ -25,7 +31,7 @@
 	        </tr>
 	    </table>
 	    <div class="btn_div">
-	        <button>목록</button>
+	        <button id="btnEvalList">목록</button>
 	    </div>
 	</section>
 </main>

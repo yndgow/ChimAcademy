@@ -23,15 +23,14 @@ import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
-import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.repository.LecFileRepo;
 import kr.co.ChimAcademy.repository.LecListRepo;
-import kr.co.ChimAcademy.repository.Lec_SugangRepo;
 import kr.co.ChimAcademy.repository.MemberRepo;
 import kr.co.ChimAcademy.repository.ScoreRepo;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.ScoreVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -184,5 +183,24 @@ public class ProfessorService {
 		return scoreRepo.findByLectureEntityLecCode(lecCode);
 	}
 	
+	// 수강 인원 정보 1명 출력
+	public ScoreEntity selectScore(int no) {
+		return scoreRepo.findById(no).orElse(null);
+	}
+	
+	// 성적 입력하기
+	@Transactional
+	public void updateScore(ScoreVO vo) {
+		ScoreEntity entity= scoreRepo.findById(vo.getNo()).orElse(new ScoreEntity());
+		entity.setMidExam(vo.getMidExam());
+		entity.setFinalExam(vo.getFinalExam());
+		entity.setEtc1(vo.getEtc1());
+		entity.setEtc2(vo.getEtc2());
+		entity.setEtc3(vo.getEtc3());
+		entity.setEtc4(vo.getEtc4());
+		entity.setTotalScore(vo.getTotalScore());
+		entity.setGrade(vo.getSGrade());
+		scoreRepo.save(entity);
+	}
 	
 }

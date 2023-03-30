@@ -1,6 +1,7 @@
 package kr.co.ChimAcademy.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.List;
 
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.util.UriUtils;
 
 import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
+import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
@@ -29,8 +32,6 @@ public class StudentController {
 	
 	@Autowired
 	private StudentService service;
-	
-	
 	
 	@GetMapping("student/class/signup2")
 	public String signUp() {
@@ -114,19 +115,20 @@ public class StudentController {
 	    // Get the file as a resource from the classpath or filesystem
 		
 		// 파일정보 찾아오기
-		
+		LecFileEntity file= service.selectFile(no);
 		
 		// 경로
-		
+		String path = "file/2023/";
 		// 현재 파일이름
-		
+		String nName = file.getNewName();
 		// 원래 파일이름
+		String oName = file.getOriName();
 		
-	    Resource resource = new FileSystemResource("file/2023/da700c70-14d6-4d3c-a394-88f9c6da2c85.pdf");
+	    Resource resource = new FileSystemResource(path + nName);
 
 	    // Set the response headers
 	    HttpHeaders headers = new HttpHeaders();
-	    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=file.pdf");
+	    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + UriUtils.encode(oName, StandardCharsets.UTF_8));
 
 	    // Return the file as a ResponseEntity
 	    return ResponseEntity.ok()
