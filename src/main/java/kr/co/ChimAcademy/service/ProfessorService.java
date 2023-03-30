@@ -23,11 +23,14 @@ import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
-import kr.co.ChimAcademy.entity.MemberEntity;
+import kr.co.ChimAcademy.entity.Lec_SugangEntity;
+import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.repository.LecFileRepo;
 import kr.co.ChimAcademy.repository.LecListRepo;
+import kr.co.ChimAcademy.repository.Lec_SugangRepo;
 import kr.co.ChimAcademy.repository.MemberRepo;
+import kr.co.ChimAcademy.repository.ScoreRepo;
 import kr.co.ChimAcademy.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,6 +51,9 @@ public class ProfessorService {
 	
 	@Autowired
 	private LecFileRepo fileRepo;
+	
+	@Autowired
+	private ScoreRepo scoreRepo;
 	
 	// 교수 내 정보 페이지
 	public MemberVO selectProMy(String uid) {
@@ -171,9 +177,12 @@ public class ProfessorService {
 			// 보드 파일번호 업데이트
 			boardEntity.setFileEntity(fileEntity);
 		}
-		
-		
-		
-		
 	}
+	
+	// 수강 인원 정보 출력
+	public List<ScoreEntity> selectScoresBylecCode(int lecCode){
+		return scoreRepo.findByLectureEntityLecCode(lecCode);
+	}
+	
+	
 }
