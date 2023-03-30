@@ -58,24 +58,21 @@
 				<th:block th:if="${board} != null">
 					<div class="mb-3"> 
 					  <label for="formControlInputTitle" class="form-label fw-bold">제 목</label>
-					  <input type="text" class="form-control-plaintext" id="formControlInputTitle" name="title" readonly="readonly" th:value="${board.title}">
+					  <input type="text" class="form-control" id="formControlInputTitle" name="title" readonly="readonly" th:value="${board.title}">
 					</div>
 					<div class="mb-3 row">
 						<div class="col-6">
 							<label for="lecName" class="col-form-label fw-bold">강의과목명</label>
-							<input type="text" readonly class="form-control-plaintext" id="lecName">
+							<input type="text" readonly class="form-control" id="lecName">
 						</div>
 						<div class="col-6">
 							<label for="formFile" class="col-form-label me-3 fw-bold">강의 계획서 파일(PDF)</label><a th:href="@{/syllabus/download(no=${board.fileEntity.no})}" class="btn btn-primary">다운로드</a>
-		  					<input class="form-control-plaintext" type="text" id="formFile" name="fileName">
-						</div>
-						<div class="col-6">
-							
+		  					<input class="form-control-plaintext" type="text" id="oFile" name="fileoName" th:value="${board.fileEntity.oriName}">
 						</div>
 					</div>
 					<div class="mb-3">
 					  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
-					  <textarea class="form-control-plaintext" id="formControlTextareaContent" rows="25" name="content" readonly="readonly">[[${board.content}]]</textarea>
+					  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content" readonly="readonly">[[${board.content}]]</textarea>
 					</div>
 				</th:block>
 				

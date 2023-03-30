@@ -16,6 +16,7 @@ import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
+import kr.co.ChimAcademy.repository.LecFileRepo;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,8 @@ public class StudentService {
 	private StudentDAO dao;
 	@Autowired
 	private BoardRepo boardRepo;
+	@Autowired
+	private LecFileRepo fileRepo;
 
 	
 	public MemberVO selectStudent(String uid) {
@@ -98,7 +101,7 @@ public class StudentService {
 	
 	// 계획서 파일 정보 가져오기
 	public LecFileEntity selectFile(int no) {
-		return null;
+		return fileRepo.findById(no).orElse(null);
 	}
 	
 }

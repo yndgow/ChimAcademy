@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 import lombok.Data;
 
 @Data
@@ -18,6 +19,8 @@ public class ScoreEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int no;
+	@Column(name="sYear")
+	private int year;
 //	private String uid;
 //	private int lecCode;
 	private int midExam;
@@ -28,6 +31,7 @@ public class ScoreEntity {
 	private int etc4;
 	@Column(name = "totalScore")
 	private int totalScore;
+	@Column(name = "sGrade")
 	private String grade;
 	
 	public int getTotalScore() {
@@ -50,9 +54,7 @@ public class ScoreEntity {
 			this.grade = "C+";
 		}else if(sc >= 70 && sc < 75) {
 			this.grade = "C";
-		}else if(sc >= 60 && sc < 70) {
-			this.grade = "D";
-		}else if(sc < 60) {
+		}else{
 			this.grade = "F";
 		}
 		

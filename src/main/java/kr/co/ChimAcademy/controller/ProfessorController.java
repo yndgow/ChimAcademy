@@ -23,6 +23,7 @@ import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.service.ProfessorService;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.ScoreVO;
 
 @Controller
 public class ProfessorController {
@@ -171,4 +172,19 @@ public class ProfessorController {
 		model.addAttribute("vo", vo);
 		return "professor/evalView";
 	}
+	
+	// 성적 입력 팝업
+	@GetMapping("professor/score/{no}")
+	public String scoreView(@PathVariable int no, Model model) {
+		model.addAttribute("score", service.selectScore(no));
+		return "professor/score";
+	}
+	
+	// 성적 입력하기
+	@PostMapping("professor/score")
+	public String insertScore(ScoreVO vo) {
+		service.updateScore(vo);
+		return "redirect:/professor/credit";
+	}
+	
 }

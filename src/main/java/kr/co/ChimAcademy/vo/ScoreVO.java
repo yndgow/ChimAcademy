@@ -13,6 +13,6 @@ public class ScoreVO {
 	private int etc2;
 	private int etc3;
 	private int etc4;
-	private int totScore;
-	private String grade;
+	private int totalScore;
+	private String sGrade;
 }

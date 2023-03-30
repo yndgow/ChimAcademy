@@ -1,5 +1,6 @@
 package kr.co.ChimAcademy.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,10 +13,13 @@ import kr.co.ChimAcademy.entity.DepartmentEntity;
 import kr.co.ChimAcademy.entity.Lec_SugangEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MajorEntity;
+import kr.co.ChimAcademy.entity.MemberEntity;
+import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.repository.DepartmentRepo;
 import kr.co.ChimAcademy.repository.Lec_SugangRepo;
 import kr.co.ChimAcademy.repository.LectureRepo;
 import kr.co.ChimAcademy.repository.MajorRepo;
+import kr.co.ChimAcademy.repository.ScoreRepo;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -27,13 +31,15 @@ public class SignUpService {
 	private final Lec_SugangRepo sugangRepo;
 	private final LectureRepo lectureRepo;
 	private final StudentDAO studentDAO;
+	private final ScoreRepo scoreRepo;
 	
-	public SignUpService(DepartmentRepo departmentRepo, MajorRepo majorRepo, Lec_SugangRepo sugangRepo, LectureRepo lectureRepo, StudentDAO studentDAO) {
+	public SignUpService(DepartmentRepo departmentRepo, MajorRepo majorRepo, Lec_SugangRepo sugangRepo, LectureRepo lectureRepo, StudentDAO studentDAO, ScoreRepo scoreRepo) {
 		this.departmentRepo = departmentRepo;
 		this.majorRepo = majorRepo;
 		this.sugangRepo = sugangRepo;
 		this.lectureRepo = lectureRepo;
 		this.studentDAO = studentDAO;
+		this.scoreRepo = scoreRepo;
 	}
 	
 	// 모든 학과 조회
@@ -93,6 +99,17 @@ public class SignUpService {
 			LectureEntity lectureEntity = lectureRepo.findById(lecCode).orElseThrow();
 			int cur = lectureEntity.getLecRequest();
 			lectureEntity.setLecRequest(cur + 1);
+			
+			// 성적 테이블 추가
+			Calendar calendar = Calendar.getInstance();
+			int year = calendar.get(Calendar.YEAR);
+			
+			ScoreEntity scoreEntity = new ScoreEntity();
+			scoreEntity.setYear(year);
+			scoreEntity.setMemberEntity(entity.getMemberEntity());
+			scoreEntity.setLectureEntity(entity.getLectureEntity());
+			
+			scoreRepo.save(scoreEntity);
 			
 			return 1;
 		}
