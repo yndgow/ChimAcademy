@@ -1,4 +1,12 @@
 <th:block th:include="@{elib/_header.html}"/>
+<script>
+$(function(){
+	 $('.print').on('click', function() {
+	        window.print();
+	    })
+});
+   
+</script>
         <main id="sub-container">
             <div class="sub-visual">
                 <div class="bg">
@@ -69,9 +77,7 @@
                                 			</dl>
                                 		</div>
                                 		<div class="nview-body">
-                                			<p>
-                                			[[${article.content}]]
-                                			</p>
+                                			<textarea readonly="readonly">[[${article.content}]]</textarea>
                                 		</div>
                                 	</div>
                                 	<div class="btns">
@@ -79,11 +85,11 @@
                                 			<span class="material-icons">print</span>
                                 			<span>인쇄</span>
                                 		</a>
-                                		<a class="btn" th:href="@{/elib/info/modify(no=${article.no})}">
+                                		<a class="btn" th:href="@{/elib/info/modify(no=${article.no})}" sec:authorize="hasAnyRole('4')">
                                 			<span class="material-icons">edit</span>
                                 			<span>수정</span>
                                 		</a>
-                                		<a class="btn" th:href="@{/elib/info/modify(no=${article.no})}">
+                                		<a class="btn" th:href="@{/elib/info/modify(no=${article.no})}" sec:authorize="hasAnyRole('4')">
                                 			<span class="material-icons">close</span>
                                 			<span>삭제</span>
                                 		</a>
