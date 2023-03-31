@@ -33,11 +33,6 @@ public class StudentController {
 	@Autowired
 	private StudentService service;
 	
-	@GetMapping("student/class/signup2")
-	public String signUp() {
-		return "student/signUp";
-	}
-	
 	@GetMapping("student/class/timeTable")
 	public String timeTable(@AuthenticationPrincipal MyUserDetails member,Model model){
 		List<LecSugangDto> table = service.selectSugangs(member.getUser().getUid());

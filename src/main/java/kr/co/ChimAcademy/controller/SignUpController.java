@@ -71,7 +71,7 @@ public class SignUpController {
 		model.addAttribute("sugangs", sugangs);
 		model.addAttribute("sumCredit", sumCredit);
 		
-		return "student/signUp";
+		return "student/signup";
 	}
 	
 	// 전공 찾기
