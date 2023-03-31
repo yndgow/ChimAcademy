@@ -35,10 +35,10 @@ public class SecurityConfig {
         		// 로그인 전체 허용
         		.antMatchers("/member/**", "/", "/index", "/login").permitAll()
         		// 교수, 학생, 조교 허용
-        		.antMatchers("/professor/**").hasAnyRole("3", "4")
-        		.antMatchers("/student/**").hasAnyRole("1","2", "4")
-        		.antMatchers("/assistant/lecture/search").permitAll()
-        		.antMatchers("/assistant/**").hasAnyRole("2", "4")
+//        		.antMatchers("/professor/**").hasAnyRole("3", "4")
+//        		.antMatchers("/student/**").hasAnyRole("1","2", "4")
+//        		.antMatchers("/assistant/lecture/search").permitAll()
+//        		.antMatchers("/assistant/**").hasAnyRole("2", "4")
         		// 도서관 전자책 등록 페이지 접근 ( 관리자만 ) - 홍모
         		.antMatchers("/elib/info/register").hasAnyRole("4") 
         		// 그외 주소 로그인 필요
