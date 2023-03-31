@@ -59,7 +59,7 @@ h1{
 
 .comment > div{
     padding: 5px;
-    border-bottom: 1px solid #999;
+    
     margin-bottom: 20px;
 }
 
@@ -81,7 +81,10 @@ h1{
 }
 
 .comment .write textarea{
-    width: 100%;
+    padding: 20px;
+    width: 95%;
+    height: 100px;
+    resize: none;
 }
 
 .comment .view{
@@ -113,9 +116,6 @@ h1{
 
 
 /* List */
-#wrapper{
-	/* padding-bottom: 0px; */
-}
 main{
     display: flex;
     width: 1280px;
