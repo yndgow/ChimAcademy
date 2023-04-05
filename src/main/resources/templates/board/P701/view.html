@@ -1,0 +1,67 @@
+<th:block th:include="@{board/P701/_header.html}"/>
+
+        <main>
+            <th:block th:include="@{_aside.html}"/>
+			<div class="board">
+				<table>
+					<h1>글 보기</h1>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+							<td>[[${vo.uid}]] [[${vo.name}]]</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td>[[${vo.title}]]</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td>
+							<textarea rows="5" style="border: 0; text-align: start">[[${vo.content}]]</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn_div">
+					<a class="btn nomal" th:href="@{/board/P701/list(pg=${pg})}">목록</a>
+										
+					<div th:if="${#authentication.name == vo.uid}">
+						<a class="btn blue"  th:href="@{/board/P701/modify(no=${no},pg=${pg})}">수정<a>
+						<a class="btn red" id="deleteBoard" th:href="@{/board/P701/delete(no=${no})}">삭제</a>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="write">
+						<h1>댓글 수 <span>[[${countComment}]]</span></h1>
+						<h2>[[${member.uid}]]</h2>
+						<textarea name="content" id="content" cols="30" rows="10">댓글 쓴 내용 입니다</textarea>
+						<div class="btn_end">
+							<button id="btnCommentInsert" class="btn blue" type="button">등록</button>
+						</div>
+						<input type="hidden" name="no" th:value="${no}">
+						<input type="hidden" name="uid" th:value="${member.uid}">
+					</div>
+					<div id ="commentArea">
+						<div th:each="comment : ${comment}">
+							<div class="view write">
+							<h2>[[${comment.uid}]] <span>[[${comment.rdate}]]</span></h2>
+							<p>[[${comment.content}]]</p>
+							
+								<div class="btn_end">
+									<div>
+										<button class="btn_small btn_comment" th:if="${#authentication.name == comment.uid}">수정</button>
+										<button class="btn_small btn_comment delete" th:data-no="${comment.no}">삭제</button>
+										<button class="btn_small"><i class="fas fa-thumbs-up"> 200</i></button>
+										<button class="btn_small"><i class="fas fa-thumbs-down"> 10</i></button>
+									</div>
+								</div>
+						</div>
+					</div>
+					
+					</div>
+
+					
+				</div>
+			</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

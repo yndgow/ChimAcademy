@@ -1,0 +1,161 @@
+<th:block th:include="@{elib/_header.html}"/>
+<style>
+
+</style>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+                        <form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+	                	</form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">전자책/오디오북 이용안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>전자책/오디오북 이용안내</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <h3>전자책/오디오북 이용안내</h3>
+                                <div>
+                                	<table class="type01 how">
+                                		<tr>
+                                			<th colspan="2">전자책/오디오북</th>
+                                		</tr>
+                                		<tr>
+                                			<td>대출 가능 권수</td>
+                                			<td>최대 5권</td>
+                                		</tr>
+                                		<tr>
+                                			<td>예약 가능 권수</td>
+                                			<td>최대 5권</td>
+                                		</tr>
+                                		<tr>
+                                			<td>대출기간</td>
+                                			<td>15일(대출일 포함)</td>
+                                		</tr>
+                                		<tr>
+                                			<td>연장가능횟수</td>
+                                			<td>1회(7일)</td>
+                                		</tr>
+                                		<tr>
+                                			<th colspan="2">구독형 전자책(오디오북)</th>
+                                		</tr>
+                                		<tr>
+                                			<td>대출 가능 권수</td>
+                                			<td>1일 최대 20권</td>
+                                		</tr>
+                                		<tr>
+                                			<td>대출기간</td>
+                                			<td>15일(대출일포함/자동반납)</td>
+                                		</tr>
+                                	</table>
+                                </div>
+                                <ul class="con">
+                                	<li>
+                                		예약된 도서는 기존 대출자가 반납하면 자동으로 예약순서대로 대출됩니다.
+                                		<br>
+    									- 단, 예약자의 기 대출권수가 총5권이 되면 자동대출이 되지 않습니다.
+                                	</li>
+                                	<li>
+                                		오디오북 유통사 중 오디언과 컨텐츠 포털은 대출권수에 포함되지 않습니다.
+                                		<br>
+									    - 오   디   언  : 스트리밍 무제한, 다운로드 후 이용기간 5일, 동시 다운로드 이용자수 최대 5명
+									    <br>
+    									- 컨텐츠 포털 : 스트리밍, 다운로드 후 이용기간, 다운로드 이용자수 무제한
+                                	</li>
+                                </ul>
+                      			<div class="bookTab">
+						            <ul>
+						                <li class="active">
+						                    <a href="#">전자책/오디오북 이용방법</a>
+						                </li>
+						            </ul>
+						        </div>
+						        <div class="tabCon">
+						        	<h3>홈페이지에서 전자책 메뉴 선택 [이북리더기, 맥OS 미지원]</h3>
+						        	<ul class="con">
+						        		<li>부산광역시 전자도서관 홈페이지에서 로그인 후 이용 가능합니다.</li>
+						        		<li>로그인 후 상단 메뉴의 1번 전자책 또는 검색창 아래의 전자책 아이콘을 선택합니다.</li>
+						        	</ul>
+						        	<img alt="how" th:src="@{/img/elib/how1.jpg}">
+						        	<h3>분류별 메뉴 선택</h3>
+						        	<ul class="con">
+						        		<li>새로 들어온 책, 대출이 많은 책, 주제별, 유통사별 중 원하는 분류를 선택합니다.</li>
+						        		<li>분류별 목록 중 원하는 도서를 선택합니다.</li>
+						        	</ul>
+						        	<img alt="how" th:src="@{/img/elib/how2.jpg}">
+						        	<h3>전자책 대출하기</h3>
+						        	<ul class="con">
+						        		<li>원하는 도서의 상세페이지에서 1번을 선택하면 대출됩니다.</li>
+						        		<li>2번을 선택하면 해당 도서의 뷰어프로그램을 다운로드 할 수 있습니다.</li>
+						        		<li>3번을 선택하면 나의 관심도서 항목에 보관됩니다.</li>
+						        	</ul>
+						        	<img alt="how" th:src="@{/img/elib/how3.jpg}">
+						        	<h3>대출한 전자책읽기</h3>
+						        	<ul class="con">
+						        		<li>내서재의 대출중 도서에서 읽고 싶은 책을 선택합니다.</li>
+						        		<li>1번을 선택하시면 뷰어프로그램을 통해 도서를 읽으실 수 있습니다.</li>
+						        		<li>2번을 선택하시면 대출한 도서를 반납하실 수 있습니다.</li>
+						        		<li>3번을 선택하시면 대출한 도서의 대출 기간을 연장하실 수 있습니다.</li>
+						        	</ul>
+						        	<img alt="how" th:src="@{/img/elib/how4.jpg}">
+						        </div>
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

@@ -1,0 +1,298 @@
+<th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript" th:inline="javascript">
+	$(function(){
+		/* let header = $("meta[name='_csrf_header']").attr('content');
+		let token = $("meta[name='_csrf']").attr('content'); */
+		$('#book-borrow').click(function(e){
+			e.preventDefault();
+			let result = $('.result1').val()
+			if(result > 0){
+				alert("이미 대출을 완료했습니다.")
+				return false;
+			}
+			let loan = Number($('.loan').text())
+			if(loan >= 5){
+				alert("대출 권수를 초과했습니다.");
+				location.reload();
+				return false;
+			}
+			let uid = $('.uid').val();
+			let bookId = $('.bookId').val();
+			let jsonData = {
+					"uid":uid,
+					"bookId":bookId,
+					"state":"1"
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/register",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('대출이 완료되었습니다.')
+				        if (!confirm("내서재로 가시겠습니까?")) {
+							$('.loan').text(loan+1);
+				        } else {
+				            location.href = "/ChimAcademy/elib/mylibrary/mylib?bookId="+bookId+"&state=1";
+				        }
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		});
+		$('#book-reserve').click(function(e){
+			e.preventDefault();
+			let result = $('.result2').val()
+			if(result > 0){
+				alert("이미 예약을 완료했습니다.")
+				return false;
+			}
+			let reserv = Number($('.reserv').text())
+			if(reserv >= 5){
+				alert("예약 권수를 초과했습니다.");
+				location.reload();
+				return false;
+			}
+			let uid = $('.uid').val();
+			let bookId = $('.bookId').val();
+			let jsonData = {
+					"uid":uid,
+					"bookId":bookId,
+					"state":"2"
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/register",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('예약이 완료되었습니다.')
+				        if (!confirm("예약도서 목록으로 가시겠습니까?")) {
+							$('.reserv').text(reserv+1);
+				        } else {
+				            location.href = "/ChimAcademy/elib/mylibrary/mylib?bookId="+bookId+"&state=2";
+				        }
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		});
+		$('#book-recommend').click(function(e){
+			e.preventDefault();
+			let result = $('.result4').val()
+			if(result > 0){
+				alert("이미 좋아요를 완료했습니다.")
+				return false;
+			}
+			let uid = $('.uid').val();
+			let bookId = $('.bookId').val();
+			let jsonData = {
+					"uid":uid,
+					"bookId":bookId
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/ebook/like",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				/* beforeSend: function(xhr){
+			        xhr.setRequestHeader(header, token);
+			    }, */
+				success:function(data){
+					if(data.result > 0){
+						alert('좋아요 성공')
+						let like = $('.like').text()
+						$('.like').text(Number(like)+1);
+						$('.result4').val(1)
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		});
+		$('#book-addfavorite').click(function(e){
+			e.preventDefault();
+			let result = $('.result3').val()
+			if(result > 0){
+				alert("이미 관심도서 추가를 완료했습니다.")
+				return false;
+			}
+			let uid = $('.uid').val();
+			let bookId = $('.bookId').val();
+			let jsonData = {
+					"uid":uid,
+					"bookId":bookId,
+					"state":"0"
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/register",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('관심도서로 추가되었습니다.')
+				        if (!confirm("관심서재 목록으로 가시겠습니까?")) {
+				            
+				        } else {
+				            location.href = "/ChimAcademy/elib/mylibrary/mylib?bookId="+bookId+"&state=0";
+				        }
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		});
+		
+		$('.tab').click(function(e){
+			e.preventDefault();
+			$('.active').removeClass('active');
+			$(this).parent().addClass('active');
+		});
+
+		$('.t1').click(function(e){
+			$('.c1').removeClass('none');
+			$('.c2').addClass('none');
+			$('.c3').addClass('none');
+		});
+		$('.t2').click(function(e){
+			$('.c1').addClass('none');
+			$('.c2').removeClass('none');
+			$('.c3').addClass('none');
+		});
+		$('.t3').click(function(e){
+			$('.c1').addClass('none');
+			$('.c2').addClass('none');
+			$('.c3').removeClass('none');
+		});
+		
+	});
+</script>
+<th:block th:include="@{elib/ebook/_lnb.html}"/>
+						<div class="serial-wrap">
+						    <div class="sview">
+						        <div class="sinfo">
+						        <input type="hidden" class="uid" th:value="${member.uid}">
+						        <input type="hidden" class="bookId" th:value="${bookId}">
+						        <input type="hidden" class="result1" th:value="${result1}">
+						        <input type="hidden" class="result2" th:value="${result2}">
+						        <input type="hidden" class="result3" th:value="${result3}">
+						        <input type="hidden" class="result4" th:value="${result4}">
+						            <div class="thumb">
+						                <img th:src="@{${ebook.thumb}}" alt="썸네일">
+						            </div>
+						            <div class="info">
+						                <ul>
+						                    <li>
+						                        <b>[[${ebook.title}]]</b>
+						                    </li>
+						                    <li>
+						                        카테고리 : [[${ebook.c1Name}]] &#62; [[${ebook.c2Name}]]
+						                    </li>
+						                    <li>
+						                        저자 : [[${ebook.author}]]
+						                        <span> ㅣ </span>
+						                        출판사 : [[${ebook.publisher}]]
+						                        <span> ㅣ </span>
+						                        출판년도 : [[${ebook.pubDate.substring(2,10)}]]
+						                    </li>
+						                    <li>
+						                        공급사 : [[${ebook.applier}]]
+						                        <span> ㅣ </span>
+						                        <a th:href="@{/elib/info/install}">뷰어 설치 안내</a>
+						                    </li>
+						                    <li>
+						                        소속도서관: [[${ebook.belong}]]
+						                    </li>
+						                    <li>
+						                        대출 가능 여부: <span th:text="${ebook.loan} < 5 ? '대출가능':'불가능'"></span>
+						                        <span> ㅣ </span>
+						                        대출 : <span class="loan">[[${ebook.loan}]]</span>/5
+						                        <span> ㅣ </span>
+						                        예약 : <span class="reserv">[[${ebook.reserv}]]</span>/5
+						                    </li>
+						                    <li>
+						                        지원기기 : [[${ebook.support}]]
+						                        <span> ㅣ </span>
+						                        서비스 형태: <span th:text="${ebook.GROUP}=='ebook'?'PDF':'MP3'"></span>
+						                    </li>
+						                    <li>
+						                        좋아요 : <span class="like">[[${ebook.like}]]</span>
+						                    </li>
+						                </ul>
+						            </div>
+						            <div class="sbtn">
+						                <a href="#" class="btn btn1" id="book-borrow" th:if="${ebook.loan < 5 and result1 == 0}">
+						                    <span>대출하기</span>
+						                </a>
+						                <a href="#" class="btn btn2" id="book-reserve" th:if="${ebook.loan >= 5 and ebook.reserv < 5 and result2 == 0}">
+						                    <span>예약하기</span>
+						                </a>
+						                <a href="#" class="btn btn3" id="book-recommend">
+						                    <span>좋아요</span>
+						                </a>
+						                <a href="#" class="btn btn4" id="book-addfavorite" th:if="${result3 == 0}">
+						                    <span>나의 관심도서</span>
+						                </a>
+						            </div>
+						        </div>
+						        <div class="bookTab">
+						            <ul>
+						                <li class="active">
+						                    <a class="tab t1" href="#">도서 소개</a>
+						                </li>
+						                <li>
+						                    <a class="tab t2" href="#">저자 소개</a>
+						                </li>
+						                <li>
+						                    <a class="tab t3" href="#">목차</a>
+						                </li>
+						            </ul>
+						        </div>
+						        <div class="c1">
+						            [[${ebook.bintro}]]
+						        </div>
+						        <div class="none c2">
+						            [[${ebook.aintro}]]
+						        </div>
+						        <div class="none c3">
+						            [[${ebook.index}]]
+						        </div>
+						        <div class="sbtn">
+						            <a th:href="@{/elib/ebook/list(pg=${pg},sort=${sort},type=${type},GROUP=${vo.GROUP},cate1=${vo.cate1},cate2=${vo.cate2},applier=${vo.applier})}" id="goto-list" class="btn">
+						                <span>목록으로</span>
+						            </a>
+						        </div>
+						    </div>
+						</div>
+                    </div>
+                </div>
+                <div class="doc-admin">
+                    <div class="manager-box">
+                        <span>
+                            <label>담당부서</label>
+                            <em> : 정보서비스팀</em>
+                        </span>
+                        <span>
+                            <label>담당자</label>
+                            <em> : 구홍모</em>
+                        </span>
+                        <span>
+                            <label>전화번호</label>
+                            <em> : 051-333-3333</em>
+                        </span>
+                        <span>
+                            <label>최종수정일</label>
+                            <em> : 2023.03.09</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<th:block th:include="@{elib/_footer.html}"/>

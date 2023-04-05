@@ -1,0 +1,355 @@
+/* 마이페이지 */
+
+main{
+    /* display: flex; */
+    width: 1280px;
+}
+main>section {
+    width: 1010px;
+    min-height: 600px;
+    padding: 20px;
+    float: left;
+    box-sizing: border-box;
+}
+
+main>section>nav {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #c0c0c0;
+    box-sizing: border-box;
+}
+
+main>section>nav>h3 {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+main>section>nav>h3>span{
+    bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+main>section>nav>p {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}
+
+main>section>nav>p>strong {
+    font-weight: bold;
+}
+
+main>section>article {
+    overflow: hidden;
+}
+
+main>section>article section {
+    margin-bottom: 16px;
+}
+
+main>section>article section>p {
+    background: #eaeaea;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+main>section>article>table {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-collapse: collapse;
+}
+
+main>section>article>table>tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+/* 내 정보 */
+#myinfo{
+    /* width: 100%; */
+}
+
+#myinfo > h1{
+    bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#myinfo>article {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+#myinfo>section{
+    /* display: flex; */
+}
+
+#myinfo>section>div {
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#myinfo>section>table {
+    height: auto;
+    border-top: 2px solid #8798a3;
+    border-bottom: 2px solid #8798a3;
+    width: 100%;
+}
+
+#myinfo>section>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+
+#myinfo>section>table tr>td {
+    background: #fff;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+#myinfo>section>form>table {
+    height: auto;
+    border-top: 2px solid #8798a3;
+    border-bottom: 2px solid #8798a3;
+    width: 100%;
+}
+
+#myinfo>section>form>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+
+#myinfo>section>form>table tr>td {
+    background: #fff;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* 학생관리 스크롤 */
+.tableWrapper {
+    height: 300px;
+    overflow: auto;
+    border-top: 2px solid #8798a3;
+    border-bottom: 2px solid #8798a3;
+}
+
+/* myAssistant  */
+
+#userListTable {
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+#userListTable th {
+    position: sticky;
+    top: 0px;
+}
+
+#lceRegister::after {
+    content:""; display:block; clear:both;
+}
+
+#lceRegister > #lecDiv{
+    float: left;
+    width: auto;
+    margin-right: 10px;
+    padding-right: 10px;
+    border: 1px solid #c0c0c0;
+}
+#lceRegister > #lecDiv > table{
+    width: 670px;
+    text-align: right;    
+    
+}
+#lceRegister > #lecDiv > table td{
+    line-height: 35px;
+}
+#lceRegister > #lecDiv > table select{
+    width: 145px;
+}
+#lceRegister > #lecDiv > table td:nth-child(even){
+    text-align: center;
+}
+#lceRegister > #lecDiv > table #searchTd{
+    text-align: center;
+}
+#lceRegister > #lecDiv > table #searchTd > button {
+    width: 145px;
+}
+#lceRegister > #lecDiv > table, 
+#lceRegister > #lecDiv > table tr, 
+#lceRegister > #lecDiv > table td{
+    border: none;
+}
+
+
+/* myAssistant  */
+
+/* 인사관리 */
+.search{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.search input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+}
+
+.search > select{
+    height: 30px;
+}
+
+.search > button{
+    height: 30px;
+}
+
+/* 페이징 버튼 위치 */
+
+.page_div{
+    position: relative;
+}
+
+.addPage > a{
+    position: absolute;
+    top: -13px;
+    right: 5px;
+    width: 100px;
+    height: 28px;
+    background: #3B5998;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
+}
+
+/* insert */
+
+.addPage > button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* as_modify */
+
+.as_modify{
+}
+
+#myinfo .as_modify > table{
+    width: 100%;
+    height: 450px;
+}
+
+/* insert영역 수정 */
+#divAsInsert{
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+#divAsInsert > button{
+	width: 100px;
+	height: 30px; 
+	background: #3B5998;
+	color: #ffffff;
+	border: none;
+	border-radius : 4px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+main > section.myAssistant button{
+	width: 100px;
+	height: 30px; 
+	background: #3B5998;
+	color: #ffffff;
+	border: none;
+	border-radius : 4px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#insertMemTable > tbody input{
+	border:none;
+}
+#insertMemTable tr > td{
+	border : 1px solid #F7F7F7;
+}
+
+
+/* 강의등록 페이지 추가 수정 */
+#btnSearchLec{
+    width: 145px;
+    height: 22px;
+}
+main #userListTable .btnResultTable{
+	width: 30px;
+    height: 20px;
+    font-size: 12px;
+	
+}
+#lectureModNav{
+	display: none;
+}
+#myinfo > #lectureModSec{
+	display: none;
+}
+form.lecForm{
+	width: 100%;	
+}
+#lecNameTd{
+	width: 250px;
+	padding: 0 10px;
+}
+#lecNameTd > input[name=lecName]{
+	width: 100%;
+}
+
+section#myinfo input{
+	border: 1px solid #DFE3EE;
+	height: 25px;
+    text-align: center;	
+}
+section#myinfo select{
+	height: 25px;
+}
+.lecRegister, .lectureMod{
+	display: none;
+}
+#btnRegFormShow{
+	margin: 15px 0;
+}
+
+
+.assisManageModifyBtn {
+	width: 62px;
+    height: 31px;
+    margin-right: -3px;
+    margin-bottom: 7px;
+    background-color: #8fa7db;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}

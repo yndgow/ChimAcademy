@@ -1,0 +1,108 @@
+<th:block th:include="@{mypage/_header.html}"/>
+
+<script>
+		function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+		      document.getElementById('preview').src = e.target.result;
+		    };
+		    reader.readAsDataURL(input.files[0]);
+		  } else {
+		    document.getElementById('preview').src = "";
+		  }
+		}
+</script>
+
+
+<main>
+<th:block th:include="@{_aside.html}"/>
+
+            <section id="mymodify">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>마이페이지 > 개인정보 수정</h3>
+                </nav>
+                <section>
+                    <h3>프로필</h3>
+                </section>
+              <section>
+                	<form th:action="@{/student/my/modifyProfile}" method="post" enctype="multipart/form-data">
+                    <div>
+                        <article><img th:src="@{/profileThumb/}+${member.profile}" alt="증명사진" class="idphoto" id="preview"></article>
+                        <br/>
+                        
+                    
+                        <p th:text=${vo.name}>홍길동</p>
+                        <span th:text=${vo.email}>dong@cu.ac.kr</span>
+                        <label for="imgeditbtn" class="imgeditbtnlabel">
+						<img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
+						</label>
+                        <input type="file" onchange="readURL(this);" name="profileThumb" id="imgeditbtn" alt="프로필 변경 아이콘" class="imgeditbtnicon" style="display:none;"/>
+                        <input type="hidden" name="uid" th:value="${member.uid}" />
+                    </div>
+
+                    <div>
+                        <table>
+                            <tr>
+                                <td>학번</td>
+                                <td th:text=${vo.uid}>20231112</td>
+                            </tr>
+                            <tr>
+                                <td>학과</td>
+                                <td th:text=${vo.majorName}>국문학과</td>
+                            </tr>
+                            <tr>
+                                <td>평균학점</td>
+                                <td>[[${vo.avgCredit}]] / 4.5</td>
+                            </tr>
+                            <tr>
+                                <td>학적구분</td>
+                                 <th:block th:switch="${vo.status}">
+	                            <td th:case="1">재학</td>
+	                            <td th:case="2">휴학</td>
+								</th:block>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <input type="submit" value="저장" class="savebtn"/>
+                </form>
+
+                <!-- 상세정보 -->
+                <section>
+                    <h3>상세정보</h3>
+                </section>
+                <form th:action="@{/student/my/modify}" method="post">
+                <div id="detail">
+	                    <div>
+                       <section>
+					    <span>휴대전화번호</span>
+					    <input name="hp" id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
+					        th:value="${vo.hp}" />
+						</section>
+						<section>
+						    <span>이메일</span>
+						    <input name="email" id="box2" type="text" th:value="${vo.email}" />
+						</section>
+						<div>
+						    <span>주소</span>
+						    <input type="text" name="zip" class="box3" id="postcode" th:value="${vo.zip}" />
+						    <input type="button" class="searchBtn" onclick="execDaumPostcode()" value="검색"><br>
+						    <input type="text" name="addr1" class="box4" id="address" th:value="${vo.addr1}" /><br>
+						    <input type="text" name="addr2" class="box5" id="detailAddress" th:value="${vo.addr2}" />
+						</div>
+						<input type="hidden" name="uid" th:value="${member.uid}" />
+						<input type="hidden" name="name" th:value="${member.name}" />
+						<section>
+						    <span>자기소개</span><br>
+						    <textarea name="info" th:text="${vo.info}"></textarea>
+						</section>
+	                       
+	                    </div>
+	                </div>
+	                <button id="savebtn" type="submit">저장</button>
+	                <button id="cancelbtn">취소</button>
+	           </form>
+        </main>
+<th:block th:include="@{_footer.html}"/>

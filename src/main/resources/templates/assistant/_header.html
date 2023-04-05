@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- 공통 css -->
+	<link rel="stylesheet" th:href="@{/style/common.css}"/>
+	<link rel="stylesheet" th:href="@{/style/unity.css}"/>
+    
+    <!-- 작업 css -->
+  	<link rel="stylesheet" th:href="@{/style/assistant/assistant.css}"/>
+  	<!-- 작업 js -->
+  	<script th:src="@{/js/assistant/assistant.js}"></script>
+
+</head>
+<th:block th:include="@{_body.html}"/>

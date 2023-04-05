@@ -1,0 +1,325 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>온라인콘텐츠</b>
+			    </h2>
+			    <ul>
+			        <li>
+			        	<li>
+			                <a th:href="@{/elib/}">
+			                    <span>전체보기</span>
+			                </a>
+			            </li>
+			            <li>
+			            	<a th:href="@{/elib/online/reading}">
+			                	<span>독서</span>
+			            	</a>
+			            
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/humanArt}">
+			                <span>인문·예술</span>
+			            </a>
+			        </li>
+			        <li class="active">
+			            <a th:href="@{/elib/online/DBpia}">
+			                <span>학술DB</span>
+			            </a>
+			            <ul class="subMenu">
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>원문검색</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a th:href="@{/}">
+			                        <span style="color: #3975d6;">DBpia</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>KoreaA27</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>ProQuest Central</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Ebook Central Academic Complete</span>
+			                    </a>
+			                </li>
+			            </ul>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/E_learning}">
+			                <span>이러닝</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/magazine}">
+			                <span>전자잡지·신문</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/busanPost}">
+			                <span>무료DB</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>DBpia</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="dbpia_bgbox bgbox">
+                                	<div class="if-txt">
+                                		<p>
+                                			<span class="tt" >국내학술 데이터베이스</span>
+                                			<br>
+                                			<span class="btit">DBpia</span>
+                                		</p>
+                                		<br>
+                                		<ul class="btns_wrap_tac">
+                                			<li>
+                                				<a href="https://www.dbpia.co.kr/" class="btn_link02 newWin" target="_blank" title="DBpia 홈페이지 바로가기(새창 열림)">
+	                                				<span>DBpia 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                			<p style="margin-top:10px;color:#333;">
+                                				제공도서관에서 1회 로그인 시
+                                				<br>
+                                				90일간 외부접속 가능
+                                			</p>
+                                		</ul>
+                                	</div>
+                                </div>
+                                <h3>DBpia란?</h3>
+                                <div class="txt-box">
+                                	<p>
+                                		DBpia는 국내의 우수 학회, 출판사 및 연구소에서 발행되는 2,000여종 분야의 학술논문 및 기사 290여만편을 창간호부터 최근호까지 원문형태로 제공하는 국내 학술DB 서비스
+                                	</p>
+                                </div>
+                                <br>
+                                <h3>주요기능</h3>
+                                <ul class="con">
+                                	<li>
+                                		​모든 간행물의 원문 열람, 인쇄, 저장, 전송 가능
+                                	</li>
+                                	<li>
+                                		방대한 자료의 신속하고 정확한 서지정보 검색
+                                	</li>
+                                	<li>
+                                		​편리한 USER INTERFACE​
+                                	</li>
+                                	<li>
+                                		범용적인 VIEW 사용​
+                                	</li>
+                                	<li>
+                                		강력한 개인화 기능
+                                	</li>
+                                	<li>
+                                		DBpia 인사이트를 통한 논문별, 저널별 영향력 확인
+                                	</li>
+                                </ul>
+                                <h3>도서관 내부 이용방법</h3>
+                                <h4>도서관 PC 이용방법</h4>
+                                <ul class="con">
+                                	<li>
+                                		도서관 디지털자료실 PC 또는 이용자용 PC에서 <a href="https://www.dbpia.co.kr/" target="_target" title="dbpia 홈페이지 바로가기(새창 열림)">dbpia.co.kr</a>에 접속하면 자동 인증되어 원문 검색 및 열람 가능
+                                	</li>
+                                </ul>
+                                <h4>노트북, 모바일 이용방법</h4>
+                                <ul class="con">
+                                	<li>
+                                		도서관 내부 Wi-Fi 설정 후 인터넷으로 <a href="https://www.dbpia.co.kr/" target="_target" title="dbpia 홈페이지 바로가기(새창 열림)">dbpia.co.kr</a>에 접속
+                                	</li>
+                                </ul>
+                                <h3>도서관 외부 이용방법</h3>
+                                <ul class="con">
+                                	<li>
+                                		도서관 내에서 <a href="https://www.dbpia.co.kr/" target="_target" title="dbpia 홈페이지 바로가기(새창 열림)">dbpia.co.kr</a>접속 > DBpia 개인회원 추가 로그인 > 90일간 해당 아이디로 무료 이용
+                                		<br>
+                                		※ 90일 경과시, 도서관 내에서 재로그인
+                                	</li>
+                                </ul>
+                                <h3>
+                                	제공도서관
+                                	<span style="font-size:14px;font-weight:normal;padding-left:10px;display:inline-block;">※ 전체 도서관 '도서관 PC' 이용 접속 가능, 일부 도서관 'Wi-Fi 설정' 이용 접속 불가능</span>
+                                </h3>
+                                <div class="rsv-info"></div>
+                                <div class="auto-scroll">
+                                	<table class="tbl-type01" summary="dbpia 제공도서관">
+                                		<caption> dbpia 제공도서관 </caption>
+                                		<colgroup>
+                                			<col width="15%" class="col1">
+                                			<col width="25%" class="col2">
+                                			<col width="*" class="col3">
+                                		</colgroup>
+                                		<thead>
+                                			<tr class="first">
+                                				<th class="first th1">순번</th>
+                                				<th class="th2">지역</th>
+                                				<th class="last th3">도서관</th>
+                                			</tr>
+                                		</thead>
+                                		<tbody>
+                                			<tr class="first">
+                                				<td class="first td1">1</td>
+                                				<td class="td2">강서구</td>
+                                				<td class="left last td3">강서도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">2</td>
+                                				<td class="td2">금정구</td>
+                                				<td class="left last td3">금정도서관, 서동도서관, 금샘도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">3</td>
+                                				<td class="td2">기장군</td>
+                                				<td class="left last td3">기장도서관, 내리새라도서관, 대라다목적도서관, 정관도서관, 정관어린이도서관, 고촌어울림도서관, 교리도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">4</td>
+                                				<td class="td2">남구</td>
+                                				<td class="left last td3">남구도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">5</td>
+                                				<td class="td2">동구</td>
+                                				<td class="left last td3">동구도서관, 동구어린이영어도서관, 중앙도서관수정분관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">6</td>
+                                				<td class="td2">동래구</td>
+                                				<td class="left last td3">동래읍성도서관, 안락누리도서관, 명장도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">7</td>
+                                				<td class="td2">부산진구</td>
+                                				<td class="left last td3">부산진구어린이청소년도서관, 시민도서관, 중앙도서관분관부산영어도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">8</td>
+                                				<td class="td2">북구</td>
+                                				<td class="left last td3">구포도서관, 금곡도서관, 만덕도서관, 화명도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">9</td>
+                                				<td class="td2">사상구</td>
+                                				<td class="left last td3">부산도서관, 사상도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">10</td>
+                                				<td class="td2">사하구</td>
+                                				<td class="left last td3">다대도서관, 사하도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">11</td>
+                                				<td class="td2">서구</td>
+                                				<td class="left last td3">구덕도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">12</td>
+                                				<td class="td2">수영구</td>
+                                				<td class="left last td3">수영구도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">13</td>
+                                				<td class="td2">연제구</td>
+                                				<td class="left last td3">연산도서관, 연제도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">14</td>
+                                				<td class="td2">영도구</td>
+                                				<td class="left last td3">영도도서관, 영도도서관남항분관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">15</td>
+                                				<td class="td2">중구</td>
+                                				<td class="left last td3">중앙도서관</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">16</td>
+                                				<td class="td2">해운대구</td>
+                                				<td class="left last td3">반송도서관, 반여도서관, 재송어린이도서관, 해운대도서관, 해운대도서관우동분관, 해운대인문학도서관</td>
+                                			</tr>
+                                		</tbody>
+                                	</table>
+                                </div>
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

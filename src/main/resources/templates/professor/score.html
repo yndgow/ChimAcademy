@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+	<meta charset="UTF-8">
+	<title>침대학교</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" th:href="@{/style/common.css}" />
+	<script th:src="@{/js/professor/professor.js}"></script>
+	<!-- CSS only bootstrap-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<style>
+		body{
+			background-color : #f3f3ef;
+		}
+		#formControlTextareaContent{
+			resize: none;
+		}
+		.btn{
+			background: #3B5998;
+			color: #ffffff;
+			border: none;
+			border-radius : 4px;
+		}
+		#errDiv{
+			display: none;
+		}
+	</style>
+	<script>
+		$(document).ready(() => {
+			inputNumControl();
+		})
+	
+	</script>
+	</head>
+	<body>
+		<main class="container">
+			<div class="text-center mt-5">
+				<h3 class="fw-bold">성적 입력</h3>
+			</div>
+			<form id="scoreForm" th:action="@{/professor/score}" method="post">
+			<input type="hidden" name="lecCode" th:value="${score.lectureEntity.lecCode}" readonly>
+			<input type="hidden" name="no" th:value="${score.no}" readonly>
+				<div class="mb-3 row">
+					<div class="col-2"> 
+				  		<label for="inputYear" class="col-form-label fw-bold">연도</label>
+				  		<input type="text" class="form-control" id="inputYear" name="sYear" readonly="readonly" th:value="${score.year}">
+				  	</div>
+					<div class="col-6"> 
+				  		<label for="inputLecName" class="col-form-label fw-bold">강의명</label>
+				  		<input type="text" class="form-control w-100" id="inputLecName" name="lecName" readonly="readonly" th:value="${score.lectureEntity.lecName}">
+				  	</div>
+					<div class="col-4"> 
+				  		<label for="inputUid" class="col-form-label fw-bold">학번</label>
+				  		<input type="text" class="form-control w-100" id="inputUid" name="uid" readonly="readonly" th:value="${score.memberEntity.uid}">
+				  	</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="col-4">
+						<label for="midExam" class="col-form-label">중간고사</label>
+						<input type="number" class="form-control inputSc" id="midExam" name="midExam" th:value="${score.midExam}">
+						
+					</div>
+					<div class="col-4">
+						<label for="finalExam" class="col-form-label">기말고사</label>
+						<input type="number" class="form-control inputSc" id="finalExam" name="finalExam" th:value="${score.finalExam}">
+					</div>
+					<div class="col-4">
+						<label for="etc1" class="col-form-label">과제</label>
+						<input type="number" class="form-control inputSc" id="etc1" name="etc1" th:value="${score.etc1}">
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<div class="col-4">
+						<label for="etc2" class="col-form-label">발표</label>
+						<input type="number" class="form-control inputSc" id="etc2" name="etc2" th:value="${score.etc2}">
+						
+					</div>
+					<div class="col-4">
+						<label for="etc3" class="col-form-label">출석</label>
+						<input type="number" class="form-control inputSc" id="etc3" name="etc3" th:value="${score.etc3}">
+					</div>
+					<div class="col-4">
+						<label for="etc4" class="col-form-label">태도</label>
+						<input type="number" class="form-control inputSc" id="etc4" name='etc4' th:value="${score.etc4}">
+					</div>
+				</div>
+				
+				<div class="mb-3 row">
+					<div class="col-4">
+						<label for="totalScore" class="col-form-label">총합점수</label>
+						<input type="text" readonly class="form-control" id="totalScore" name="totalScore" th:value="${score.totalScore}">
+					</div>
+					<div class="col-4">
+						<label for="sGrade" class="col-form-label">점수등급</label>
+						<input type="text" readonly class="form-control" id="sGrade" name="sGrade" th:value="${score.grade}">
+					</div>
+					<div class="col-4" id="errDiv">
+						<label for="errorMsg" class="col-form-label text-danger">입력오류</label>
+						<input type="text" readonly class="form-control-plaintext text-danger" id="errorMsg" value="최대 총합점수는 100점입니다.">
+					</div>
+				</div>
+				<div class="text-end">
+					<button type="submit" class="btn btn-lg btn-dark" id="btnRegScore">입력</button>
+				</div>
+			
+			</form>
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	</body>
+</html>

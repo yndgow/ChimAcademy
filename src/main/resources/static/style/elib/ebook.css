@@ -1,0 +1,1036 @@
+    /* css 초기화*/
+    * {
+        padding: 0;
+        margin: 0;
+        font: normal 15px '고딕';
+        line-height: 150%;
+        word-break: keep-all;
+        outline: none;
+    }
+
+    ul, ol {list-style: none;}
+    
+    a {text-decoration: none;color: black;}
+
+    img {max-width: 100%; max-height: 100%;}
+
+    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/ChimAcademy/img/elib/backgound_bg.gif') repeat center top;}
+
+    main {
+        width: 1280px;
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    /* header */
+    .tnb {
+        position: relative;
+        width: 100%;
+        background: #202020;
+        overflow: hidden;
+    }
+    section {
+        position: relative;
+        width: 1260px;
+        margin: 0 auto;
+    }
+    .tnb >section > div {
+
+    }
+    .tnb >section > .left-util {
+       
+    }
+    .tnb >section > .left-util li{
+        float: left;
+        display: inline-block;
+        width: 185px;
+    }
+    .tnb >section > .left-util li a {
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+    }
+    .tnb >section > .left-util li a.link1{
+        background: #363b9e;
+    }
+    .tnb >section > .left-util li a.link2{
+        background: #00b2aa;
+    }
+    .tnb >section > .right-util {float: right;}
+    .tnb >section > .right-util li{
+        display: inline-block;
+        width: 90px;
+    }
+    .tnb >section > .right-util li:last-child{
+        width: 130px;
+    }
+    .tnb >section > .right-util li a{
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+    }
+    .tnb >section > .right-util li a.link3{
+        color: #58adee;
+        font-weight: bold;
+    }
+    .tnb >section > .right-util li:last-child a{
+        padding: 0 15px;
+        background: #603978;
+    }
+    .tnb >section > .right-util li:last-child a > img{
+        vertical-align: middle;
+    }
+    .Gnb {
+        clear: both;
+        text-align: center;
+        width: 100%;
+        height: 80px;
+        overflow: inherit;
+        position: relative;
+        background: #fff;
+    }
+    .Gnb > section > h1 {
+        position: absolute;
+        z-index: 1000;
+        left: 0;
+        top: -5px;
+    }
+    .Gnb > section > h1 > a {}
+    .Gnb > section > h1 > a > img {
+    	width: 260px;
+    }
+    .Gnb > section > .g-menu{
+    }
+    .Gnb > section > .g-menu > .gnb-menu {
+        text-align: right;
+        padding-right: 70px;
+        background: #fff;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li {
+        position: relative;
+        display: inline-block;
+        zoom: 1;
+        vertical-align: middle;
+        box-sizing: border-box;
+        width: 13%;
+        text-align: center;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li:hover > a {
+        color: #363b9e;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > a{
+        display: block;
+        line-height: 80px;
+        height: 80px;
+        font-size: 20px;
+        font-family: "Malgun Gothic";
+        font-weight: 600;
+        color: #000;
+        text-align: center;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu{
+        position: absolute;
+        display: none;
+        border: 0;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        background: rgba(22,22,92,0.96);
+        white-space: nowrap;
+        text-align: center;
+        z-index: 9999999!important;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li:hover > .subMenu {
+        display: block;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li{
+        text-align: center;
+        position: relative;
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li:hover > a {
+        color: aqua;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li > a{
+        font-size: 14px;
+        font-family: "Malgun Gothic";
+        display: block;
+        color: #fff;
+        line-height: 130%;
+        padding: 20px 20px 20px 20px;
+        margin: 0;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li > a > img {
+        vertical-align: middle;
+    }
+    
+/* Ebook - List */
+.eb {
+    background: none;
+}
+#sub-container {
+    width: auto;
+    clear: both;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+#sub-container > .sub-visual {
+    position: relative;
+    height: 235px;
+    background: url('/ChimAcademy/img/elib/sub-visual.jpg') no-repeat center 0;
+    text-align: center;
+    color: #fff;
+}
+#sub-container > .sub-visual .bg {
+    width: 1280px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+#sub-container > .sub-visual  .search-box {
+    width: 70%;
+    padding-top: 40px;
+    margin: 0 auto 30px;
+    border: 3px solid #000;
+    border-radius: 15px;
+    padding: 0;
+    background: #fff;
+    height: 62px;
+}
+#sub-container > .sub-visual  .search-box > form > .search {
+    width: 100%;
+    border: 0;
+    border-radius: 15px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+    margin-top: 15px;
+}
+#sub-container > .sub-visual  .search-box > form > .search > div {}
+#sub-container > .sub-visual  .search-box > form > .search > div.box1 {
+    padding: 0;
+}
+#sub-container > .sub-visual  .search-box > form > .search > div.box1 >input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    background: #fff;
+    color: #777777;
+    font-family: "Malgun Gothic";
+    font-size: 14px;
+    padding: 1% 15% 0 3%;
+}
+#sub-container > .sub-visual  .search-box > form > .search > div.box2 >button {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    border: 0;
+    background: #fff;
+}
+#sub-container > .sub-visual  .search-box > form > .search > div.box2 >button > span{font-size: 40px;}
+#sub-container > .sub-visual  .search-box > .doc-info {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section {}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol {
+    float: left;
+    font-size: 0;
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol > li {
+    padding-left: 30px;
+    background: url('/ChimAcademy/img/elib/doc_arrow.png') no-repeat 7px center;
+    margin-left: 0;
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol > li.first {
+    padding: 15px 26px;
+    background:rgba(46,43,98,1);
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol > li:nth-child(2){
+    background: none;
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol > li > a {
+    color: #fff;
+}
+#sub-container > .sub-visual  .search-box > .doc-info > section > ol > li > a > img {}
+#sub-container > .sub-visual  .search-box > .doc-info li {
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+#sub-container > section {}
+#sub-container > section > .lnb {
+    width: 285px;
+    float: left;
+    margin-top: 35px;
+    padding-bottom: 60px;
+}
+#sub-container > section > .lnb > h2{
+    background: url('/ChimAcademy/img/elib/sub_lng_bg.png') no-repeat 0 0;
+    background-size: cover;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 40px;
+}
+#sub-container > section > .lnb > h2 > b {
+    margin-right: 0;
+    text-align: center;
+    padding: 50px 0 50px 0;
+    margin-bottom: -3px;
+    font-size: 25px;
+    font-family: "Malgun Gothic";
+    display: block;
+}
+#sub-container > section > .lnb > ul {
+    overflow: hidden;
+    margin-right: 40px;
+}
+#sub-container > section > .lnb > ul > li {}
+#sub-container > section > .lnb > ul > li > a:hover {
+    background: #1d1a3b url('/ChimAcademy/img/elib/arrow-on.png') no-repeat 95% center;
+    color: #fff;
+}
+#sub-container > section > .lnb > ul > li > a {
+    padding: 12px 20px 10px 15px;
+    position: relative;
+    text-align: left;
+    color: #444444;
+    border-top: 1px solid #1c2f78;
+    background: url('/ChimAcademy/img/elib/arrow-off.png') no-repeat 95% center;
+}
+#sub-container > section > .lnb > ul > li.active > a {
+    background: #1d1a3b url('/ChimAcademy/img/elib/arrow-on.png') no-repeat 95% center;
+    color: #fff;
+    position: relative;
+    font-weight: bold;
+}
+#sub-container > section > .lnb  a  span {
+    display: inline-block;
+}
+#sub-container > section > .lnb  a  span.count {
+    color: #aaa;
+    font-weight: normal;
+    font-size: 12px;
+}
+#sub-container > section > .lnb > ul > li > ul {
+    border-top: 2px solid #1c2f78;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+#sub-container > section > .lnb > ul > li.active > ul {
+    display: block;
+}
+#sub-container > section > .lnb > ul > li > ul > li {
+    line-height: 0%;
+}
+#sub-container > section > .lnb > ul > li > ul > li > a {
+    position: relative;
+    background: url('/ChimAcademy/img/elib/left_arr_dot.gif') no-repeat 10px center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #d9d9d9;
+    
+}
+#sub-container > section > .lnb > ul > li > ul > li > a:hover{
+    color: #3975d6;
+}
+#sub-container > section > .lnb > ul > li > ul > li.active > a {
+    color: #3975d6;
+}
+#sub-container > section > .lnb > ul > li > ul > li > a > span {}
+#sub-container .lnb a {
+    display: block;
+    color: #4c4c4c;
+}
+
+#sub-container > section > .content{
+    margin-right: -285px;
+    width: 100%;
+    float: left;
+    padding-top: 30px;
+}
+#sub-container > section > .content > .doc {
+    margin-right: 285px;
+    padding: 0 0 60px;
+}
+#sub-container > section > .content > .doc >.doc-head {
+    overflow: hidden;
+}
+#sub-container > section > .content > .doc >.doc-head > .doc-title {
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+}
+#sub-container > section > .content > .doc >.doc-head > .doc-title > h3 {
+    font-size: 30px;
+    font-family: "Malgun Gothic";
+    display: inline-block;
+    zoom: 1;
+    word-break: break-all;
+    letter-spacing: -1px;
+    padding: 0 0 20px 0;
+    font-weight: bold;
+    color: #333;
+}
+#sub-container > section > .content > .doc >.doc-body {
+    color: #666;
+}
+#sub-container > section > .content > .doc >.doc-body > .body {}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top {
+    padding: 0 0 10px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top > .lsort {
+    float: left;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top > .lsort >span {
+    color: #e84c00;
+    font-weight: bold;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top > .sort {
+    float: right;
+    position: relative;
+    margin-top: -5px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top > .sort > .btn {
+    color: #888;
+    padding: 3px 13px;
+    font-size: 12px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.elib-top > .sort > .active {color: #e84c00;}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list {
+    border-top-width: 1px;
+    border-top: 2px solid #5e6062;
+    margin-top: 25px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib {
+    position: relative;
+    clear: both;
+    overflow: hidden;
+    border-bottom: 1px solid #dedede;
+    padding: 20px 0;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .thumb {width: 120px; float: left;}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .thumb > a {
+    background: url('/ChimAcademy/img/elib/lock-bg.gif') no-repeat center center;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont {
+    margin-right: -120px;
+    float: left;
+    width: 100%;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox {
+    margin-right: 120px;
+    padding-left: 3%;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox > a {display: block;}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox > a > b {display: block;font-weight: bold;}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox > .info {
+    margin: 10px 0 ;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .flexbox > .snipet {
+    padding: 0;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.5em;
+    height: 6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .meta {
+    padding-top: 10px;
+    margin-right: 120px;
+    padding-left: 3%;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib label {vertical-align: middle;}
+#sub-container > section > .content > .doc >.doc-body > .body > ul.list > .elib > .cont > .meta > span {color: #888;}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging {
+    overflow: hidden;
+    padding: 25px 0 0;
+    text-align: center;
+    font-size: 0;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging > a {}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging > span {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging > span > a {}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging .pBtn {
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1;
+    line-height: 24px;
+    padding: 3px 12px;
+    transition: all 120ms ease;
+    font-size: 13px;
+    border: 1px solid #d9d9d9;
+    background: #fafafa;
+    margin-left: -1px;
+    color: #555;
+    background-clip: padding-box;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging .previous {
+    padding: 3px 13px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging .next {
+    padding: 3px 13px;
+}
+#sub-container > section > .content > .doc >.doc-body > .body > div.paging .current {
+    background: #4c4c4c;
+    border-color: #444;
+    color: #fff;
+    text-decoration: none;
+}
+#sub-container > section > .content > .doc >.doc-admin {
+    clear: both;
+    border-top: 30px solid #fff;
+    padding: 15px;
+    background: #f7f7f7;
+    text-align: center;
+}
+#sub-container > section > .content > .doc >.doc-admin > .manager-box {
+    position: relative;
+    width: 92%;
+    margin: 0 auto;
+}
+#sub-container > section > .content > .doc >.doc-admin > .manager-box > span {
+    display: inline-block;
+    width: 23%;
+    text-align: left;
+}
+#sub-container > section > .content > .doc >.doc-admin > .manager-box > span > label {
+    margin-left: 15px;
+    font-weight: bold;
+}
+#sub-container > section > .content > .doc >.doc-admin > .manager-box > span > em {
+    margin-right: 15px;
+    font-style: normal;
+}
+.elib-cate {
+	border-top: 2px solid #1f5aa0;
+    padding: 10px 0 20px;
+}
+.elib-cate h2 {
+	font-weight:bold;
+	color: #777;
+    font-size: 130%;
+    background: none;
+    padding: 0 0 5px;
+    margin: 10px;
+}
+.elib-cate .box {
+	background: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+.elib-cate .box a {
+	color: #8f7a65;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 5px;
+}
+/*view*/
+.serial-wrap {
+    font-size: 110%;
+}
+.sview {
+    border-top: 2px solid #5e6062;
+}
+.sview > .sinfo {
+    margin: 15px 0;
+    background: #f6f6f6;
+    overflow: hidden;
+    padding: 20px 10%;
+}
+.sview > .sinfo > .thumb {
+    float: left;
+    width: 20%;
+    font-size: 0;
+    line-height: 0;
+}
+.sview > .sinfo > .info {
+    float: left;
+    width: 100%;
+    margin-right: -20%;
+    padding-bottom: 10px;
+}
+.sview > .sinfo > .info > ul {
+    margin: 1% 20% 1% 5%;
+}
+.sview > .sinfo > .info > ul > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 3%;
+    line-height: 110%;
+}
+.sview > .sinfo > .info > ul > li > b {
+    font-size: 130%;
+    font-weight: 800;
+}
+.sview > .sinfo > .info > ul > li > a {
+    color: #fe6d02;
+}
+
+.sbtn {
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px 0 20px;
+}
+.elib .btns {
+    position: absolute;; bottom: 20px; right: 20px; width: 237px;
+}
+.btn {
+    padding: 7px 2%;
+    margin-left: 9px;
+    line-height: 18px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn span{
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    padding-bottom: 1px;
+}
+.btn1 {
+    background-color: #266ac4;
+    border-color: #1557af;
+    color: #fff;
+} 
+.btn2 {
+    background: #666;
+    border-color: #666;
+    color: #fff;
+} 
+.btn3 {
+    background-color: #7bd1da;
+    border-color: #7bd1da;
+    color: #fff;
+} 
+.btn4 {
+    background-color: #f1b55c;
+    border-color: #f1b55c;
+    color: #fff;
+} 
+.btn5 {
+    background-color: #e74e40;
+    border-color: #e74e40;
+    color: #fff;
+} 
+.sview > .sinfo > .sbtn > a{}
+.sview > .sinfo > .sbtn > a > span {}
+
+.bookTab {
+    padding-bottom: 20px;
+}
+.bookTab > ul{
+    font-size: 0;
+    border-bottom: 1px solid #1a518b;
+    padding-left: 1px;
+}
+.bookTab > ul > li{
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: bottom;
+}
+.bookTab > ul > li > a{
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: #fafafa;
+    border: 1px solid #d2d2d2;
+    border-bottom-width: 0;
+    padding: 8px 20px 9px;
+    font-weight: bold;
+    color: #2f3743;
+    margin: 0 0 0 -1px;
+}
+.bookTab > ul > li.active > a {
+    color: #fff;
+    z-index: 2;
+    background: #1f5d97;
+    border-color: #1a518b;
+}
+.sview > .bInfo {}
+
+.none {display: none;}
+
+.nolist {
+	text-align: center;
+	margin-top: 10px
+}
+.nolist > span {
+	font: 20px bold;
+}
+
+/*notice - list*/
+table {
+    width: 100%;
+    border-top: 1px solid #dee1e7;
+    border-bottom: 2px solid #ccc;
+}
+table, th, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    word-break: break-all;   
+}
+table th, table td {
+	padding: 7px 10px;
+    border: 1px solid #e5e8eb;
+    vertical-align: middle;
+    border-left: 0;
+    border-right: 0;
+}
+.table-wrap {}
+.table-wrap > .center {text-align: center;}
+.table-wrap > .center tr{
+	
+}
+.table-wrap > .center tr.notice {background: #f5f6f7;}
+.table-wrap > .center tr.notice td:first-child {
+	color: #e86666;
+	padding-left: 5px;
+    padding-right: 5px;
+    color: #e86666;
+}
+.table-wrap > .center tr > th {
+    background: #f5f5f5;
+    border-color: #d1d1d1;
+    border-bottom-color: #d1d1d1;
+    border-top-color: #5e6062;
+    border-top-width: 2px;
+    color: #333;
+    padding: 7px 10px;
+    border-left: 0;
+    border-right: 0;
+    font-weight: bold;
+}
+.table-wrap > .center tr > td {}
+.table-wrap > .center tr > td.left {text-align: left;}
+.table-wrap > .center tr > td > span  {}
+.table-wrap > .center tr > td > a  {}
+/*notice - view */
+.view-wrap{
+	padding: 10px 0 20px;
+    font-size: 13px;
+}
+.view-wrap > .nview {
+	border-top: 2px solid #5e6062;
+}
+.view-wrap > .nview > .nview-header {}
+.view-wrap > .nview > .nview-header > dl {}
+.view-wrap > .nview > .nview-header > dl > dt{
+	font-size: 140%;
+    font-weight: 800;
+    padding: 10px 15px;
+}
+.view-wrap > .nview > .nview-header > dl > dd{
+	padding: 8px 15px;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.view-wrap > .nview > .nview-header > dl > dd > div{padding: 2px 0;}
+.view-wrap > .nview > .nview-header > dl > dd > div > i{
+	vertical-align: middle;
+	margin-right: 5px;
+    font-style: normal;
+    color: #999;
+	}
+.view-wrap > .nview > .nview-header > dl > dd > div > span{vertical-align: middle;margin-right: 10px;}
+.view-wrap > .nview > .nview-header > dl > dd > div.left{float: left;}
+.view-wrap > .nview > .nview-header > dl > dd > div.right{
+	float: right;
+	text-align: right;
+    width: 200px;
+	}
+.view-wrap > .nview > .nview-body {
+	position: relative;
+    padding: 40px 15px 15px;
+    min-height: 50px;
+    border-bottom: 1px solid #ccc;
+    word-break: break-all;
+}
+.view-wrap > .nview > .nview-body > p{
+	font-family: "맑은 고딕", "Malgun Gothic", "Nanum Gothic", Helvetica, Arial, Verdana, Geneva, sans-serif;
+    line-height: 22.5px;
+    word-break: keep-all;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    background-color: rgb(255, 255, 255);
+}
+.view-wrap .btns {
+	margin-top: 30px;
+	text-align: right;
+}
+.body .btns {
+	text-align: right;
+	margin-top: 20px;
+}
+.nview-body textarea {
+    width: 100%;
+    height: 280px;
+    resize: none;
+    border: none;
+}
+/*notice - write*/
+ .write table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 2px solid #111;
+}
+ .write table caption {
+    text-align: left;
+    margin-bottom: 6px;
+}
+ .write table tr {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e9e9e9;
+}
+ .write table th {
+    width: 112px;
+    height: 100%;
+    background: #f5f8f9;
+    color: #111;
+    font-weight: bold;
+}
+ .write table td {
+    padding: 10px;
+    box-sizing: border-box;
+}
+ .write table input {
+    width: 100%;
+    height: 26px;
+    border: none;
+}
+ .write table textarea {
+    width: 100%;
+    height: 280px;
+    resize: none;
+    border: none;
+}
+
+ .write > form > div {
+    float: right;
+    margin-top: 10px;
+}
+ .write > form .btn  {
+    padding: 8px;
+    border: 1px solid #bebebe;
+}
+ .write > form .btnCancel {}
+ .write > form .btnComplete {
+    padding: 7px;
+    border: 1px solid #3b3c3f;
+    background: #4b545e;
+    color: white;
+}
+/* doc-body */
+.body h3 {
+    background: url('/ChimAcademy/img/elib/elib_h3.gif') no-repeat 0 10px;
+    color: #1e1e1e;
+    padding: 5px 0;
+    padding-left: 22px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-size: 140%;
+    line-height: 130%;
+    margin-bottom: 8px;
+}
+.body div > table {}
+.body .type01 th {
+    border-top-width: 2px;
+    border-color: #c9d5e1;
+    border-top-color: #014199;
+    background-color: #f5f7fa;
+    color: #111;
+    padding: 8px 8px 9px 8px;
+    font-weight: bold;
+}
+.body .type01 td {
+    padding: 8px 8px 9px 8px;
+    border-left: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    font-weight: normal;
+}
+.how th {
+	text-align: center;
+}
+.how td {
+	width: 50%;
+	text-align: center;
+}
+.install td {
+	text-align: center;
+}
+.install td:nth-child(3){
+	width: 6%;
+}
+.install td:nth-child(4){
+	width: 6%;
+}
+.install td:nth-child(5){
+	width: 6%;
+}
+.reg {
+	
+}
+.reg th {
+	width: 20%;
+}
+.reg td {
+	width: 80%;
+    border-top-width: 2px;
+    border-color: #c9d5e1;
+    border-top-color: #014199;
+    background-color: #f5f7fa;
+    color: #111;
+    padding: 8px 8px 9px 8px;
+    font-weight: bold;
+}
+.reg select {
+	width: 120px;
+}
+.reg input[type=text] {
+	width: 50%;
+	padding: 3px;
+}
+.reg textarea {
+	width: 100%;
+	height: 300px;
+}
+.body .con {
+    padding-bottom: 10px;
+    padding-left: 2%;
+}
+.body .con li {
+	background: url('/ChimAcademy/img/elib/doc-arr2.gif') no-repeat 0 10px;
+    padding: 3px 0 4px;
+    padding-left: 13px;
+}
+    /*footer*/
+    footer {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        background: #fff;
+        padding: 0 0 20px;
+        position: relative;
+        clear: both;
+    }
+    footer > .footer-top {}
+    footer > .footer-top > .info  {
+        width: 100%;
+        background: #202020;
+    }
+    footer > .footer-top > .info > section {
+        position: relative;
+        overflow: hidden;
+    }
+    footer > .footer-top > .info > section > .left {
+        float: left;
+    }
+    footer > .footer-top > .info > section > .left > ul {}
+    footer > .footer-top > .info > section > .left > ul > li {
+        font-size: 13px;
+        display: inline-block;
+    }
+    footer > .footer-top > .info > section > .left > ul > li > a {
+        display: block;
+        padding: 15px;
+        color: #fff;
+    }
+    footer > .footer-top > .info > section > .left > ul > li > a > b {
+        color: #2b74c0;
+    }
+    footer > .footer-top > .info > section > .right {
+        font-size: 13px;
+        float: right;
+    }
+    footer > .footer-top > .info > section > .right > select {
+        width: 200px;
+        height: 50px;
+        padding: 0 0 0 20px;
+        border: 0;
+        border-left: 1px solid #727272;
+        background: #202020 url('/ChimAcademy/img/elib/arrow.png') no-repeat 95% 50%;
+        color: #fff;
+        appearance: none;
+    }
+    footer > .footer-top > .info > section > .right > select:last-child {
+        border-right:1px solid #727272;
+    }
+    footer > .footer-top > .info > section > .right > select > option {}
+
+    footer > .address {
+        position: relative;
+        overflow: hidden;
+        padding: 23px 0;
+    }
+    footer > .address > .logo {
+        float: left;
+        margin-top: 5px;
+    }
+    footer > .address > .logo > img {
+    	width: 200px;
+    }
+    footer > .address > .location {
+        float: left;
+        padding-left: 18px;
+    }
+    footer > .address > .location > address {
+        font-size: 13px;
+        padding: 0;
+    }
+    footer > .address > .location > address > p {}
+    footer > .address > .location > address > p > em {
+        font-size: 13px;
+        font-style: normal;
+    }
+    footer > .address > .location > address > p > em > b {}
+    footer > .address > .location > address > span {}
+    footer > .home-up {
+        display: none;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        z-index: 999999;
+    }

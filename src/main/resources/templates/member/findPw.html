@@ -1,0 +1,38 @@
+<th:block th:include="@{member/_header.html}"/>
+<script>
+	$(()=>{
+		emailCheck();
+		/* emailAuth(); */
+	});
+</script>
+
+		<main id="join">
+            <nav>
+				<h1>비밀번호 찾기</h1>
+			</nav>
+				<section>
+					<table>
+						<tr>
+							<th>
+								<span class="essential">*</span>학번
+							</th>
+							<td><input type="text" name="uid" value="" class="joinInfo" required></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>이메일 주소
+							</th>
+							<td colspan="2">
+								<input type="email" name="email" required>
+								<button type="button" id="btnEmailAuth" class="btnEmail">인증번호 발송</button>
+								<span id="msgEmail" class="errMsg">이메일 주소 형식에 맞게 입력해주세요.</span>
+							</td>
+						</tr>
+						
+					</table>
+				</section>
+				<div id="btnSearchDiv">
+					<button type="button" id="btnSearchUid" value="찾기">찾기</button>
+				</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

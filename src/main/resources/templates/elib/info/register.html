@@ -1,0 +1,284 @@
+<th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript">
+	$(function(){
+		$('.cate1').change(function(){
+			let c1 = $(this).val();
+			if(c1 == '#'){
+				return false;
+			}
+			let jsonData = {"c1":c1};
+			$('.opt').remove(); // cate1 다시 선택 시 이전 cate2를 지우기 위해
+			$.ajax({
+				url:"/ChimAcademy/elib/info/cate2s",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					console.log(data.cate2s[0].c1)
+					if(data.cate2s[0].c1 > 0){
+						for(let vo of data.cate2s){
+	                        let tag = "<option class='opt' value="+vo.c2+">"+vo.c2Name+"</option>";
+	                        $('.cate2').append(tag); // select에 option을 뒤에 붙임
+	                    }
+					}
+				}
+			});
+		});
+		$('.cate2').click(function(){
+			let c1 = $('.cate1').val();
+			let c2 = $(this).val();
+			let group = $('select[name=GROUP]').val();
+			let gr = 0;
+			if(group == "ebook"){
+				gr = 989;
+			}else {
+				gr = 979;
+			}
+			$('input[name=bookId]').val("ISBN-"+gr+"-"+c1+"-"+c2+"-");
+		});
+		$('.submit').click(function(e){
+			e.preventDefault();
+			let cate1 = $('select[name=cate1]').val();
+			let cate2 = $('select[name=cate2]').val();
+			let title = $('input[name=title]').val();
+			let author = $('input[name=author]').val();
+			let publisher = $('input[name=publisher]').val();
+			let belong = $('input[name=belong]').val();
+			let applier = $('input[name=applier]').val();
+			let pubDate = $('input[name=pubDate]').val();
+			let tname = $('input[name=tname]').val();
+			let fname = $('input[name=fname]').val();
+			let isCate1 = false;
+			let isCate2 = false;
+			if(cate1 != '#'){
+				isCate1 = true;
+			}
+			if(cate2 != '#'){
+				isCate2 = true;
+			}
+			if(!isCate1){
+				alert('상위 카테고리를 선택해주세요.')
+				return false;
+			}else if(!isCate2){
+				alert('하위 카테고리를 선택해주세요.')
+				return false;
+			}else if(!checkEmpty(title)){
+				alert('책제목을 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(author)){
+				alert('저자를 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(publisher)){
+				alert('출판사를 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(belong)){
+				alert('소속도서관을 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(applier)){
+				alert('공급사를 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(pubDate)){
+				alert('등록일을 입력해주세요.')
+				return false;
+			}else if(!checkEmpty(tname)){
+				alert('썸네일을 넣어주세요.')
+				return false;
+			}else if(!checkEmpty(fname)){
+				alert('책파일을 넣어주세요.')
+				return false;
+			}
+			
+			$('.form').submit();
+			
+		});
+		
+		
+	});
+
+</script>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">전자도서/오디오북 추가하기</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>전자도서/오디오북 추가하기</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <h3>전자도서/오디오북 추가하기</h3>
+                                <ul class="con">
+                                	<li>
+                                		전자도서/오디오북 추가할 떄 카테고리를 설정 시 도서번호는 자동으로 설정됩니다.
+                                	</li>
+                                </ul>
+                                <div>
+                                	<form class="form" th:action="@{/elib/info/register}" method="post" enctype="multipart/form-data">
+                                	<table class="type01 reg">
+                                		<tr>
+                                			<th>도서번호</th>
+                                			<td>
+                                				<input type="text" name="bookId" placeholder="카테고리를 설정 시 도서번호는 자동으로 설정됩니다." readonly="readonly"><span>  식별번호는 DB 입력할 때 자동입력</span>
+                                			</td>
+                                		</tr>
+                    	                <tr>
+                                			<th>그룹</th>
+                                			<td>
+                                				<select name="GROUP">
+                                					<option value="ebook">전자도서</option>
+                                					<option value="audio">오디오북</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>상위 카테고리</th>
+                                			<td>
+                                				<select name="cate1" class="cate1">
+                                					<option value="#">상위</option>
+                                					<option th:each="cate1 : ${cate1s}" th:value="${cate1.c1}">[[${cate1.c1Name}]]</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>하위 카테고리</th>
+                                			<td>
+                                				<select name="cate2" class="cate2">
+                                					<option value="#">하위</option>
+                                				</select>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>책제목</th>
+                                			<td>
+                                				<input type="text" name="title" placeholder="책 제목">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>저자</th>
+                                			<td>
+                                				<input type="text" name="author" placeholder="저자">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>출판사</th>
+                                			<td>
+                                				<input type="text" name="publisher" placeholder="출판사">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>소속도서관</th>
+                                			<td>
+                                				<input type="text" name="belong" value="침대학교 전자도서관">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>공급사</th>
+                                			<td>
+                                				<input type="text" name="applier" placeholder="공급사">
+                                			</td>
+                                		</tr>
+										<tr>
+                                			<th>출판일</th>
+                                			<td>
+                                				<input type="date" name="pubDate">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>책설명</th>
+                                			<td>
+                                				<textarea name="bintro" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>저자설명</th>
+                                			<td>
+                                				<textarea name="aintro" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>목차</th>
+                                			<td>
+                                				<textarea name="index" placeholder="선택사항"></textarea>
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>썸네일</th>
+                                			<td>
+                                				<input type="file" name="tname" accept="image/jpeg,image/png,image/gif">
+                                			</td>
+                                		</tr>
+                                		<tr>
+                                			<th>도서파일</th>
+                                			<td>
+                                				<input type="file" name="fname" accept=".epub,.pdf,.mp3">
+                                			</td>
+                                		</tr>
+                                	</table>
+                                	<div class="btns">
+                                		<a class="btn submit" href="#">
+                                			<span class="material-icons">edit</span>
+                                			<span>등록하기</span>
+                                		</a>
+                                	</div>
+                                	</form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

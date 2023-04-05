@@ -1,0 +1,172 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>온라인콘텐츠</b>
+			    </h2>
+			    <ul>
+			        <li>
+			            <a th:href="@{/elib/}">
+			                 <span>전체보기</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/reading}">
+			               <span>독서</span>
+			            </a>
+			        </li>
+			        <li class="active">
+			            <a href="#">
+			                <span>인문·예술</span>
+			            </a>
+			            <ul class="subMenu">
+			                <li>
+			                    <br>
+			                    <a th:href="@{/}">
+			                        <span>SERI&U 지식도서관</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span style="color: #3975d6;">Medici.tv</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Music and Dance Online</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Classical Scores Library</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Naxos Music Library</span>
+			                    </a>
+			                </li>
+			            </ul>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/DBpia}">
+			                <span>학술DB</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/E_learning}">
+			                <span>이러닝</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/magazine}">
+			                <span>전자잡지·신문</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/DBpia}">
+			                <span>무료DB</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>Medici.TV</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="medici_bgbox bgbox">
+                                	<div class="if-txt">
+                                		<p>
+                                			<span class="tt">클래식음악 데이터베이스</span>
+                                			<br>
+                                			<span class="btit">Medici.TV</span>
+                                		</p>
+                                		<br>
+                                		<ul class="btns_wrap_tac">
+                                			<li>
+                                				<a href="#" class="btn_link02">
+	                                				<span>Medici.TV 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                		</ul>
+                                	</div>
+                                </div>
+                                <br>
+                                <h3>Medici.TV</h3>
+                                <ul class="con">
+                                	<li>
+                                		2,000편 이상의 오페라,댄스,콘서트,발레,다큐멘터리,아카이브자료,예술가 프로필과 매년 약 150편 이상의 실시간 실황 공연을 제공하는 클래식 음악 데이터베이스
+                                	</li>
+                                </ul>
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

@@ -1,0 +1,161 @@
+<th:block th:include="@{student/_header.html}"/>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	searchBtn();
+	selectMajors();
+	regLecSuang();
+	viewSyllabus();
+	delSugang();
+});
+</script>	 
+<main id="signUp">
+	<th:block th:include="@{_aside.html}"/>
+	
+    <section>
+        <section id="stdInfo">
+            <table>
+                <tr>
+                    <td rowspan="2">[[${year}]]-[[${semester}]]학기<br>([[${member.sYear}]]학년)</td>
+                    <td>이름</td>
+                    <td th:text="${member.name}">홍길동</td>
+                    <td>학번</td>
+                    <td th:text="${member.uid}" id="uid">20231112</td>
+                </tr>
+                <tr>
+                    <td>학과</td>
+                    <td th:text="|${depName} / ${majorName}|">국문학과 / 한글</td>
+                    <td>연락처</td>
+                    <td th:text="${member.hp}">010-0000-0001</td>
+                </tr>
+            </table>
+        </section>
+        <section id="searchCredit">
+            <div id="searchDiv">
+            	<table>
+					<tr>
+						<td>구분</td>
+						<td>
+							<select name="lecGubun" id="">
+								<option value="" selected>-</option>
+								<option value="1" >전공필수</option>
+								<option value="2">전공선택</option>
+								<option value="3">교양</option>
+							</select>
+						</td>
+						<td>검색</td>
+						<td>
+							<input type="text" name="searchData" id="" placeholder="교과명 또는 코드 입력"></td>
+						<td></td>
+						<td>
+							<button id="btnSearchLec">검색</button>
+						</td>
+					</tr>
+					<tr>
+						<td>학부(과)</td>
+						<td>
+							<select name="depCode" id="selectDep">
+								<option value="">-</option>
+								<option th:value="${dep.depCode}" th:each="dep : ${departments}" th:text="${dep.depName}"></option>
+								
+							</select>
+						</td>
+						<td>전공</td>
+						<td>
+							<select name="majorCodeSel" class="selectMajor">
+								<option value="">-</option>
+							</select>
+						</td>
+						<td>학년</td>
+						<td>
+							<select name="lecClass" id="selectClass">
+								<option value="">-</option>
+								<option value="1">1학년</option>
+								<option value="2">2학년</option>
+								<option value="3">3학년</option>
+								<option value="4">4학년</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+            </div>
+            <div id="creditDiv">
+                <table>
+                    <tr>
+                        <td>최대학점</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>최소학점</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>현재학점</td>
+                        <td>[[${sumCredit}]]</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section id="resultLec">
+            <h1>개설과목 : 총 <span id="searchResult">0</span> 건</h1>
+           <table id="userListTable">
+ 				<thead>
+                    <tr>
+                        <th>no</th>
+                        <th>학과코드</th>
+                        <th>전공코드</th>
+                        <th>학년</th>
+                        <th>과목코드</th>
+                        <th>강의명</th>
+                        <th>이수구분</th>
+                        <th>학점</th>
+                        <th>담당교수</th>
+                        <th>강의시간</th>
+                        <th>인원제한</th>
+                        <th>신청인원</th>
+                        <th>강의<br>계획서</th>
+                        <th>수강<br>신청</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTbody"></tbody>
+			</table>
+        </section>
+        <section id="sugangList">
+            <h1>수강신청내역</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>삭제</th>
+                        <th>코드</th>
+                        <th>학년</th>
+                        <th>강의명</th>
+                        <th>이수구분</th>
+                        <th>학점</th>
+                        <th>담당교수</th>
+                        <th>강의시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<th:block th:if="${#lists.isEmpty(sugangs)}">
+                    <tr>
+                        <td colspan="8">
+                            수강 신청한 과목이 없습니다.
+                        </td>
+                    </tr>
+                    </th:block>
+					<tr th:each="sugang : ${sugangs}">
+                        <td><button class="btnDelSugang">삭제</button></td>
+                        <td th:text="${sugang.lecCode}"></td>
+                        <td th:text="${sugang.lecClass}"></td>
+                        <td th:text="${sugang.lecName}"></td>
+                        <td th:text="${sugang.gubun}"></td>
+                        <td th:text="${sugang.credit}"></td>
+                        <td th:text="${sugang.name}"></td>
+                        <td th:text="|${sugang.lecDay} ${sugang.cTime} (${sugang.lecLoc})|"></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </section>
+    </section>
+</main>
+<th:block th:include="@{_footer.html}"/>

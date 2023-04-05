@@ -1,0 +1,83 @@
+<th:block th:include="@{board/A101/_header.html}" />
+<script>
+$(()=>{
+	commentadd();
+	deleteComment();
+	modifyComment();
+});
+</script>
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<div class="board">
+		<table>
+			<h1>글 보기</h1>
+			<tbody>
+				<tr>
+					<th>작성자</th>
+					<td>[[${korean.name}]]</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>[[${korean.title}]]</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea readonly style="border: none;">[[${korean.content}]]</textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- <input type="hidden" name="uid" th:value="${korean.uid}" /> -->
+		<div class="btn_div">
+			<a class="btn nomal" th:href="@{/board/A101/list(pg=${pg})}">목록</a>
+			<div th:if="${#authentication.principal.user.uid} eq ${korean.uid}">
+				<input type="hidden" name="no" th:value="${no}" />
+				<button class="btn red" id="delbtn" th:data-no="${no}">삭제</button>
+				<button class="btn blue" id="regbtn">수정</button>
+				<input type="hidden" name="pg" th:value="${pg}" />
+			</div>
+		</div>
+		<div class="comment">
+			<div id="commentsDiv">
+				<div class="view write" th:each="comment : ${comments}"
+					th:data-no="${comment.no}">
+					<h2>[[${comment.name}]]</h2>
+					<p th:text="${comment.content}" class="commentTextArea"></p>
+					<div class="btn_div">
+						<span th:text="${comment.rdate.substring(0, 10)}">2023-01-17</span>
+						<div>
+							<!-- <button class="btn_small btn_comment">답글보기</button> -->
+							<th:block
+								th:if="${#authentication.principal.user.uid} eq ${comment.uid}">
+								<button
+									class="btn_small btn-gradient cyan mini btnCommentModify"
+									th:data-no="${comment.no}">수정</button>
+								<button class="btn_small btn-gradient red mini btnCommentDelete"
+									th:data-no="${comment.no}">삭제</button>
+							</th:block>
+							<button class="btn_small btnGoodComment">
+								<i class="fas fa-thumbs-up"> 200</i>
+							</button>
+							<button class="btn_small btnBadComment">
+								<i class="fas fa-thumbs-down"> 10</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="write">
+				<h1>
+					댓글 <span id="countComments">[[${commentCount}]]</span>
+				</h1>
+				<h2 th:text="${#authentication.principal.user.name}">홍길동</h2>
+				<input type="hidden" name="uid" th:value="${#authentication.name}" />
+				<input type="hidden" name="parent" th:value="${korean.no}" />
+				<textarea name="comment" id="comment" cols="30" rows="10"
+					placeholder="댓글을 작성해주세요"></textarea>
+				<div class="btn_end">
+					<button class="btn blue" id="commentadd">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<th:block th:include="@{_footer.html}" />

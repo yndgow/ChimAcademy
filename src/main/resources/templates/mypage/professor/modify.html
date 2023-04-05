@@ -1,0 +1,106 @@
+<th:block th:include="@{mypage/_header.html}"/>
+<main>
+<th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfopro">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>마이페이지 > 개인정보 수정</h3>
+                </nav>
+                <section>
+                    <h3>프로필</h3>
+                </section>
+                <section>
+                <form th:action="@{/professor/my/modifyProfile}" method="post" enctype="multipart/form-data">
+                    <div>
+                        <article><img th:src="@{/profileThumb/}+${member.profile}" style="width: 130px; height: 173.33px;" alt="증명사진" class="idphoto" id="preview"></article>
+                        <br />
+                        <p th:text=${professor.name}></p>
+                        <span th:text=${professor.email}></span>
+                        <label for="imgeditbtn" class="imgeditbtnlabel">
+							<img th:src="@{/img/mypage/edit.png}" alt="프로필 변경 아이콘" class="imgeditbtnicon"/>
+						</label>
+                        <input type="file" onchange="readURL(this);" name="profileThumb" id="imgeditbtn" alt="프로필 변경 아이콘" class="imgeditbtnicon" style="display:none;"/>
+                        <input type="hidden" name="uid" th:value="${member.uid}" />
+                    </div>
+                  	
+                    <div>
+                        <table>
+                            <tr>
+                                <td>아이디</td>
+                                <td th:text=${professor.uid}></td>
+                            </tr>
+                            <tr>
+                                <td>학과</td>
+                                <td th:text=${professor.depName}></td>
+                            </tr>
+                            <tr>
+                                <td>연구실</td>
+                                <td th:text=${professor.lab}></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table id="carrer">
+                            <tr>
+                                <td>이력</td>
+                                <td><textarea class="resume" readonly="readonly">[[${professor.career}]]</textarea><td>
+                            </tr>
+                            <tr>
+                            	<td>상담시간</td>
+                            	<td id="cstime">[[${professor.csTime}]]</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+				    <input type="submit" value="저장" class="savebtn"/>
+                </form>
+                <!-- 상세정보 -->
+                <section id="viewinfopro">
+                    <h3>상세정보</h3>
+                </section>
+               	<form method="post">
+                <div id="detailpro">
+                    <div>
+                        <section>
+                            <span>휴대전화번호</span>
+                            <input name="hp" id="box1" type="text" onKeyup="inputPhoneNumber(this);" maxlength="13"
+                                th:value="${professor.hp}" />
+                        </section>
+                        <section>
+                            <span>이메일</span>
+                            <input name="email" id="box2" type="text" th:value="${professor.email}" />
+                        </section>
+                        <section>
+                            <span>연구실</span>
+                            <input name="lab" id="box2" type="text" th:value="${professor.lab}" />
+                        </section>
+                        <section>
+                            <span>상담가능시간</span>
+                            <input name="csTime" id="box5" type="text" th:value="${professor.csTime}" />
+                        </section>
+                        <div>
+                            <span>주소</span>
+						    <input type="text" name="zip" class="box3" id="postcode" th:value="${professor.zip}" />
+						    <input type="button" class="searchBtn" onclick="execDaumPostcode()" value="검색"><br>
+						    <input type="text" name="addr1" class="box4" id="address" th:value="${professor.addr1}" /><br>
+						    <input type="text" name="addr2" class="box5" id="detailAddress" th:value="${professor.addr2}" />
+                        </div>
+                        <input type="hidden" name="uid" th:value="${member.uid}" />
+						<input type="hidden" name="name" th:value="${member.name}" />
+						 <section class="career">
+                            <span>이력</span><br>
+                            <textarea name="career" th:text="${professor.career}"></textarea>
+                        </section>
+                        <section>
+                            <span>자기소개</span><br>
+                            <textarea name="info" th:text="${professor.info}"></textarea>
+                        </section>
+                       
+                    </div>
+                </div>
+                <button id="savebtn">저장</button>
+                <button id="cancelbtn">취소</button>
+                </form>
+        </main>
+<th:block th:include="@{_footer.html}"/>

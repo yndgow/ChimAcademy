@@ -1,0 +1,39 @@
+<th:block th:include="@{student/_header.html}"/>
+<script>
+	$(()=>{
+		$('#btnEvalList').click(function(){
+			location.href="/ChimAcademy/professor/eval";
+		});
+	});
+</script>
+<main id="eval">
+   	<th:block th:include="@{_aside.html}"/>
+	<section>
+	    <h1>강의 평가 작성</h1>
+	    <table>
+	        <tr>
+	            <td>과목</td>
+	            <td>[[${vo.lecName}]]</td>
+	        </tr>
+	        <tr>
+	            <td>평가점수</td>
+	            <td>
+	                <input type="radio" name="evalScore" id="s1" value="1" th:checked="${vo.evalScore == 1}" class="readonly"><label for="s1">1</label>
+	                <input type="radio" name="evalScore" id="s2" value="2" th:checked="${vo.evalScore == 2}" class="readonly"><label for="s2">2</label>
+	                <input type="radio" name="evalScore" id="s3" value="3" th:checked="${vo.evalScore == 3}" class="readonly"><label for="s3">3</label>
+	                <input type="radio" name="evalScore" id="s4" value="4" th:checked="${vo.evalScore == 4}" class="readonly"><label for="s4">4</label>
+	                <input type="radio" name="evalScore" id="s5" value="5" th:checked="${vo.evalScore == 5}" class="readonly"><label for="s5">5</label>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>내용</td>
+	            <td><textarea name="" id="" cols="30" rows="10" readonly="readonly">[[${vo.content}]]</textarea></td>
+	        </tr>
+	    </table>
+	    <div class="btn_div">
+	        <button id="btnEvalList">목록</button>
+	    </div>
+	</section>
+</main>
+            
+<th:block th:include="@{_footer.html}"/>

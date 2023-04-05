@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kr.co.ChimAcademy.dao.StudentDAO">
+	
+	<select id="selectSugangs" resultType="kr.co.ChimAcademy.dto.LecSugangDto">
+		SELECT 
+			a.lecCode, b.lecClass, b.lecName, b.lecGubun, b.credit, 
+			b.lecDay, b.beginTime, b.endTime, b.lecLoc, d.`name` 
+		FROM lec_sugang AS a 
+		JOIN lecture AS b ON a.lecCode = b.lecCode 
+		JOIN lec_list AS c ON a.lecCode = c.lecCode
+		JOIN member AS d ON c.uid = d.uid
+		WHERE a.uid = #{uid};
+	</select>
+	
+	<select id="sumCredit" resultType="int">
+		SELECT COALESCE(
+					(SELECT SUM(b.credit)
+						FROM lec_sugang AS a
+       					JOIN lecture AS b ON a.lecCode = b.lecCode
+       					WHERE a.uid = #{uid}
+       					GROUP BY a.uid)
+				, 0) AS sumCredit;
+	</select>
+
+
+</mapper>

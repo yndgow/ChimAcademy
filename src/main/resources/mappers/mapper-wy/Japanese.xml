@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.JapaneseDAO">
+	
+	<select id="selectJapaneses" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.* FROM `board` AS a
+		JOIN `member` as b
+		ON a.uid = b.uid
+		WHERE a.depCode = 'P701' and a.parent = 0 
+		order by a.rdate desc limit #{start}, 10;
+	</select>
+	
+	<select id="selectJapanese" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT * from `board` where `no` = #{no};
+	</select>
+	
+	<!-- 게시판 등록-->
+	<insert id="insertJapanese">
+		insert into `board` set
+			`depCode`='P701',
+            `title`=#{title},
+            `content`=#{content},
+            `uid`=#{uid},
+            `regip`=#{regip},
+            `rdate`=NOW();
+	</insert>
+	
+	<!-- 글수정-->
+	<update id="updateJapanese">
+	  UPDATE `board` set
+		`depCode`='P701',
+	    `title`=#{title},
+	    `content`=#{content},
+	    `uid`=#{uid},
+	    `regip`=#{regip},
+	    `rdate`=NOW()
+	  	WHERE `no` = #{no}
+	</update>
+	
+	<!-- 댓글-->
+	<insert id="insertComment">
+		insert into `board` set
+			`depCode`='P701',
+            `content`=#{content},
+            `uid`=#{uid},
+            `regip`=#{regip},
+            `rdate`=NOW(),
+            `parent` = #{parent};
+            
+	</insert>
+	
+	<!-- 댓글보기-->
+	<select id="selectComment" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT * from `board` where `parent` = #{no}  AND `depCode`= 'P701' ORDER BY `no` desc;
+	</select>
+	
+	
+	<!-- 댓글수정-->
+	<update id="updateComment">
+	  UPDATE `board` set
+		`depCode`='P701',
+	    `content`=#{content},
+	    `regip`=#{regip},
+	    `rdate`=NOW()
+	  	WHERE `no` = #{no}
+	</update>
+	
+	<!-- 댓글카운트-->
+	<select id="countComment" resultType="int">
+	SELECT COUNT(`no`) FROM `board` WHERE `depCode`= 'P701' AND parent = #{parent};
+	</select>
+		
+	<!-- 조회수 증가-->
+	<update id="hitJapanese">
+	   UPDATE `board` set
+		`hit` = `hit`+ 1
+	  	WHERE `no` = #{no};
+	</update>
+	
+	<delete id="deleteJapanese">
+		DELETE from `board` WHERE `no` = #{no};
+	</delete>
+	
+	<!-- 게시판 페이징-->
+	<select id="selectCountTotal" resultType="int">
+		select count(`no`) from `board` WHERE `depCode` = 'P701' and parent = 0; 
+	</select>
+
+
+</mapper>

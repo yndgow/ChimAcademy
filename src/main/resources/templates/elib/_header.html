@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="_csrf_header" th:content="${_csrf.headerName}">
+	<meta name="_csrf" th:content="${_csrf.token}"> -->
+    <title>침대학교 전자도서관</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/ChimAcademy/style/elib/ebook.css">
+    <link rel="stylesheet" href="/ChimAcademy/style/elib/online.css">
+    <script>
+        $(document).ready(function(){
+          $('.slider').bxSlider();
+          
+          $('.search-box > form').submit(function(){
+        	 let keyword = $('input[name=keyword]').val();
+        	 if(!checkEmpty(keyword)){
+ 				alert('검색할 내용을 입력해주세요.')
+ 				return false;
+ 			 }
+          });
+        });
+    	function checkEmpty(content){
+    		if(content.trim()){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    </script>
+</head>
+<body>
+    <div class="wrapper eb">
+        <header>
+            <div class="tnb">
+                <section>
+                    <div class="left-util">
+                        <ul>
+                            <li><a th:href="@{/}" class="link1">학사관리시스템</a></li>
+                            <li><a th:href="@{/board/A101/list}" class="link2">학과게시판</a></li>
+                        </ul>
+                    </div>
+                    <div class="right-util">
+                        <ul>
+                        	<th:block sec:authorize="isAnonymous()">
+	                            <li><a th:href="@{/}">로그인</a></li>
+	                            <li><a th:href="@{/member/join}">학번찾기</a></li>
+                            </th:block>
+                        	<th:block sec:authorize="hasAnyRole('1','2','3','4')">
+	                            <li style="width: 176px;"><a>[[${#authentication.principal.user.name}]]님 반갑습니다.</a></li>
+	                            <li><a th:href="@{/elib/mylibrary/mylib}" class="link3">내서재</a></li>
+	                            <li><a th:href="@{/logout}">로그아웃</a></li>
+                            </th:block>
+	                            <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="Gnb">
+                <section>
+                    <h1>
+                        <a th:href="@{/elib/}">
+                            <img th:src="@{/img/elib/elibLogo.png}" alt="침대학교 로고">
+                        </a>
+                    </h1>
+                    <div class="g-menu">
+                        <ul class="gnb-menu">
+                            <li>
+                                <a href="#">전자책</a>
+                                <ul class="subMenu">
+                                    <li><a th:href="@{/elib/ebook/list}">새로 들어온 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='ebook',applier='예스24',sort=3,type=1)}">유통사별</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">구독형전자책</a>
+                                <ul class="subMenu">
+                                    <li><a th:href="@{/elib/online/gudok}">구독형전자책</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">오디오북</a>
+                                <ul class="subMenu">
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio')}">새로 들어온 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort='4',type='4')}">대출이 많은 책</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',sort=1,cate1=10,cate2=10)}">주제별</a></li>
+                                    <li><a th:href="@{/elib/ebook/list(GROUP='audio',applier='예스24',sort=3,type=1)}">유통사별</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">온라인컨텐츠</a>
+                                <ul class="subMenu">
+                                    <li><a th:href="@{/elib/online/reading}">독서</a></li>
+                                    <li><a th:href="@{/elib/online/humanArt}">인문·예술</a></li>
+                                    <li><a th:href="@{/elib/online/DBpia}">학술DB</a></li>
+                                    <li><a th:href="@{/elib/online/E_learning}">이러닝</a></li>
+                                    <li><a th:href="@{/elib/online/magazine}">전자잡지·신문</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">이용안내</a>
+                                <ul class="subMenu">
+                                    <li><a th:href="@{/elib/info/list}">도서관소식</a></li>
+                                    <li><a th:href="@{/elib/info/how}">이용안내</a></li>
+                                    <li><a th:href="@{/elib/info/install}">뷰어 설치 안내</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </header>

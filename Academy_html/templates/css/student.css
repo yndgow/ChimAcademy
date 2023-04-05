@@ -1,0 +1,207 @@
+*{
+    box-sizing: border-box;
+    border-spacing: 0;
+    font-size: 12px;
+}
+button:hover{
+    cursor: pointer;
+}
+
+main > section {
+    float: left;
+    width: 1010px;
+    padding: 20px;
+}
+main > section::after{
+    content:""; display:block; clear:both;
+}
+
+/* 수강신청 */
+main#signUp > section > section {
+    margin-bottom: 25px;
+}
+main h1{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+main table, main tr, main td, main th{
+    border: 1px solid #c0c0c0;
+}
+
+main#signUp > section > #stdInfo > table{
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+
+main#signUp > section > #stdInfo > table tr:nth-child(1) > td:nth-child(even),
+main#signUp > section > #stdInfo > table tr:nth-child(2) > td:nth-child(odd){
+    background-color: #ececec;
+}
+main#signUp > section > #searchCredit::after {
+    content:""; display:block; clear:both;
+}
+
+main#signUp > section > #searchCredit > #searchDiv{
+    float: left;
+    width: auto;
+    margin-right: 10px;
+    padding-right: 10px;
+    border: 1px solid #c0c0c0;
+}
+main#signUp > section > #searchCredit > #searchDiv > table{
+    width: 670px;
+    text-align: right;    
+    
+}
+main#signUp > section > #searchCredit > #searchDiv > table td{
+    line-height: 35px;
+}
+main#signUp > section > #searchCredit > #searchDiv > table select{
+    width: 145px;
+}
+main#signUp > section > #searchCredit > #searchDiv > table td:nth-child(even){
+    text-align: center;
+}
+main#signUp > section > #searchCredit > #searchDiv > table #searchTd{
+    text-align: center;
+}
+main#signUp > section > #searchCredit > #searchDiv > table #searchTd > button {
+    width: 145px;
+}
+main#signUp > section > #searchCredit > #searchDiv > table, 
+main#signUp > section > #searchCredit > #searchDiv > table tr, 
+main#signUp > section > #searchCredit > #searchDiv > table td{
+    border: none;
+}
+main#signUp > section > #searchCredit > #creditDiv{
+    float: left;
+    width: auto;
+    height: auto;
+}
+main#signUp > section > #searchCredit > #creditDiv > table{
+    width: 198px;
+    height: 71px;
+    text-align: center;
+}
+main#signUp > section > #searchCredit > #creditDiv > table tr > td:nth-child(1){
+    width: 100px;
+    background-color: #ececec;
+}
+main#signUp > section > #resultLec > table{
+    display: block;
+    width: 890px;
+    height: 409px;
+    overflow: auto;
+    text-align: center;
+}
+main#signUp > section > #resultLec > table th {
+    position: sticky;
+    top: 0;
+    background-color: #ececec;
+}
+main#signUp > section > #resultLec > table th:nth-child(1) {width: 25px;}
+main#signUp > section > #resultLec > table th:nth-child(2) {width: 35px;}
+main#signUp > section > #resultLec > table th:nth-child(3) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(4) {width: 201px;}
+main#signUp > section > #resultLec > table th:nth-child(5) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(6) {width: 60px;}
+main#signUp > section > #resultLec > table th:nth-child(7) {width: 100px;}
+main#signUp > section > #resultLec > table th:nth-child(8) {width: 120px;}
+main#signUp > section > #resultLec > table th:nth-child(9) {width: 55px;}
+main#signUp > section > #resultLec > table th:nth-child(10) {width: 55px;}
+main#signUp > section > #resultLec > table th:nth-child(11) {width: 70px;}
+main#signUp > section > #resultLec > table th:nth-child(12) {width: 55px;}
+main#signUp > section > #resultLec > table th,
+main#signUp > section > #resultLec > table td{
+    line-height: 35px;
+}
+main#signUp > section > #sugangList > table{
+    width: 100%;
+    text-align: center;
+}
+main#signUp > section > #sugangList > table th,
+main#signUp > section > #sugangList > table td{
+    line-height: 35px;
+}
+main#signUp > section > #sugangList > table thead > tr{
+    background-color: #ececec;
+}
+
+/* 시간표 */
+main#timetable > section{
+    height: 827px;
+}
+main#timetable > section > table{
+    width: 100%;
+    height: 100%;
+}
+main#timetable > section > table tr:nth-child(1){
+    background-color: #ececec;
+}
+main#timetable > section > table td{
+    width: 16.6%;
+    font-size: 14px;
+    text-align: center;
+    height: 70px;
+}
+main#timetable > section {
+    margin-bottom: 20px;
+}
+
+/* 강의평가 */
+main#eval > section{
+    height: 847px;
+}
+main#eval > section > table{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+
+main#eval > section > table, main#eval > section > table td {
+    border-left: none;
+    border-right: none;
+    font-size: 16px;
+}
+main#eval > section > table td{
+    height: 80px;
+    text-align: center;
+}
+
+main#eval > section > table td:nth-child(1){
+    width: 120px;
+    background-color: #ececec;
+}
+main#eval > section > table input[type=radio]{
+    width: 120px;
+    height: 16px;
+    
+}
+main#eval > section > table label{
+    font-size: 20px;
+}
+main#eval > section > table tr:last-child td:last-child{
+    height: 200px;
+}
+
+main#eval > section > table textarea{
+    width: 800px;
+    height: 160px;
+    border: none;
+    resize: none;
+    padding: 10px;
+    background-color: #f7f7f7;
+    font-size: 14px;
+}
+
+main#eval > section > .btn_div{
+    text-align: right;
+}
+main#eval > section > .btn_div > button{
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+}

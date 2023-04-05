@@ -1,0 +1,246 @@
+<th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript">
+	$(function(){
+		$('.book-return').click(function(e){
+			e.preventDefault();
+			let no = $(this).data('no');
+			console.log(no);
+			let jsonData = {
+					"no":no,
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/return",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result > 0){
+						alert('반납 완료')
+						location.reload();
+					}else{
+						alert('서버에 문제가 있습니다.\나중에 다시 시도해주세요.')
+					}
+				}
+			});
+		}); 
+		$('.book-extension').click(function(e){
+			e.preventDefault();
+			let no = $(this).data('no');
+			console.log(no);
+			let jsonData = {
+					"no":no,
+			}
+ 			$.ajax({
+				url:"/ChimAcademy/elib/mylibrary/extension",
+				type:"post",
+				data:jsonData,
+				dataType:"json",
+				success:function(data){
+					if(data.result < 21){
+						alert('연장 완료')
+						location.reload();
+					}else{
+						alert('더이상 연장은 불가능합니다.')
+					}
+				}
+			});
+		}); 
+	});
+</script>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img src="/ChimAcademy/img/elib/home.png" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/elib/mylibrary/mylib(state=1)}">내서재</a>
+                                    </li>
+                                    <li th:href="@{/elib/mylibrary/mylib(state=1)}" th:if="${state != '0' and state != '4'}">
+                                        <a>자료대출내역</a>
+                                    </li>
+                                    <li th:href="@{/elib/mylibrary/mylib(state=1)}" th:if="${state == '0'}">
+                                        <a>나의 관심도서</a>
+                                    </li>
+                                    <li th:href="@{/elib/mylibrary/mylib(state=1)}" th:if="${state == '1'}">
+                                        <a>대출중 도서</a>
+                                    </li>
+                                    <li th:href="@{/elib/mylibrary/mylib(state=2)}" th:if="${state == '2'}">
+                                        <a>예약중인 도서</a>
+                                    </li>
+                                    <li th:href="@{/elib/mylibrary/mylib(state=3)}" th:if="${state == '3'}">
+                                        <a>반납한 도서</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <div class="lnb">
+                    <h2>
+                        <b>내서재</b>
+                    </h2>
+                    <ul>
+                        <li th:classappend="${state}!='0'?'active'">
+                            <a th:href="@{/elib/mylibrary/mylib(state=1)}">
+                                <span>자료대출내역</span>
+                            </a>
+                            <ul class="subMenu">
+                                <li>
+                                    <br>
+                                    <a th:href="@{/elib/mylibrary/mylib(state=1)}">
+                                        <span>대출중 도서</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <br>
+                                    <a th:href="@{/elib/mylibrary/mylib(state=2)}">
+                                        <span>예약중인 도서</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <br>
+                                    <a th:href="@{/elib/mylibrary/mylib(state=3)}">
+                                        <span>지난대출 도서</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li th:classappend="${state}=='0'?'active'">
+                            <a th:href="@{/elib/mylibrary/mylib(state=0)}">
+                                <span>나의 관심도서</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3 th:if="${state=='1'}">대출중 도서</h3>
+                                <h3 th:if="${state=='2'}">예약중인 도서</h3>
+                                <h3 th:if="${state=='3'}">지난대출 도서</h3>
+                                <h3 th:if="${state=='0'}">나의 관심도서</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="elib-top">
+                                    <div class="lsort">
+								        <span>[[${total}]]</span>
+								        종의 책이 있습니다. &nbsp;
+								        <span>[[${currentPage}]]</span>
+								        of [[${pageGroupEnd}]] page 
+								    </div>
+                                </div>
+                                <ul class="list">
+                                	<li th:if="${mylibs.size() < 1}" class="nolist">
+                                		<span th:if="${state == '1'}">대출중인 도서가 없습니다.</span>
+                                		<span th:if="${state == '2'}">예약중인 도서가 없습니다.</span>
+                                		<span th:if="${state == '3'}">반납한 도서가 없습니다.</span>
+                                		<span th:if="${state == '0'}">관심도서가 없습니다.</span>
+                                	</li>
+                                    <li class="elib" th:each="mylib : ${mylibs}">
+                                        <div class="thumb">
+                                            <a th:href="@{/elib/ebook/view(bookId=${mylib.bookId})}">
+                                                <img th:src="@{${mylib.EbookVO.thumb}}" alt="thumb">
+                                            </a>
+                                        </div>
+                                        <div class="cont">
+                                            <div class="flexbox">
+                                                <a th:href="@{/elib/ebook/view(bookId=${mylib.bookId},GROUP=${mylib.EbookVO.GROUP},sort=4,type=1)}" class="book_link">
+                                                    <b>[[${mylib.EbookVO.title}]]</b>
+                                                </a>
+                                                <div class="info">
+                                                    <span>[[${mylib.EbookVO.author}]]</span>
+                                                    <span> ㅣ </span>
+                                                    <span>[[${mylib.EbookVO.publisher}]]</span>
+                                                    <span> ㅣ </span>
+                                                    <span>[[${mylib.EbookVO.pubDate.substring(0,10)}]]</span>
+                                                </div>
+                                            </div>
+                                            <div class="meta">
+                                                <label>소속도서관 : </label>
+                                                <span>[[${mylib.EbookVO.belong}]]</span>
+                                                <span> ㅣ </span>
+                                                <label>공급사 : </label>
+                                                <span>[[${mylib.EbookVO.applier}]]</span>
+                                                <th:block th:if="${state == '1'}">
+                                                <span> ㅣ </span>
+                                                <label>대출일 :</label>
+                                                <span>[[${mylib.loanDate.substring(0,10)}]]</span>
+                                                <span> ㅣ </span>
+                                                <label>반납예정일 : </label>
+                                                <span>[[${mylib.returnDate.substring(0,10)}]]</span>
+                                                <span> ㅣ </span>
+                                                </th:block>
+                                            </div>
+                                        </div>
+                                        <div th:if="${state == '1'}" class="btns" style="position: absolute; bottom: 20px; right: 20px; width: 238px;">
+                                            <a th:href="@{/elib/mylibrary/openEbook(bookId=${mylib.bookId},group=${mylib.EbookVO.GROUP})}" class="btn btn1 book-view">
+                                                <span>책읽기</span>
+                                            </a>
+                                            <a href="#" class="btn btn4 book-return" th:data-no="${mylib.no}">
+                                                <span>반납하기</span>
+                                            </a>
+                                            <a href="#" class="btn btn5 book-extension" th:data-no="${mylib.no}">
+                                                <span>연장하기</span>
+                                            </a>
+                                        </div> 
+                                    </li>
+                                </ul>
+							<div class="paging" th:unless="${mylibs.size() < 1}">
+							    <span>
+							        <a th:href="@{/elib/ebook/list(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+							        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
+				                		<a th:href="@{/elib/ebook/list(pg=${page},state=${state})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+				                	</th:block>
+							        <a th:href="@{/elib/ebook/list(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+							    </span>
+							</div>
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

@@ -1,0 +1,67 @@
+<aside>
+    <ul id="side">
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-user"></i>마이페이지</a>
+            <ol>
+            	<th:block sec:authorize="hasAnyRole('ROLE_0', 'ROLE_1', 'ROLE_2', 'ROLE_4')">
+                <li><a th:href="@{/student/my}">내 정보(학생)</a></li>
+                <li><a th:href="@{/student/my/modify}">내 정보수정(학생)</a></li>
+                </th:block>
+                <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')">
+                <li><a th:href="@{/professor/my}">내 정보(교수)</a></li>
+                <li><a th:href="@{/professor/my/modify}">내 정보수정(교수)</a></li>
+                </th:block>
+            </ol>
+        </li>
+        <th:block sec:authorize="hasAnyRole('ROLE_3', 'ROLE_4')">        
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>학사관리(교수)</a>
+            <ol>
+                <li><a th:href="@{/professor/manage}">강의</a></li>
+                <li><a th:href="@{/professor/credit}">성적</a></li>
+       	       <li><a th:href="@{/professor/eval}">강의평가</a></li>
+            </ol>
+        </li>
+        </th:block>
+		<th:block sec:authorize="hasAnyRole('ROLE_1', 'ROLE_2', 'ROLE_4')">        
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>학사관리(학생)</a>
+            <ol>
+                <li><a th:href="@{/student/class/signup}">수강신청</a></li>
+                <li><a th:href="@{/student/class/timeTable}">강의시간표</a></li>
+                <li><a th:href="@{/student/class/eval}">강의평가</a></li>
+            </ol>
+        </li>
+        </th:block>
+		<th:block sec:authorize="hasAnyRole('ROLE_2', 'ROLE_4')">         
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-graduation-cap"></i>조교</a>
+            <ol>
+                <li><a th:href="@{/assistant/lecuture}">강의관리</a></li>
+                <li><a th:href="@{/assistant/manage}">인원관리</a></li>
+                <li><a th:href="@{/assistant/insert}">인원추가</a></li>
+           	   <li><a th:href="@{/assistant/modify}">인원수정</a></li>
+            </ol>
+        </li>
+        </th:block>        
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-solid fa-comments"></i>학과게시판</a>
+            <ol>
+                <li><a th:href="@{/board/A101/list}">국문학과</a></li>
+                <li><a th:href="@{/board/D107/list}">중어중문학과</a></li>
+                <li><a th:href="@{/board/P701/list}">일문학과</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#" onclick="event.preventDefault()"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+            <ol>
+                <li><a th:href="@{/elib/}">메인</a></li>
+                <li><a th:href="@{/elib/ebook/list}">도서</a></li>
+                <li><a th:href="@{/elib/mylibrary/mylib}">내 서재</a></li>
+                <li><a th:href="@{/elib/info/list}">도서관소식</a></li>
+                <li><a th:href="@{/elib/info/how}">이용안내</a></li>
+            </ol>
+        </li>
+
+    </ul>
+</aside>

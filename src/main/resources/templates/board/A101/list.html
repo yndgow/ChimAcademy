@@ -1,0 +1,48 @@
+<th:block th:include="@{board/A101/_header.html}" />
+
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<section id="depList">
+		<!-- 내 정보 -->
+		<div class="banner">
+			<img th:src="@{/img/board/A101/A101_banner.png}" alt="헤더로고">
+		</div>
+		<section>
+			<table>
+				<tr>
+					<th>no</th>
+					<th style="width: 50%">제목</th>
+					<th style="width: 18%">작성자</th>
+					<th style="width: 7%">조회수</th>
+					<th style="width: 15%">작성일</th>
+				</tr>
+				<tr th:each="korean : ${korean}">
+					<td>[[${pageStartNum-koreanStat.index}]]</td>
+					<td class="taL"><a th:href="@{/board/A101/view(no=${korean.no}, pg=${currentPage})}">[[${korean.title}]] <span style="color: blue;">([[${korean.commentsCount}]])</span></a></td>
+					<td>[[${korean.name}]]</td>
+					<td>[[${korean.hit}]]</td>
+					<td th:text="${#strings.substring(korean.rdate, 2, 10)}" />
+			</table>
+		</section>
+		<div class="page_div">
+			<div class="page">
+				<th:block th:if="${groups[0]>1}">
+					<a th:href="@{/board/A101/list(pg=${groups[0]-1})}" class="prev">&lt;</a>
+				</th:block>
+				<th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
+					<a th:href="@{/board/A101/list(pg=${num})}"
+						th:class="${num==currentPage?'num on':'num'}">[[${num}]]</a>
+				</th:block>
+				<th:block th:if="${groups[1]<lastPageNum}">
+					<a th:href="@{/board/A101/list(pg=${groups[1]+1})}" class="next">&gt;</a>
+				</th:block>
+			</div>
+			<div class="addPage">
+				<button class="btn blue"
+					th:onclick="'location.href=\'' + @{/board/A101/write} + '\''">새글
+					작성</button>
+			</div>
+		</div>
+	</section>
+</main>
+<th:block th:include="@{_footer.html}" />

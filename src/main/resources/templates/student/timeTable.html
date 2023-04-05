@@ -1,0 +1,167 @@
+<th:block th:include="@{student/_header.html}"/>
+<style>
+	.m0 {background-color: #FFFF99;} /* 구분없음 */
+	.m1 {background-color: #CCCCFF;} /* 전공필수 */
+	.m2 {background-color: #CCFFCC;} /* 전공선택 */
+	.m3 {background-color: #FF99FF;} /* 교양 */
+</style>
+<main id="timetable">
+	<th:block th:include="@{_aside.html}"/>
+<script type="text/javascript" th:inline="javascript">
+	$(function(){
+		 /*<![CDATA[*/
+		let table = []; 
+			table = /*[[${table}]]*/
+		console.log(table[0].lecName);
+		for(let lec of table){
+			// 1~10 시간대
+			for(let i = 1; i<=10; i++){
+				// 시간별 강의(ex.1,2,3 - 세로축)
+				for(let ct of lec.ctime){
+					if(ct==i){
+						// 요일별 강의(가로축)
+						if(lec.lecDay=='월'){
+							let cls = "."+i;
+							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
+							$(cls).children('td:nth-child(2)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(2)').addClass(m);
+						}
+						if(lec.lecDay=='화'){
+							let cls = "."+i;
+							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
+							$(cls).children('td:nth-child(3)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(3)').addClass(m);
+						}
+						if(lec.lecDay=='수'){
+							let cls = "."+i;
+							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
+							$(cls).children('td:nth-child(4)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(4)').addClass(m);
+						}
+						if(lec.lecDay=='목'){
+							let cls = "."+i;
+							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
+							$(cls).children('td:nth-child(5)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(5)').addClass(m);
+						}
+						if(lec.lecDay=='금'){
+							let cls = "."+i;
+							let tag = lec.lecName+"<br>"+lec.lecLoc+"<br>"+lec.name;
+							$(cls).children('td:nth-child(6)').append(tag);
+							// 전공별 색 추가
+							let m = "m"+lec.lecGubun
+							$(cls).children('td:nth-child(6)').addClass(m);
+						}
+					}
+				}
+				
+			}
+		}
+		/*]]>*/
+	});
+</script>
+    <section>
+        <h1>내 시간표 구분없음:<span class="m0">___</span>전공선택:<span class="m1">___</span>전공필수:<span class="m2">___</span>교양:<span class="m3">___</span> </h1>
+        <table>
+            <tr>
+                <td></td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+            </tr>
+            <tr class="1">
+                <td>1<br>(09:00 ~ 09:50)</td>
+                <td><!-- 한글과 글쓰기<br>인문관 203호<br>강감찬 --></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="2">
+                <td>2<br>(10:00 ~ 10:50)</td>
+                <td><!-- 한글과 글쓰기<br>인문관 203호<br>강감찬 --></td>
+                <td><!-- 작문<br>인문관 303호<br>이성계 --></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="3">
+                <td>3<br>(11:00 ~ 11:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="4">
+                <td>4<br>(12:00 ~ 12:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="5">
+                <td>5<br>(13:00 ~ 13:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="6">
+                <td>6<br>(14:00 ~ 14:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="7">
+                <td>7<br>(15:00 ~ 15:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="8">
+                <td>8<br>(16:00 ~ 16:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="9">
+                <td>9<br>(17:00 ~ 17:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="10">
+                <td>10<br>(18:00 ~ 18:50)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </section>
+   
+</main>
+<th:block th:include="@{_footer.html}"/>
+            

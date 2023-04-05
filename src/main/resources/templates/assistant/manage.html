@@ -1,0 +1,71 @@
+<th:block th:include="@{assistant/_header.html}"/>
+
+        <main>
+            <th:block th:include="@{_aside.html}"/>
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="nav_div">
+                <input type="hidden" name="depCode" th:value="${department.depCode}" />
+                    <h3>[[${department.depName}]] 인원 관리</h3>
+                    <div class="search">
+                        <select name="" id="">
+                            <option value="">학번</option>
+                            <option value="">이름</option>
+                        </select>
+                        <input type="text" placeholder="검색어 입력">
+                        <button>검색</button>
+                    </div>
+                </nav>
+               <section>
+                    <table>
+                        <tr>
+                            <th style="width: 3%;">no</th>
+                            <th>학번</th>
+                            <th style="width: 4%;">학년</th>
+                            <th>이름</th>
+                            <th style="width: 5%;">등급</th>
+                            <th style="width: 4%;">성별</th>
+                            <th style="width: 8%;">생년월일</th>
+                            <th style="width: 12%;">휴대폰</th>
+                            <th>이메일</th>
+                            <th>제적구분</th>
+                            <th>주소</th>
+                            <th>관리</th>
+                        </tr>
+                        <tr  th:each="member,Stat : ${members}">
+                           <td>[[${Stat.count}]]</td>
+                           <td>[[${member.uid}]]</td>
+                           <td>[[${member.sYear}]]</td>
+                           <td>[[${member.name}]]</td>
+                           <td th:text="${member.level}==1?학생:조교">[[${member.level}]]</td>
+                           <td th:text="${member.gender}==1?남:여">[[${member.gender}]]</td>
+                           <td>[[${member.birth}]]</td>
+                           <td>[[${member.hp}]]</td>
+                           <td>[[${member.email}]]</td>
+                           <td th:if="${member.status}==1">재학</td>
+                           <td th:if="${member.status}==2">휴학</td>
+                           <td th:if="${member.status}==3">졸업</td>
+                           <td>[[${member.addr1}]]</td>
+                           <td>
+                                <button class="btn_small blue assisManageModifyBtn" th:onclick="'location.href=\'' + @{/assistant/modify(uid=${member.uid})} + '\''">수정</button>
+                           </td>
+                        </tr>
+                   </table>
+                </section>
+                <div class="page_div">
+                    <div class="page">
+                        <a href=""><</a>
+                        <a href="" class="on">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">></a>
+                    </div>
+                    <div class="addPage">
+                        <a th:href="@{/assistant/insert}">추가페이지로</a>
+                    </div>
+                </div>
+
+            
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

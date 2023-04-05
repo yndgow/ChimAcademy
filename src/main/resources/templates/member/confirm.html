@@ -1,0 +1,52 @@
+<th:block th:include="@{member/_header.html}"/>
+<script>
+	$(()=>{
+		nameCheck();
+		birthCheck();
+		hpCheck();
+		searchUid();
+	});
+</script>
+
+		<main id="join">
+            <nav>
+				<h1>학번, 아이디 찾기</h1>
+			</nav>
+				<section>
+					<table>
+						<tr>
+							<th>
+								<span class="essential">*</span>이름
+							</th>
+							<td >
+								<input type="text" name="name" id="name" required>
+								<span id="msgName" class="errMsg">한글 또는 영문 2글자 이상 입력하세요.</span>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>생년월일
+							</th>
+							<td>
+								<input type="text" name="birth" maxlength="6" required>
+								<span id="msgBirth" class="errMsg">생년월일 6자리를 입력하세요.</span>
+							</td>
+						</tr>						
+						<tr>
+							<th>
+								<span class="essential">*</span>휴대폰
+							</th>
+							<td>
+								<input type="text" name="hp" maxlength="13" required>
+								<span id="msgHp" class="errMsg">- 포함 12,13자리를 입력하세요.</span>
+							</td>
+						</tr>
+						
+						
+					</table>
+				</section>
+				<div id="btnSearchDiv">
+					<button type="button" id="btnSearchUid" value="찾기">찾기</button>
+				</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.StudentDAO">
+	
+	<select id="selectStudent" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.*,b.depName,c.majorName FROM member AS a
+		LEFT JOIN department AS b
+		ON a.depCode = b.depCode
+		LEFT JOIN major AS c
+		ON a.majorCode = c.majorCode
+		WHERE uid = #{uid};
+	</select>
+	
+	<!-- <select id="selectLectures" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.*, b.*, c.name, d.*, e.* FROM lec_sugang AS a 
+		JOIN lec_list AS b 
+		ON a.lecCode = b.lecCode 
+		JOIN member AS c
+		ON b.uid = c.uid
+		JOIN lecture AS d
+		ON a.lecCode = d.lecCode
+		JOIN score AS e
+		ON a.uid = e.uid
+		
+		WHERE a.uid = #{uid};
+	</select> -->
+	
+	<select id="selectLectures" resultType="kr.co.ChimAcademy.dto.LecSugangDto">
+			SELECT a.*, b.*, b.uid AS pid, c.name, d.*, e.*, f.result 
+			FROM lec_sugang AS a 
+			JOIN lec_list AS b ON a.lecCode = b.lecCode 
+			JOIN member AS c ON b.uid = c.uid
+			JOIN lecture AS d ON a.lecCode = d.lecCode
+			LEFT JOIN score AS e ON a.uid = e.uid AND a.lecCode = e.lecCode
+			LEFT JOIN lec_eval_board AS f ON a.lecCode = f.lecCode
+			WHERE a.uid = #{uid}
+			GROUP BY a.lecCode;
+	</select>
+	
+	<!-- 회원 정보 수정-->
+		<update id="updateStudent">
+		  UPDATE `member` set
+		    `hp`=#{hp},
+		    `email`=#{email},
+		    `zip`=#{zip},
+		    `addr1`=#{addr1},
+		    `addr2`=#{addr2},
+		    `info`=#{info}
+		  WHERE `uid` = #{uid}
+		</update>
+
+	
+	<!-- 프로필 업데이트-->
+	<update id="updateProfile">
+		update `member` set `profile`=#{nName} where `uid`=#{uid};
+	</update>
+	
+	<!-- 강의평가-->
+	<insert id="insertLecEval">
+		insert into `lec_eval_board` set
+			`lecCode`=#{lecCode},
+            `sUid`=#{sUid},
+            `uid`=#{uid},
+            `evalScore`=#{evalScore},
+            `content`=#{content},
+            `result`= 1,
+            `rdate`=NOW();
+	</insert>
+
+</mapper>

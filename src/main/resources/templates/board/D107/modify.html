@@ -1,0 +1,32 @@
+<th:block th:include="@{board/D107/_header.html}"/>
+
+        <main>
+   			<th:block th:include="@{_aside.html}"/>
+			<div class="board">
+			<form th:action="@{/board/D107/modify}" method="post">
+				<table>
+					<h1>글 수정하기</h1>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+							<td>[[${board.uid}]]학번  [[${board.name}]]</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td><input type="text" name="title" th:value="${board.title}"></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td><textarea name="content" cols="30" rows="10">[[${board.content}]]</textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<section class="btn_div" style="margin-bottom: 200px;">
+					<button class="btn nomal" type="button" th:onclick="'location.href=\'' + @{/board/D107/list} + '\''">목록</button>
+					<button class="btn blue" type="submit">수정완료</button>
+                </section>
+                <input type="hidden" name="no" th:value="${board.no}">
+                </form>
+			</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

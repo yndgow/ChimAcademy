@@ -1,0 +1,475 @@
+
+/* reading */
+
+.content {
+	margin-right: -285px;
+	width: 100%;
+	float: left;
+}
+
+.doc {
+	margin-right: 285px;
+}
+
+.doc-head {
+	overflow: hidden;
+}
+
+.doc-body h4 {
+    font-size: 120%;
+    font-weight: bold;
+    color: #2c2b62;
+    padding: 0px 0 15px;
+}
+.doc-body table caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -999px;
+}
+
+
+
+.doc-body .txt-box {
+    border: 1px solid #e1e1e1;
+    background-color: #fafafa;
+    padding: 2%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ico_link {
+    background:url("/ChimAcademy/img/elib/link_icon.gif") no-repeat 20px 19px;
+}
+
+.btns_wrap_tac {
+    text-align: left;
+    margin: 20px auto 20px;
+}
+
+.btn_link02 {
+    position: relative;
+    display: inline-block;
+    transition: all .25s ease;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #2e2e2e;
+    box-sizing: border-box;
+}
+
+.btn_link02 span {
+    display: block;
+    padding: 0 72px 0px 23px;
+    height: 53px;
+    line-height: 53px;
+    color: #000;
+}
+
+.btn_link02 .ico {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    padding: 0;
+    width: 50px;
+    height: 53px;
+    background-color: #2e2e2e;
+    -webkit-transition: right .25s ease;
+    transition: right .25s ease-out;
+}
+
+.btn_link02:hover, .btn_link02:focus {
+    border: 1px solid #2e2e2e;
+    background-color: #fff;
+    color: #2e2e2e;
+}
+
+.btn_link02:hover .ico {
+    right: -10px;
+    height: 53px;
+}
+
+.btn_link02:hover, .btn_link02:focus {
+    border: 1px solid #2e2e2e;
+    background-color: #fff;
+    color: #2e2e2e;
+}
+
+.poem_bgbox {
+    position: relative;
+    height: 317px;
+    background-image: url("/ChimAcademy/img/elib/poem_bg.jpg");
+    background-size: 100%;
+    margin-bottom: 25px;
+}
+
+.if-txt {
+    position: absolute;
+    top: 61px;
+    left: 50px;
+    width: 460px;
+    color: #fff;
+}
+
+.tt {
+    font-size: 20px;
+    color: #000;
+    line-height: 50px;
+}
+
+.btit {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.btns_wrap_tac {
+	text-align: left;
+	margin: 20px auto 20px;
+}
+
+.applicationQrcode .appStore {
+    float: left;
+    width: 50%;
+    min-width: 300px;
+    margin-top: 20px;
+}
+
+.applicationQrcode .appStore img {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 9px;
+    vertical-align: top;
+    border: 1px solid #dadada;
+    border-radius: 9px;
+}
+
+.applicationQrcode .appStore p {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 1.071em;
+    vertical-align: bottom;
+}
+.applicationQrcode .appStore p .btn {
+    display: block;
+    width: 135px;
+    height: 30px;
+    font-size: 0.933em;
+    margin: 10px auto 0;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    padding-top: 15px;
+    /* padding-bottom: 10px; */
+    padding-bottom: -5px;
+    background-color: #3b5998;
+}
+
+.newWin i.fa-external-link {
+    display: none;
+    vertical-align: middle;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ .libropiaGuide.poemDayGuide1 {
+    background-image: url("/ChimAcademy/img/elib/libropia.png");
+	height: 260px;
+}
+
+.libropiaGuide {
+    margin-top: 30px;
+    padding-left: 35%;
+    background: url(/include/image/contents/bg_guide_libropia.jpg) 30px 100% no-repeat;
+    background-size: 21.2972972972973% auto;
+}
+
+.libropiaGuide ol {
+    list-style: none;
+    padding-left: 38px;
+    font-size: 1.071em;
+}
+.libropiaGuide li {
+    margin-top: 5px;
+}
+.libropiaGuide ol > li:nth-child(odd) > span {
+    background-color: #e7eeff;
+}
+.libropiaGuide ol > li > span {
+    display: block;
+    margin-left: -50px;
+    padding: 10px;
+    padding-left: 55px;
+    border-radius: 22px;
+}
+
+ .libropiaGuide.poemDayGuide2 {
+    background-image: url("/ChimAcademy/img/elib/homepage.png");
+	height: 160px;
+}
+
+.libropiaGuide ol > li:nth-child(even) > span {
+    background-color: #f1f3f6;
+}
+
+
+/* moazine */
+.moazine_bgbox {
+        position: relative;
+    height: 317px;
+    background: url(/ChimAcademy/img/elib/moazine_bg.jpg) no-repeat;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+
+
+/* humanArt */
+.medici_bgbox {
+    position: relative;
+    height: 317px;
+    background: url(/ChimAcademy/img/elib/medici_bg.jpg) no-repeat;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+
+
+/* DBpia*/
+.dbpia_bgbox {
+    position: relative;
+    height: 317px;
+    background: url(/ChimAcademy/img/elib/dbpia.jpg) no-repeat;
+    background-size: 100%;
+    margin-bottom: 20px;
+}
+
+table th.first, table td.first{
+    border-left-width: 0px;
+    text-align: center;
+    border-right: 1px solid #ececec;
+}
+
+ table td.td2 {
+    border-left-width: 0px;
+    text-align: center;
+}
+
+.doc-body table tbody .thead th, .doc-body table thead th {
+    background: #f6f6f6;
+}
+
+table th, table td {
+    padding: 7px 10px;
+    border: 1px solid #e5e8eb;
+    vertical-align: middle;
+    border-left: 0;
+    border-right: 0;
+}
+
+.tbl-type01 td {
+    text-align: center;
+    padding: 8px 8px 9px 8px;
+    border-left: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    font-weight: normal;
+}
+
+.tbl-type01 tbody td.left {
+    text-align: left;
+    padding-left: 13px;
+}
+
+
+.tbl-type01 thead tr th {
+    text-align: center;
+    border-top-width: 2px;
+    border-color: #c9d5e1;
+    border-top-color: #014199;
+    background-color: #f5f7fa;
+    color: #220400;
+    padding: 8px 8px 9px 8px;
+    border-right: none;
+}
+
+
+
+/* E-learning*/
+.darakwon_bgbox {
+    position: relative;
+    height: 317px;
+    background: url(/ChimAcademy/img/elib/darakwon_bg.jpg) no-repeat;
+    background-size: 100%;
+}
+
+
+
+/* busanPost */
+.tit_box {
+    position: relative;
+    padding: 50px 60px;
+    background-color: #f0f1f3;
+    /* border-left: 1px solid #3f3684; */
+    margin-bottom: 50px;
+}
+
+dl {
+    font-family: '맑은 고딕', 'Malgun Gothic','Nanum Gothic',Helvetica,Arial,Verdana,Geneva,sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+    word-break: keep-all;
+}
+
+.tit_box dl dt {
+    font-weight: 700;
+    font-size: 1.7em;
+    color: #004cbf;
+    margin-bottom: 22px;
+}
+
+.tit_box dl dd {
+    width: 70%;
+    font-size: 15px;
+    color: #292929;
+    margin-bottom: 20px;
+}
+
+.btns_wrap_tac01 {
+    text-align: left;
+    margin: 20px auto 20px;
+}
+
+.btn_link01 {
+    position: relative;
+    display: inline-block;
+    transition: all .25s ease;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #3f3684;
+    box-sizing: border-box;
+}
+
+.btn_link01 span {
+    display: block;
+    padding: 0 72px 0px 23px;
+    height: 53px;
+    line-height: 53px;
+    color: #3f3684;
+}
+.btn_link01 .ico {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    padding: 0;
+    width: 50px;
+    height: 53px;
+    background-color: #3f3684;
+    -webkit-transition: right .25s ease;
+    transition: right .25s ease-out;
+}
+
+.newWin i.fa-external-link {
+    display: none;
+    vertical-align: middle;
+}
+
+.busan_icon02:before {
+    background:  url(/ChimAcademy/img/elib/1580815558281.png) no-repeat top center;
+}
+.tit_box:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -10px;
+    top: 23px;
+    width: 343px;
+    height: 274px;
+    animation: tranY80 1.6s ease;
+}
+
+.btn_link01:hover, .btn_link02:focus {
+    border: 1px solid #3f3684;
+    background-color: #fff;
+    color: #3f3684;
+}
+a:focus, a:hover {
+    color: #2b74c0;
+    cursor: pointer;
+}
+.btn_link01:hover .ico {
+    right: -10px;
+    height: 53px;
+}
+
+
+/* gudok */
+.kyobo_bgbox {
+    position: relative;
+    height: 321px;
+    background: url(/ChimAcademy/img/elib/kyobo_bg.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.doc-body ul.con>li>ul {
+    padding: 3px 0;
+}
+.doc-body ul.con2>li, .doc-body ul.con>li>ul>li {
+    background: url(/ChimAcademy/img/elib/doc-arr3.gif) no-repeat 0 10px;
+    padding: 2px 0 2px 10px;
+}
+.img_wrap {
+    padding: 30px 0;
+    text-align: center;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.doc-body ul.con {
+    padding-left: 2%;
+}
+.tab-menu, .tabmenu {
+    padding-bottom: 20px;
+}
+.tab-menu>ul, .tabmenu>ul {
+    font-size: 0;
+    border-bottom: 1px solid #1a518b;
+    padding-left: 1px;
+}
+.tab-menu li, .tabmenu li {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: bottom;
+}
+.tab-menu li a:hover, .tab-menu li a:focus, .tabmenu li a:hover, .tabmenu li a:focus {
+    background: #f1f1f1;
+}
+.tab-menu li.active a, .tabmenu li.active a {
+    color: #fff;
+    z-index: 2;
+    background: #3661c4;
+    border-color: #3661c4;
+}
+.tab-menu li a, .tabmenu li a {
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: #fafafa;
+    border: 1px solid #d2d2d2;
+    border-bottom-width: 0;
+    padding: 8px 20px 9px;
+    font-weight: bold;
+    color: #2f3743;
+    margin: 0 0 0 -1px;
+}
+

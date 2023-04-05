@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.ChineseBoardDAO">
+	
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="no">
+		insert into `board` set
+			`depCode`='D107',
+			`title`=#{title},
+			`content`=#{content},
+			`uid`=#{uid},
+			`regip`=#{regip},
+			`rdate`= NOW();	
+	</insert>
+	
+	<select id="selectBoards" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b USING(uid)
+		WHERE a.`depCode`='D107'
+		ORDER BY `rdate` desc limit #{start}, 10;
+	</select>
+	
+	<select id="selectBoard" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b USING(uid)
+		WHERE `no`=#{no};
+	</select>
+	
+	<select id="selectCountTotal" resultType="int">
+		select count(`no`) from `board` where `parent`=0 AND `depCode`='D107';
+	</select>
+	
+	<select id="selectCountComments" resultType="int">
+		SELECT COUNT(*) FROM board WHERE parent=#{parent};
+	</select>
+	
+	<update id="updateBoard" useGeneratedKeys="true" keyProperty="no">
+		update `board` set
+			`depCode`='D107',
+			`title`=#{title},
+			`content`=#{content},
+			`rdate`= NOW()
+			where `no`=#{no};	
+	</update>
+	
+	<delete id="deleteBoard">
+		delete from `board` where `no`=#{no};
+	</delete>
+	
+	<delete id="deleteComments">
+		delete from `board` where `parent`=#{no};
+	</delete>
+	
+	<update id="boardHitsUpdate" parameterType="int">
+		update board set hit=hit+1 where `no`=#{no};
+	</update>
+	
+	<!-- 댓글 -->
+	<select id="selectComment" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*,b.name FROM `board` AS a 
+											JOIN `member` AS b USING(`uid`) 
+											WHERE `parent`!=0 ORDER BY `no` DESC LIMIT 1;
+	</select>
+	<insert id="insertComment">
+		insert into `board` set 
+								`uid`=#{uid},	 
+								`parent`=#{parent},	 
+								`content`=#{content},	 
+								`rdate`=now();	
+	</insert>
+	
+	
+	
+</mapper>

@@ -1,0 +1,117 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>뷰어 설치 안내</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <h3>전자책/오디오북 뷰어 다운로드</h3>
+                                <ul class="con">
+                                	<li>
+                                		전자책/오디오북 서비스를 이용하기 위해서 설치해야하는 필수 프로그램입니다.
+                                	</li>
+                                	<li>
+                                		자동 설치가 안될 시 아래의 바로가기 버튼을 이용해 수동 설치 해주시기 바랍니다.
+                                	</li>
+                                </ul>
+                                <div>
+                                	<table class="type01 install">
+                                		<tr>
+                                			<th>분류</th>
+                                			<th>내용</th>
+                                			<th colspan="3">다운로드</th>
+                                		</tr>
+                                		<tr>
+                                			<td><img alt="img" th:src="@{/img/elib/kyobo.gif}"></td>
+                                			<td>
+                                				교보문고 전자책/오디오북 뷰어
+                                			</td>
+                                			<td>
+                                				<a href="https://play.google.com/store/apps/details?id=kr.co.kyobobook.KEL">
+                                					<img alt="img" th:src="@{/img/elib/1617262445333.png}">
+                                				</a>
+                                				<span>Play Store</span>
+                                			</td>
+                                			<td>
+                                				<a href="https://apps.apple.com/kr/app/%EA%B5%90%EB%B3%B4%EB%AC%B8%EA%B3%A0-%EC%A0%84%EC%9E%90%EB%8F%84%EC%84%9C%EA%B4%80/id1449446747">
+                                					<img alt="img" th:src="@{/img/elib/1617262361571.png}">
+                                				</a>
+                                				<span>App Store</span>
+                                			</td>
+                                			<td>
+                                				<a href="https://dcontent.dkyobobook.co.kr/library/001/Kyobo_T3/Download/File/eBookLibrary_Kyobo.exe">
+                                					<img alt="img" th:src="@{/img/elib/1617170530450.png}" style="width: 30px;">
+                                				</a>
+                                				<span>PC</span>
+                                			</td>
+                                		</tr>
+                                		
+                                	</table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

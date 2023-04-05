@@ -1,0 +1,56 @@
+<th:block th:include="@{notice/_header.html}" />
+
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<section id="depList">
+		<!-- 내 정보 -->
+		<div class="banner">
+			<img alt="공지사항" th:src="@{/img/notice/notice_banner.jpg}">
+		</div>
+		<section>
+			<table>
+				<tr>
+					<th>no</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성일</th>
+				</tr>
+				<tr th:each="e : ${list}">
+					<td th:text="${totalPosts - (eStat.index + (currentPg - 1) * 10)}">1</td>
+					<td><a th:href="@{/notice/view(no=${e.no})}" th:text="${e.title}">공지사항입니다~</a></td>
+					<td th:text="|${e.memberEntity.uid} ${e.memberEntity.name}|">홍길동</td>
+					<td th:text="${e.hit}">0</td>
+					<td th:text="${#temporals.format(e.rdate, 'yy-MM-dd')}">23-03-09</td>
+				</tr>
+
+			</table>
+		</section>
+		<div id="page_div">
+			<div th:if="${startPages} >= 1">
+				<ul class="page">
+					<li th:if="${startPages > 1}">
+						<a th:href="@{/notice(pg=${startPages}-1)}" class="page-link" aria-label="Previous" th:data-page="${startPages}-1">
+							<span aria-hidden="true">&lt;</span>
+						</a>
+					</li>
+					<li th:each="page : ${#numbers.sequence(startPages, endPages)}" >
+						<a th:class="${currentPg eq page} ? 'on page-link': page-link" th:href="@{/notice(pg=${page})}" th:data-page="${page}" class="page-link" th:text="${page}"></a>
+					</li>
+					<li th:if="${endPages < totalPages}">
+						<a th:href="@{/notice(pg=${endPages}+1)}" class="page-link" aria-label="Next" th:data-page="${endPages}+1">
+							<span aria-hidden="true">&gt;</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div id="btnNoticeDiv" sec:authorize="hasAnyRole('ROLE_2', 'ROLE_3', 'ROLE_4')">
+				<a th:href="@{/notice/write}" class="btn-gradient blue">작성하기</a>
+			</div>
+			
+		</div>
+		
+
+	</section>
+</main>
+<th:block th:include="@{_footer.html}" />

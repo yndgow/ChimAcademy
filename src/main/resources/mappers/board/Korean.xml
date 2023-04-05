@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = mapper파일의 아이디 값 -->
+<mapper namespace="kr.co.ChimAcademy.dao.KoreanDAO">
+	<!-- 국문학과 게시판 목록 출력(List) -->
+	<select id="selectBoards"
+		resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b
+		USING(uid)
+		WHERE a.`depCode`='A101'
+		ORDER BY `rdate` desc limit
+		#{start}, 10;
+	</select>
+
+	<!-- 국문학과 게시판 보기(View) -->
+	<select id="selectBoard"
+		resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM `board` AS a
+		LEFT JOIN `member` AS b
+		USING(uid)
+		WHERE `no`=#{no};
+	</select>
+
+	<!-- 국문학과 게시판 작성(Write) -->
+	<insert id="insertBoard" useGeneratedKeys="true"
+		keyProperty="no">
+		INSERT INTO `board` SET
+		`depCode`='A101',
+		`title`=#{title},
+		`content`=#{content},
+		`uid`=#{uid},
+		`regip`=#{regip},
+		`rdate`=NOW();
+	</insert>
+
+	<!-- 국문학과 게시판 삭제(Delete) -->
+	<delete id="deleteBoard">
+		delete from `board` where `no`=#{no} or
+		`parent`=#{no};
+	</delete>
+
+	<!-- 국문학과 게시판 글 수정(Update) -->
+	<update id="updateBoard" useGeneratedKeys="true"
+		keyProperty="no">
+		update `board` set
+		`depCode`='A101',
+		`title`=#{title},
+		`content`=#{content}
+		where `no`=#{no};
+	</update>
+
+	<!-- 페이징(Paging) -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(`no`) FROM
+		`board` WHERE `depCode` = 'A101';
+	</select>
+
+	<!-- 조회수(Hit) -->
+	<update id="updateBoardHit">
+		UPDATE `board`SET `hit`=`hit`+1 WHERE `no`=#{no};
+	</update>
+
+	<!-- 댓글 작성 -->
+	<insert id="insertBoardComment" useGeneratedKeys="true"
+		keyProperty="no">
+		insert into `board` set
+		`uid`=#{uid},
+		`parent`=#{parent},
+		`content`=#{content},
+		`rdate`=now();
+	</insert>
+
+	<!-- 댓글 출력 -->
+	<select id="selectBoardComment"
+		resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name
+		FROM `board` AS a
+		JOIN `member` AS b
+		ON
+		a.uid = b.uid WHERE `parent`=#{parent}
+		ORDER BY `rdate` asc;
+	</select>
+
+	<!-- 댓글 수정 -->
+	<update id="modifyBoardComment">
+		UPDATE board SET
+		`content` = #{content},
+		`rdate` = NOW()
+		WHERE
+		`no` = #{no};
+	</update>
+	
+	<!-- 댓글 카운트 표시 -->
+	<select id="selectCountComments" resultType="int">
+		SELECT COUNT(*) FROM board WHERE parent=#{parent};
+	</select>
+	
+</mapper>

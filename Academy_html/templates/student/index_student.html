@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="./css/common.css" rel="stylesheet" type="text/css" />
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		<main id="student">
+			<div class="index_stuendt">
+				<div>
+					<img th:src="@{#}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+			</div>
+			<div>
+				<img th:src="@{#}" alt="학교로고">
+			</div>
+			<div>
+				<td>학번</td>
+				<input type="text">
+			</div>
+		</main>
+		<footer></footer>
+	</div>
+</body>
+</html>

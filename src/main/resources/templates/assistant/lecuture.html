@@ -1,0 +1,323 @@
+<th:block th:include="@{assistant/_header.html}" />
+<script>
+$(()=>{
+	searchBtn();
+	lecRegFormSubmit();
+	lecModFormShow();
+	lecRegFormShow();
+	lecModComp();
+	delLecutre();
+})
+
+</script>
+
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<section id="myinfo" class="myAssistant">
+		<h1>강의 검색</h1>
+		<section id="lceRegister">
+			<div id="lecDiv">
+				<table>
+					<tr>
+						<td>구분</td>
+						<td>
+							<select name="lecGubun" id="">
+								<option value="" selected>-</option>
+								<option value="1" >전공필수</option>
+								<option value="2">전공선택</option>
+								<option value="3">교양</option>
+							</select>
+						</td>
+						<td>검색</td>
+						<td>
+							<input type="text" name="searchData" id="" placeholder="교과명 또는 코드 입력"></td>
+						<td></td>
+						<td>
+							<button id="btnSearchLec">검색</button>
+						</td>
+					</tr>
+					<tr>
+						<td>학부(과)</td>
+						<td>
+							<select name="depCode" id="selectDep">
+								<option th:value="${department.depCode}" selected>[[${department.depName}]]</option>
+							</select>
+						</td>
+						<td>전공</td>
+						<td>
+							<select name="majorCodeSel" class="selectMajor">
+								<option value="">-</option>
+								<th:block th:each="major : ${majors}">
+									<option th:value="${major.majorCode}">[[${major.majorName}]]</option>
+								</th:block>
+						</select></td>
+						<td>학년</td>
+						<td>
+							<select name="lecClass" id="selectClass">
+								<option value="">-</option>
+								<option value="1">1학년</option>
+								<option value="2">2학년</option>
+								<option value="3">3학년</option>
+								<option value="4">4학년</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<!-- 검색 관리 -->
+		<nav>
+			<h3>
+				검색 과목 총<span id="searchResult">&nbsp;0</span>건
+			</h3>
+		</nav>
+		<section class="tableWrapper">
+			<table id="userListTable">
+ 				<thead>
+                    <tr>
+                        <th>no</th>
+                        <th>학과코드</th>
+                        <th>전공코드</th>
+                        <th>학년</th>
+                        <th>과목코드</th>
+                        <th>강의명</th>
+                        <th>이수구분</th>
+                        <th>학점</th>
+                        <th>담당교수</th>
+                        <th>강의시간</th>
+                        <th>인원제한</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTbody"></tbody>
+			</table>
+		</section>
+		<!-- 등록 폼 불러오기 -->
+		<button type="button" id="btnRegFormShow">등록하기</button>
+		<!-- 강의 등록 -->
+		<nav class="lecRegister">
+			<h3>강의 등록</h3>
+		</nav>
+		<section class="lecRegister">
+			<form class="lecRegForm" th:action="@{/assistant/lecture/register}" method="post">
+			<table>
+				<tbody>
+					<tr>
+						<th>학과코드</th>
+						<td>
+							<input type="text" name="depCode" th:value="${department.depCode}" readonly="readonly"/>
+						</td>
+						<th>학과명</th>
+						<td th:text="${department.depName}">국어국문학과</td>
+						<th>전공</th>
+						<td>
+							<select name="majorCodeReg" class="selectMajor">
+								<option value="">-</option>
+								<th:block th:each="major : ${majors}">
+									<option th:value="${major.majorCode}">[[${major.majorName}]]</option>
+								</th:block>
+							</select>
+						</td>
+						<th>강의명</th>
+						<td id="lecNameTd">
+							<input type="text" name="lecName" required/>
+						</td>
+					</tr>
+					<tr>
+						<th>학년</th>
+						<td><select name="lecClass" id="">
+								<option value="1" selected>1학년</option>
+								<option value="2">2학년</option>
+								<option value="3">3학년</option>
+								<option value="4">4학년</option>
+						</select></td>
+						<th>이수구분</th>
+						<td>
+							<select name="lecGubun" id="">
+								<option value="0" selected>-</option>
+								<option value="1" >전공필수</option>
+								<option value="2">전공선택</option>
+								<option value="3">교양</option>
+							</select>
+						</td>
+						<th>학점</th>
+						<td>
+							<input type="number" name="credit" th:value="1" required/>
+						</td>
+						<th>교수명</th>
+						<td>
+							<select name="memberEntity" id="selProfessors">
+								<option value="">-</option>
+								<option th:value="${pro.uid}" th:text="${pro.name}" th:each="pro : ${professors}">장보고</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>장소</th>
+						<td>
+							<input type="text" name="lecLoc"/>
+						</td>
+						<th>시간</th>
+						<td>
+							<select name="lecDay" id="">
+								<option value="월" selected>월</option>
+								<option value="화">화</option>
+								<option value="수">수</option>
+								<option value="목">목</option>
+								<option value="금">금</option>
+							</select>
+							<select name="beginTime" id="">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+							<select name="endTime" id="">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</td>
+						<th>인원</th>
+						<td>
+							<input type="number" name="lecLimit" th:value="0" required/>
+						</td>
+						<th>수정</th>
+						<td>
+
+							<button type="button" class="btnLecRegister">등록</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			</form>
+		</section>
+		<!-- 강의 수정 -->
+		
+		<nav class="lectureMod">
+			<h3>강의 수정</h3>
+		</nav>
+		<section class="lectureMod">
+			<form class="lecModForm" th:action="@{/assistant/lecture/modify}" method="post">
+			<table>
+				<tbody>
+					<tr>
+						<th>과목코드</th>
+						<td>
+							<input type="text" name="lecCode" readonly="readonly"/>
+						</td>
+						<th>학과명</th>
+						<td th:text="${department.depName}">국어국문학과</td>
+						<th>전공</th>
+						<td>
+							<select name="majorCodeReg" class="selectMajor">
+								<option value="">-</option>
+								<th:block th:each="major : ${majors}">
+									<option th:value="${major.majorCode}">[[${major.majorName}]]</option>
+								</th:block>	
+							</select>
+						</td>
+						<th>강의명</th>
+						<td id="lecNameTd">
+							<input type="text" name="lecName" required/>
+						</td>
+					</tr>
+					<tr>
+						<th>학년</th>
+						<td><select name="lecClass" id="">
+								<option value="1" selected>1학년</option>
+								<option value="2">2학년</option>
+								<option value="3">3학년</option>
+								<option value="4">4학년</option>
+						</select></td>
+						<th>이수구분</th>
+						<td>
+							<select name="lecGubun" id="">
+								<option value="0" selected>-</option>
+								<option value="1" >전공필수</option>
+								<option value="2">전공선택</option>
+								<option value="3">교양</option>
+							</select>
+						</td>
+						<th>학점</th>
+						<td>
+							<input type="number" name="credit" th:value="1" required/>
+						</td>
+						<th>교수명</th>
+						<td>
+							<select name="memberEntity" id="selProfessors">
+								<option value="">-</option>
+								<option th:value="${pro.uid}" th:text="${pro.name}" th:each="pro : ${professors}">장보고</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>장소</th>
+						<td>
+							<input type="text" name="lecLoc"/>
+						</td>
+						<th>시간</th>
+						<td>
+							<select name="lecDay" id="">
+								<option value="월" selected>월</option>
+								<option value="화">화</option>
+								<option value="수">수</option>
+								<option value="목">목</option>
+								<option value="금">금</option>
+							</select>
+							<select name="beginTime" id="">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+							<select name="endTime" id="">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</td>
+						<th>인원</th>
+						<td>
+							<input type="number" name="lecLimit" th:value="0" required/>
+						</td>
+						<th>수정</th>
+						<td>
+							<button type="submit" class="btnLecModify">수정완료</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+				<input type="hidden" name="depCode"/>
+				<input type="hidden" name="no"/>
+			</form>
+		</section>
+	</section>
+</main>
+<th:block th:include="@{_footer.html}" />
+

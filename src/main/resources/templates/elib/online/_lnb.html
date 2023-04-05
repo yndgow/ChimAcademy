@@ -1,0 +1,51 @@
+<div class="lnb">
+    <h2>
+        <b>온라인콘텐츠</b>
+    </h2>
+    <ul>
+        <li>
+        <li>
+                    <a th:href="@{/}">
+                        <span>전체보기</span>
+                    </a>
+                </li>
+            <li th:classappend="${_lnb}==1?active">
+            	<a th:href="@{/elib/online/reading}">
+                <span>독서</span>
+            </a>
+            <ul class="subMenu">
+                <li>
+                    <br>
+                    <a th:href="@{/}">
+                        <span style="color: #3975d6;">시요일</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li th:classappend="${_lnb}==3?active">
+            <a th:href="@{/elib/online/humanArt}">
+                <span>인문·예술</span>
+            </a>
+        </li>
+        <li th:classappend="${_lnb}==6?active">
+            <a th:href="@{/elib/online/DBpia}">
+                <span>학술DB</span>
+            </a>
+        </li>
+        <li th:classappend="${_lnb}==5?active">
+            <a th:href="@{/elib/online/E_learning}">
+                <span>이러닝</span>
+            </a>
+        </li>
+        <li th:classappend="${_lnb}==2?active">
+            <a th:href="@{/elib/online/magazine}">
+                <span>전자잡지·신문</span>
+            </a>
+        </li>
+        <li th:classappend="${_lnb}==4?active">
+            <a th:href="@{/elib/online/busanPost}">
+                <span>무료DB</span>
+            </a>
+        </li>
+    </ul>
+</div>

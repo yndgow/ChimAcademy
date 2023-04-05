@@ -1,0 +1,35 @@
+<th:block th:include="@{board/A101/_header.html}" />
+
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<div class="board">
+		<form th:action="@{/board/A101/modify}" method="post">
+		<!-- 수정 버튼을 위한 숨겨진 태그 -->
+		<input type="hidden" name="pg" th:value="${pg}"/>
+			<table>
+				<h1>글 수정하기</h1>
+				<tbody>
+					<tr>
+						<th>작성자</th>
+						<td>[[${korean.name}]]</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><input type="text" name="title"
+							th:value="${korean.title}"></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea name="content" cols="30" rows="10">[[${korean.content}]]</textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<section class="btn_div" style="margin-bottom: 200px;">
+				<button class="btn nomal">목록</button>
+				<button class="btn blue" type="submit">수정완료</button>
+			</section>
+			<input type="hidden" name="no" th:value="${korean.no}">
+		</form>
+	</div>
+</main>
+<th:block th:include="@{_footer.html}" />

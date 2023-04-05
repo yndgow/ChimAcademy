@@ -1,0 +1,79 @@
+<th:block th:include="@{mypage/_header.html}"/>
+
+<body>
+        <main>
+          <th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>내 정보</h3>
+                </nav>
+               <section>
+                <div>
+                    <tr><img th:src="@{/profileThumb/}+${professor.profile}" style="width: 130px; height: 173.33px;" alt="증명사진" class="idphoto" id="preview"></tr>
+                </div>
+                    <table class="pro">
+                        <tr>
+                            <th>이름</th>
+                            <td>[[${professor.name}]]</td>
+                            <th>연구실</th>
+                            <td th:if="${professor.lab = ''}" th:text="입력주세요"}>[[${professor.lab}]]</td>
+                            <th>상담 가능시간</th>
+                            <td th:if="${professor.csTime = ''}" th:text="입력주세요">[[${professor.csTime}]]</td>
+                            
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td>[[${professor.hp}]]</td>
+                            <th>담당학과</th>
+                            <td>[[${professor.depName}]]</td>
+                        </tr>
+                        <tr>
+                        	<th>이력</th>
+                            <td colspan="5">
+                                <textarea readonly="readonly">[[${professor.career}]]</textarea>
+                            </td>
+                        </tr>
+                        
+                   </table>
+                   </section>
+                   
+              <!-- 강의내역 -->
+              <nav class="distance">
+                <h3>강의내역</h3>
+                </nav>
+                <section class="tableWrapper">
+                        <table id="proListTable">
+                            <tr>
+                                <th>no</th>
+                                <th>학년</th>
+                                <th>교과목명</th>
+                                <th>이수구분</th>
+                                <th>학점</th>
+                                <th>강의시간</th>
+                                <th>강의평가</th>
+                            </tr>
+							<tr th:each="professorlec : ${professorlec}">
+	                            <td>[[${professorlecStat.count}]]</td>
+	                            <td>[[${professorlec.lecClass}]]</td>
+	                            <td>[[${professorlec.lecName}]]</td>
+	                            <th:block th:switch="${professorlec.lecGubun}">
+	                           	 	<td th:case="0">구분없음</td>
+	                           	 	<td th:case="1">전공필수</td>
+	                            	<td th:case="2">전공선택</td>
+	                            	<td th:case="3">교양</td>
+								</th:block>
+								
+	                            <td>[[${professorlec.credit}]]</td>
+	                            <td>[[${professorlec.lecDay}]]
+	                            [[${professorlec.cTime}]]
+	                            ([[${professorlec.lecLoc}]])</td>
+	                            <td><a th:href="@{/professor/eval(lecCode=${professorlec.lecCode})}">이동</a></td>
+                            </tr>
+                            
+                    </table>
+                </section>
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

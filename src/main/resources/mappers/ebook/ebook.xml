@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.EbookDAO">	
+	<insert id="insertEbook">
+		insert into `ebook` set
+							`bookId`=#{bookId}, 
+							`GROUP`=#{GROUP}, 
+							`cate1`=#{cate1}, 
+							`cate2`=#{cate2}, 
+							`title`=#{title}, 
+							`author`=#{author}, 
+							`publisher`=#{publisher}, 
+							`belong`=#{belong}, 
+							`applier`=#{applier}, 
+							`pubDate`=#{pubDate}, 
+							`bintro`=#{bintro}, 
+							`aintro`=#{aintro}, 
+							`index`=#{index}, 
+							`thumb`=#{thumb},
+							`rdate`=now();
+	</insert>
+	<insert id="insertEbookFile">
+		insert into `ebook_file` set 
+								`parent`=#{parent}, 
+								`newName`=#{newName}, 
+								`oriName`=#{oriName}, 
+								`rdate`=now();
+	</insert>
+	<insert id="insertMylib">
+		insert into `mylib` set 
+							`uid`=#{uid}, 
+							`bookId`=#{bookId}, 
+							`state`=#{state}, 
+							`loanDate`=now(),
+							`returnDate`= date_add(now(), interval 14 day);
+	</insert>
+	<select id="selectEbook" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select a.*,b.c1Name,c.c2Name from `ebook` as a
+								JOIN `ebook_cate1` AS b 
+								ON a.`cate1`=b.`c1`
+								JOIN `ebook_cate2` AS c
+								ON a.`cate1`=c.`c1` AND  a.`cate2`=c.`c2`
+								where `bookId`=#{bookId};
+	</select>
+	<select id="selectEbookFile" resultType="kr.co.ChimAcademy.vo.EbookFileVO">
+		select * from `ebook_file` where `parent`=#{bookId};
+	</select>
+	<select id="selectEbooksSearch" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select * from `ebook` where `title` like CONCAT('%',#{keyword},'%') 
+																		or `author` like CONCAT('%',#{keyword},'%')
+																		order by `rdate` desc limit #{start},10;
+	</select>
+	<select id="selectEbooks" resultType="kr.co.ChimAcademy.vo.EbookVO">
+		select * from `ebook` where `GROUP`=#{vo.GROUP} 
+										<choose>
+											<when test="sort==1">
+												and `cate1`=#{vo.cate1} 
+											</when>
+											<when test="sort==2">
+												and `cate1`=#{vo.cate1} and `cate2`=#{vo.cate2} 
+											</when>
+											<when test="sort==3">
+												and `applier`=#{vo.applier} 
+											</when>
+											<when test="sort==4">
+											
+											</when>
+										</choose>
+										order by 
+										<choose>
+											<when test="type==1">`rdate` </when>
+											<when test="type==2">`like` </when>
+											<when test="type==3">`title` </when>
+											<when test="type==4">`loan` </when>
+										</choose>
+										DESC LIMIT #{start},10;
+	</select>
+	<select id="selectCountTotal" resultType="int">
+		SELECT COUNT(*) FROM `ebook` where `GROUP`=#{vo.GROUP}
+										<choose>
+											<when test="sort==1">
+												and `cate1`=#{vo.cate1}
+											</when>
+											<when test="sort==2">
+												and `cate1`=#{vo.cate1} and `cate2`=#{vo.cate2}
+											</when>
+											<when test="sort==3">
+												and `applier`=#{vo.applier}
+											</when>
+											<when test="sort==4">
+											
+											</when>
+										</choose>
+	</select>
+	<select id="selectCountTotalSearch" resultType="int">
+		SELECT COUNT(*) FROM `ebook` where `title` like CONCAT('%',#{keyword},'%') or `author` like CONCAT('%',#{keyword},'%');
+	</select>
+	<select id="selectCountForCheckMylib" resultType="int">
+		select count(*) from `mylib` where `uid`=#{uid} and `bookId`=#{bookId} and `state`=#{state}
+	</select>
+	<select id="selectDateDIFF" resultType="int">
+		SELECT DATEDIFF(`returnDate`,`loanDate`) FROM `mylib` WHERE `no`=#{no};
+	</select>
+ 	<resultMap id="selectMylibsResultMap" type="kr.co.ChimAcademy.vo.MylibVO">
+		<id column="no" property="no"/>
+		<result column="uid" property="uid"/>
+		<result column="bookId" property="bookId"/>
+		<result column="state" property="state"/>
+		<result column="loanDate" property="loanDate"/>
+		<result column="returnDate" property="returnDate"/>
+		<result column="returnReal" property="returnReal"/>
+		<association property="EbookVO" javaType="kr.co.ChimAcademy.vo.EbookVO">
+			<id column="bookId" property="bookId"/>
+			<result column="GROUP" property="GROUP"/>
+			<result column="title" property="title"/>
+			<result column="author" property="author"/>
+			<result column="publisher" property="publisher"/>
+			<result column="belong" property="belong"/>
+			<result column="applier" property="applier"/>
+			<result column="pubDate" property="pubDate"/>
+			<result column="thumb" property="thumb"/>
+		</association>
+	</resultMap>
+	<select id="selectMylibs" resultMap="selectMylibsResultMap">
+		SELECT a.*,b.GROUP,b.title,b.author,b.publisher,b.belong,b.applier,b.pubDate,b.thumb FROM `mylib` AS a 
+													JOIN `ebook` AS b
+													ON a.`bookId`=b.`bookId`
+													where a.uid=#{uid} and a.state=#{state}
+													limit #{start},10;
+	</select>
+	<select id="selectCountTotalMylibs" resultType="int">
+		SELECT COUNT(*) FROM `mylib` where uid=#{uid} and state=#{state}
+	</select>
+	<select id="selectCate1s" resultType="kr.co.ChimAcademy.vo.EbookCate1VO">
+		select * from `ebook_cate1`;
+	</select>
+	<select id="selectCate2s" resultType="kr.co.ChimAcademy.vo.EbookCate2VO">
+		select * from `ebook_cate2` where `c1`=#{c1};
+	</select>
+	<select id="selectCountEbooks" resultType="kr.co.ChimAcademy.vo.CountVO">
+		SELECT COUNT(case when `cate1`=10 then 1 END) AS c10,
+				COUNT(case when `cate1`=11 then 1 END) AS c11,
+				COUNT(case when `cate1`=12 then 1 END) AS c12,
+				COUNT(case when `cate1`=13 then 1 END) AS c13,
+				COUNT(case when `cate1`=14 then 1 END) AS c14,
+				COUNT(case when `cate1`=15 then 1 END) AS c15,
+				COUNT(case when `cate1`=16 then 1 END) AS c16,
+				COUNT(case when `applier`='예스24' then 1 END) AS yes,
+				COUNT(case when `applier`='북큐브' then 1 END) AS book,
+				COUNT(case when `applier`='교보문고' then 1 END) AS kyobo,
+				COUNT(case when `applier`='알라딘' then 1 END) AS al
+																	from `ebook` where `GROUP`=#{GROUP}
+	</select>
+	<update id="updateEbookDown">
+		update `ebook_file` set `download` = `download`+1 where `parent`=#{bookId};
+	</update>
+	<update id="updateMylibReservToBorrow">
+		update `mylib` set `state`=1, 
+							`loanDate`=now(), 
+							`returnDate`=date_add(now(), interval 14 day)
+							where `no`=#{no};
+	</update>
+	<update id="updateEbookLoan">
+		update `ebook` set `loan`=`loan`
+									<choose>
+										<when test="sort==1">-1</when>
+										<when test="sort==2">+1</when>
+									</choose>
+				 					where `bookId`=#{bookId}; 
+	</update>
+	<update id="updateEbookReserv">
+		update `ebook` set `reserv`=`reserv`
+									<choose>
+										<when test="sort==1">-1</when>
+										<when test="sort==2">+1</when>
+									</choose>
+				 					where `bookId`=#{bookId}; 
+	</update>
+	<update id="updateMylibReturn">
+		update `mylib` set `state`=3, `returnReal`=now() where `no`=#{no};
+	</update>
+	<update id="updateMylibReturnDate">
+		update `mylib` set `returnDate`=date_add(`returnDate`, interval 7 day) where `no`=#{no};
+	</update>
+	<update id="updateEbookLike">
+		update `ebook` set `like`=`like`+1 where `bookId`=#{bookId};
+	</update>
+</mapper>

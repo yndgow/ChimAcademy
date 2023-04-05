@@ -1,0 +1,341 @@
+/* Login*/
+/*푸터고정*/
+#login{
+	height: auto;
+}
+#wrapper{
+	padding-bottom:0px;
+}
+
+
+
+#login .bx-wrapper {
+    margin: 4px 0px 0px 0px;
+    border: none;
+    width: 1270px;
+    height: 400px;
+    margin-bottom: 2px;
+}
+
+.bx-wrapper img {
+	width: 1270px;
+	height: 400px;
+}
+
+.bx-wrapper .bx-pager {
+display: none;
+}
+ 
+#login > .SchoolSide {
+	display: block;
+	margin: 0;
+	box-sizing: border-box;
+	margin-top: 3px;
+}
+
+#login > .loginSide > div {
+	width: 480px;
+	height: 380px;
+	border: 2px solid #dfe3ee;
+	box-sizing: border-box;
+	margin: auto;
+	margin-top: 35px;
+	border-radius: 7px;
+}
+
+#login > .SchoolSide > div > img {
+	width: 1280px; 
+	height: 400px;
+}
+#login > .logoSide {
+	width: 550px;
+	height: 444px;
+	box-sizing: border-box;
+	float: left;
+}
+#login > .logoSide > img {
+    width: 270px;
+    position: relative;
+    margin: auto;
+    display: block;
+    top: 80px;
+    left: 90px;
+}
+
+#login > .loginSide {
+	margin: 0;
+	width: 730px;
+	height: 472px;
+	box-sizing: border-box;
+	float: right;
+	text-align: center;
+	line-height: 270px;
+}
+      #login > .loginSide > div section {
+	border-bottom: 2px solid #dfe3ee;
+	height: 100px;
+	padding: 30px;
+	box-sizing: border-box;
+}
+      #login > .loginSide > div section{text-align: left;}
+      #login > .loginSide > div section > span {
+	margin-bottom: 10px;
+	font-size: 16px;
+	position: relative;
+  		top: -12px;
+}
+      #login > .loginSide > div section > input {
+	width: 410px;
+	height: 33px;
+	border: 2px solid #dfe3ee;
+	border-radius: 3.5px;
+	margin-top: 2px;
+	font-size: 18.5px;
+	box-sizing: border-box;
+	padding: 8px;
+	position: relative;
+	top: -9px;
+}
+
+#login > .loginSide > div > div {
+	height: 85px;
+	box-sizing: border-box;
+	position: relative;
+	top: 59px;
+	padding-left: 20px;
+	text-align: left;
+	background-color: #f7f7f7;
+	border-radius: 7px;
+}
+#login > .loginSide > div > div > span {
+	position: relative;
+	float: left;
+	top: 19px;
+	font-size: 17px;
+}
+
+#login > .loginSide > div > div > a {
+	position: relative;
+	float: left;
+	top: 19px;
+	font-size: 17px;
+	color: #0057e7;
+	float: left;
+}
+
+#login > .loginSide > div  > form > div > span{
+	float: left;
+	margin-bottom: 10px;
+}
+#login > .loginSide > div  > form > div > span > label {
+	font-size: 16px;
+	position: relative;
+	margin: 30px;
+	top: 10px;
+}
+#login > .loginSide > div > form > div > span > label > input {
+	width: 15px;
+	height: 15px;
+	margin-right: 4px;
+}
+#login > .loginSide > div > form > div > input {
+	float: right;
+	box-sizing: border-box;
+	margin-right: 20px;
+	width: 140px;
+	height: 30px;
+	font-size: 16px;
+	background-color: #0057e7;
+	border: none;
+	color: #fff;
+    border-radius: 2.7px;
+}
+
+
+/* Join*/ 
+
+#join {
+	/* height: 849px; */
+	/* 가입하기 수정  */
+	height: fit-content;
+	width: 900px;
+	border: none;
+}
+
+#join > nav {
+	border-bottom: 2px solid #0e6ad3;
+}
+
+#join > nav > h1 {
+	    margin-bottom: 6px;
+		margin-top: 25px;
+		font-size: 34px;
+		font-weight: 530;
+}
+
+#join table {
+	position: relative;
+	width: 100%;
+	table-layout: fixed;
+	border-top: 1px solid #f7f7f7;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#join table caption {
+	text-align: left;
+	font-size: 16px;
+	padding-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 12px;
+	font-weight: 500;
+}
+
+#join table th {
+	width: 200px;
+	padding: 19px 20px;
+	vertical-align: top;
+	background: #f4f6f9;
+	font-weight: 500;
+	text-align: left;
+	line-height: 1.4;
+	border-bottom: 1px solid #dfe5ed;
+	word-break: break-word;
+	font-size: 17px;
+}
+
+#join table .essential {
+	color: #ef3f43;
+	vertical-align: middle;
+	margin-right: 5px;
+	display: inline-block;
+	margin-right: 8px;
+	margin-left: 10px;
+}
+
+#join table td {
+	position: relative;
+	vertical-align: middle;
+	padding: 10px 20px;
+	text-align: left;
+	line-height: 1.4;
+	border-bottom: 1px solid #dfe5ed;
+	word-break: break-word;
+	font-size: 14px;
+}
+#join table .birthId {
+	position: relative;
+	left: -80px;
+}
+
+#join table .birthId > input {
+	margin-left: 6px;
+}
+
+#join table input {
+	height: 31px;
+	font-size: 14px;
+	border: 1px solid #dfe5ed;
+	vertical-align: middle;
+	padding: 0 5px;
+}
+
+#join table #btnId {
+	padding: 0px 7px;
+	height: 24px;
+	font-size: 14px;
+	border: 1px solid #dfe5ed;
+	vertical-align: middle;
+	margin-left: 5px;
+	border-radius: 2px;
+}
+
+#join table span {
+	display: none;
+}
+
+#join table label {
+	display: inline-block;
+	width: 60px;
+	font-size: 17px;
+}
+
+#join table .addr th {
+	padding-left: 20px;
+}
+
+#join table .addr input {
+	margin-top: 6px;
+}
+
+#join table .addr button {
+	padding: 2px 7px;
+	height: 24px;
+	font-size: 14px;
+	border: 1px solid #dfe5ed;
+	vertical-align: middle;
+	margin-left: 4px;
+	border-radius: 2px;
+	position: relative;
+	float: right;
+	top: 10px;
+	left: -2px;
+}
+
+#join form input[type="submit"] {
+	display: block;
+	background: #0057e7;
+	color: #fff;
+	font-size: 18px;
+	padding: 10px 53px;
+	margin: 40px auto;
+	border: 0;
+	outline: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+
+/* 학번, 아이디찾기 추가 */
+#btnSearchUid{
+	width: 178px;
+	height: 44px;
+	background: #0057e7;
+	color: #fff;
+	font-size: 18px;
+	margin-top: 20px;
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#btnSearchDiv{
+	text-align: center;
+}
+.errMsg{
+	color: #3b5998;
+}
+main#join > form > section > table .joinInfo{
+	border: none;
+}
+main#join > button#memberJoinBtn {
+	display: block;
+	width: 180px;
+    height: 45px;
+    background: #3b5998;
+    color: #fff;
+    font-size: 18px;
+    border : none;
+    margin: 40px auto;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btnEmail{
+	width: 90px;
+    height: 30px;
+    background: #3b5998;
+	color: #fff;
+	border : none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+

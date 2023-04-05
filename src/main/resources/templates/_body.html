@@ -1,0 +1,25 @@
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+			<a th:href="@{/}" id="login_headerLogo"><img th:src="@{/img/침대학교_헤더로고.png}" alt="헤더로고"></a>
+				<div>
+					<a th:href="@{/notice}">Home</a>
+					<th:block sec:authorize="isAuthenticated()">
+						<th:block sec:authorize="hasRole('ROLE_1')">
+							<a th:href="@{/student/my}">학생 [[${#authentication.name}]]</a>
+						</th:block>
+						<th:block sec:authorize="hasRole('ROLE_2')">
+							<a th:href="@{/student/my}">조교 [[${#authentication.name}]]</a>
+						</th:block>
+						<th:block sec:authorize="hasRole('ROLE_3')">
+							<a th:href="@{/professor/my}">교수 [[${#authentication.name}]]</a>
+						</th:block>
+						<th:block sec:authorize="hasRole('ROLE_4')">
+							<a>관리자 [[${#authentication.name}]]</a>
+						</th:block>
+					</th:block>
+					<a th:href="@{/logout}">LogOut</a>
+				</div>
+			</div>
+		</header>

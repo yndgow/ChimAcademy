@@ -1,0 +1,171 @@
+<th:block th:include="@{mypage/_header.html}"/>
+<main>
+<th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav>
+                    <h3>내 정보</h3>
+                </nav>
+               <section>
+                <div>
+                    <tr><img th:src="@{/profileThumb/}+${vo.profile}" alt="증명사진" class="idphoto"></tr>
+                </div>
+                    <table>
+                        <tr>
+                            <th>이름</th>
+                            <td th:text=${vo.name}></td>
+                            <th>학번</th>
+                            <td th:text=${vo.uid}>2022</td>
+                            <th>학과</th>
+                            <td>[[${vo.majorName}]] / [[${vo.depName}]]</td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td th:text=${vo.hp}>010-0000-0001</td>
+                            <th>평균학점</th>
+                            <td>[[${vo.avgCredit}]]/ 4.5</td>
+                            <th>학적구분</th>
+                            <th:block th:switch="${vo.status}">
+                            <td th:case="1">재학</td>
+                            <td th:case="2">휴학</td>
+							</th:block>
+                        </tr>
+                   </table>
+                   </section>
+                   
+                <!-- 성적 -->
+                <nav class="distance">
+                    <h3>성적</h3>
+                </nav>
+               <section>
+                    <table>
+                        <tr>
+                            <th>학년도</th>
+                            <th>학과</th>
+                            <th>이수학점</th>
+                            <th>등수</th>
+                            <th>전체인원</th>
+                            <th>평점</th>
+                        </tr>
+                        <tr>
+                           <td>2020</td>
+                           <td>국문학과</td>
+                           <td>20</td>
+                           <td>2</td>
+                           <td>45</td>
+                           <td>4.2</td>
+                        </tr>
+                        <tr>
+                           <td>2021</td>
+                           <td>국문학과</td>
+                           <td>20</td>
+                           <td>3</td>
+                           <td>45</td>
+                           <td>4.1</td>
+                        </tr>
+                        <tr>
+                           <td>2022</td>
+                           <td>국문학과</td>
+                           <td>20</td>
+                           <td>2</td>
+                           <td>45</td>
+                           <td>4.05</td>
+                        </tr>
+                        <tr>
+                           <td>2023</td>
+                           <td>국문학과</td>
+                           <td>20</td>
+                           <td>3</td>
+                           <td>45</td>
+                           <td>4.4</td>
+                        </tr>
+                   </table>
+                </section>
+              <!-- 수강내역 -->
+              <nav class="distance">
+                <h3>수강내역</h3>
+            </nav>
+           <section class="tableWrapper">
+                <table id="userListTable">
+                    <tr>
+                        <th>no</th>
+                        <th>학년</th>
+                        <th>교과목명</th>
+                        <th>이수구분</th>
+                        <th>학점</th>
+                        <th>담당교수</th>
+                        <th>강의시간</th>
+                        <th>성적</th>
+                        <th>
+                        	강의평가
+                        </th>
+                    </tr>
+                    <th:block th:if="${#lists.isEmpty(lecture)}">
+				        	<td colspan="10">수강신청한 과목이 없습니다.</td>
+					</th:block>
+					<tr th:each="lecture : ${lecture}">
+                        <td>[[${lectureStat.count}]]</td>
+	                    <td>[[${lecture.lecClass}]]</td>
+	                    <td>[[${lecture.lecName}]]</td>
+                        <td>[[${lecture.gubun}]]</td>
+                        <td>[[${lecture.credit}]]</td>
+                        <td>[[${lecture.name}]]</td>
+                        <td>[[${lecture.cTime}]]</td>
+                        <td>[[${lecture.sGrade}]]</td> 
+                        <td>
+		                <th:block th:if="${lecture.result == 1}">
+				        	강의평가완료
+					    </th:block>
+					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}!= null">
+					        <button class="btn_small blue openModalBtn" style="border: 0">강의 평가</button>
+					    </th:block>
+					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}== null">
+					        평가준비중
+					    </th:block>
+                        </td>
+               			<td><input type="hidden" name="slecCode" th:value="${lecture.lecCode}"></td>
+               			<td><input type="hidden" name="spid" th:value="${lecture.pid}"></td>
+               		</tr>
+
+               </table>
+            </section>
+	          <div id="myModal" class="modal">
+				  <div class="modal-content">
+				    <span class="close">&times;</span>
+				    <h1>강의 평가 작성</h1>
+					    <form method="post">  
+						    <table>
+						        <tr>
+						            <td>과목</td>
+						            <td><input type="text" name="lecName"></td>
+						        </tr>
+						        <tr>
+						            <td>평가점수</td>
+						            <td>
+						                <input type="radio" name="evalScore" id="s1" value="1"><label for="s1">1</label>
+						                <input type="radio" name="evalScore" id="s2" value="2"><label for="s2">2</label>
+						                <input type="radio" name="evalScore" id="s3" value="3"><label for="s3">3</label>
+						                <input type="radio" name="evalScore" id="s4" value="4"><label for="s4">4</label>
+						                <input type="radio" name="evalScore" id="s5" value="5"><label for="s5">5</label>
+						            </td>
+						        </tr>
+						        <tr>
+						            <td>내용</td>
+						            <td><textarea name="content" id="" cols="30" rows="10"></textarea></td>
+						        </tr>
+						    </table>
+						    <input type="hidden" name="sUid" th:value="${vo.uid}">
+						    <input type="hidden" name="pid">
+						    <input type="hidden" name="lecCode">
+					        <div class="btn_div">
+						        <button  class="close red" style="border: 0">취소</button>
+						        <button class="blue" type="submit" style="border: 0">등록</button>
+						    </div>
+					  </form>
+				  </div>
+				</div>
+                <div>
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

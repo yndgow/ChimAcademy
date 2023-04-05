@@ -1,0 +1,250 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>온라인콘텐츠</b>
+			    </h2>
+			    <ul>
+			        	<li>
+			                <a th:href="@{/elib/}">
+			                    <span>전체보기</span>
+			                </a>
+			            </li>
+			            <li>
+			            	<a th:href="@{/elib/online/reading}">
+			                	<span>독서</span>
+			            	</a>
+			            
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/humanArt}">
+			                <span>인문·예술</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/DBpia}">
+			                <span>학술DB</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/E_learning}">
+			                <span>이러닝</span>
+			            </a>
+			        </li>
+			        <li class="active">
+			            <a th:href="@{/elib/online/magazine}">
+			                <span>전자잡지·신문</span>
+			            </a>
+			            <ul class="subMenu">
+			                <li>
+			                    <br>
+			                    <a th:href="@{/}">
+			                        <span style="color: #3975d6;">모아진</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Voque</span>
+			                    </a>
+			                </li>
+			                <li>
+			                    <br>
+			                    <a href="#">
+			                        <span>Ressreader</span>
+			                    </a>
+			                </li>
+			            </ul>
+			        </li>
+			        <li>
+			            <a th:href="@{/elib/online/DBpia}">
+			                <span>무료DB</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>모아진</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="moazine_bgbox bgbox">
+                                	<div class="if-txt">
+                                		<p>
+                                			<span class="tt">전자잡지 서비스</span>
+                                			<br>
+                                			<span class="btit">모아진</span>
+                                		</p>
+                                		<br>
+                                		<ul class="btns_wrap_tac">
+                                			<li>
+                                				<a href="#" class="btn_link02">
+	                                				<span>모아진 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                		</ul>
+                                	</div>
+                                </div>
+                                <h3>모아진 전자잡지란</h3>
+                                <div class="txt-box">
+                                	<p>
+                                		국내 최대 규모의 전자잡지 포털 사이트로, 매월 215여종, 20,000여권의 과월호, 70만 건의 잡지기사가 제공되는 국내 No.1 디지털 매거진 서비스입니다.
+                                	</p>
+                                </div>
+                                <br>
+                                <h3>주요특징</h3>
+                                <ul class="con">
+                                	<li>
+                                		​총 200여종의 분야별 매거진과 과월호 포함 총 20,000여권 서비스 제공​
+                                	</li>
+                                	<li>
+                                		최신호 및 해당 잡지 과월호 동시 서비스 제공
+                                	</li>
+                                	<li>
+                                		​디지털 매거진 목차, 썸네일 이미지를 통한 빠른 기사 열람​
+                                	</li>
+                                	<li>
+                                		선명한 이미지, 우수한 가독성​
+                                	</li>
+                                	<li>
+                                		콘텐츠 본문검색 기사별 열람 서비스 제공
+                                	</li>
+                                </ul>
+                                <h3>앱다운로드</h3>
+                                <div class="applicationQrcode clearfix">
+                                	<p class="desc">
+                                		구글 플레이 스토어 또는 앱스토어에서 <strong>'도서관 매거진'</strong>을 검색하시면 어플리케이션을 다운로드 할 수 있습니다.
+                                	</p>
+                                	<div class="appStore android">
+                                		<img th:src="@{/img/elib/qrcode_android_poem.jpg}" style="width: 122px; height: 122px;">
+                                		<p>
+                                			안드로이드 (Android)
+                                			<br>
+                                			구글플레이스토어
+                                			<a title="새창에서열림" class="btn small01 down newWin" href="https://play.google.com/store/apps/details?id=com.mediachangbi.app.sisunapp&pli=1">
+                                				다운로드
+                                				<i class="fa fa-extranal-link"></i>
+                                			</a>
+                                		</p>
+                                	</div>
+                                	<div class="appStore ios">
+                                		<img th:src="@{/img/elib/qrcode_ios_poem.gif}" style="width: 122px; height: 122px;">
+                                		<p>
+                                			IOS (Iphone)
+                                			<br>
+                                			앱스토어
+                                			<a title="새창에서열림" class="btn small01 down newWin" href="https://apps.apple.com/app/id1125839000">
+                                				다운로드
+                                				<i class="fa fa-extranal-link"></i>
+                                			</a>
+                                		</p>
+                                	</div>
+                                </div>
+                                <br>
+                                <h3 style="margin-top: 164px;">모바일 서비스 이용방법</h3>
+                                <div class="libropiaGuide poemDayGuide1">
+                                	<ol>
+                                		<li>
+                                			<span>"도서관 매거진"앱 다운로드 후 설치</span>
+                                		</li>
+                                		<li>
+                                			<span>
+                                				도서관 선택화면에서 "부산도서관" 선택
+                                			</span>
+                                		</li>
+                                		<li>
+                                			<span>부산도서관 홈페이지 아이디 및 비밀번호 입력</span>
+                                		</li>
+                                		<li>
+                                			<span>200여종의 분야별 매거진과 20,000여권의 과월호 열람</span>
+                                		</li>
+                                		<li>
+                                			<span style="background-color: #fff; margin-left: -70px;">※ 준회원(웹회원)은 가입할 수 없으며, 도서관을 방문하여 회원증을 발급받은 후 이용하여야 합니다.</span>
+                                		</li>
+                                	</ol>
+                                </div>
+                                <br>
+                                <h3>웹 서비스 이용방법</h3>
+                                <div class="libropiaGuide poemDayGuide2">
+                                	<ol>
+                                		<li>
+                                			<span>부산광역시 전자도서관 로그인</span>
+                                		</li>
+                                		<li>
+                                			<span>상단 온라인콘텐츠 메뉴 내 '전자잡지' 클릭</span>
+                                		</li>
+                                		<li>
+                                			<span>200여종의 분야별 매거진과 20,000여권의 과월호 열람</span>
+                                		</li>
+                                		<li>
+                                			<span style="background-color: #fff; margin-left: -70px;">※ 준회원(웹회원)은 가입할 수 없으며, 도서관을 방문하여 회원증을 발급받은 후 이용하여야 합니다.</span>
+                                		</li>
+                                	</ol>
+                                </div>
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

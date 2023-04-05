@@ -1,0 +1,608 @@
+    /* css 초기화*/
+    * {
+        padding: 0;
+        margin: 0;
+        font: normal 15px '고딕';
+        line-height: 150%;
+        word-break: keep-all;
+        outline: none;
+    }
+
+    ul, ol {list-style: none;}
+    
+    a {text-decoration: none;color: black;}
+
+    img {max-width: 100%; max-height: 100%;}
+
+    .wrapper {width: 100%; height: auto; background: #eae5e5 url('/ChimAcademy/img/elib/backgound_bg.gif') repeat center top;}
+
+    main {
+        width: 1280px;
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    /* header */
+    .tnb {
+        position: relative;
+        width: 100%;
+        background: #202020;
+        overflow: hidden;
+    }
+    section {
+        position: relative;
+        width: 1260px;
+        margin: 0 auto;
+    }
+    .tnb >section > div {
+
+    }
+    .tnb >section > .left-util {
+       
+    }
+    .tnb >section > .left-util li{
+        float: left;
+        display: inline-block;
+        width: 185px;
+    }
+    .tnb >section > .left-util li a {
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+    }
+    .tnb >section > .left-util li a.link1{
+        background: #363b9e;
+    }
+    .tnb >section > .left-util li a.link2{
+        background: #00b2aa;
+    }
+    .tnb >section > .right-util {float: right;}
+    .tnb >section > .right-util li{
+        display: inline-block;
+        width: 90px;
+    }
+    .tnb >section > .right-util li:last-child{
+        width: 130px;
+    }
+    .tnb >section > .right-util li a{
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+    }
+    .tnb >section > .right-util li a.link3{
+        color: #58adee;
+        font-weight: bold;
+    }
+    .tnb >section > .right-util li:last-child a{
+        padding: 0 15px;
+        background: #603978;
+    }
+    .tnb >section > .right-util li:last-child a > img{
+        vertical-align: middle;
+    }
+    .Gnb {
+        clear: both;
+        text-align: center;
+        width: 100%;
+        height: 80px;
+        overflow: inherit;
+        position: relative;
+        background: #fff;
+    }
+    .Gnb > section > h1 {
+        position: absolute;
+        z-index: 1000;
+        left: 0;
+        top: -5px;
+    }
+    .Gnb > section > h1 > a {}
+    .Gnb > section > h1 > a > img {
+    	width: 260px;
+    }
+    .Gnb > section > .g-menu{
+    }
+    .Gnb > section > .g-menu > .gnb-menu {
+        text-align: right;
+        padding-right: 70px;
+        background: #fff;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li {
+        position: relative;
+        display: inline-block;
+        zoom: 1;
+        vertical-align: middle;
+        box-sizing: border-box;
+        width: 13%;
+        text-align: center;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li:hover > a {
+        color: #363b9e;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > a{
+        display: block;
+        line-height: 80px;
+        height: 80px;
+        font-size: 20px;
+        font-family: "Malgun Gothic";
+        font-weight: 600;
+        color: #000;
+        text-align: center;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu{
+        position: absolute;
+        display: none;
+        border: 0;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        background: rgba(22,22,92,0.96);
+        white-space: nowrap;
+        text-align: center;
+        z-index: 9999999!important;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li:hover > .subMenu {
+        display: block;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li{
+        text-align: center;
+        position: relative;
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li:hover > a {
+        color: aqua;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li > a{
+        font-size: 14px;
+        font-family: "Malgun Gothic";
+        display: block;
+        color: #fff;
+        line-height: 130%;
+        padding: 20px 20px 20px 20px;
+        margin: 0;
+    }
+    .Gnb > section > .g-menu > .gnb-menu > li > .subMenu > li > a > img {
+        vertical-align: middle;
+    }
+    /*메인*/
+    #container {
+        position: relative;
+        width: 100%;
+        z-index: 2;
+    }
+    #container > .section-box {
+        width: 70%;
+        margin: 30px auto 30px;
+    }
+    #container > .section-box > .search-box {
+        width: 100%;
+        border: 3px solid #000;
+        border-radius: 15px;
+        padding: 0;
+        background: #fff;
+        height: 62px;
+    }
+    #container  > .section-box > .search-box > form {}
+    #container  > .section-box > .search-box > form > .search {
+        border: 0;
+        border-radius: 15px;
+        background: #fff;
+        overflow: hidden;
+        position: relative;
+        height: auto;
+    }
+    #container  > .section-box > .search-box > form > .search > .box1{
+        padding: 0;
+    }
+    #container  > .section-box > .search-box > form > .search > .box1 > input {
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        background: #fff;
+        color: #777777;
+        font-family: "Malgun Gothic";
+        font-size: 14px;
+        padding: 0.5% 15% 0 3%;
+        height: 62px;
+        line-height: 62px;
+    }
+    #container  > .section-box > .search-box > form > .search > .box2{
+        position: absolute;
+        top: 8px;
+        right: 0;
+        width: 6%;
+        height: 30%;
+    }
+    #container  > .section-box > .search-box > form > .search > .box2 > button{
+        border: 0;
+        background-color: #fff;
+    }
+    #container  > .section-box > .search-box > form > .search > .box2 > button >span{
+        font-size: 45px;
+        background-color: #fff;
+    }
+    #container  > section {
+        clear: both;
+        overflow: hidden;
+    }
+    #container  > section > .left {
+        position: relative;
+        float: left;
+        width: 620px;
+    }
+    #container  > section > .left > .quick {
+        clear: both;
+    }
+    #container  > section > .left > .quick > .ico {}
+    #container  > section > .left > .quick > .ico > li {
+        display: inline-block;
+        width: 190px;
+        height: 175px;
+        margin: 10px 10px 0 0;
+    }
+    #container  > section > .left > .quick > .ico > li > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 18px;
+    }
+    #container  > section > .left > .quick > .ico > li:nth-child(1) > a {background: #454078;}
+    #container  > section > .left > .quick > .ico > li:nth-child(2) > a {background: #66b3f0;}
+    #container  > section > .left > .quick > .ico > li:nth-child(3) > a {background: #1e84aa;}
+    #container  > section > .left > .quick > .ico > li:nth-child(4) > a {background: #1168ab;}
+    #container  > section > .left > .quick > .ico > li:nth-child(5) > a {background: #603978;}
+    #container  > section > .left > .quick > .ico > li:nth-child(6) > a {background: #1193ab;}
+    #container  > section > .left > .quick > .ico > li:nth-child(7) > a {background: url('/ChimAcademy/img/elib/bg7.png')no-repeat;}
+    #container  > section > .left > .quick > .ico > li:nth-child(8) > a {background: #c07572;}
+    #container  > section > .left > .quick > .ico > li:nth-child(9) > a {background: #afbf54;}
+    #container  > section > .left > .quick > .ico > li:nth-child(1) > a > div {background: url('/ChimAcademy/img/elib/ico1.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(2) > a > div {background: url('/ChimAcademy/img/elib/ico2.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(3) > a > div {background: url('/ChimAcademy/img/elib/ico3.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(4) > a > div {background: url('/ChimAcademy/img/elib/ico4.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(5) > a > div {background: url('/ChimAcademy/img/elib/ico5.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(6) > a > div {background: url('/ChimAcademy/img/elib/ico6.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(7) > a > div {}
+    #container  > section > .left > .quick > .ico > li:nth-child(8) > a > div {background: url('/ChimAcademy/img/elib/ico8.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li:nth-child(9) > a > div {background: url('/ChimAcademy/img/elib/ico9.png')no-repeat center 20px;}
+    #container  > section > .left > .quick > .ico > li > a > div{
+        width: 79%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 40% 0;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    #container  > section > .left > .quick > .ico > li > a > div > h4 {
+        font-size: 19px;
+        font-family: "Malgun Gothic";
+        font-weight: 600;
+        line-height: 110px;
+    }
+    #container  > section > .right {float: right; width: 640px; height: 190px;}
+    #container .bx-wrapper {
+        margin: 10px;
+    }
+    #container .bx-wrapper img {
+    	height: 180px;
+    }
+    #container .bx-wrapper .bx-pager {
+        bottom: 15px;
+    }
+    #container section .notice {
+        overflow: hidden;
+        margin-top: 60px;
+    }
+    #container section .notice > ul{}
+    #container section .notice > ul > li {
+        display: inline-block;
+        width: 315px;
+        height: 233px;
+        margin: 5px 0 0 0;
+    }
+    #container section .notice > ul > li.list {
+        float: left;
+        background: #fff;
+        border-radius: 15px;
+    }
+    #container section .notice > ul > li > div {
+
+    }
+    #container section .notice > ul > li > div.ntc {
+        position: relative;
+        width: 79%;
+        margin: 0 auto;
+        text-align: left;
+        padding: 7% 0;
+        box-sizing: border-box;
+    }
+    
+    #container section .notice > ul > li >div >div{}
+    #container section .notice > ul > li >div >div.tit{
+        font-size: 25px;
+        font-family: "Malgun Gothic";
+
+    }
+    #container section .notice > ul > li >div >div.cont{}
+    #container section .notice > ul > li >div >div.cont > ul{padding: 15px 0 0 0;}
+    #container section .notice > ul > li >div >div.cont > ul > li {
+        padding: 3px 0 3px 10px;
+    }
+    #container section .notice > ul > li >div >div.cont > ul > li:nth-child(n+6){
+    	display: none;
+    }
+    #container section .notice > ul > li >div >div.cont > ul > li > a{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+    #container section .notice > ul > li >div >div.cont > ul > li > a:hover {
+        color: #1168ab;
+    }
+    #container section .notice > ul > li >div >div > strong{
+        font-weight: bold;
+        font-size: 25px;
+        font-family: "Malgun Gothic";
+    }
+    #container section .notice > ul > li >div >div > ul{}
+    #container section .notice > ul > li >div >div > ul > li{}
+    #container section .notice > ul > li >div >div > ul > li > a{}
+    #container section .notice > ul > li >div >div > ul > li > a > span {font-size: 15px;}
+    #container section .notice > ul > li >div >div > a {
+        position: absolute;
+        right: 0;
+        top: 23px;
+    }
+    #container section .notice > ul > li >div >div > a > span{font-size: 40px;}
+    #container section .notice > ul > li.use {
+        float: right;
+        background: #5aaeca;
+        border-radius: 15px;
+        margin-right: 0;
+    }
+    #container section .notice > ul > li.use > a {}
+    #container section .notice > ul > li.use > a > .guide{
+        position: relative;
+        width: 79%;
+        margin: 0 auto;
+        text-align: left;
+        padding: 8% 0;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    #container section .notice > ul > li.use > a > .guide > h4{
+        font-size: 25px;
+        font-family: "Malgun Gothic";
+        font-weight: normal;
+        line-height: 130%;
+    }
+    #container section .notice > ul > li.use > a > .guide > h4 > b{
+        padding: 0;
+        margin: 0;
+    }
+    #container section .notice > ul > li.use > a > .guide > p{
+        font-size: 15px;
+        padding-top: 20px;
+        font-family: "Malgun Gothic";
+    }
+    #container section .notice > ul > li.use > a > .guide > p > img{}
+    #container section .notice > ul > li.use > a > .guide > span {
+        position: absolute;
+        right: 0;
+        top: 23px;
+    }
+    #container section .notice > ul > li.use > a > .guide > span > img{}
+
+    #container .book-box {
+        position: relative;
+        border-radius: 15px;
+        background: #fff;
+        text-align: center;
+        padding: 2%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+    }
+    #container .book-box > div {}
+    #container .book-box > div > ul{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    #container .book-box > div > ul > li{
+        font-family: "Malgun Gothic";
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 23%;
+        text-align: center;
+        left: 20px;
+    }
+    #container .book-box > div > ul > li > a {
+        position: relative;
+        width: 85%;
+        display: block;
+        box-sizing: border-box;
+        font-size: 25px;
+        font-weight: 500;
+        color: #a6a6a6;
+        padding: 10px 0;
+    }
+    #container .book-box > div > ul > li.on > a {
+        color: #603978;
+        font-weight: bold;
+        border-bottom: 3px solid #603978;
+        padding: 18px 0;
+    }
+    #container .book-box > div > .contents {
+        background: #fff;
+        box-sizing: border-box;
+    }
+    #container .book-box > div > .contents > div {
+        position: relative;
+        padding-top: 21px;
+    }
+    #container .book-box > div > .contents > div > ul{}
+    #container .book-box > div > .contents > div > ul > li {
+        position: relative;
+        display: inline-block;
+        width: 40.5%;
+        margin-left: 2%;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit{
+        position: relative;
+        display: block;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit > h3{
+        
+        display: block;
+        width: 90%;
+        margin: 0 auto 10px;
+        font-size: 18px;
+        font-family: "Malgun Gothic";
+        font-weight: bold;
+        color: #000;
+        text-align: left;
+        padding-left: 23px;
+        box-sizing: border-box;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit > h3.book {
+        background: url('/ChimAcademy/img/elib/normal-ribon.png') no-repeat left center;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit > h3.audio {
+        background: url('/ChimAcademy/img/elib/normalaudio-ribon.png') no-repeat left center;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit > a{
+        position: absolute;
+        right: 18px;
+        top: 3px;
+    }
+    #container .book-box > div > .contents > div > ul > li > .tit > a > span {}
+    #container .book-box > div > .contents > div > ul > li > ul {}
+    #container .book-box > div > .contents > div > ul > li > ul > li {
+    
+        display: inline-block;
+        width: 32.5%;
+        text-align: Center;
+    }
+    #container .book-box > div > .contents > div > ul > li > ul > li:nth-child(n+4) {
+    	display: none;
+    }
+    
+    #container .book-box > div > .contents > div > ul > li > ul > li > a {
+        display: inline-block;
+        width: 100%;
+    }
+    #container .book-box > div > .contents > div > ul > li > ul > li > a > img {
+        width: 140px;
+        height: 195px;
+        border: 1px solid #d9d9d9;
+    }
+    #container .book-box > div > .contents > div > ul > li > ul > li > a > span {
+    	display:block;
+    	overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    /*footer*/
+    footer {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        background: #fff;
+        padding: 0 0 20px;
+        position: relative;
+        clear: both;
+    }
+    footer > .footer-top {}
+    footer > .footer-top > .info  {
+        width: 100%;
+        background: #202020;
+    }
+    footer > .footer-top > .info > section {
+        position: relative;
+        overflow: hidden;
+    }
+    footer > .footer-top > .info > section > .left {
+        float: left;
+    }
+    footer > .footer-top > .info > section > .left > ul {}
+    footer > .footer-top > .info > section > .left > ul > li {
+        font-size: 13px;
+        display: inline-block;
+    }
+    footer > .footer-top > .info > section > .left > ul > li > a {
+        display: block;
+        padding: 15px;
+        color: #fff;
+    }
+    footer > .footer-top > .info > section > .left > ul > li > a > b {
+        color: #2b74c0;
+    }
+    footer > .footer-top > .info > section > .right {
+        font-size: 13px;
+        float: right;
+    }
+    footer > .footer-top > .info > section > .right > select {
+        width: 200px;
+        height: 50px;
+        padding: 0 0 0 20px;
+        border: 0;
+        border-left: 1px solid #727272;
+        background: #202020 url('/ChimAcademy/img/elib/arrow.png') no-repeat 95% 50%;
+        color: #fff;
+        appearance: none;
+    }
+    footer > .footer-top > .info > section > .right > select:last-child {
+        border-right:1px solid #727272;
+    }
+    footer > .footer-top > .info > section > .right > select > option {}
+
+    footer > .address {
+        position: relative;
+        overflow: hidden;
+        padding: 23px 0;
+    }
+    footer > .address > .logo {
+        float: left;
+        margin-top: 5px;
+    }
+    footer > .address > .logo > img {
+    	width: 200px;
+    }
+    footer > .address > .location {
+        float: left;
+        padding-left: 18px;
+    }
+    footer > .address > .location > address {
+        font-size: 13px;
+        padding: 0;
+    }
+    footer > .address > .location > address > p {}
+    footer > .address > .location > address > p > em {
+        font-size: 13px;
+        font-style: normal;
+    }
+    footer > .address > .location > address > p > em > b {}
+    footer > .address > .location > address > span {}
+    footer > .home-up {
+        display: none;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        z-index: 999999;
+    }
+

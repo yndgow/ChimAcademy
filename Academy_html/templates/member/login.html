@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="/static/style/member/common.css" rel="stylesheet" type="text/css" />
+<link href="/static/style/member/member.css" rel="stylesheet" type="text/css" />
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>그린아카데미</title>
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<p id="login_headerLogo"><img src="/static/img/member/침대학교_헤더로고.png" alt="헤더로고"></p>
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		<br />
+		<br />
+		<footer>
+
+			<div class="footerCate">
+				<ul>
+					<li><a href="">채용공고&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">대학정보공시&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">정보공개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">개인정보처리방침&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">법적고시&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">윤리인권위원회&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+					<li><a href="">사이트맵</a></li>
+				</ul>
+			</div>
+			<div class="footerData">
+				<div class="footerLogo">
+					<img src="/static/img/member/침대학교_로고_테두리.png" alt="로고_반전">
+				</div>
+				<div class="footerSpans">
+					<span>부산광역시 연제구 중앙대로 1001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span>T. 02-3277-2114</span><br>
+					<span id="copyright">COPYRIGHT 2023 BY CHIM ACADEMY. ALL RIGHTS RESERVED.</span><br>
+				</div>
+
+				<div class="libBtn">
+					<button>
+						<p>침대학교 전자도서관</p>
+						<p>GO</p>
+					</button>
+				</div>
+			</div>
+		</footer>
+</body>
+
+</html>

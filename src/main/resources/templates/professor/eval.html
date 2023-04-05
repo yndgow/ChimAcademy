@@ -1,0 +1,44 @@
+<th:block th:include="@{professor/_header.html}"/>
+<script>
+	$(()=>{
+		aside();
+	});
+</script>
+        <main>
+            <th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="distance">
+                    <h3>강의 평가 목록</h3>
+                </nav>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th>학년</th>
+                            <th>교과목명</th>
+                            <th>이수구분</th>
+                            <th>학점</th>
+                        </tr>
+                        <tr th:each="board : ${boards}">
+                           <td>[[${board.no}]]</td>
+                           <td>[[${board.lecClass}]]</td>
+                           <td><a th:href="@{/professor/eval/view(no=${board.no})}">[[${board.lecName}]]</a></td>
+                           <td>[[${board.credit}]]</td>
+                           <td>[[${board.gubun}]]</td>
+                        </tr>
+
+                   </table>
+                </section>
+                <div class="page">
+                    <a href=""><</a>
+                    <a href="" class="on">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">></a>
+                </div> 
+            
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

@@ -1,0 +1,575 @@
+<th:block th:include="@{elib/_header.html}"/>
+<script type="text/javascript">
+	$(function(){
+		
+		$(".tabmenu > ul > li > a").click(function(){
+			$(this).parent().siblings().removeClass("active")
+			$(this).parent().addClass("active")
+			
+			let con = $(this).data("con")
+			
+			$(".tabCon").css({
+				"display" : "none"
+			});
+			$(con).css({
+				"display" : "block"
+			});
+			
+		});
+		
+	});
+</script>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a th:href="@{/elib/}">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>구독형전자책</b>
+			    </h2>
+			    <ul>
+			        <li class="active">
+			            <a href="#">
+			                <span>구독형 전자책</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>구독형 전자책</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="kyobo_bgbox bgbox">
+                                	<div class="if-txt">
+                                		<p>
+                                			<span class="tt">제한없는 전자책서비스</span>
+                                			<br>
+                                			<span class="btit">구독형전자책</span>
+                                		</p>
+                                		<br>
+                                		<ul class="btns_wrap_tac">
+                                			<li>
+                                				<a href="https://busanlib.bookcube.biz/FxLibrary/index/" class="btn_link02">
+	                                				<span>북큐브 구독형 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                			<li>
+                                				<a href="#" class="btn_link02">
+	                                				<span>알라딘 구독형 바로가기</span>
+	                                				<span class="ico ico_link"></span>
+                                				</a>
+                                			</li>
+                                		</ul>
+                                	</div>
+                                </div>
+                                <br>
+                                <h3>구독형 전자책이란?</h3>
+                                <div class="txt-box">
+                                	<p>
+                                		한 도서당 이용자 수 제한이 없어 원하는 도서를 기다림 없이 바로 이용할 수 있는 서비스입니다.
+                                	</p>
+                                </div>
+                                <br>
+                                <h3>이용안내</h3>
+                                <div>
+                                	<table class="tbl-type01">
+                                		<caption>전자책/오디오북 이용안내</caption>
+                                		<colgroup>
+                                			<col width="50%" class="col1">
+                                		</colgroup>
+                                		<thead>
+                                			<tr class="first">
+                                				<th scope="col" colspan="2" class="first last th1">구독형 전자책(오디오북)</th>
+                                			</tr>
+                                		</thead>
+                                		<tbody>
+                                			<tr class="fisrt">
+                                				<td class="first td1">대출 가능 권수</td>
+                                				<td class="last td2">일 최대 20권</td>
+                                			</tr>
+                                			<tr>
+                                				<td class="first td1">대출기간</td>
+                                				<td class="last td2">15일(대출일포함/자동반납)</td>
+                                			</tr>
+                                		</tbody>
+                                	</table>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="tabmenu on tab">
+                                	<ul>
+                                		<li class="active">
+                                			<a href="#tabCon1" data-con="#tabCon1">PC 이용방법(북큐브)</a>
+                                		</li>
+                                		<li class>
+                                			<a href="#tabCon2" data-con="#tabCon2">모바일 이용방법(북큐브)</a>
+                                		</li>
+                                		<li class>
+                                			<a href="#tabCon3" data-con="#tabCon3">PC 이용방법(알라딘)</a>
+                                		</li>
+                                		<li class>
+                                			<a href="#tabCon4" data-con="#tabCon4">모바일 이용방법(알라딘)</a>
+                                		</li>
+                                	</ul>
+                                </div>
+                                <div class="tabCon active" id="tabCon1">
+                                	<h3>대출방법과 대출기간</h3>
+                                	<ul class="con">
+                                		<li>원하는 콘텐츠를 ‘대출’ 버튼을 통해 대출할 수 있습니다.</li>
+                                		<li>‘대출’ 버튼은 콘텐츠 목록 및 상세정보 페이지에 표시되며 대출 버튼 위치에 예약 또는 보기 버튼으로 표시될 수 있습니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok01-1.jpg}" alt="도서 리스트 페이지에서의 대출버튼 캡쳐 화면" title="도서 리스트 페이지에서의 대출버튼 캡쳐 화면">
+                                		<br>
+                                		<br>
+                                		<img th:src="@{/img/elib/gudok01-2.jpg}" alt="도서 상세페이지에서 대출버튼 캡쳐 화면">
+                                	</div>
+                                	<h3>찜</h3>
+                                	<ul class="con">
+                                		<li>관심있는 콘텐츠는 ‘찜’ 기능을 통해 관리할 수 있습니다.</li>
+                                		<li>찜한 콘텐츠는 ‘내서재 > 찜한도서’에서 확인 할 수 있으며, 선택 후 삭제 가능합니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok02-1.jpg}" alt="도서 리스트 페이지에서 찜버튼 활성화 및 비활성화 캡쳐 화면">
+                                		<br>
+                                		<br>
+                                		<img th:src="@{/img/elib/gudok02-2.jpg}" alt="찜한 콘텐츠 페이지에서 찜버튼 활성화 캡쳐 화면">
+                                	</div>
+                                	<h3>미리보기</h3>
+                                	<ul class="con">
+                                		<li>콘텐츠의 내용의 일부를 미리 확인할 수 있습니다.</li>
+                                		<li>‘미리보기’ 버튼은 상세정보 페이지에 표시되며 미리보기를 제공할 수 없을 경우 표시되지 않을 수 있습니다.</li>
+                                	</ul>	
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok03-1.jpg}" alt="도서 상세 페이지에서 미리보기 버튼 캡쳐 화면">
+                                	</div>
+                                	<div>
+                                		<!--
+											<h3>뷰어 프로그램 없이 바로 이용하는 웹 뷰어로 보기</h3>
+											<ul class="con">
+												<li>이미지 준비중입니다.</li>
+											</ul>
+										-->
+                                	</div>
+                                </div>
+                                <div class="tabCon" id="tabCon2"  style="display: none;">
+                                	<h3>전자도서관 앱 설치하기</h3>
+                                	<ul class="con">
+                                		<li>스토어에서 ‘북큐브 전자도서관’을 설치합니다.</li>
+                                		<li>
+                                			Apple App스토어, Google Play스토어 검색 가능
+                                			<ul class="con2">
+                                				<li>
+                                					<b>검색창에 ‘북큐브’ 또는 ‘북큐브 전자도서관’ 을 검색하시면 쉽게 찾을 수 있습니다.</b>
+                                				</li>
+                                			</ul>
+                                		</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok04-1.jpg}" alt="스토어에서 교보문고 전자도서관 앱 설치 캡쳐 화면">
+                                	</div>
+                                	<h3>이용하고자 하는 도서관 찾기</h3>
+                                	<ul class="con">
+                                		<li>우측 상단 ‘전자도서관’버턴을 눌러 메뉴로 이동 후 이용하고자 하는 도서관으로 이동이 가능합니다.</li>
+                                		<li>검색 창에 ‘부산광역시’로 검색해서 ‘부산광역시 전자도서관(구독)’ 으로 들어 갑니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok05-1.jpg}" alt="이용하고자 하는 도서관 검색 캡쳐 화면">
+                                	</div>
+                                	<h3>로그인하기</h3>
+                                	<ul class="con">
+                                		<li>도서관에 등록된 ‘아이디’와 ‘비밀번호’를 입력하고 로그인 합니다.</li>
+                                		<li>
+                                			로그오프 상태에서는 전자도서관의 대부분의 기능 사용이 제한됩니다.
+                                			<ul class="con2">
+                                				<li>
+                                					<b>회원가입, 로그인에 대한 문의는 도서관 담당자에게 문의하시면 됩니다.</b>
+                                				</li>
+                                			</ul>
+                                		</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok06-1.jpg}" alt="로그인 페이지 캡쳐 화면">
+                                	</div>
+                                	<h3>대출, 그리고 열람하기</h3>
+                                	<ul class="con">
+                                		<li>도서관에 있는 콘텐츠 중에 열람하고자 하는 콘텐츠는 대출 한 후 열람이 가능합니다.</li>
+                                		<li>대출한 도서는 대출 기한까지 열람이 가능하며 ‘내서재’에서 확인 가능합니다.</li>
+                                		<li>단, 권한 설정에 따라 이용 가능한 콘텐츠 종류 및 수량에 제한이 있을 수 있습니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/gudok07-1.jpg}" alt="도서 리스트 및 도서 상세페이지에서 대출 버튼 캡쳐 화면">
+                                	</div>
+                                </div>
+                                <div class="tabCon" id="tabCon3"  style="display: none;">
+                                	<h3>설치 방법 - PC (WEB/APP)</h3>
+                                	<ul class="con">
+                                		<li>
+                                			1. WEB
+                                			<ul class="con2">
+                                				<li>페이지 하단 앱다운로드 버튼 클릭</li>
+                                			</ul>
+                                		</li>
+                                		<li>
+                                			2. APP
+                                			<ul class="con2">
+                                				<li>PC > OS(Window/Mac) 선택</li>
+                                				<li>PC용 어플리케이션 설치 후 로그인</li>
+                                			</ul>
+                                		</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/bookus01-1.jpg}" alt="PC 이용방법(알라딘) 1">
+                                	</div>
+                                	<h3>로그인 - 화면구성</h3>
+                                	<ul class="con">
+                                		<li>
+                                			1. 기관선택
+                                			<ul class="con2">
+                                				<li>"부산광역시 전자도서관(구독)" 입력 후 클릭</li>
+                                			</ul>
+                                		</li>
+                                		<li>
+                                			2. 아이디 / 패스워드
+                                			<ul class="con2">
+                                				<li>"부산도서관" 로그인 계정으로 로그인</li>
+                                			</ul>
+                                		</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/bookus01-2.jpg}" alt="PC 이용방법(알라딘) 2">
+                                	</div>
+                                	<h3>상세 페이지</h3>
+                                	<ul class="con">
+                                		<li>1. 책을 읽기 전 미리 보기가 가능합니다.</li>
+                                		<li>2. 내 서재에 담거나 바로 읽기가 가능합니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/bookus01-3.jpg}" alt="PC 이용방법(알라딘) 3">
+                                	</div>
+                                	<h3>내 서재</h3>
+                                	<ul class="con">
+                                		<li>1. 내서재에 담은 책이나 다운로드한 책을 볼 수 있습니다.</li>
+                                		<li>2. 독서감상문 작성 및 리딩노트 기록을 볼 수 있습니다.</li>
+                                		<li>3. 개인독서 기록을 확인 할 수 있습니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/bookus01-4.jpg}" alt="PC 이용방법(알라딘) 4">
+                                	</div>
+                                	<h3>내 서재 - 다운로드</h3>
+                                	<ul class="con">
+                                		<li>1. 내 서재의 읽고 싶은 책 메뉴에 담아둔 도서 목록 중 하단 다운로드 버튼을 클릭해서 기기에 다운로드 받은 콘텐츠 목록을 나열합니다.</li>
+                                		<li>2. 다운로드가 완료 된 도서의 경우 섬네일을 더블 클릭하면 콘텐츠에 해당하는 뷰어가 열립니다. (섬네일에 다운로드 표시로 확인 가능합니다.)</li>
+                                		<li>3. 다운로드 된 콘텐츠는 이용정책에 따라 정해진 기간 동안만 이용 가능합니다.</li>
+                                	</ul>
+                                	<div class="img_wrap">
+                                		<img th:src="@{/img/elib/bookus01-5.jpg}" alt="PC 이용방법(알라딘) 5">
+                                	</div>
+                                	<h3>내 서재 - 독서감상문</h3>
+	                                <ul class="con">
+	                                	<li>1. 이용자가 독서를 마치면 독서 감상문 작성이 가능해지면 해당 도서는 『독서 감상문 작성 가능한 책』 폴더에 보여지게 됩니다.</li>
+	                                	<li>2. 『독서 감상문 작성 가능한 책』 폴더에서 도서 섬네일을 클릭하게 되면 해당 도서에 대한 감상문을 쓸 수 있는 입력창이 생성됩니다.</li>
+	                                	<li>
+	                                		<b style="color:red;">3. 감상문은 전체/소속기간 공개 설정이 가능하며, 본문 작성시 하단에 입력 툴이 생성되며 자유롭게 텍스트 옵션을 적용할 수 있습니다.</b>
+	                                	</li>
+	                                	<li>
+	                                		4. 작성된 독서감상문은 『작성한 독서감상문』 폴더에서 확인이 가능하며 독서라운지 탭에서 해당 도서의 독서감상문에 대한 모아보기도 이용 가능합니다.
+	                                	</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-6.jpg}" alt="PC 이용방법(알라딘) 6">
+	                                </div>
+	                                <h3>내 서제 - 리딩노트</h3>
+	                                <ul class="con">
+	                                	<li>1. 콘텐츠 이용시 뷰어를 실행하게 되면 이용자는 본문에 책갈피나 하이라이트 혹은 메모 기능을 이용할 수 있습니다.</li>
+	                                	<li>2. 위의 기능들을 이용한 흔적들은 내서재 > 리딩노트에서 한번에 모아서 도서명과 페이지정보가 확인이 가능합니다.</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-7.jpg}" alt="PC 이용방법(알라딘) 7">
+	                                </div>
+	                                <h3>내 서재 - 독서기록</h3>
+	                                <ul class="con">
+	                                	<li>
+	                                		1. 『오늘까지 읽은 책』에서는 총 이용도서 수와 해당 월에 읽은 도서를 ebook과 오디오북으로 나누어 확인할 수 있으며, 상세보기를 통해 년도 및 월별 이용통계 확인이 가능합니다.
+	                                	</li>
+	                                	<li>
+	                                		2. 『추천도서 독서량』에서는 홈 > 추천도서에 등록된 독서의 이용량을 퍼센트로 확인합니다. 타이틀을 클릭하면 등록된 전체 추천도서의 이용량을 확인하실 수 있습니다.
+	                                	</li>
+	                                	<li>
+	                                		3. 『선호하는 카테고리』에서는 독서를 마친 도서의 카테고리별 이용내역을 분류해서 확인 가능하며 이를 통해 본인의 독서 취향을 알아볼 수 있습니다.
+	                                	</li>
+	                                	<li>4. 『선호하는 저자』에서는 본인이 읽은 도서의 저자별 순위를 확인합니다. 내 취향의 저자를 확인하기에 좋습니다.</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-8.jpg}" alt="PC 이용방법(알라딘) 8">
+	                                </div>
+	                                <h3>독서 라운지 - 독서 감상문</h3>
+	                                <ul class="con">
+	                                	<li>1. 감상문 책 검색창에서는 도서명을 입력하여 해당 도서의 감상문을 찾아 읽어볼 수 있습니다.</li>
+	                                	<li>
+	                                		2. 별도의 검색을 하지 않을 경우 하단에 독서감상문이 작성된 도서의 섬네일 리스트가 보이고 클릭하면 해당 도서에 대한 독서감상문DL 모두 보입니다.
+	                                	</li>
+	                                	<li>3. 독서감상문 리스트 중 하나를 클릭하게 되면 세부내용이 확인 가능합니다.</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-9.jpg}" alt="PC 이용방법(알라딘) 9">
+	                                </div>
+	                                <h3>독서 라운지 - 독서 토론</h3>
+	                                <ul class="con">
+	                                	<li>1. 토론 책 검색창에서는 도서명을 입력하여 해당 도서에 대한 사용자들의 한 줄 토론을 찾아 읽어볼 수 있습니다.</li>
+	                                	<li>
+	                                		2. 별도의 검색을 하지 않을 경우 하단에 독서토론 글이 작성된 도서의 섬네일 리스트가 보이고 클릭하면 해당 도서에 대한 한 줄 감상평이 모두 보입니다.
+	                                	</li>
+	                                	<li>3. 이용자들의 감상문은 좋아요 버튼을 통해 감상문에 대한 평가가 가능합니다.</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-10.jpg}" alt="PC 이용방법(알라딘) 10">
+	                                </div>
+	                                <h3>설정</h3>
+	                                <ul class="con">
+	                                	<li>
+	                                		1. 『내 계정』은 현재 로그인 되어진 본인의 계정이 확인되며, 로그아웃을 할 수 있습니다. 연결된 기기 관리는 세부 내용 확인을 통해 해당 계정으로 로그인된 기기의 목록이 나오며 수정/삭제를 할 수 있습니다.
+	                                	</li>
+	                                	<li>2. 『내 서재 설정』에서는 도서의 다운로드 위치를 외부/내부 저장소로 설정할 수 있습니다.</li>
+	                                	<li>3. 『이용기간 만료 책 자동 삭제』에서는 ON/OFF 설정이 가능합니다.</li>
+	                                	<li>4. 『앱 정보』에서는 공지사항 및 고객센터 연결 페이지가 있으며 약관 및 라이선스 공지를 확인할 수 있습니다.</li>
+	                                	<li>5. 하단 앱 버전 정보를 통해 현재 어플리케이션의 버전 확인이 가능하며, 업데이트 시 참고할 수 있습니다.</li>
+	                                </ul>
+	                                <div class="img_wrap">
+	                                	<img th:src="@{/img/elib/bookus01-11.jpg}" alt="PC 이용방법(알라딘) 11">
+	                                </div>
+	                                
+	                                
+                                </div>
+                                <div class="tabCon" id="tabCon4" style="display: none;">
+	                                	<h3>설치 방법 – 모바일 설치</h3>
+	                                	<ul class="con">
+	                                		<li>
+	                                			1. IOS
+	                                			<ul class="con2">
+	                                				<li>
+	                                					APP Store에서
+	                                					<b style="color:red;">“알라딘”</b>
+	                                					검색 후
+	                                					<b style="color:red;">“알라딘전자도서관(구독형)”</b>
+	                                					어플리케이션 다운로드
+	                                				</li>
+	                                				<li>
+	                                					&lrm;
+	                                					<a href="https://apps.apple.com/us/app/%EC%95%8C%EB%9D%BC%EB%94%98-%EC%A0%84%E…9E%90%EB%8F%84%EC%84%9C%EA%B4%80-%EA%B5%AC%EB%8F%85%ED%98%95/id6444465190" target="_blank" class="newWin" title="새창으로 열립니다.">
+	                                						"&lrm;https://apps.apple.com/us/app/%EC%95%8C%EB%9D%BC%EB%94%98-%EC%A0%84%EC%9E%90%EB%8F%84%EC%84%9C%EA%B4%80-%EA%B5%AC%EB%8F%85%ED%98%95/id6444465190"
+	                                						<i class="fa fa-external-link"></i>
+	                                					</a>
+	                                				</li>
+	                                			</ul>
+	                                		</li>
+	                                		<li>
+	                                			2. Android
+	                                		</li>
+	                                		<li>
+	                                			<ul class="con2">
+	                                				<li>
+	                                					Google Play에서
+	                                					<b style="color:red;">“알라딘”</b>
+	                                					검색 후
+	                                					<b style="color:red;">“알라딘 전자도서관(구독형)”</b>
+	                                					어플리케이션 다운로드
+	                                				</li>
+	                                				<li>
+	                                					<a href="https://play.google.com/store/apps/details?id=com.bookers.aladin" target="_blank" class="newWin" title="새창으로 열립니다.">…</a>
+	                                				</li>
+	                                			</ul>
+	                                		</li>
+	                                		<li>
+	                                			3. APK 파일 (e-book 단말기 용)
+	                                			<ul class="con2">
+	                                				<li>웹페이지 하단의 앱 다운로드 클릭</li>
+	                                				<li>MOBILE 알라딘 > APK 다운로드</li>
+	                                			</ul>
+	                                		</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+											<img th:src="@{/img/elib/bookus02-1.jpg}" alt="모바일 이용방법(알라딘) 1">
+	                                	</div>
+	                                	<h3>로그인 - 화면구성</h3>
+	                                	<ul class="con">
+	                                		<li>
+	                                			1. 기관선택
+	                                			<ul class="con2">
+	                                				<li>
+	                                					<b style="color:red;">“부산광역시 전자도서관(구독)”</b>
+	                                					을 입력하면 하단에 리스트 박스가 생성되며 클릭하면 입력됩니다.
+	                                				</li>
+	                                			</ul>
+	                                		</li>
+	                                		<li>
+	                                			2. 아이디 / 패스워드
+	                                			<ul class="con2">
+	                                				<li>
+	                                					<b style="color:red;">“부산도서관”홈페이지 로그인 계정</b>
+	                                					을 입력합니다.
+	                                				</li>
+	                                			</ul>
+	                                		</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-2.jpg}" alt="모바일 이용방법(알라딘) 2">
+	                                	</div>
+	                                	<h3>홈</h3>
+	                                	<ul class="con">
+	                                		<li>1. 매월 1~2회 큐레이션 서비스가 업데이트 됩니다.</li>
+	                                		<li>2. 최신업데이트, 인기, 주제별 검색이 가능합니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-3.jpg}" alt="모바일 이용방법(알라딘) 3">
+	                                	</div>
+	                                	<h3>홈-상세페이지</h3>
+	                                	<ul class="con">
+											<li>1. 미리보기 기능이 제공 됩니다.</li>
+	                                		<li>2.내 서재에 담기 및 삭제, 바로 읽기가 가능합니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-4.jpg}" alt="모바일 이용방법(알라딘) 4">
+	                                	</div>
+	                                	<h3>내 서재</h3>
+	                                	<ul class="con">
+	                                		<li>1. 내 서재에 있는 도서를 다운로드 하여 바로 읽기가 가능합니다.</li>
+	                                		<li>2. 각종 편집기능을 통해 정렬 및 내 서재 편집이 가능합니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-5.jpg}" alt="모바일 이용방법(알라딘) 5">
+	                                	</div>
+	                                	<h3>내 서재 - 독서감상문</h3>
+	                                	<ul class="con">
+	                                		<li>
+	                                			1. 도서의 98%이상 완독시 독서감상문을 작성 할 수 있습니다.
+	                                			<ul class="con2">
+	                                				<li>1) 독서 감상문은 최소 200자 이상 부터 저장이 가능합니다.</li>
+	                                				<li>2) 전체, 해당기관, 비공개 등 노출 범위를 설정 할 수 있습니다.</li>
+	                                			</ul>
+	                                		</li>
+	                                		<li>2. 내가 작성한 독서감상문 이력을 확인 할 수 있습니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-6.jpg}" alt="모바일 이용방법(알라딘) 6">
+	                                	</div>
+	                                	<h3>내 서재 - 리딩노트</h3>
+	                                	<ul class="con">
+	                                		<li>1. 콘텐츠 이용시 뷰어를 실행하게 되면 이용자는 본문에 책갈피나 하이라이트 혹은 메모 기능을 이용할 수 있습니다.</li>
+	                                		<li>2. 위의 기능들을 이용한 흔적들은 내서재 > 리딩노트에서 한번에 모아서 도서명과 페이지정보가 확인이 가능합니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-7.jpg}" alt="모바일 이용방법(알라딘) 7">
+	                                	</div>
+	                                	<h3>내 서재 - 독서기록</h3>
+	                                	<ul class="con">
+	                                		<li>1. 개인의 독서 이력 및 독서 시간 등 다양하 개인의 독서 활동 내역을 확인 할 수 있습니다.</li>
+	                                		<li>2. 상세보기 클릭시 월별 독서량이 에니어그램으로 표시 됩니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-8.jpg}" alt="모바일 이용방법(알라딘) 8">
+	                                	</div>
+	                                	<h3>독서 라운지 - 독서 감상문</h3>
+	                                	<ul class="con">
+	                                		<li>1. 감상문 책 검색창에서는 도서명을 입력하여 해당 도서의 감상문을 찾아 읽어볼 수 있습니다.</li>
+	                                		<li>
+	                                			2. 별도의 검색을 하지 않을 경우 하단에 독서감상문이 작성된 도서의 섬네일 리스트가 보이고 클릭하면 해당 도서에 대한 독서감상문이 모두 보입니다.
+	                                		</li>
+	                                		<li>3. 독서감상문 리스트 중 하나를 클릭하게 되면 세부내용이 확인 가능하고 좋아요 버튼을 통해 감상문에 대한 평가가 가능합니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-9.jpg}" alt="모바일 이용방법(알라딘) 9">
+	                                	</div>
+	                                	<h3>독서 라운지 - 독서 토론</h3>
+	                                	<ul class="con">
+	                                		<li>1. 토론 책 검색창에서는 도서명을 입력하여 해당 도서에 대한 사용자들의 한줄 토론을 찾아 읽어볼 수 있습니다.</li>
+	                                		<li>
+	                                			2. 별도의 검색을 하지 않을 경우 하단에 독서토론 글이 작성된 도서의 섬네일 리스트가 보이고 클릭하면 해당 도서에 대한 한줄감상평이 모두 보입니다.
+	                                		</li>
+	                                		<li>
+	                                			3. 이용자들의 감상문은 좋아요 버튼을 통해 감상문에 대한 평가가 가능하며, 문제가 있는 글의 경우 신고하기를 통해 관리자에게 전달할 수 있습니다.
+	                                		</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-10.jpg}" alt="모바일 이용방법(알라딘) 10">
+	                                	</div>
+	                                	<h3>설정</h3>
+	                                	<ul class="con">
+	                                		<li>
+	                                			1. 『내 계정』은 현재 로그인 되어진 본인의 계정이 확인되며, 로그아웃을 할 수 있습니다. 연결된 기기 관리는 세부 내용 확인을 통해 해당 계정으로 로그인된 기기의 목록이 나오며 수정/삭제를 할 수 있습니다.
+	                                		</li>
+	                                		<li>2. 『내 서재 설정』에서는 도서의 다운로드 위치를 외부/내부 저장소로 설정할 수 있습니다.</li>
+	                                		<li>3. 『알림 설정』에서는 PUSH 및 LTE 다운로드 알림 설정이 가능합니다.</li>
+	                                		<li>4. 『앱 정보』에서는 공지사항 및 고객센터 연결 페이지가 있으며 약관 및 라이선스 공지를 확인할 수 있습니다.</li>
+	                                		<li>5. 하단 앱 버전 정보를 통해 현재 어플리케이션의 버전 확인이 가능하며, 업데이트 시 참고할 수 있습니다.</li>
+	                                	</ul>
+	                                	<div class="img_wrap">
+	                                		<img th:src="@{/img/elib/bookus02-11.jpg}" alt="모바일 이용방법(알라딘) 11">
+	                                	</div>
+	                                </div> 
+                                <script type="text/javascript"></script>
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

@@ -1,0 +1,57 @@
+<th:block th:include="@{assistant/_header.html}" />
+<style>
+	#wrapper{
+		padding-bottom: 0px;
+	}
+</style>
+<script>
+	$(()=>{
+		addRow();
+		insertMembers();
+	})
+</script>
+<main>
+	<th:block th:include="@{_aside.html}" />
+	<section id="myinfo">
+		<!-- 내 정보 -->
+		<nav class="nav_div">
+			<h3>[[${department.depName}]] 인원 추가</h3>
+		</nav>
+		<section>
+			<input type="hidden" name="depCode" th:value="${department.depCode}" />
+			<table id="insertMemTable">
+				<thead>
+					<tr>
+						<th>no</th>
+						<th>학번</th>
+						<th>이름</th>
+						<th>생년월일</th>
+						<th>휴대폰</th>
+						<th>등급</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><input type="text" name="uid"></td>
+						<td><input type="text" name="name"></td>
+						<td><input type="text" name="birth" placeholder="yyMMdd 6자리"></td>
+						<td><input type="text" name="hp" placeholder="000-0000-0000"></td>
+						<td><select name="level">
+								<option value="1">학생</option>
+								<option value="2">조교</option>
+								<option value="3">교수</option>
+						</select></td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</section>
+		<div id="divAsInsert">
+			
+			<button type="button" id="btnAddRow">입력 행 추가</button>
+			<button type="button" id="btnMemInsert">인원 추가</button>
+		</div>
+	</section>
+</main>
+<th:block th:include="@{_footer.html}" />

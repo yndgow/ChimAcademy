@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- DAO Mapper 설정 -->
+<mapper namespace="kr.co.ChimAcademy.dao.ProfessorDAO">
+
+	<!-- 교수 내 정보 출력 -->
+	<select id="selectProMy"
+		resultType="kr.co.ChimAcademy.vo.MemberVO">
+		SELECT a.uid,profile, a.name, b.depCode, b.depName, a.hp, c.*,
+		a.email, a.zip, a.addr1, a.addr2, a.info
+		FROM
+		member AS a
+		JOIN department
+		AS b
+		ON
+		a.depCode = b.depCode
+		LEFT JOIN professor
+		AS c
+		ON a.uid = c.uid
+		WHERE
+		a.uid =
+		#{uid};
+	</select>
+
+	<!-- 교수 수강내역 출력 -->
+	<select id="selectProlecture"
+		resultType="kr.co.ChimAcademy.dto.LecSugangDto">
+		SELECT * FROM lec_list AS a
+		JOIN lecture AS b
+		ON a.lecCode =
+		b.lecCode
+		WHERE uid = #{uid};
+	</select>
+
+	<!-- 교수 개인정보 수정 -->
+	<update id="updateProMy">
+		UPDATE `member` set
+		`hp`=#{hp},
+		`email`=#{email},
+		`zip`=#{zip},
+		`addr1`=#{addr1},
+		`addr2`=#{addr2},
+		`info`=#{info}
+		WHERE
+		`uid` = #{uid}
+	</update>
+
+	<update id="updateProMyinfo">
+		UPDATE `professor` set
+		`career`=#{career},
+		`lab`=#{lab},
+		`csTime`=#{csTime}
+		WHERE `uid` = #{uid}
+	</update>
+
+	<!-- 프로필 업데이트 -->
+	<update id="updateProfile">
+		update `member` set `profile`=#{nName} where
+		`uid`=#{uid};
+	</update>
+</mapper>

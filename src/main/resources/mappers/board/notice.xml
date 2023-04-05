@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 댓글 관련 쿼리 -->
+<mapper namespace="kr.co.ChimAcademy.dao.NoticeDAO">
+
+	<!-- 댓글 리스트 가져오기 -->
+	<select id="selectComments" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM board AS a 
+		JOIN member AS b 
+		ON a.uid = b.uid 
+		WHERE `parent` = #{parent};
+	</select>
+	
+	<!-- 댓글 한건 가져오기 -->
+	<select id="selectComment" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM board AS a 
+		JOIN member AS b 
+		ON a.uid = b.uid 
+		WHERE `no` = #{no};
+	</select>
+	
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" useGeneratedKeys="true" keyProperty="no">
+	    INSERT INTO board (`content`, `uid`, `rdate`, `parent`)
+	    VALUES (#{content}, #{uid}, NOW(), #{parent})
+	</insert>
+
+	<!-- 공지사항 삭제 -->
+		<delete id="deleteNotice">
+			DELETE FROM board WHERE `no` = #{no} OR `parent` = #{parent};
+		</delete>
+<!--  -->
+	<update id="modifyComment">
+		UPDATE board SET 
+			`content` = #{content},
+			`rdate` = NOW()
+		WHERE
+			`no` = #{no};
+	</update>
+
+</mapper>

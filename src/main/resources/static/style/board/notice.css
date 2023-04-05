@@ -1,0 +1,295 @@
+/* board */
+main{
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+}
+.board{
+    width: 100%;
+    padding: 30px;
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.board table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-top: 1px solid #333;
+}
+
+.board table > tbody > tr{
+    border-bottom: 1px solid #d8d8d8;
+    padding: 10px;
+}
+
+.board table > tbody > tr > th{
+    text-align: center;
+    padding: 20px;
+    width: 20%;
+}
+
+.board table > tbody > tr:nth-child(3){
+    padding: 10px;
+    width: 20%;
+    height: 400px;
+}
+.board table > tbody > tr td{
+    padding: 10px;
+    width: 80%;
+}
+
+.board input{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #DFE3EE;
+}
+
+.board textarea{
+    width: 100%;
+    height: 400px;
+    resize: none;
+    border: 1px solid #DFE3EE;
+}
+
+/* 댓글 */
+.comment{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment > div{
+    padding: 15px;
+    /* border-bottom: 1px solid #999; */
+    margin-bottom: 20px;
+}
+.comment > div > div{
+    padding: 15px;
+}
+
+.comment .write{
+    /* margin: 0 auto; */
+}
+.comment .write h1{
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.comment .write h2{
+    margin-bottom: 5px;
+}
+.comment h2{
+    font-size: 15px;
+}
+
+.comment .write textarea{
+    width: 100%;
+    padding: -3px;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.comment .view{
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    height: auto;
+}
+
+.comment .view h2{
+    margin-bottom: 5px;
+}
+
+.comment .view p{
+    margin-bottom: 5px;
+}
+
+.comment .view > div{
+    margin-bottom: 5px;
+
+}
+
+.comment ul li {
+    margin-bottom: 10px;
+}
+
+.recoment{
+    padding: 30px 30px 0px 30px;
+    background-color: #ffe8e8;
+}
+
+
+
+/* List */
+
+main{
+    display: flex;
+    width: 1280px;
+}
+main>section {
+    width: 1130px;
+    min-height: 800px;
+    padding: 20px;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* banner */
+.banner{
+    border: 1px solid #666;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 30px;
+}
+.banner > img{
+	width: 100%;	
+}
+#depList>section{
+}
+
+#depList>section>table{
+    width: 100%;
+}
+
+#depList>section>table tr{
+    text-align: center;
+    height: 40px;
+}
+
+#depList>section>table tr>th {
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+
+#depList>section>table tr> th:nth-child(1){
+    width: 10%;
+}
+
+
+
+/* 페이징 버튼 위치 */
+
+.page_div{
+    position: relative;
+}
+
+.addPage > button{
+    font-size: 15px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* 추가 수정 김지홍 */
+.board  .btn_div button{
+	width: 100px;
+	
+}
+.comment > .write button{
+	width: 100px;
+}
+
+.page a {
+    margin: 0 5px 0 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    color: #366adb;
+    border: 1px solid #8fa7db;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+#btnNoticeDiv{
+    text-align : end;
+}
+.btn-gradient {
+  text-decoration: none;
+  color: white;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom: 4px solid rgba(0,0,0,0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+.btn-gradient.blue {
+  background: rgba(102,152,203,1);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb', endColorstr='#5c8ab8', GradientType=0 );
+}
+.btn_small {
+	margin-bottom: 0px;
+}
+/* 과목 항목 추가 */
+.board > form > table > thead > tr:first-child {
+	border-bottom: 1px solid #d8d8d8;
+}
+.board > form > table > thead > tr > th{
+	height: 56px;
+}
+.board > form > table > thead > tr > td{
+	padding: 10px;
+}
+.board > form > table > thead > tr > td > select{
+	width: 200px;
+	height: 30px;
+	border-radius: 4px; 
+	font-size: 12px;
+	
+}
+.board > form > table > thead > tr > td > select > option{
+	font-size: 12px;
+}
+#countComments{
+	font-size: 22px;
+}
+.comment > #commentsDiv > .view > .commentTextArea{
+	border: none;
+	resize: none;
+	box-sizing: border-box;
+	    height: auto;
+}
+#commentsDiv > .view > .btn_div > div >.btn_small{
+	width: 60px;
+}
+.mini{
+	padding: 4px 5px;  
+	font-size: 12px;
+}
+#txtWrite{
+	height: 360px;
+}
+
+.btn-gradient.red{ 
+  background: rgba(250,90,90,1);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250,90,90,1)), to(rgba(232,81,81,1)));
+  background: -webkit-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+  background: -moz-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+  background: -o-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+  background: linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0 );
+}
+.btn-gradient.cyan {
+  background: rgba(27,188,194,1);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
+  background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+}
+.btn-gradient.green {
+  background: rgba(130,200,160,1);
+  background: -moz-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(130,200,160,1)), color-stop(100%, rgba(130,199,158,1)));
+  background: -webkit-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+  background: -o-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+  background: -ms-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+  background: linear-gradient(to bottom, rgba(130,200,160,1) 0%, rgba(124, 185, 149, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82c8a0', endColorstr='#82c79e', GradientType=0 );
+}

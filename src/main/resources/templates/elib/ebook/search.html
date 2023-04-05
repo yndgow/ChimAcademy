@@ -1,0 +1,147 @@
+<th:block th:include="@{elib/_header.html}"/>
+<main id="sub-container">
+    <div class="sub-visual">
+        <div class="bg">
+            <div class="search-box">
+                <form th:action="@{/elib/ebook/search}" method="get">
+                    <section class="search">
+                        <div class="box1">
+                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다." th:value="${keyword}">                        
+                        </div>
+                        <div class="box2">
+                            <button type="submit"><span class="material-icons">search</span></button>
+                        </div>
+                    </section>
+                </form>
+                <div class="doc-info">
+                    <section>
+                        <ol>
+                            <li class="first">
+                                <a th:href="@{/elib/}">
+                                    <img src="/ChimAcademy/img/elib/home.png" alt="index">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">자료검색</a>
+                            </li>
+                            <li>
+                                <a href="#">소장자료 검색</a>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="lnb">
+            <h2>
+                <b>자료검색</b>
+            </h2>
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <span>소장자료 검색</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="doc">
+                <div class="doc-head">
+                    <div class="doc-title">
+                        <h3>소장자료 검색</h3>
+                    </div>
+                </div>
+                <div class="doc-body">
+                    <div class="body">
+						<div class="elib-top">
+						    <div class="lsort">
+						        <span>[[${total}]]</span>
+						        종의 책이 있습니다. &nbsp;
+						        <span>[[${currentPage}]]</span>
+						        of [[${pageGroupEnd}]] page 
+						    </div>
+						</div>
+						<ul class="list">
+							<li th:if="${ebooks.size() < 1}" class="nolist">
+                            	<span>검색 결과가 없습니다.</span>
+                            </li>
+						    <li class="elib" th:each="ebook : ${ebooks}">
+						        <div class="thumb">
+						            <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=4,type=1,GROUP=${ebook.GROUP},cate1=${ebook.cate1},cate2=${ebook.cate2},applier=${ebook.applier})}">
+						                <img th:src="@{${ebook.thumb}}" alt="thumb">
+						            </a>
+						        </div>
+						        <div class="cont">
+						            <div class="flexbox">
+						                <a th:href="@{/elib/ebook/view(bookId=${ebook.bookId},pg=${currentPage},sort=4,type=1,GROUP=${ebook.GROUP},cate1=${ebook.cate1},cate2=${ebook.cate2},applier=${ebook.applier})}" class="book_link">
+						                    <b>[[${ebook.title}]]</b>
+						                </a>
+						                <div class="info">
+						                    <span>[[${ebook.author}]]</span>
+						                    <span> ㅣ </span>
+						                    <span>[[${ebook.publisher}]]</span>
+						                    <span> ㅣ </span>
+						                    <span>[[${ebook.pubDate.substring(0,10)}]]</span>
+						                </div>
+						                <span class="snipet">
+						                    [[${ebook.bintro}]]
+						                </span>
+						            </div>
+						            <div class="meta">
+						                <label>소속도서관</label>
+						                <span>[[${ebook.belong}]]</span>
+						                <span> ㅣ </span>
+						                <label>공급사</label>
+						                <span>[[${ebook.applier}]]</span>
+						                <span> ㅣ </span>
+						                <label>대출가능 여부: </label>
+						                <span th:text="${ebook.loan} < 5 ? '대출가능':'대출불가능'"></span>
+						                <span> ㅣ </span>
+						                <label>대출 : </label>
+						                <span>[[${ebook.loan}]]/5</span>
+						                <span> ㅣ </span>
+						                <label>예약 : </label>
+						                <span>[[${ebook.reserv}]]/5</span>
+						                <span> ㅣ </span>
+						            </div>
+						        </div>
+						    </li>
+						</ul>
+                        <div class="paging" th:if="${ebooks.size() >= 1}">
+						    <span>
+						        <a th:href="@{/elib/ebook/search(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+						        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
+			                		<a th:href="@{/elib/ebook/search(pg=${page})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+			                	</th:block>
+						        <a th:href="@{/elib/ebook/search(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+						    </span>
+						</div>
+                    </div>
+                </div>
+                <div class="doc-admin">
+                    <div class="manager-box">
+                        <span>
+                            <label>담당부서</label>
+                            <em> : 정보서비스팀</em>
+                        </span>
+                        <span>
+                            <label>담당자</label>
+                            <em> : 구홍모</em>
+                        </span>
+                        <span>
+                            <label>전화번호</label>
+                            <em> : 051-333-3333</em>
+                        </span>
+                        <span>
+                            <label>최종수정일</label>
+                            <em> : 2023.03.09</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<th:block th:include="@{elib/_footer.html}"/>

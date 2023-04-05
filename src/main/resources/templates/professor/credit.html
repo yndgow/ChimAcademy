@@ -1,0 +1,86 @@
+
+<th:block th:include="@{professor/_header.html}"/>
+<script>
+	$(()=>{
+		aside();
+		getScores();
+		editTest();
+	});
+</script>
+        <main>
+            <th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="distance">
+                    <h3>강의목록</h3>
+                </nav>
+              <section class="tableWrapper">
+                    <table id="profClassTable">
+                        <tr>
+                            <th>no</th>
+                            <th>교과목명</th>
+                            <th>학년</th>
+                            <th>이수구분</th>
+                            <th>학점</th>
+                            <th>강의시간</th>
+                            <th>강의장소</th>
+                            <th>수강인원</th>
+                            <th>학생목록</th>
+                        </tr>
+                        <th:block th:if="${classs.size == 0}">
+                        	<tr>
+                        		<td colspan="9">강의 목록이 없습니다.</td>
+                        	</tr>
+                        </th:block>
+                        <tr th:each="class : ${classs}">
+                           <td th:text="${classStat.count}">1</td>
+                           <td th:text="${class.lecName}">고고학의 첫걸음</td>
+                           <td th:text="${class.lecCode}" style="display: none;">45</td>
+                           <td th:text="${class.lecClass}">1</td>
+                           <td th:text="${class.gubun}">전필</td>
+                           <td th:text="${class.credit}">3</td>
+                           <td th:text="|${class.lecDay} ${class.cTime}|">3시간</td>
+                           <td th:text="${class.lecLoc}">OO관</td>
+                           <td th:text="${class.lecRequest}">45</td>
+                           
+                           <td>
+                                <button class="btnStdList" th:data-leccode="${class.lecCode}" th:data-lecreq="${class.lecRequest}">출력</button>
+                           </td>
+                        </tr>
+                   </table>
+                </section>
+              <!-- 학생관리 -->
+              <nav class="distance">
+                <h3>학생 관리</h3>
+                </nav>
+                <section class="tableWrapper">
+                    <table id="userListTable">
+						<thead>
+                        <tr>
+                            <th>no</th>
+                            <th>학년</th>
+                            <th>학과</th>
+                            <th>학번</th>
+                            <th>이름</th>
+                            <th>중간</th>
+                            <th>기말</th>
+                            <th>과제</th>
+                            <th>발표</th>
+                            <th>출석</th>
+                            <th>태도</th>
+                            <th>최종 합계</th>
+                            <th>등급</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody id ="scoreTbody">
+	                        <tr>
+	                           <td colspan="13">결과가 없습니다.</td>
+	                        </tr>
+						</tbody>
+                   </table>
+                </section>
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

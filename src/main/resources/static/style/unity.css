@@ -1,0 +1,157 @@
+/* 버튼 */
+.btn_div{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+
+.btn_end{
+    display: flex;
+    margin-top: 10px;
+    justify-content:flex-end;
+
+}
+
+
+.btn{
+	line-height:50px;
+	display:inline-block;
+    width: 150px;
+    height: 50px;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn_small{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+/* 강의계획서 btn */
+.btn_plan{
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    background-color: #fff;
+    background-color: #366adb;
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+}
+
+.btn_plan:hover{
+    background-color: #244a9c;
+}
+
+.nomal{
+    background-color: #818181;
+    color: #fff;
+}
+
+.nomal:hover{
+    background-color: #a7a7a7;
+}
+
+.blue{
+    background-color: #8fa7db;
+    color: #fff;
+}
+
+.blue:hover{
+    background-color: #717f9c;
+}
+
+.red{
+    margin-left: 10px;
+    background-color: #f15555;
+    color: #fff;
+}
+
+.red:hover{
+    background-color: #fa7272;
+}
+
+
+
+/* page */
+
+.page{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.page > a{
+    margin: 0 5px 0 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    color: #366adb;
+    border: 1px solid #8fa7db;
+	border-radius: 30px;
+}
+
+.page > a:hover{
+    border: 1px solid #366adb;
+    background-color: #366adb;
+    color: #fff;
+
+}
+
+.on{
+    border: 1px solid #366adb;
+    background-color: #366adb;
+    color: #fff !important;
+}
+
+
+/* 모달창 */
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  min-height: 500px
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+

@@ -1,0 +1,63 @@
+<th:block th:include="@{member/_header.html}"/>
+	<script>
+	    $(document).ready(function(){
+	    	// 이미지 슬라이드
+	    	loginSlide();  
+	    	// 메시지 호출
+	    	urlSearch = new URLSearchParams(location.search);
+            msg = urlSearch.get('success')
+	    	alertMsg(msg);
+            memSessStorage();
+		});
+	</script>
+	<style>
+		#wrapper{
+			padding-bottom: 160px;
+		}
+	</style>
+		<main id="login">
+			<div class="slider SchoolSide">
+				<div>
+					<img th:src="@{/img/member/slide1.png}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+				<div>
+					<img th:src="@{/img/member/slide2.png}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+				<div>
+					<img th:src="@{/img/member/slide3.png}" alt="학교 이미지(빌딩느낌의)">
+				</div>
+			</div>
+			<div class="logoSide">
+				<img th:src="@{/img/member/침대학교_로고2.png}" alt="학교로고">
+			</div>
+			<div class="loginSide">
+				<div>
+					<form th:action="@{/member/login}" method="post">
+						<section>
+							<span>학번</span><br>
+							<input type="text" name="uid" placeholder="학생(교번)(ID No.)">
+						</section>
+						<section>
+							<span>비밀번호</span><br>
+							<input type="password" name="pass" placeholder="password">
+						</section>
+						<div>
+							<span>
+								<label>
+									<input type="checkbox" name="remember-me">자동로그인
+								</label>
+							</span>
+							<br><br>
+							<input type="submit" value="로그인">
+						</div>
+					</form>
+					<div>
+						<span>처음접속하시나요?</span><a th:href="@{/member/confirm}">&nbsp;가입하기</a>
+						<br><br>
+						
+						<a th:href="@{/member/findPw}">비밀번호 찾기</a>
+					</div>
+				</div>
+			</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

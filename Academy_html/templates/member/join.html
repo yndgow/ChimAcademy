@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link href="/static/style/member/common.css" rel="stylesheet" type="text/css" />
+<link href="/static/style/member/member.css" rel="stylesheet" type="text/css" />
+<head>
+    <meta charset="UTF-8">
+    <title>그린아카데미</title>    
+	<script>
+        $(function(){
+            $('#side > li > ol').hide();
+​
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<img src="/static/img/member/침대학교_헤더로고.png" alt="헤더로고">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">Login/LogOut</a>
+				</div>
+			</div>
+		</header>
+		<main id="join">
+            <nav>
+				<h1>가입하기</h1>
+			</nav>
+			<form action="#" method="POST">
+				<section>
+					<table>
+						<tr>
+							<th>
+								<span class="essential">*</span>이름
+							</th>
+							<td >
+								<input type="text" name="name" required>
+								<span class="msgName">Error message</span>
+							</td>
+							<td class="birthId">
+								<span class="essential">*</span>생년월일
+								<input type="text" name="birth" required>
+								<span class="msgName">Error message</span>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>학번
+							</th>
+							<td>
+								<input type="text" name="studentId" required>
+								<button type="button" id="btnId">학번찾기</button>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>성별
+							</th>
+							<td>
+								<label>
+									<input type="radio" name="gender" value="1" checked>
+									남
+								</label>
+								<label>
+									<input type="radio" name="gender" value="2" checked>
+									여
+								</label>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>비밀번호
+							</th>
+							<td>
+								<input type="password" name="pass" required>
+								<span class="msgPw">Error message</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>비밀번호확인
+							</th>
+							<td>
+								<input type="password" name="_pass" placeholder="비밀번호를 확인" required>
+								<span class="msgPass">비밀번호 재입력</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>이메일 주소
+							</th>
+							<td>
+								<input type="email" name="email" required>
+								<span class="msgEmail">Error message</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>휴대폰
+							</th>
+							<td>
+								<input type="text" name="hp" maxlength="13" required>
+								<span class="msgHp">- 포함 13자리를 입력하세요.</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>
+								<span class="essential">*</span>학번
+							</th>
+							<td>
+								<input type="text" name="studentId" required>
+								<span class="msgId">Error message</span>
+							</td>
+							<td></td>
+						</tr>
+						<tr class="addr">
+							
+							<th>
+								<span class="essential">*</span>주소
+							</th>
+							<td>
+								<div>
+									<input type="text" name="zip" id="zip" placeholder="우편번호 입력 클릭" readonly>
+									<button type="button" id="btnZip" onclick="postcode()">우편번호 찾기</button>
+								</div>
+								<div>
+									<input type="text" name="addr1" id="addr1" size="50" placeholder="주소를 검색하세요." readonly>
+								</div>
+								<div>
+									<input type="text" name="addr2" id="addr2" size="50" placeholder="상세주소를 입력하세요.">
+								</div>
+							</td>
+							<td></td>
+						</tr>
+					</table>
+				</section>
+				<div>
+					<input type="submit" class="join" value="가입하기">
+				</div>
+			</form>
+		</div>
+		</main>
+		<footer></footer>
+</body>
+</html>

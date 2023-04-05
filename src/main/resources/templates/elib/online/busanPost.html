@@ -1,0 +1,123 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">뷰어 설치 안내</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+			<div class="lnb">
+			    <h2>
+			        <b>부산자료</b>
+			    </h2>
+			    <ul>
+			        <li class="active">
+			          	<a href="#">
+			                <span>부산시 발간물</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a href="#">
+			                <span>부산시 보고서</span>
+			            </a>
+			        </li>
+			        <li>
+			            <a href="#">
+			                <span>부산관련 웹사이트</span>
+			            </a>
+			        </li>
+			    </ul>
+			</div>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>부산시 발간물</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="tit_box busan_icon02">
+                                	<dl>
+                                		<dt>부산시발간물</dt>
+                                		<dd>시민이 행복한 동북아 해양수도 부산! 부산시의 주요 발간물을 자세히 확인 하실 수 있습니다.</dd>
+                                	</dl>
+                                	<ul class="btns_wrap_tac01">
+                                		<li>
+                                			<a href="http://book.busan.go.kr/html/" class="btn_link01 newWin" title="부산시발간물 바로가기(새창열림)" target="_blank">
+                                				<span>부산시발간물 바로가기</span>
+                                				<span class="ico ico_link"></span>
+                                				<i class="fa fa-external-link"></i>
+                                			</a>
+                                		</li>
+                                	</ul>
+                                	<dl>
+                                		<dd>부산연구원 보고서 및 각 분야 정보는 "부산관련 웹사이트"에서 보실 수 있습니다.</dd>
+                                	</dl>
+                                	<ul class="btns_wrap_tac01">
+                                		<li>
+                                			<a href="https://library.busan.go.kr/elib/html.do?menu_idx=87" class="btn_link01 newWin" title="부산관련 웹사이트 바로가기(새창열림)" target="_blank">
+                                				<span>부산관련 웹사이트 바로가기</span>
+                                				<span class="ico ico_link"></span>
+                                				<i class="fa fa-external-link"></i>
+                                			</a>
+                                		</li>
+                                	</ul>
+                                </div>
+                                		
+                                <div id="menuRatingDiv"></div>
+                            </div>
+                        </div>
+                        <div class="doc-admin" style="margin-top:30px;">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

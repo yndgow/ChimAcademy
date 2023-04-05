@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>침대학교</title>    
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-aweome/6.3.0/css/all.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.css" rel="stylesheet">
+    
+    <!-- 공통css -->
+    <link rel="stylesheet" href="/static/style/board/aside.css">
+    <link rel="stylesheet" href="/static/style/board/board.css">
+    <link rel="stylesheet" href="/static/style/board/unity.css">
+
+    <script>
+        $(function(){
+            $('#side > li > ol').hide();
+
+            $('#side > li > a').click(function(){
+                $(this).siblings().slideToggle(300);
+            });
+        });
+    </script> 
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="top">
+				<div>
+					<a th:href="@{#}">Home</a>
+					<a th:href="@{#}">Profile</a>
+					<a th:href="@{#}">LogOut</a>
+				</div>
+			</div>
+		</header>
+        <main>
+            <aside>
+                <ul id="side">
+                    <li>
+                        <a href="#"><i class="fa-solid fa-user"></i>마이페이지</a>
+                        <ol>
+                            <li><a href="#">내 정보</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-graduation-cap"></i>학사관리</a>
+                        <ol>
+                            <li><a href="#">강의</a></li>
+                            <li><a href="#">성적</a></li>
+                            <li><a href="#">강의평가</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-solid fa-comments"></i>학과게시판</a>
+                        <ol>
+                            <li><a href="#">국문학과</a></li>
+                            <li><a href="#">영문학과</a></li>
+                            <li><a href="#">컴퓨터공학과</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa-sharp fa-solid fa-book"></i>전자도서관</a>
+                        <ol>
+                            <li><a href="#">도서</a></li>
+                            <li><a href="#">내 서재</a></li>
+                            <li><a href="#">온라인콘텐츠</a></li>
+                            <li><a href="#">이용안내</a></li>
+                        </ol>
+                    </li>
+
+                </ul>
+            </aside>
+			<div class="board">
+				<table>
+					<h1>글 작성하기</h1>
+					<tbody>
+						<tr>
+							<th>작성자</th>
+							<td>20231010 홍길동</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn_div">
+					<button class="btn nomal" >목록</button>
+					<button class="btn blue">작성</button>
+				</div>
+			</div>
+		</main>
+		<footer></footer>
+</body>
+</html>

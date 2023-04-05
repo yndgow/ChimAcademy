@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ChimAcademy.dao.Ebook_ArticleDAO">	
+	<insert id="insertArticle" useGeneratedKeys="true" keyProperty="no">
+		insert into `ebook_article` set
+			`title`=#{title},
+			`content`=#{content},
+			<if test="fname.isEmpty() == true">
+				`file`=0,
+			</if>
+			<if test="fname.isEmpty() == false">
+				`file`=1,
+			</if>
+			`uid`=#{uid},
+			`cate`=#{cate},
+			`regip`=#{regip},
+			`rdate`= NOW();	
+	</insert>
+	<insert id="insertFile">
+		insert into `ebook_article_file` set 
+				`parent`=#{parent}, 
+				`newName`=#{newName}, 
+				`oriName`=#{oriName}, 
+				`rdate`=now();
+	</insert>
+	
+	<resultMap id="selectArticleResultMap" type="kr.co.ChimAcademy.vo.Ebook_ArticleVO">
+		<id column="no" property="no"/>
+		<result column="parent" property="parent"/>
+		<result column="comment" property="comment"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="file" property="file"/>
+		<!--
+			<result column="hit" property="hit"/> 
+			<result column="cate" property="cate"/>
+		-->
+		<result column="uid" property="uid"/>
+		<result column="regip" property="regip"/>
+		<result column="rdate" property="rdate"/>
+		<association property="fileVO" javaType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
+			<id column="fno" property="fno"/>
+			<result column="parent" property="parent"/>
+			<result column="newName" property="newName"/>
+			<result column="oriName" property="oriName"/>
+			<result column="download" property="download"/>
+		</association>
+	</resultMap>
+	<select id="selectArticle" resultMap="selectArticleResultMap">
+		SELECT a.*, b.fno, b.oriName, b.download FROM `ebook_article` AS a 
+																	LEFT JOIN `ebook_article_file` AS b 
+																	ON a.`no`=b.parent 
+																	WHERE `no`=#{no};
+	</select>
+	<select id="selectArticles" resultType="kr.co.ChimAcademy.vo.Ebook_ArticleVO">
+		SELECT a.*, b.`name` FROM `ebook_article` AS a 
+													JOIN `member` AS b 
+													ON a.uid = b.uid 
+													where `parent`=0 
+													order by `no` desc 
+													limit #{start},10;
+	</select>
+	<select id="selectNotices" resultType="kr.co.ChimAcademy.vo.Ebook_ArticleVO">
+		SELECT a.*, b.`name` FROM `ebook_article` AS a 
+													JOIN `member` AS b 
+													ON a.uid = b.uid 
+													where `cate`='notice' 
+													order by `no` desc 
+													limit 3;
+	</select>
+	<select id="selectCountTotal" resultType="int">
+		SELECT COUNT(`no`) FROM `ebook_article` where `parent`=0;
+	</select>
+	<select id="selectFile" resultType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
+		select * from `ebook_article_file` where `fno`=#{fno};
+	</select>
+	<select id="selectFileByParent" resultType="kr.co.ChimAcademy.vo.Ebook_Article_fileVO">
+		select * from `ebook_article_file` where `parent`=#{no};
+	</select>
+	<update id="updateArticle">
+		update `ebook_article` set `title`=#{title},`content`=#{content},`rdate`=now() where `no`=#{no};
+	</update>
+	<update id="updateArticleHit">
+		update `ebook_article` set `hit` = `hit` + 1 where `no`=#{no};
+	</update>
+	<update id="updateFileDownload">
+		update `ebook_article_file` set `download` = `download` + 1 where `fno`=#{fno};
+	</update>
+	<delete id="deleteArticle">
+		delete from `ebook_article` where `no`=#{no} or `parent`=#{no};
+	</delete>
+	<delete id="deleteFile">
+		delete from `ebook_article_file` where `parent`=#{no};
+	</delete>
+</mapper>

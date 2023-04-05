@@ -1,0 +1,62 @@
+<th:block th:include="@{professor/_header.html}"/>
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		aside();
+		popupOpen();
+	});
+</script>
+
+        <main>
+           <th:block th:include="@{_aside.html}"/>
+
+            <section id="myinfo">
+                <!-- 내 정보 -->
+                <nav class="distance">
+                    <h3>강의목록</h3>
+                </nav>
+               <section>
+                    <table id="profClassTable">
+                        <tr>
+                            <th>no</th>
+                            <th>교과목명</th>
+                            <th>학년</th>
+                            <th>이수구분</th>
+                            <th>학점</th>
+                            <th>강의시간</th>
+                            <th>강의장소</th>
+                            <th>수강인원</th>
+                            <th>강의계획서</th>
+                        </tr>
+                        <th:block th:if="${classs.size == 0}">
+                        	<tr>
+                        		<td colspan="9">강의 목록이 없습니다.</td>
+                        	</tr>
+                        </th:block>
+                        <tr th:each="class : ${classs}">
+                           <td th:text="${classStat.count}">1</td>
+                           <td th:text="${class.lecName}">고고학의 첫걸음</td>
+                           <td th:text="${class.lecCode}" style="display: none;">45</td>
+                           <td th:text="${class.lecClass}">1</td>
+                           <td th:text="${class.gubun}">전필</td>
+                           <td th:text="${class.credit}">3</td>
+                           <td th:text="|${class.lecDay} ${class.cTime}|">3시간</td>
+                           <td th:text="${class.lecLoc}">OO관</td>
+                           <td th:text="${class.lecRequest}">45</td>
+                           
+                           <td>
+                                <button class="btn_plan">작성</button>
+                           </td>
+                        </tr>
+                   </table>
+                </section>
+<!--                 <div class="page">
+                    <a href=""><</a>
+                    <a href="" class="on">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">></a>
+                </div>  -->
+                
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

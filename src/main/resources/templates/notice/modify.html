@@ -1,0 +1,32 @@
+<th:block th:include="@{notice/_header.html}"/>
+
+        <main>
+   			<th:block th:include="@{_aside.html}"/>
+			<div class="board">
+				<form th:action="@{/notice/modify}" method="post">
+					<input type="hidden" name="no" th:value="${view.no}"/>
+					<table>
+						<h1>글 수정하기</h1>
+						<tbody>
+							<tr>
+								<th>작성자</th>
+								<td th:text="|${view.memberEntity.uid} ${view.memberEntity.name}|">20231010 홍길동</td>
+							</tr>
+							<tr>
+								<th>제목</th>
+								<td><input name="title" th:value="${view.title}"></td>
+							</tr>
+							<tr>
+								<th>내용</th>
+								<td><textarea name="content" id="" cols="30" rows="10">[[${view.content}]]</textarea></td>
+							</tr>
+						</tbody>
+					</table>
+					<section class="btn_div">
+						<button type="button" class="btn nomal" id="btnNoticeList">목록</button>
+						<button type="submit" class="btn blue">수정완료</button>
+	                </section>
+                </form>
+			</div>
+		</main>
+<th:block th:include="@{_footer.html}"/>

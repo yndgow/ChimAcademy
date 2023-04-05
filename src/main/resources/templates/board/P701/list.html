@@ -1,0 +1,59 @@
+
+<th:block th:include="@{board/P701/_header.html}"/>
+
+<script>
+
+
+</script>
+
+	<main>
+   	<th:block th:include="@{_aside.html}"/>
+            <section id="depList">
+                <!-- 내 정보 -->
+                <div class="banner">
+					<img th:src="@{/img/board/P701/P701_banner.png}" alt="일문학과_배너">
+                </div>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th style="width: 50%">제목</th>
+                            <th style="width: 18%">작성자</th>
+                            <th style="width: 7%">조회수</th>
+                            <th style="width: 15%">작성일</th>
+                        </tr>
+                        <tr th:each="japanese, idx  : ${vo}">
+	                        <td>[[${idx.index + 1}]]</td>
+	                       	<td><a th:href="@{/board/P701/view(no=${japanese.no},pg=${currentPage})}">[[${japanese.title}]]</a></td>
+		                    <td>[[${japanese.name}]]</td>
+	                        <td>[[${japanese.hit}]]</td>
+	                        <td>[[${japanese.rdate.substring(2,10)}]]</td>
+               			</tr>
+                   </table>
+                </section>
+                <div class="page_div">
+	               <div class="page">
+		                <th:block th:if="${groups[0]>1}">
+		                	<a th:href="@{/board/P701/list(pg=${groups[0]-1})}" class="prev">&lt;</a>
+		                </th:block>
+		                
+		                <th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
+		                
+		                	<a th:href="@{/board/P701/list(pg=${num})}" 
+		                	   th:class="${num==currentPage?'num on':'num'}">[[${num}]]</a>
+		                	          
+		                </th:block>
+		                
+		                <th:block th:if="${groups[1]<lastPageNum}">
+		                	<a th:href="@{/board/P701/list(pg=${groups[1]+1})}" class="next">&gt;</a>
+		                </th:block>
+		           </div>
+                   <div class="addPage">
+                       <button class="btn blue" th:onclick="'location.href=\'' + @{/board/P701/write} + '\''">새글 작성</button>
+                   </div>   
+                </div>
+
+            
+            </section>
+		</main>
+<th:block th:include="@{_footer.html}"/>

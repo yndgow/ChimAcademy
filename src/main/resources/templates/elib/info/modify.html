@@ -1,0 +1,117 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">도서관소식</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                 <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>도서관소식</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="write-wrap">
+                                	<div class="write">
+                             		    <form th:action="@{/elib/info/modify}" method="post" enctype="multipart/form-data">
+							            <input type="hidden" name="uid" value="ebook">
+							            <input type="hidden" name="no" th:value="${article.no}">
+							                <table border="0">
+							                    <caption>도서관소식 > 수정하기</caption>
+							                    <tr>
+							                        <th>제목</th>
+							                        <td><input type="text" name="title" th:value="${article.title}"/></td>
+							                    </tr>
+							                    <tr>
+							                        <th>내용</th>
+							                        <td>
+							                        	<textarea name="content">[[${article.content}]]
+							                        	</textarea>
+							                        </td>
+							                    </tr>
+							                </table>
+							                <div>
+							                    <a th:href="@{/elib/info/view(no=${article.no})}" class="btn btnCancel">취소</a>
+							                    <input type="submit" value="수정완료" class="btn btnComplete"/>
+							                </div>
+							            </form>
+                                	</div>
+								</div>
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 도서관협력팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 김지홍</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

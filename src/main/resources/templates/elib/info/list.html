@@ -1,0 +1,167 @@
+<th:block th:include="@{elib/_header.html}"/>
+        <main id="sub-container">
+            <div class="sub-visual">
+                <div class="bg">
+                    <div class="search-box">
+						<form th:action="@{/elib/ebook/search}" method="get">
+		                    <section class="search">
+		                        <div class="box1">
+		                            <input type="text" class="text" name="keyword" placeholder="원하시는 자료를 검색할 수 있습니다.">                        
+		                        </div>
+		                        <div class="box2">
+		                            <button type="submit"><span class="material-icons">search</span></button>
+		                        </div>
+		                    </section>
+		                </form>
+                        <div class="doc-info">
+                            <section>
+                                <ol>
+                                    <li class="first">
+                                        <a href="#">
+                                            <img th:src="@{/img/elib/home.png}" alt="index">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">이용안내</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">도서관소식</a>
+                                    </li>
+                                </ol>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section>
+                <th:block th:include="@{elib/info/_lnb.html}"/>
+                <div class="content">
+                    <div class="doc">
+                        <div class="doc-head">
+                            <div class="doc-title">
+                                <h3>도서관소식</h3>
+                            </div>
+                        </div>
+                        <div class="doc-body">
+                            <div class="body">
+                                <div class="table-wrap">
+                                    <table class="center">
+                                        <tr>
+                                            <th style="width: 10%;">번호</th>
+                                            <th style="width: auto;">제목</th>
+                                            <th style="width: 10%;">작성자</th>
+                                            <th style="width: 9%;">작성일</th>
+                                            <th style="width: 7%;">조회수</th>
+                                            <th style="width: 6%;">파일</th>
+                                            <th style="width: 11%;" sec:authorize="hasAnyRole('4')">관리</th>
+                                        </tr>
+                                        <tr th:each="article,artStat : ${notices}" class="notice">
+                                            <td>
+                                                <span>공지</span>
+                                            </td>
+                                            <td class="left">
+                                                <a th:href="@{/elib/info/view(no=${article.no},pg=${pg})}">
+                                                    <span>[[${article.title}]]</span>
+                                                </a>
+                                            </td>
+                                            <td>[[${article.name}]]</td>
+                                            <td>[[${article.rdate.substring(2,10)}]]</td>
+                                            <td>[[${article.hit}]]</td>
+                                            <td>
+                                                <span th:if="${article.file == 1}" class="material-icons">save</span>
+                                            </td>
+                                            <td sec:authorize="hasAnyRole('4')">
+                                                <a th:href="@{/elib/info/modify(no=${article.no})}">
+                                                	[수정]
+                                                </a>
+                                                <a th:href="@{/elib/info/delete(no=${article.no})}">
+                                                	[삭제]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr th:each="article,artStat : ${articles}">
+                                            <td>
+                                                <span>[[${pageStartNum-artStat.index}]]</span>
+                                            </td>
+                                            <td class="left">
+                                                <a th:href="@{/elib/info/view(no=${article.no},pg=${pg})}">
+                                                    <span>[[${article.title}]]</span>
+                                                </a>
+                                            </td>
+                                            <td>[[${article.name}]]</td>
+                                            <td>[[${article.rdate.substring(2,10)}]]</td>
+                                            <td>[[${article.hit}]]</td>
+                                            <td>
+                                                <span th:if="${article.file == 1}" class="material-icons">save</span>
+                                            </td>
+                                            <td sec:authorize="hasAnyRole('4')">
+                                                <a th:href="@{/elib/info/modify(no=${article.no})}">
+                                                	[수정]
+                                                </a>
+                                                <a th:href="@{/elib/info/delete(no=${article.no})}">
+                                                	[삭제]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="btns" sec:authorize="hasAnyRole('4')">
+									<a class="btn btn2" th:href="@{/elib/info/write}">
+									<span class="material-icons">edit</span>
+									작성하기
+									</a>
+								</div>
+                                <div class="paging">
+								    <span>
+								        <a th:href="@{/elib/info/list(pg=${pageGroupStart-1})}" th:if="${pageGroupStart gt 1}" class="pBtn previous">이전</a>
+								        <th:block th:each="page : ${#numbers.sequence(pageGroupStart,pageGroupEnd)}">
+					                		<a th:href="@{/elib/info/list(pg=${page})}" class="pBtn num " th:attrappend="class=${page==currentPage?'current':''}">[[${page}]]</a>
+					                	</th:block>
+								        <a th:href="@{/elib/info/list(pg=${pageGroupEnd+1})}" th:if="${pageGroupEnd lt lastPageNum}" class="pBtn next" >다음</a>
+								    </span>
+								</div>
+                            </div>
+                        </div>
+                        <div class="doc-admin">
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 정보서비스팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 구홍모</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                            <div class="manager-box">
+                                <span>
+                                    <label>담당부서</label>
+                                    <em> : 도서관협력팀</em>
+                                </span>
+                                <span>
+                                    <label>담당자</label>
+                                    <em> : 김지홍</em>
+                                </span>
+                                <span>
+                                    <label>전화번호</label>
+                                    <em> : 051-333-3333</em>
+                                </span>
+                                <span>
+                                    <label>최종수정일</label>
+                                    <em> : 2023.03.09</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+<th:block th:include="@{elib/_footer.html}"/>

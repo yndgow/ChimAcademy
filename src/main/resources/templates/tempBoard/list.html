@@ -1,0 +1,113 @@
+
+<th:block th:include="@{board/P701/_header.html}"/>
+
+	<main>
+   	<th:block th:include="@{_aside.html}"/>
+            <section id="depList">
+                <!-- 내 정보 -->
+                <div class="banner">
+
+                </div>
+               <section>
+                    <table>
+                        <tr>
+                            <th>no</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>조회수</th>
+                            <th>작성일</th>
+                        </tr>
+                        <tr>
+                        	 
+                        	<td>1</td>
+                           <td><a th:href="@{/board/view}">공지사항입니다~</a></td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        	
+                        </tr>
+                                                <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                         <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                                                <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                                                <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                                                <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                                                <tr>
+                           <td>1</td>
+                           <td>공지사항입니다~</td>
+                           <td>홍길동</td>
+                           <td>0</td>
+                           <td>2023/03/09</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>공지사항입니다~</td>
+                            <td>홍길동</td>
+                            <td>0</td>
+                            <td>2023/03/09</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>공지사항입니다~</td>
+                            <td>홍길동</td>
+                            <td>0</td>
+                            <td>2023/03/09</td>
+                         </tr>
+                         <tr>
+                            <td>1</td>
+                            <td>공지사항입니다~</td>
+                            <td>홍길동</td>
+                            <td>0</td>
+                            <td>2023/03/09</td>
+                         </tr>
+                       
+                   </table>
+                </section>
+                <div class="page_div">
+                    <div class="page">
+                        <a href=""><</a>
+                        <a href="" class="on">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">></a>
+                    </div>
+                    <div class="addPage">
+                        <button class="btn blue" th:onclick="'location.href=\'' + @{/board/write} + '\''">새글 작성</button>
+                    </div>
+                </div>
+
+            
+            </section>
+		</main>
+		<footer></footer>
+</body>
+</html>

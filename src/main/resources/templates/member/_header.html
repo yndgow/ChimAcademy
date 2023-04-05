@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+	<!-- css -->
+	<link href="/ChimAcademy/style/common.css" rel="stylesheet" type="text/css" />
+	<link href="/ChimAcademy/style/member/member.css" rel="stylesheet" type="text/css" />
+	<!-- js -->
+	<script th:src="@{/js/member/member.js}"></script>
+	<!-- 다음 주소 api -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<head>
+	    <meta charset="UTF-8">
+	    <title>침대학교:사용자페이지</title>    
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<div class="top">
+				<p id="login_headerLogo"><img th:src="@{/img/침대학교_헤더로고.png}" alt="헤더로고"></p>
+					<div>
+						<a th:href="@{/member/confirm}">가입하기</a>
+						<a th:href="@{/index}">로그인</a>
+					</div>
+				</div>
+			</header>
+		

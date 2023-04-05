@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kr.co.ChimAcademy.dao.AssistantDAO">
+	
+
+	<select id="selectDep" resultType="kr.co.ChimAcademy.vo.DepartmentVO">
+		SELECT a.*
+		FROM department AS a
+		JOIN member AS b
+		USING(depCode)
+		WHERE uid = #{uid};
+	</select>
+	
+	<select id="selectLectures" resultType="kr.co.ChimAcademy.vo.LectureVO">
+		SELECT a.*, c.name 
+			FROM lecture AS a 
+			LEFT OUTER JOIN lec_list AS b 
+			ON a.lecCode = b.lecCode
+			LEFT OUTER JOIN member as c
+			ON b.uid = c.uid
+		<where>
+			<if test="depCode != null">
+				a.depCode= #{depCode}
+			</if>
+			<if test="searchData != null">
+				And (a.lecName LIKE CONCAT('%', #{searchData}, '%') OR a.lecCode = #{searchData})
+			</if>
+			<if test="lecClass != 0">
+				And a.lecClass = #{lecClass}
+			</if>
+			<if test="majorCode != null">
+				And a.majorCode = #{majorCode}
+			</if>
+			<if test="lecGubun != 0">
+				And a.lecGubun = #{lecGubun} ;
+			</if>
+		</where> 
+	</select>
+	
+	<select id="selectNotices" resultType="kr.co.ChimAcademy.vo.BoardVO">
+		SELECT a.*, b.name FROM board AS a
+		JOIN member AS b
+		ON a.uid=b.uid
+		WHERE lecCode IS NOT NULL
+		AND parent = 0
+		ORDER BY (`no`) DESC
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectMembers" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		select * from `member` WHERE `depCode`=#{depCode} AND (`level`=1 or `level`=2);
+	</select>
+	
+	<select id="selectMember" resultType="kr.co.ChimAcademy.vo.MemberVO">
+		select * from `member` where `uid`=#{uid};
+	</select>
+	
+	<update id="updateMember">
+		update `member` 
+			<set>
+				`status`=#{status},
+				`name`=#{name},
+				`level`=#{level},
+				`birth`=#{birth},
+				`addr1`=#{addr1},
+				`sYear`=#{sYear},
+				`rdate`=#{rdate},
+				<if test="wdate != ''">`wdate`=#{wdate},</if>
+				<if test="wdate == ''">`wdate` = null,</if>
+				`zip`=#{zip},
+				`gender`=#{gender},
+				`hp`=#{hp},
+				`info`=#{info},
+				`email`= #{email}
+			</set>
+			where `uid`=#{uid};	
+	</update>
+	
+	<select id="countNotice" resultType="int">
+		SELECT COUNT(`no`) FROM board WHERE lecCode IS NOT NULL AND parent = 0;
+	</select>
+
+</mapper>
