@@ -100,8 +100,8 @@ main>section>nav.distance {
 }
 
 #myinfo>section {
-    display: flex;
-    height: 350px;
+    /* display: flex; */
+    /* height: 350px; */
 }
 
 #myinfo>section>div {
@@ -196,7 +196,8 @@ main>section>nav.distance {
 
 .pro tr td textarea {
 	width: 100%;
-	height: 85% !important;
+	/* height: 85% !important; */
+	height: 120px;
 	border: none;
 	resize: none;
 }

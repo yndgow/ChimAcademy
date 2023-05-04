@@ -42,46 +42,17 @@
                     <table>
                         <tr>
                             <th>학년도</th>
-                            <th>학과</th>
-                            <th>이수학점</th>
-                            <th>등수</th>
-                            <th>전체인원</th>
+                            <!-- <th>이수학점</th> -->
                             <th>평점</th>
                         </tr>
-                        <tr>
-                           <td>2020</td>
-                           <td>국문학과</td>
-                           <td>20</td>
-                           <td>2</td>
-                           <td>45</td>
-                           <td>4.2</td>
+                        <tr th:each="score : ${scores}">
+                           <td th:text="${score.sYear}">2020</td>
+                           <td th:text="${score.yearPoint}">4.2</td>
                         </tr>
-                        <tr>
-                           <td>2021</td>
-                           <td>국문학과</td>
-                           <td>20</td>
-                           <td>3</td>
-                           <td>45</td>
-                           <td>4.1</td>
-                        </tr>
-                        <tr>
-                           <td>2022</td>
-                           <td>국문학과</td>
-                           <td>20</td>
-                           <td>2</td>
-                           <td>45</td>
-                           <td>4.05</td>
-                        </tr>
-                        <tr>
-                           <td>2023</td>
-                           <td>국문학과</td>
-                           <td>20</td>
-                           <td>3</td>
-                           <td>45</td>
-                           <td>4.4</td>
-                        </tr>
+                       
                    </table>
                 </section>
+                
               <!-- 수강내역 -->
               <nav class="distance">
                 <h3>수강내역</h3>

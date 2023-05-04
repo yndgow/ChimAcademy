@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ScoreVO {
 	private int no;
+	private int sYear;
 	private String uid;
 	private int lecCode;
 	private int midExam;
@@ -15,4 +16,8 @@ public class ScoreVO {
 	private int etc4;
 	private int totalScore;
 	private String sGrade;
+	private double sPoint;
+	
+	// 추가필드
+	private double yearPoint;
 }

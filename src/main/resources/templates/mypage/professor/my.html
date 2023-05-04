@@ -11,23 +11,28 @@
                 </nav>
                <section>
                 <div>
-                    <tr><img th:src="@{/profileThumb/}+${professor.profile}" style="width: 130px; height: 173.33px;" alt="증명사진" class="idphoto" id="preview"></tr>
+                    <tr><img th:src="@{/profileThumb/}+${professor.profile}" alt="증명사진" class="idphoto" id="preview"></tr>
                 </div>
                     <table class="pro">
                         <tr>
                             <th>이름</th>
                             <td>[[${professor.name}]]</td>
-                            <th>연구실</th>
-                            <td th:if="${professor.lab = ''}" th:text="입력주세요"}>[[${professor.lab}]]</td>
-                            <th>상담 가능시간</th>
-                            <td th:if="${professor.csTime = ''}" th:text="입력주세요">[[${professor.csTime}]]</td>
+                                                        <th>담당학과</th>
+                            <td>[[${professor.depName}]]</td>
+                            <th>연락처</th>
+                            <td>[[${professor.hp}]]</td>
+                            
+                            
                             
                         </tr>
                         <tr>
-                            <th>연락처</th>
-                            <td>[[${professor.hp}]]</td>
-                            <th>담당학과</th>
-                            <td>[[${professor.depName}]]</td>
+                            <th>연구실</th>
+                            <td th:if="${not #strings.isEmpty(professor.lab)}" th:text="${professor.lab}"></td>
+                            <td th:unless="${not #strings.isEmpty(professor.lab)}" th:text="미입력"></td>
+                            <th>상담 가능시간</th>
+                            <td th:if="${not #strings.isEmpty(professor.csTime)}" th:text="${professor.csTime}"></td>
+                            <td th:unless="${not #strings.isEmpty(professor.csTime)}" th:text="미입력"></td>
+
                         </tr>
                         <tr>
                         	<th>이력</th>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.ScoreVO;
 import kr.co.ChimAcademy.vo.infoFileVO;
 
 @Repository
@@ -37,4 +38,12 @@ public interface StudentDAO {
 	//강의평가 넣기
 	public int insertLecEval(EvalBoardVO vo);
 
+	// 연도별 성적 출력
+	public List<ScoreVO> selectScoreGroupByYear(String uid);
+	
+	// 총 평균성적 입력
+	public void updateAvgCredit(String uid);
+	
+	// 평균성적 반환
+	public double selectAvgCredit(String uid);
 }

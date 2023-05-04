@@ -19,6 +19,7 @@ import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.repository.LecFileRepo;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
+import kr.co.ChimAcademy.vo.ScoreVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -102,6 +103,22 @@ public class StudentService {
 	// 계획서 파일 정보 가져오기
 	public LecFileEntity selectFile(int no) {
 		return fileRepo.findById(no).orElse(null);
+	}
+	
+	// 연도별 성적 출력
+	public List<ScoreVO> selectScoreGroupByYear(String uid){
+		return dao.selectScoreGroupByYear(uid);
+	}
+	
+	// 총 평균성적 입력
+	public double updateAvgCredit(String uid) {
+		// 입력
+		dao.updateAvgCredit(uid);
+		// 값 반환
+		double result = dao.selectAvgCredit(uid);
+		result = Math.round(result*100)/100;
+		log.info("result "+ result);
+		return result;
 	}
 	
 }

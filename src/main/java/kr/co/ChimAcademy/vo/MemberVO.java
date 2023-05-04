@@ -15,7 +15,7 @@ public class MemberVO {
 	private int sYear;
 	private int gender;
 	private int totCredit;
-	private int avgCredit;
+	private double avgCredit;
 	private String hp;
 	private String email;
 	private String status;

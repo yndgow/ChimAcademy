@@ -33,6 +33,7 @@ public class ScoreEntity {
 	private int totalScore;
 	@Column(name = "sGrade")
 	private String grade;
+	private double sPoint;
 	
 	public int getTotalScore() {
 		this.totalScore= this.midExam + this.finalExam + this.etc1 + this.etc2 + this.etc3 + this.etc4;
@@ -59,6 +60,36 @@ public class ScoreEntity {
 		}
 		
 		return this.grade;
+	}
+	
+	public double getSPoint() {
+		switch (this.grade) {
+			case "A+":
+				this.sPoint = 4.5;
+				break;
+			case "A":
+				this.sPoint = 4.0;
+				break;
+			case "B+":
+				this.sPoint = 3.5;
+				break;
+			case "B":
+				this.sPoint = 3.0;
+				break;
+			case "C+":
+				this.sPoint = 2.5;
+				break;
+			case "C":
+				this.sPoint = 2.0;
+				break;
+			case "F":
+				this.sPoint = 0;
+				break;
+
+		}
+		 
+		 return this.sPoint;
+		 
 	}
 	
 	@ManyToOne

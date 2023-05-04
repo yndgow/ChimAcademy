@@ -67,7 +67,7 @@
 						</div>
 						<div class="col-6">
 							<label for="formFile" class="col-form-label me-3 fw-bold">강의 계획서 파일(PDF)</label><a th:href="@{/syllabus/download(no=${board.fileEntity.no})}" class="btn btn-primary">다운로드</a>
-		  					<input class="form-control-plaintext" type="text" id="oFile" name="fileoName" th:value="${board.fileEntity.oriName}">
+		  					<input class="form-control-plaintext" type="text" id="oFile" name="fileoName" th:value="${board.fileEntity.oriName}" readonly>
 						</div>
 					</div>
 					<div class="mb-3">

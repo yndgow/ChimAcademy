@@ -52,8 +52,15 @@ public class StudentController {
 		MemberVO vo = service.selectStudent(uid);
 		List<LecSugangDto> lecture = service.selectLectures(uid);
 		
+		// 총 평균성적 미입력시 입력
+		if(vo.getAvgCredit()== 0 && lecture.size() != 0) {
+			double avgCredit = service.updateAvgCredit(uid);
+			vo.setAvgCredit(avgCredit);		
+		}
+		
 		model.addAttribute("vo", vo);
 		model.addAttribute("lecture", lecture);
+		model.addAttribute("scores", service.selectScoreGroupByYear(uid));
 		return "mypage/student/my";
 	}
 	
@@ -62,6 +69,7 @@ public class StudentController {
 		vo.setUid(pid);
 		
 		service.insertLecEval(vo);
+
 		
 		return "redirect:/student/my";
 	}
@@ -70,7 +78,13 @@ public class StudentController {
 	public String mypagemodify(@AuthenticationPrincipal MyUserDetails member, Model model) {
 		MemberEntity mem = member.getUser();
 		MemberVO vo = service.selectStudent(mem.getUid());
-		
+
+		// 총 평균성적 미입력시 입력
+		if(vo.getAvgCredit()== 0) {
+			double avgCredit = service.updateAvgCredit(mem.getUid());
+			vo.setAvgCredit(avgCredit);
+		}
+
 		model.addAttribute("vo", vo);
 		model.addAttribute("member", mem);
 

@@ -79,6 +79,7 @@ main>section>article>table>tbody {
 /* 내 정보 - 증명사진 */
 #myinfo>section>div>img.idphoto {
 	width: 150px;
+	object-fit: cover;
 }
 
 /* 마이페이지 수정 - 증명사진 */
@@ -106,7 +107,7 @@ main>section>nav.distance {
 }
 
 #myinfo>section {
-	display: flex;
+	/* display: flex; */
 }
 
 #myinfo>section>div {

@@ -200,6 +200,7 @@ public class ProfessorService {
 		entity.setEtc4(vo.getEtc4());
 		entity.setTotalScore(vo.getTotalScore());
 		entity.setGrade(vo.getSGrade());
+		entity.setSPoint(entity.getSPoint());
 		scoreRepo.save(entity);
 	}
 	
