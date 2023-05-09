@@ -178,6 +178,14 @@ public class ProfessorService {
 		}
 	}
 	
+	// 강의 계획서 작성 여부
+	public int confirmSyllabus(String lecCode) {
+		
+		return boardRepo.countByLecCode(Integer.valueOf(lecCode));
+	}
+	
+	
+	
 	// 수강 인원 정보 출력
 	public List<ScoreEntity> selectScoresBylecCode(int lecCode){
 		return scoreRepo.findByLectureEntityLecCode(lecCode);

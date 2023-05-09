@@ -85,7 +85,7 @@ public class SignUpController {
 	@ResponseBody
 	@PostMapping("student/class/signup")
 	public Map<String, Integer> insertSugang(Lec_SugangEntity entity) {
-		log.info("entity : " + entity);
+//		log.info("entity : " + entity);
 
 		// 반환할 map 생성
 		Map<String, Integer> json = new HashMap<>();

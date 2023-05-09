@@ -18,7 +18,7 @@
                             <th>학번</th>
                             <td th:text=${vo.uid}>2022</td>
                             <th>학과</th>
-                            <td>[[${vo.majorName}]] / [[${vo.depName}]]</td>
+                            <td>[[${vo.depName}]]</td>
                         </tr>
                         <tr>
                             <th>연락처</th>
@@ -82,7 +82,7 @@
                         <td>[[${lecture.gubun}]]</td>
                         <td>[[${lecture.credit}]]</td>
                         <td>[[${lecture.name}]]</td>
-                        <td>[[${lecture.cTime}]]</td>
+                        <td>[[${lecture.lecDay}]][[${lecture.cTime}]]</td>
                         <td>[[${lecture.sGrade}]]</td> 
                         <td>
 		                <th:block th:if="${lecture.result == 1}">

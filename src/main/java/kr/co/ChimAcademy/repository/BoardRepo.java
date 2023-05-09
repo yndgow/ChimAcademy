@@ -12,6 +12,9 @@ public interface BoardRepo extends JpaRepository<BoardEntity, Integer>{
 	
 	// 강의계획서 보기
 	BoardEntity findByLecCode(int lecCode);
+	
+	// 강의계획서 확인
+	int countByLecCode(int lecCode);
 //	
 //	
 //	List<BoardEntity> findByLecCode(String lecCode);

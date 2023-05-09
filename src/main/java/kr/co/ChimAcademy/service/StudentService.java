@@ -116,8 +116,8 @@ public class StudentService {
 		dao.updateAvgCredit(uid);
 		// 값 반환
 		double result = dao.selectAvgCredit(uid);
-		result = Math.round(result*100)/100;
-		log.info("result "+ result);
+		result = Math.round(result*100)/100.0;
+//		log.info("result "+ result);
 		return result;
 	}
 	

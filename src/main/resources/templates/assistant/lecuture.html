@@ -111,7 +111,7 @@ $(()=>{
 						<td th:text="${department.depName}">국어국문학과</td>
 						<th>전공</th>
 						<td>
-							<select name="majorCodeReg" class="selectMajor">
+							<select name="majorCode" class="selectMajor">
 								<option value="">-</option>
 								<th:block th:each="major : ${majors}">
 									<option th:value="${major.majorCode}">[[${major.majorName}]]</option>

@@ -56,7 +56,7 @@ public class AssistantController {
 	@ResponseBody
 	@PostMapping("assistant/insert")
 	public List<MemberEntity> insertMembers(@RequestBody List<MemberEntity> members) {
-		log.info("entity : " + members);
+//		log.info("entity : " + members);
 		return assistantService.insertMembers(members);
 	}
 	
@@ -88,7 +88,7 @@ public class AssistantController {
 	}
 	@PostMapping("assistant/modify")
 	public String modifyPost(MemberVO vo) {
-		log.info("wdate : "+vo.getWdate()+"////////////////////////////////////");
+//		log.info("wdate : "+vo.getWdate()+"////////////////////////////////////");
 		assistantService.updateMember(vo);
 		
 		return "redirect:/assistant/manage";
@@ -124,8 +124,8 @@ public class AssistantController {
 	@PostMapping("assistant/lecture/register")
 	public String lecRegister(LectureEntity entity, MemberEntity memberEntity) {
 		
-		log.info("entity : " + entity);
-		log.info("uid : " + memberEntity.getUid());
+//		log.info("entity : " + entity);
+//		log.info("uid : " + memberEntity.getUid());
 		
 		if(memberEntity.getUid() != null) {
 			assistantService.insertLectureList(entity, memberEntity);
@@ -144,8 +144,8 @@ public class AssistantController {
 		LectureEntity lectureEntity = assistantService.getLectureEn(lecCode);
 		LecListEntity lecListEntity = assistantService.getLecture(lectureEntity);
 		
-		log.info("lecCode : " + lectureEntity);
-		log.info("entity : " + lectureEntity);
+//		log.info("lecCode : " + lectureEntity);
+//		log.info("entity : " + lectureEntity);
 		if(lecListEntity == null) {
 			return new ResponseEntity<>(lectureEntity, HttpStatus.OK);
 		}else {

@@ -12,10 +12,20 @@ function aside(){
 }
 function popupOpen(){
 	$('.btn_plan').click(function(){
-		// 팝업 오픈
-		// 팝업주소
-		let url = "/ChimAcademy/professor/class/write";
-		// 팝업 제목
+		// 이미 작성된 강의 계획서인지 확인
+		let lecCode = $(this).closest('tr').find('td:nth-child(3)').text();
+		let result = 0;
+		let url = '';
+		$.getJSON("/ChimAcademy/professor/class/"+lecCode,(data)=>{
+			// 팝업주소
+			if(data < 1){
+				url = "/ChimAcademy/professor/class/write";	
+			}else{
+				url = "/ChimAcademy/professor/class/modify";
+			}	
+			
+			
+					// 팝업 제목
 		let name = "강의계획서";
 		// 화면 중앙에 팝업 시키기 위한 값 구하기
 		let width = 1220;
@@ -33,6 +43,11 @@ function popupOpen(){
 		setData(lecture);
 		// 팝업 열기
 		window.open(url, name, option);
+		});
+		// 팝업 오픈
+		
+		
+
 	});
 }
 

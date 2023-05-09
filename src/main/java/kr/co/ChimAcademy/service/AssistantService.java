@@ -72,7 +72,7 @@ public class AssistantService {
 	
 	// 조교 교과목 검색
 	public List<LectureVO> selectLectures(LectureVO vo){
-		log.info("lecutres : " + dao.selectLectures(vo));
+//		log.info("lecutres : " + dao.selectLectures(vo));
 		return dao.selectLectures(vo);
 	}
 	

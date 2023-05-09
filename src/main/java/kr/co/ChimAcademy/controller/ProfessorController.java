@@ -164,6 +164,15 @@ public class ProfessorController {
 		
 		return "redirect:/professor/manage";
 	}
+	
+	// 강의 계획서 작성 여부
+	@ResponseBody
+	@GetMapping("professor/class/{lecCode}")
+	public int confirmSyllabus(@PathVariable String lecCode) {
+		return service.confirmSyllabus(lecCode);
+	}
+	
+	
 
 	// 강의 평가 출력
 	@GetMapping("professor/eval/view")
