@@ -17,6 +17,7 @@ import kr.co.ChimAcademy.config.MyUserDetails;
 import kr.co.ChimAcademy.dto.EvalBoardDTO;
 import kr.co.ChimAcademy.dto.LecSugangDto;
 import kr.co.ChimAcademy.dto.SyllabusDto;
+import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
 import kr.co.ChimAcademy.entity.LectureEntity;
 import kr.co.ChimAcademy.entity.MemberEntity;
@@ -168,11 +169,24 @@ public class ProfessorController {
 	// 강의 계획서 작성 여부
 	@ResponseBody
 	@GetMapping("professor/class/{lecCode}")
-	public int confirmSyllabus(@PathVariable String lecCode) {
+	public int confirmSyllabus(@PathVariable int lecCode) {
 		return service.confirmSyllabus(lecCode);
 	}
-	
-	
+
+	// 강의 계획서 수정 팝업 띄우기
+	@GetMapping("professor/class/modify/{lecCode}")
+	public String modifyClassSc(@PathVariable int lecCode, Model model) {
+		BoardEntity boardEntity = service.selectSyllabus(lecCode);
+		model.addAttribute("board", boardEntity);
+		return "syllabus/modify";
+	}
+
+	// 강의계획서 수정
+	@PostMapping("professor/class/modify")
+	public void moidifySyllabus(SyllabusDto dto) {
+		
+		
+	}
 
 	// 강의 평가 출력
 	@GetMapping("professor/eval/view")

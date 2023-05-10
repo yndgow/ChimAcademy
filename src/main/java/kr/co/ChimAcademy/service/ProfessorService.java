@@ -23,6 +23,7 @@ import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
+import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.repository.LecFileRepo;
@@ -176,14 +177,53 @@ public class ProfessorService {
 			// 보드 파일번호 업데이트
 			boardEntity.setFileEntity(fileEntity);
 		}
+		
+		// 파일을 첨부하지 않았을때
+		BoardEntity oriBoardEntity =  BoardEntity.builder()
+				.lecCode(dto.getLecCode())
+				.title(dto.getTitle())
+				.content(dto.getContent())
+				.memberEntity(memberRepo.findById(dto.getUid()).get())
+				.type(2)
+				.build();
+		boardRepo.save(oriBoardEntity);
+		
+		
 	}
 	
 	// 강의 계획서 작성 여부
-	public int confirmSyllabus(String lecCode) {
-		
-		return boardRepo.countByLecCode(Integer.valueOf(lecCode));
+	public int confirmSyllabus(int lecCode) {
+		return boardRepo.countByLecCode(lecCode);
 	}
 	
+	// 강의 계획서 가져오기
+	public BoardEntity selectSyllabus(int lecCode) {
+		return boardRepo.findByLecCode(lecCode);
+	}
+	
+	// 강의계획서 수정하기
+	@Transactional
+	public void modifySyllabus(SyllabusDto dto) {
+		// board 수정
+		BoardEntity board = boardRepo.findById(dto.getNo()).get();
+		board.setTitle(dto.getTitle());
+		board.setContent(dto.getContent());
+		board.setMemberEntity(memberRepo.findById(dto.getUid()).get());		
+		
+		// file 수정
+		if(dto.getProfFile().getName() == "") {
+			// 수정을 하지 않은 경우
+			
+			
+			
+		}else {
+			// 수정을 한 경우
+			
+			
+			
+		}
+		
+	}
 	
 	
 	// 수강 인원 정보 출력

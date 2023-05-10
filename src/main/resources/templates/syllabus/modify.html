@@ -25,47 +25,59 @@
 			border-radius : 4px;
 		}
 	</style>
-	<script>
-		document.addEventListener("DOMContentLoaded", function(){
+	<script th:inline="javascript">
+		$(()=>{
+			// 강의계획서 닫기
+			$('#btnCloseSyllabus').click(function(){
+				window.close();
+			});
 			submitSyllabus();
 			let lec = JSON.parse(sessionStorage.getItem('data'));
 			$('#lecName').val(lec.lecName);
 			$('#lecCode').val(lec.lecCode);
 		});
 	</script>
+	
 	</head>
 	<body>
 		<main class="container">
 			<div class="text-center mt-5">
-				<h3 class="fw-bold">강의계획서 작성</h3>
+				<h3 class="fw-bold">강의계획서 수정</h3>
 			</div>
-			<form id="syllabusForm" th:action="@{/professor/class/write}" method="post" enctype="multipart/form-data">
+			<form id="syllabusForm" th:action="@{/professor/class/modify}" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="no" th:value="${board.no}"/>
 				<input type="hidden" name="uid" th:value="${#authentication.principal.user.uid}"/>
 				<div class="mb-3"> 
 				  <label for="formControlInputTitle" class="form-label fw-bold">제 목</label>
-				  <input type="text" class="form-control" id="formControlInputTitle" name="title" placeholder="제목을 입력해 주세요." required>
+				  <input type="text" class="form-control" id="formControlInputTitle" name="title" th:value="${board.title}">
 				</div>
 				<div class="mb-3 row">
-					<div class="col-6">
+					<div class="col-4">
 						<label for="lecName" class="col-form-label fw-bold">강의과목명</label>
-						<input type="text" readonly class="form-control-plaintext" id="lecName" value="강의계획서 과목">
-						<input type="hidden" class="form-control-plaintext" id="lecCode" name="lecCode" readonly>
+						<input type="text" readonly class="form-control" id="lecName">
+						<input type="text" class="form-control-plaintext" id="lecCode" name="lecCode" readonly>
 					</div>
-					<div class="col-6">
+					
+					<div class="col-4">
 						<label for="formFile" class="col-form-label fw-bold">강의 계획서 파일(PDF)</label>
 	  					<input class="form-control" type="file" id="formFile" name="profFile" accept="application/pdf">
 					</div>
-					<div class="col-6">
-						
-					</div>
+					<th:block th:if="${board.fileEntity} != null">
+						<div class="col-4">
+							<label for="formFile" class="col-form-label me-3 fw-bold">강의 계획서 파일(PDF)</label><a th:href="@{/syllabus/download(no=${board.fileEntity.no})}" class="btn btn-primary">다운로드</a>
+							
+		  					<input class="form-control-plaintext" type="text" id="oFile" name="fileoName" th:value="${board.fileEntity.oriName}">
+						</div>
+					</th:block>
 				</div>
 				<div class="mb-3">
-				  <label for="formControlTextareaContent" class="form-label fw-bold">세부 내용</label>
-				  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content" required></textarea>
+				  <label for="formControlTextareaContent" class="form-label">세부 내용</label>
+				  <textarea class="form-control" id="formControlTextareaContent" rows="25" name="content">[[${board.content}]]</textarea>
 				</div>
-			<div class="btn_end text-end">
-				<button class="btn btn-lg btn-dark" id="btnSumitSyllabus">등록</button>
-			</div>
+				<div class="btn_end text-end">
+					<button class="btn btn-lg btn-primary" 	id="btnSumitSyllabus">수정</button>
+					<button class="btn btn-lg btn-dark" type="button" id="btnCloseSyllabus">닫기</button>
+				</div>
 			</form>
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

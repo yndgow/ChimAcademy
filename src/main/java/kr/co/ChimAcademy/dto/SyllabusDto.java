@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class SyllabusDto {
-	
+	private int no;
 	private String title;
 	private int lecCode;
 	private MultipartFile profFile;

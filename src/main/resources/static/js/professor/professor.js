@@ -14,14 +14,13 @@ function popupOpen(){
 	$('.btn_plan').click(function(){
 		// 이미 작성된 강의 계획서인지 확인
 		let lecCode = $(this).closest('tr').find('td:nth-child(3)').text();
-		let result = 0;
 		let url = '';
 		$.getJSON("/ChimAcademy/professor/class/"+lecCode,(data)=>{
 			// 팝업주소
 			if(data < 1){
 				url = "/ChimAcademy/professor/class/write";	
 			}else{
-				url = "/ChimAcademy/professor/class/modify";
+				url = "/ChimAcademy/professor/class/modify/"+lecCode;
 			}	
 			
 			
@@ -66,6 +65,7 @@ function submitSyllabus(){
 			alert('내용을 입력해주세요.');
 			return false;
 		}
+		
 		
 		$('#syllabusForm').submit();
 		
