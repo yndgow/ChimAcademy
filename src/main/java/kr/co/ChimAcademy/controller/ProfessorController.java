@@ -184,8 +184,7 @@ public class ProfessorController {
 	// 강의계획서 수정
 	@PostMapping("professor/class/modify")
 	public void moidifySyllabus(SyllabusDto dto) {
-		
-		
+		service.modifySyllabus(dto);
 	}
 
 	// 강의 평가 출력

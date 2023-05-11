@@ -208,19 +208,43 @@ public class ProfessorService {
 		BoardEntity board = boardRepo.findById(dto.getNo()).get();
 		board.setTitle(dto.getTitle());
 		board.setContent(dto.getContent());
-		board.setMemberEntity(memberRepo.findById(dto.getUid()).get());		
+		board.setMemberEntity(memberRepo.findById(dto.getUid()).get());
+		MultipartFile dtoFile = dto.getProfFile();
+		log.info("log1");		
 		
 		// file 수정
-		if(dto.getProfFile().getName() == "") {
-			// 수정을 하지 않은 경우
-			
-			
-			
-		}else {
+		if(!dtoFile.isEmpty()) {
+			log.info("empty");
 			// 수정을 한 경우
+			LecFileEntity fileEntity = board.getFileEntity();
 			
 			
+			// 현재 연도 가져오기
+			Calendar calendar = Calendar.getInstance();
+			int year = calendar.get(Calendar.YEAR);
+			// 연도별 폴더 구조
 			
+			Path uploadDir = Paths.get("file/"+year+"/");
+			
+	        String uuid = UUID.randomUUID().toString();
+	        String originalFilename = dtoFile.getOriginalFilename();
+	        String fileExtension = originalFilename.substring(originalFilename.lastIndexOf('.'));
+	        String newFileName = uuid + fileExtension;
+	    	Path destinationPath = uploadDir.resolve(newFileName);
+	    	
+			try {
+				// 업로드 폴더의 존재여부 확인 없으면 생성
+				Files.createDirectories(uploadDir);
+				// inputStream 이용시 close 하기
+				InputStream inputStream = dtoFile.getInputStream();
+				Files.copy(inputStream, destinationPath);
+				inputStream.close();
+			}catch (IOException e) {
+				log.error(e.getMessage());
+			}
+			
+			fileEntity.setNewName(newFileName);
+			fileEntity.setOriName(originalFilename);			
 		}
 		
 	}

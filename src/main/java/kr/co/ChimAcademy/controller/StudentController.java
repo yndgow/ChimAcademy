@@ -26,7 +26,9 @@ import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.service.StudentService;
 import kr.co.ChimAcademy.vo.EvalBoardVO;
 import kr.co.ChimAcademy.vo.MemberVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class StudentController {
 	
@@ -79,11 +81,17 @@ public class StudentController {
 		MemberEntity mem = member.getUser();
 		MemberVO vo = service.selectStudent(mem.getUid());
 
+		
+		log.info("avg : " + vo.getAvgCredit());
+		
 		// 총 평균성적 미입력시 입력
 		if(vo.getAvgCredit()== 0) {
 			double avgCredit = service.updateAvgCredit(mem.getUid());
 			vo.setAvgCredit(avgCredit);
+		}else {
+			vo.setAvgCredit(0);
 		}
+		
 
 		model.addAttribute("vo", vo);
 		model.addAttribute("member", mem);

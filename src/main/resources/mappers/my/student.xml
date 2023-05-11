@@ -80,11 +80,11 @@
 	<!-- 총 평균 성적 입력 -->
 	<update id="updateAvgCredit">
 		UPDATE member 
-		SET avgCredit = (
+		SET avgCredit = COALESCE((
 			SELECT AVG(sPoint) AS yearPoint
 			FROM score 
-			WHERE uid= #{uid} AND sGrade IS NOT NULL)
-		WHERE uid = #{uid};
+			WHERE uid= #{uid} AND sGrade IS NOT NULL), 0)
+		WHERE uid = #{uid};	
 	</update>
 	
 	<select id="selectAvgCredit" resultType="double">
