@@ -23,7 +23,6 @@ import kr.co.ChimAcademy.dto.SyllabusDto;
 import kr.co.ChimAcademy.entity.BoardEntity;
 import kr.co.ChimAcademy.entity.LecFileEntity;
 import kr.co.ChimAcademy.entity.LecListEntity;
-import kr.co.ChimAcademy.entity.MemberEntity;
 import kr.co.ChimAcademy.entity.ScoreEntity;
 import kr.co.ChimAcademy.repository.BoardRepo;
 import kr.co.ChimAcademy.repository.LecFileRepo;
@@ -216,9 +215,6 @@ public class ProfessorService {
 		if(!dtoFile.isEmpty()) {
 			log.info("empty");
 			// 수정을 한 경우
-			LecFileEntity fileEntity = board.getFileEntity();
-			
-			
 			// 현재 연도 가져오기
 			Calendar calendar = Calendar.getInstance();
 			int year = calendar.get(Calendar.YEAR);
@@ -243,8 +239,27 @@ public class ProfessorService {
 				log.error(e.getMessage());
 			}
 			
-			fileEntity.setNewName(newFileName);
-			fileEntity.setOriName(originalFilename);			
+			// 파일 
+			LecFileEntity fileEntity = null;
+			
+
+			if(board.getFileEntity() == null) {
+				// 파일은 처음 등록하는 경우
+				// 파일 객체 생성
+				fileEntity = new LecFileEntity();
+				fileEntity.setNewName(newFileName);
+				fileEntity.setOriName(originalFilename);
+				fileEntity.setParent(dto.getNo());
+				// 파일 입력
+				fileRepo.save(fileEntity);
+				// 보드 file 수정
+				board.setFileEntity(fileEntity);
+			}else {
+				// 파일이 업로드한 파일이 존재하는 경우
+				fileEntity = board.getFileEntity();
+				fileEntity.setNewName(newFileName);
+				fileEntity.setOriName(originalFilename);
+			}
 		}
 		
 	}

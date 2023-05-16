@@ -88,12 +88,12 @@
 		                <th:block th:if="${lecture.result == 1}">
 				        	강의평가완료
 					    </th:block>
-					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}!= null">
+					    <th:block th:if="${lecture.result} == 0">
 					        <button class="btn_small blue openModalBtn" style="border: 0">강의 평가</button>
 					    </th:block>
-					    <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}== null">
+					    <!-- <th:block th:if="${lecture.result} == 0 and ${lecture.sGrade}== null">
 					        평가준비중
-					    </th:block>
+					    </th:block> -->
                         </td>
                			<td><input type="hidden" name="slecCode" th:value="${lecture.lecCode}"></td>
                			<td><input type="hidden" name="spid" th:value="${lecture.pid}"></td>

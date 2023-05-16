@@ -61,7 +61,7 @@ public class MemberService {
 		member.setGender(entity.getGender());
 		member.setPass(encoder.encode(entity.getPass()));
 		member.setEmail(entity.getEmail());
-		member.setZip(entity.getAddr1());
+		member.setZip(entity.getZip());
 		member.setAddr1(entity.getAddr1());
 		member.setAddr2(entity.getAddr2());
 		member.setRegip(ipAddress);

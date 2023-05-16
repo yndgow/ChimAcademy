@@ -183,8 +183,9 @@ public class ProfessorController {
 
 	// 강의계획서 수정
 	@PostMapping("professor/class/modify")
-	public void moidifySyllabus(SyllabusDto dto) {
+	public String moidifySyllabus(SyllabusDto dto) {
 		service.modifySyllabus(dto);
+		return "redirect:/professor/manage";
 	}
 
 	// 강의 평가 출력
