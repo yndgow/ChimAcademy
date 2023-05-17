@@ -211,10 +211,11 @@ function inputNumControl() {
 			alert('총합 100점 이상입니다. 수정해주세요.');
 			return false;
 		} else {
-			$('#scoreForm').submit();
 			setTimeout(() => {
 				window.close();
 			}, 100)
+			$('#scoreForm').submit();
+
 		}
 	})
 }
